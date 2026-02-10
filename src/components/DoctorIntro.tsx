@@ -1,6 +1,6 @@
 import ScrollReveal from "./ScrollReveal";
 import { Link } from "react-router-dom";
-import doctorPortrait from "@/assets/doctor-portrait.jpg";
+import doctorCloseup from "@/assets/doctor-suit-closeup.jpg";
 
 const DoctorIntro = () => {
   return (
@@ -10,7 +10,7 @@ const DoctorIntro = () => {
           <ScrollReveal direction="left">
             <div className="relative">
               <img
-                src={doctorPortrait}
+                src={doctorCloseup}
                 alt="Dr Shoaib Aslam Kurerr - Orthopaedic Surgeon in Bahawalpur"
                 className="rounded-2xl w-full max-w-md mx-auto lg:mx-0 object-cover aspect-[4/5]"
                 style={{ boxShadow: "var(--shadow-hero)" }}

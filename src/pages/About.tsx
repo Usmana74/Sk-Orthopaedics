@@ -1,5 +1,6 @@
 import ScrollReveal from "@/components/ScrollReveal";
-import doctorPortrait from "@/assets/doctor-portrait.jpg";
+import doctorSeated from "@/assets/doctor-seated.jpg";
+import doctorSurgery from "@/assets/doctor-surgery-blue.jpg";
 
 const credentials = [
   "MBBS (A.I.M.C.)",
@@ -26,7 +27,7 @@ const About = () => {
         <div className="container-wide">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             <ScrollReveal direction="left">
-              <img src={doctorPortrait} alt="Dr Shoaib Aslam Kurerr" className="rounded-2xl w-full max-w-md mx-auto object-cover aspect-[4/5]" style={{ boxShadow: "var(--shadow-hero)" }} />
+              <img src={doctorSeated} alt="Dr Shoaib Aslam Kurerr" className="rounded-2xl w-full max-w-md mx-auto object-cover aspect-[4/5]" style={{ boxShadow: "var(--shadow-hero)" }} />
             </ScrollReveal>
             <ScrollReveal direction="right">
               <div>
@@ -49,6 +50,29 @@ const About = () => {
                   ))}
                 </div>
               </div>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
+      {/* Surgery environment section */}
+      <section className="section-padding bg-card">
+        <div className="container-wide">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <ScrollReveal direction="left">
+              <div>
+                <p className="text-accent font-semibold text-sm uppercase tracking-widest mb-2">In the Operating Room</p>
+                <h2 className="font-heading text-3xl font-bold text-foreground mb-6">Surgical Excellence</h2>
+                <p className="text-muted-foreground leading-relaxed mb-4">
+                  Dr Shoaib operates in state-of-the-art facilities equipped with the latest orthopaedic surgical instruments and imaging technology. His commitment to precision and patient safety is reflected in every procedure.
+                </p>
+                <p className="text-muted-foreground leading-relaxed">
+                  From minimally invasive arthroscopy to complex joint replacements, Dr Shoaib combines technical mastery with compassionate care to deliver the best possible outcomes for his patients.
+                </p>
+              </div>
+            </ScrollReveal>
+            <ScrollReveal direction="right">
+              <img src={doctorSurgery} alt="Dr Shoaib in the operating room" className="rounded-2xl w-full max-w-md mx-auto lg:ml-auto object-cover aspect-[4/5]" style={{ boxShadow: "var(--shadow-hero)" }} />
             </ScrollReveal>
           </div>
         </div>

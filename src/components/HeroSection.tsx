@@ -1,6 +1,6 @@
 import { Phone, MessageCircle } from "lucide-react";
 import { motion } from "framer-motion";
-import heroImage from "@/assets/hero-doctor.jpg";
+import heroImage from "@/assets/doctor-surgery-dark.jpg";
 
 const HeroSection = () => {
   const whatsappUrl =

@@ -1,13 +1,18 @@
 import ScrollReveal from "@/components/ScrollReveal";
-import { Bone, Stethoscope, Microscope, Activity, Shield, HeartPulse } from "lucide-react";
+import serviceKnee from "@/assets/service-knee.jpg";
+import serviceShoulder from "@/assets/service-shoulder.jpg";
+import serviceArthroscopy from "@/assets/service-arthroscopy.jpg";
+import serviceSports from "@/assets/service-sports.jpg";
+import serviceAcl from "@/assets/service-acl.jpg";
+import serviceArthritis from "@/assets/service-arthritis.jpg";
 
 const services = [
-  { icon: Bone, title: "Knee Replacement", desc: "Total and partial knee replacement for severe arthritis or joint damage. Restores mobility and eliminates chronic knee pain using modern implant technology.", bullets: ["Total Knee Replacement", "Partial Knee Replacement", "Revision Knee Surgery"] },
-  { icon: Stethoscope, title: "Shoulder Surgery", desc: "Surgical treatment for rotator cuff tears, dislocations, frozen shoulder, and other shoulder conditions.", bullets: ["Rotator Cuff Repair", "Shoulder Stabilization", "Frozen Shoulder Release"] },
-  { icon: Microscope, title: "Arthroscopy", desc: "Minimally invasive keyhole surgery for diagnosing and treating joint problems with smaller incisions and faster recovery.", bullets: ["Knee Arthroscopy", "Shoulder Arthroscopy", "Diagnostic Arthroscopy"] },
-  { icon: Activity, title: "Sports Injury Treatment", desc: "Comprehensive care for athletes and active individuals. From acute injury management to surgical reconstruction.", bullets: ["Ligament Injuries", "Muscle & Tendon Tears", "Sports Rehabilitation"] },
-  { icon: Shield, title: "ACL / Meniscus Repair", desc: "Advanced ligament reconstruction and meniscus surgery to restore knee stability and function.", bullets: ["ACL Reconstruction", "Meniscus Repair", "Multi-ligament Reconstruction"] },
-  { icon: HeartPulse, title: "Arthritis Care", desc: "Non-surgical and surgical management of arthritis including medication, injections, and joint replacement when needed.", bullets: ["Pain Management", "Joint Injections", "Physiotherapy Plans"] },
+  { image: serviceKnee, title: "Knee Replacement", desc: "Total and partial knee replacement for severe arthritis or joint damage. Restores mobility and eliminates chronic knee pain using modern implant technology.", bullets: ["Total Knee Replacement", "Partial Knee Replacement", "Revision Knee Surgery"] },
+  { image: serviceShoulder, title: "Shoulder Surgery", desc: "Surgical treatment for rotator cuff tears, dislocations, frozen shoulder, and other shoulder conditions.", bullets: ["Rotator Cuff Repair", "Shoulder Stabilization", "Frozen Shoulder Release"] },
+  { image: serviceArthroscopy, title: "Arthroscopy", desc: "Minimally invasive keyhole surgery for diagnosing and treating joint problems with smaller incisions and faster recovery.", bullets: ["Knee Arthroscopy", "Shoulder Arthroscopy", "Diagnostic Arthroscopy"] },
+  { image: serviceSports, title: "Sports Injury Treatment", desc: "Comprehensive care for athletes and active individuals. From acute injury management to surgical reconstruction.", bullets: ["Ligament Injuries", "Muscle & Tendon Tears", "Sports Rehabilitation"] },
+  { image: serviceAcl, title: "ACL / Meniscus Repair", desc: "Advanced ligament reconstruction and meniscus surgery to restore knee stability and function.", bullets: ["ACL Reconstruction", "Meniscus Repair", "Multi-ligament Reconstruction"] },
+  { image: serviceArthritis, title: "Arthritis Care", desc: "Non-surgical and surgical management of arthritis including medication, injections, and joint replacement when needed.", bullets: ["Pain Management", "Joint Injections", "Physiotherapy Plans"] },
 ];
 
 const Services = () => {
@@ -24,20 +29,22 @@ const Services = () => {
         <div className="container-wide grid grid-cols-1 md:grid-cols-2 gap-8">
           {services.map((s, i) => (
             <ScrollReveal key={s.title} delay={i * 0.08}>
-              <div className="bg-card rounded-xl p-8 card-shadow h-full">
-                <div className="w-14 h-14 rounded-lg cta-gradient flex items-center justify-center mb-5">
-                  <s.icon className="w-7 h-7 text-primary-foreground" />
+              <div className="bg-card rounded-xl overflow-hidden card-shadow h-full">
+                <div className="h-52 overflow-hidden">
+                  <img src={s.image} alt={s.title} className="w-full h-full object-cover" />
                 </div>
-                <h2 className="font-heading text-2xl font-semibold text-foreground mb-3">{s.title}</h2>
-                <p className="text-muted-foreground text-sm leading-relaxed mb-4">{s.desc}</p>
-                <ul className="space-y-2">
-                  {s.bullets.map((b) => (
-                    <li key={b} className="flex items-center gap-2 text-sm text-foreground">
-                      <span className="w-1.5 h-1.5 rounded-full bg-accent" />
-                      {b}
-                    </li>
-                  ))}
-                </ul>
+                <div className="p-8">
+                  <h2 className="font-heading text-2xl font-semibold text-foreground mb-3">{s.title}</h2>
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-4">{s.desc}</p>
+                  <ul className="space-y-2">
+                    {s.bullets.map((b) => (
+                      <li key={b} className="flex items-center gap-2 text-sm text-foreground">
+                        <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+                        {b}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </ScrollReveal>
           ))}

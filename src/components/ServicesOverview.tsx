@@ -1,14 +1,19 @@
 import { Link } from "react-router-dom";
 import ScrollReveal from "./ScrollReveal";
-import { Stethoscope, Bone, Microscope, Activity, Shield, HeartPulse } from "lucide-react";
+import serviceKnee from "@/assets/service-knee.jpg";
+import serviceShoulder from "@/assets/service-shoulder.jpg";
+import serviceArthroscopy from "@/assets/service-arthroscopy.jpg";
+import serviceSports from "@/assets/service-sports.jpg";
+import serviceAcl from "@/assets/service-acl.jpg";
+import serviceArthritis from "@/assets/service-arthritis.jpg";
 
 const services = [
-  { icon: Bone, title: "Knee Replacement", desc: "Total and partial knee replacement surgery for arthritis and joint damage." },
-  { icon: Stethoscope, title: "Shoulder Surgery", desc: "Advanced surgical solutions for rotator cuff tears and shoulder instability." },
-  { icon: Microscope, title: "Arthroscopy", desc: "Minimally invasive keyhole procedures for faster recovery." },
-  { icon: Activity, title: "Sports Injury Treatment", desc: "Comprehensive care for athletic injuries and rehabilitation." },
-  { icon: Shield, title: "ACL / Meniscus Repair", desc: "Ligament reconstruction and meniscus surgery for knee stability." },
-  { icon: HeartPulse, title: "Arthritis Care", desc: "Pain management and treatment plans for joint arthritis." },
+  { image: serviceKnee, title: "Knee Replacement", desc: "Total and partial knee replacement surgery for arthritis and joint damage." },
+  { image: serviceShoulder, title: "Shoulder Surgery", desc: "Advanced surgical solutions for rotator cuff tears and shoulder instability." },
+  { image: serviceArthroscopy, title: "Arthroscopy", desc: "Minimally invasive keyhole procedures for faster recovery." },
+  { image: serviceSports, title: "Sports Injury Treatment", desc: "Comprehensive care for athletic injuries and rehabilitation." },
+  { image: serviceAcl, title: "ACL / Meniscus Repair", desc: "Ligament reconstruction and meniscus surgery for knee stability." },
+  { image: serviceArthritis, title: "Arthritis Care", desc: "Pain management and treatment plans for joint arthritis." },
 ];
 
 const ServicesOverview = () => {
@@ -29,15 +34,21 @@ const ServicesOverview = () => {
             <ScrollReveal key={service.title} delay={i * 0.1}>
               <Link
                 to="/services"
-                className="group block bg-card rounded-xl p-8 card-shadow hover:card-shadow-hover transition-all duration-300 hover:-translate-y-1"
+                className="group block bg-card rounded-xl overflow-hidden card-shadow hover:card-shadow-hover transition-all duration-300 hover:-translate-y-1"
               >
-                <div className="w-14 h-14 rounded-lg cta-gradient flex items-center justify-center mb-5">
-                  <service.icon className="w-7 h-7 text-primary-foreground" />
+                <div className="h-48 overflow-hidden">
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
                 </div>
-                <h3 className="font-heading text-xl font-semibold text-foreground mb-3 group-hover:text-primary transition-colors">
-                  {service.title}
-                </h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{service.desc}</p>
+                <div className="p-6">
+                  <h3 className="font-heading text-xl font-semibold text-foreground mb-3 group-hover:text-primary transition-colors">
+                    {service.title}
+                  </h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">{service.desc}</p>
+                </div>
               </Link>
             </ScrollReveal>
           ))}
