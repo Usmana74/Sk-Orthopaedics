@@ -1,5 +1,6 @@
 import ScrollReveal from "@/components/ScrollReveal";
 import { Phone, MessageCircle, MapPin, Clock } from "lucide-react";
+import clinicImage from "@/assets/clinic-exterior.jpg";
 
 const Contact = () => {
   const whatsappUrl =
@@ -15,7 +16,14 @@ const Contact = () => {
       </section>
 
       <section className="section-padding">
-        <div className="container-wide max-w-4xl mx-auto">
+        <div className="container-wide max-w-5xl mx-auto">
+          {/* Clinic image */}
+          <ScrollReveal>
+            <div className="rounded-2xl overflow-hidden mb-12 card-shadow">
+              <img src={clinicImage} alt="SK Orthopaedics Clinic - Bahawalpur" className="w-full h-64 md:h-80 object-cover" />
+            </div>
+          </ScrollReveal>
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <ScrollReveal direction="left">
               <div className="space-y-8">

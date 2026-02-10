@@ -1,28 +1,34 @@
 import ScrollReveal from "./ScrollReveal";
-import { Star } from "lucide-react";
+import { Star, Quote } from "lucide-react";
 
 const testimonials = [
   {
     name: "Ahmed Raza",
     procedure: "Knee Replacement",
     text: "After years of knee pain, Dr Shoaib performed a total knee replacement that changed my life. Within months, I was walking pain-free. His care and follow-up were exceptional.",
+    initials: "AR",
   },
   {
     name: "Fatima Bibi",
     procedure: "ACL Reconstruction",
     text: "My daughter's ACL injury was treated with such expertise. The minimally invasive approach meant faster recovery and she was back to her routine in weeks. Highly recommended.",
+    initials: "FB",
   },
   {
     name: "Mohammad Khalid",
     procedure: "Shoulder Surgery",
     text: "Chronic shoulder pain had limited my daily activities for years. Dr Shoaib's surgical expertise and post-operative physiotherapy guidance gave me back my mobility.",
+    initials: "MK",
   },
 ];
 
 const TestimonialsPreview = () => {
   return (
-    <section className="section-padding bg-card">
-      <div className="container-wide">
+    <section className="section-padding bg-card relative overflow-hidden">
+      {/* Subtle background pattern */}
+      <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "radial-gradient(circle at 1px 1px, hsl(var(--primary)) 1px, transparent 0)", backgroundSize: "40px 40px" }} />
+
+      <div className="container-wide relative z-10">
         <ScrollReveal>
           <div className="text-center mb-14">
             <p className="text-accent font-semibold text-sm uppercase tracking-widest mb-2">Patient Testimonials</p>
@@ -35,16 +41,22 @@ const TestimonialsPreview = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {testimonials.map((t, i) => (
             <ScrollReveal key={t.name} delay={i * 0.1}>
-              <div className="bg-background rounded-xl p-8 card-shadow h-full flex flex-col">
+              <div className="bg-background rounded-xl p-8 card-shadow h-full flex flex-col relative">
+                <Quote className="w-8 h-8 text-primary/10 absolute top-6 right-6" />
                 <div className="flex gap-1 mb-4">
                   {[...Array(5)].map((_, j) => (
                     <Star key={j} className="w-4 h-4 fill-accent text-accent" />
                   ))}
                 </div>
                 <p className="text-muted-foreground text-sm leading-relaxed flex-1 mb-6">"{t.text}"</p>
-                <div>
-                  <p className="font-semibold text-foreground text-sm">{t.name}</p>
-                  <p className="text-xs text-accent">{t.procedure}</p>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                    <span className="text-xs font-semibold text-primary">{t.initials}</span>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-foreground text-sm">{t.name}</p>
+                    <p className="text-xs text-accent">{t.procedure}</p>
+                  </div>
                 </div>
               </div>
             </ScrollReveal>

@@ -1,5 +1,6 @@
 import ScrollReveal from "./ScrollReveal";
 import { Award, GraduationCap, Heart, Zap } from "lucide-react";
+import doctorSuitFull from "@/assets/doctor-suit-full.jpg";
 
 const reasons = [
   { icon: Award, title: "Extensive Experience", desc: "Years of hands-on orthopaedic practice across Pakistan and internationally." },
@@ -21,18 +22,29 @@ const WhyChooseUs = () => {
           </div>
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {reasons.map((reason, i) => (
-            <ScrollReveal key={reason.title} delay={i * 0.1}>
-              <div className="text-center p-6">
-                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-5">
-                  <reason.icon className="w-8 h-8 text-primary" />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <ScrollReveal direction="left">
+            <img
+              src={doctorSuitFull}
+              alt="Dr Shoaib Aslam Kurerr - Professional Portrait"
+              className="rounded-2xl w-full max-w-sm mx-auto object-cover aspect-[3/4]"
+              style={{ boxShadow: "var(--shadow-hero)" }}
+            />
+          </ScrollReveal>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {reasons.map((reason, i) => (
+              <ScrollReveal key={reason.title} delay={i * 0.1}>
+                <div className="p-6 bg-background rounded-xl card-shadow">
+                  <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                    <reason.icon className="w-7 h-7 text-primary" />
+                  </div>
+                  <h3 className="font-heading text-lg font-semibold text-foreground mb-2">{reason.title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">{reason.desc}</p>
                 </div>
-                <h3 className="font-heading text-lg font-semibold text-foreground mb-2">{reason.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{reason.desc}</p>
-              </div>
-            </ScrollReveal>
-          ))}
+              </ScrollReveal>
+            ))}
+          </div>
         </div>
       </div>
     </section>
