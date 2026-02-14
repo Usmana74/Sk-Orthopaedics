@@ -1,19 +1,38 @@
-import { Link } from "react-router-dom";
 import ScrollReveal from "./ScrollReveal";
-import serviceKnee from "@/assets/service-knee.jpg";
-import serviceShoulder from "@/assets/service-shoulder.jpg";
-import serviceArthroscopy from "@/assets/service-arthroscopy.jpg";
-import serviceSports from "@/assets/service-sports.jpg";
-import serviceAcl from "@/assets/service-acl.jpg";
-import serviceArthritis from "@/assets/service-arthritis.jpg";
 
-const services = [
-  { image: serviceKnee, title: "Knee Replacement", desc: "Total and partial knee replacement surgery for arthritis and joint damage." },
-  { image: serviceShoulder, title: "Shoulder Surgery", desc: "Advanced surgical solutions for rotator cuff tears and shoulder instability." },
-  { image: serviceArthroscopy, title: "Arthroscopy", desc: "Minimally invasive keyhole procedures for faster recovery." },
-  { image: serviceSports, title: "Sports Injury Treatment", desc: "Comprehensive care for athletic injuries and rehabilitation." },
-  { image: serviceAcl, title: "ACL / Meniscus Repair", desc: "Ligament reconstruction and meniscus surgery for knee stability." },
-  { image: serviceArthritis, title: "Arthritis Care", desc: "Pain management and treatment plans for joint arthritis." },
+const serviceGroups = [
+  {
+    category: "Knee Arthroscopy & Ligament Reconstruction",
+    services: [
+      "Arthroscopic ACL Reconstruction",
+      "Advanced ACL Reconstruction",
+      "Arthroscopic PCL Reconstruction",
+      "Meniscus Repair",
+      "MCL & LCL Reconstruction",
+      "MPFL Reconstruction",
+    ],
+  },
+  {
+    category: "Knee Preservation & Replacement",
+    services: [
+      "High Tibial Osteotomy (HTO)",
+      "Total Knee Replacement",
+      "Partial Knee Replacement",
+    ],
+  },
+  {
+    category: "Shoulder Arthroscopy & Reconstruction",
+    services: [
+      "Arthroscopic Shoulder Capsular Release",
+      "Arthroscopic Bankart Repair",
+      "Arthroscopic Rotator Cuff Repair",
+      "Shoulder Replacement",
+    ],
+  },
+  {
+    category: "Trauma & Emergency Care",
+    services: ["Trauma Management"],
+  },
 ];
 
 const ServicesOverview = () => {
@@ -29,27 +48,22 @@ const ServicesOverview = () => {
           </div>
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service, i) => (
-            <ScrollReveal key={service.title} delay={i * 0.1}>
-              <Link
-                to="/services"
-                className="group block bg-card rounded-xl overflow-hidden card-shadow hover:card-shadow-hover transition-all duration-300 hover:-translate-y-1"
-              >
-                <div className="h-48 overflow-hidden">
-                  <img
-                    src={service.image}
-                    alt={service.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="font-heading text-xl font-semibold text-foreground mb-3 group-hover:text-primary transition-colors">
-                    {service.title}
-                  </h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">{service.desc}</p>
-                </div>
-              </Link>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {serviceGroups.map((group, i) => (
+            <ScrollReveal key={group.category} delay={i * 0.1}>
+              <div className="bg-card rounded-xl p-8 card-shadow h-full">
+                <h3 className="font-heading text-xl font-semibold text-foreground mb-5 pb-3 border-b border-border">
+                  {group.category}
+                </h3>
+                <ul className="space-y-3">
+                  {group.services.map((service) => (
+                    <li key={service} className="flex items-center gap-3 text-sm text-muted-foreground">
+                      <span className="w-2 h-2 rounded-full bg-accent shrink-0" />
+                      {service}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </ScrollReveal>
           ))}
         </div>

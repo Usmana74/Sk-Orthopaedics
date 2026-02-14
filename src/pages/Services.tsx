@@ -1,18 +1,40 @@
 import ScrollReveal from "@/components/ScrollReveal";
-import serviceKnee from "@/assets/service-knee.jpg";
-import serviceShoulder from "@/assets/service-shoulder.jpg";
-import serviceArthroscopy from "@/assets/service-arthroscopy.jpg";
-import serviceSports from "@/assets/service-sports.jpg";
-import serviceAcl from "@/assets/service-acl.jpg";
-import serviceArthritis from "@/assets/service-arthritis.jpg";
 
-const services = [
-  { image: serviceKnee, title: "Knee Replacement", desc: "Total and partial knee replacement for severe arthritis or joint damage. Restores mobility and eliminates chronic knee pain using modern implant technology.", bullets: ["Total Knee Replacement", "Partial Knee Replacement", "Revision Knee Surgery"] },
-  { image: serviceShoulder, title: "Shoulder Surgery", desc: "Surgical treatment for rotator cuff tears, dislocations, frozen shoulder, and other shoulder conditions.", bullets: ["Rotator Cuff Repair", "Shoulder Stabilization", "Frozen Shoulder Release"] },
-  { image: serviceArthroscopy, title: "Arthroscopy", desc: "Minimally invasive keyhole surgery for diagnosing and treating joint problems with smaller incisions and faster recovery.", bullets: ["Knee Arthroscopy", "Shoulder Arthroscopy", "Diagnostic Arthroscopy"] },
-  { image: serviceSports, title: "Sports Injury Treatment", desc: "Comprehensive care for athletes and active individuals. From acute injury management to surgical reconstruction.", bullets: ["Ligament Injuries", "Muscle & Tendon Tears", "Sports Rehabilitation"] },
-  { image: serviceAcl, title: "ACL / Meniscus Repair", desc: "Advanced ligament reconstruction and meniscus surgery to restore knee stability and function.", bullets: ["ACL Reconstruction", "Meniscus Repair", "Multi-ligament Reconstruction"] },
-  { image: serviceArthritis, title: "Arthritis Care", desc: "Non-surgical and surgical management of arthritis including medication, injections, and joint replacement when needed.", bullets: ["Pain Management", "Joint Injections", "Physiotherapy Plans"] },
+const serviceGroups = [
+  {
+    category: "Knee Arthroscopy & Ligament Reconstruction",
+    services: [
+      { title: "Arthroscopic ACL Reconstruction", desc: "Minimally invasive anterior cruciate ligament reconstruction for knee stability." },
+      { title: "Advanced ACL Reconstruction", desc: "Complex revision and multi-ligament ACL procedures using advanced techniques." },
+      { title: "Arthroscopic PCL Reconstruction", desc: "Posterior cruciate ligament repair through arthroscopic approach." },
+      { title: "Meniscus Repair", desc: "Preservation and repair of meniscal tears to restore knee function." },
+      { title: "MCL & LCL Reconstruction", desc: "Medial and lateral collateral ligament reconstruction for joint stability." },
+      { title: "MPFL Reconstruction", desc: "Medial patellofemoral ligament reconstruction for patellar instability." },
+    ],
+  },
+  {
+    category: "Knee Preservation & Replacement",
+    services: [
+      { title: "High Tibial Osteotomy (HTO)", desc: "Bone realignment surgery to preserve the knee joint and delay replacement." },
+      { title: "Total Knee Replacement", desc: "Complete joint replacement for severe arthritis and joint damage." },
+      { title: "Partial Knee Replacement", desc: "Targeted replacement of damaged compartment preserving healthy tissue." },
+    ],
+  },
+  {
+    category: "Shoulder Arthroscopy & Reconstruction",
+    services: [
+      { title: "Arthroscopic Shoulder Capsular Release", desc: "Minimally invasive release for frozen shoulder and capsular contracture." },
+      { title: "Arthroscopic Bankart Repair", desc: "Labral repair for shoulder instability and recurrent dislocation." },
+      { title: "Arthroscopic Rotator Cuff Repair", desc: "Keyhole repair of torn rotator cuff tendons for pain-free movement." },
+      { title: "Shoulder Replacement", desc: "Total or reverse shoulder replacement for severe shoulder arthritis." },
+    ],
+  },
+  {
+    category: "Trauma & Emergency Care",
+    services: [
+      { title: "Trauma Management", desc: "Emergency orthopaedic care for fractures, dislocations, and acute musculoskeletal injuries." },
+    ],
+  },
 ];
 
 const Services = () => {
@@ -26,24 +48,20 @@ const Services = () => {
       </section>
 
       <section className="section-padding">
-        <div className="container-wide grid grid-cols-1 md:grid-cols-2 gap-8">
-          {services.map((s, i) => (
-            <ScrollReveal key={s.title} delay={i * 0.08}>
-              <div className="bg-card rounded-xl overflow-hidden card-shadow h-full">
-                <div className="h-52 overflow-hidden">
-                  <img src={s.image} alt={s.title} className="w-full h-full object-cover" />
-                </div>
-                <div className="p-8">
-                  <h2 className="font-heading text-2xl font-semibold text-foreground mb-3">{s.title}</h2>
-                  <p className="text-muted-foreground text-sm leading-relaxed mb-4">{s.desc}</p>
-                  <ul className="space-y-2">
-                    {s.bullets.map((b) => (
-                      <li key={b} className="flex items-center gap-2 text-sm text-foreground">
-                        <span className="w-1.5 h-1.5 rounded-full bg-accent" />
-                        {b}
-                      </li>
-                    ))}
-                  </ul>
+        <div className="container-wide space-y-12">
+          {serviceGroups.map((group, gi) => (
+            <ScrollReveal key={group.category} delay={gi * 0.08}>
+              <div>
+                <h2 className="font-heading text-2xl md:text-3xl font-bold text-foreground mb-6 pb-3 border-b border-border">
+                  {group.category}
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {group.services.map((s) => (
+                    <div key={s.title} className="bg-card rounded-xl p-6 card-shadow">
+                      <h3 className="font-heading text-lg font-semibold text-foreground mb-2">{s.title}</h3>
+                      <p className="text-muted-foreground text-sm leading-relaxed">{s.desc}</p>
+                    </div>
+                  ))}
                 </div>
               </div>
             </ScrollReveal>
