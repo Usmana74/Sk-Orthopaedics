@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import heroImage from "@/assets/doctor-surgery-dark.jpg";
+import BookingModal from "./BookingModal";
 
 const WhatsAppIcon = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
@@ -37,7 +38,7 @@ const HeroSection = () => {
             transition={{ duration: 0.6, delay: 0.15 }}
             className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground leading-tight mb-8"
           >
-            Advanced Arthroscopy &amp; Joint Replacement Care.
+            Precision in Motion. Excellence in Orthopaedics.
           </motion.h1>
 
           <motion.div
@@ -45,14 +46,11 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 cta-gradient text-primary-foreground px-8 py-4 rounded-lg font-semibold text-base hover:opacity-90 transition-all hover:scale-[1.02]"
-            >
-              <WhatsAppIcon className="w-5 h-5" /> Book Appointment
-            </a>
+            <BookingModal>
+              <button className="inline-flex items-center justify-center gap-2 cta-gradient text-primary-foreground px-8 py-4 rounded-lg font-semibold text-base hover:opacity-90 transition-all hover:scale-[1.02]">
+                Book Appointment
+              </button>
+            </BookingModal>
           </motion.div>
         </div>
       </div>

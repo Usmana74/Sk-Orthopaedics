@@ -2,12 +2,10 @@ import ScrollReveal from "@/components/ScrollReveal";
 import { Star, Quote } from "lucide-react";
 
 const testimonials = [
-  { name: "Ahmed Raza", procedure: "Knee Replacement", text: "After years of knee pain, Dr Shoaib performed a total knee replacement that changed my life. Within months, I was walking pain-free. His care and follow-up were exceptional.", initials: "AR" },
-  { name: "Fatima Bibi", procedure: "ACL Reconstruction", text: "My daughter's ACL injury was treated with such expertise. The minimally invasive approach meant faster recovery and she was back to her routine in weeks.", initials: "FB" },
-  { name: "Mohammad Khalid", procedure: "Shoulder Surgery", text: "Chronic shoulder pain had limited my daily activities for years. Dr Shoaib's surgical expertise and post-operative physiotherapy guidance gave me back my mobility.", initials: "MK" },
-  { name: "Ayesha Siddiqui", procedure: "Sports Injury", text: "As an athlete, I feared my career was over after a severe ligament tear. Dr Shoaib not only repaired the damage but guided me through rehabilitation until I could compete again.", initials: "AS" },
-  { name: "Zahida Akram", procedure: "Arthritis Care", text: "Living with arthritis pain was unbearable. Dr Shoaib's comprehensive treatment plan, including injections and physiotherapy, has significantly improved my quality of life.", initials: "ZA" },
-  { name: "Waqas Ahmed", procedure: "Arthroscopy", text: "The keyhole surgery performed by Dr Shoaib was remarkable. Minimal scarring, quick recovery, and I was back to work within two weeks. Outstanding medical care.", initials: "WA" },
+  { name: "Fatima Kazmi", procedure: "Orthopaedic Treatment", text: "Excellent doctor in behaviour. Satisfied from treatment. Advance treatment facility in Bahawalpur.", initials: "FK" },
+  { name: "Fahad Rao", procedure: "Consultation", text: "Dr. Behavior is soo good... I am 100% satisfied after my checkup.", initials: "FR" },
+  { name: "Arsalan Maqsood", procedure: "Orthopaedic Care", text: "Dr. Behavior with patients is so good and polite... recommended for other patients.", initials: "AM" },
+  { name: "Muhammad Raza", procedure: "Treatment", text: "Wonderful experience, such a nice doctor, totally satisfied from treatment and behavior.", initials: "MR" },
 ];
 
 const Testimonials = () => {

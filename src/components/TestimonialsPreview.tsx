@@ -3,22 +3,22 @@ import { Star, Quote } from "lucide-react";
 
 const testimonials = [
   {
-    name: "Ahmed Raza",
-    procedure: "Knee Replacement",
-    text: "After years of knee pain, Dr Shoaib performed a total knee replacement that changed my life. Within months, I was walking pain-free. His care and follow-up were exceptional.",
-    initials: "AR",
+    name: "Fatima Kazmi",
+    procedure: "Orthopaedic Treatment",
+    text: "Excellent doctor in behaviour. Satisfied from treatment. Advance treatment facility in Bahawalpur.",
+    initials: "FK",
   },
   {
-    name: "Fatima Bibi",
-    procedure: "ACL Reconstruction",
-    text: "My daughter's ACL injury was treated with such expertise. The minimally invasive approach meant faster recovery and she was back to her routine in weeks. Highly recommended.",
-    initials: "FB",
+    name: "Fahad Rao",
+    procedure: "Consultation",
+    text: "Dr. Behavior is soo good... I am 100% satisfied after my checkup.",
+    initials: "FR",
   },
   {
-    name: "Mohammad Khalid",
-    procedure: "Shoulder Surgery",
-    text: "Chronic shoulder pain had limited my daily activities for years. Dr Shoaib's surgical expertise and post-operative physiotherapy guidance gave me back my mobility.",
-    initials: "MK",
+    name: "Arsalan Maqsood",
+    procedure: "Orthopaedic Care",
+    text: "Dr. Behavior with patients is so good and polite... recommended for other patients.",
+    initials: "AM",
   },
 ];
 

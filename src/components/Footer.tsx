@@ -108,14 +108,14 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Floating WhatsApp */}
+      {/* Floating WhatsApp - general chat, no pre-filled form */}
       <a
-        href={whatsappUrl}
+        href="https://wa.me/923002278796"
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 z-50 p-4 rounded-full shadow-lg hover:scale-110 transition-transform"
         style={{ backgroundColor: "#25D366" }}
-        aria-label="WhatsApp Appointment"
+        aria-label="Chat on WhatsApp"
       >
         <WhatsAppIcon className="w-6 h-6 text-white" />
       </a>
