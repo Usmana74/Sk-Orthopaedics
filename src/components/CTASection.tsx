@@ -1,5 +1,6 @@
 import { Phone, MapPin } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
+import BookingModal from "./BookingModal";
 import doctorSurgeryBlue from "@/assets/doctor-surgery-blue.jpg";
 
 const WhatsAppIcon = ({ className }: { className?: string }) => (
@@ -35,19 +36,16 @@ const CTASection = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="tel:+923001234567"
+                href="tel:+923002278796"
                 className="inline-flex items-center justify-center gap-2 bg-primary-foreground text-primary px-8 py-4 rounded-lg font-semibold hover:opacity-90 transition-all hover:scale-[1.02]"
               >
                 <Phone className="w-5 h-5" /> Call Now
               </a>
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 border-2 border-primary-foreground text-primary-foreground px-8 py-4 rounded-lg font-semibold hover:bg-primary-foreground/10 transition-all hover:scale-[1.02]"
-              >
-                <WhatsAppIcon className="w-5 h-5" /> WhatsApp Appointment
-              </a>
+              <BookingModal>
+                <button className="inline-flex items-center justify-center gap-2 border-2 border-primary-foreground text-primary-foreground px-8 py-4 rounded-lg font-semibold hover:bg-primary-foreground/10 transition-all hover:scale-[1.02]">
+                  Book Appointment
+                </button>
+              </BookingModal>
             </div>
           </ScrollReveal>
         </div>

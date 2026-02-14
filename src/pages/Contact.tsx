@@ -1,6 +1,6 @@
 import ScrollReveal from "@/components/ScrollReveal";
 import { Phone, MapPin, Clock } from "lucide-react";
-import clinicImage from "@/assets/clinic-exterior.jpg";
+import hospitalImage from "@/assets/hospital-interior.webp";
 
 const WhatsAppIcon = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
@@ -27,14 +27,14 @@ const Contact = () => {
           <ScrollReveal>
             <div className="rounded-xl overflow-hidden mb-12 card-shadow">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d55188.45756768064!2d71.6361665!3d29.3956076!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x393b90c1d4ced207%3A0x1c95ce3cb7e9b846!2sBahawalpur%2C%20Punjab%2C%20Pakistan!5e0!3m2!1sen!2s!4v1700000000000"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3467.5!2d71.6749718!3d29.3879797!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x393b91da655623a1%3A0xd84bcc8df0d10bf8!2sMID-WEST%20HOSPITAL!5e0!3m2!1sen!2s!4v1700000000000"
                 width="100%"
                 height="350"
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="SK Orthopaedics Location - Bahawalpur"
+                title="MID-WEST HOSPITAL - Bahawalpur"
                 className="w-full"
               />
             </div>
@@ -43,7 +43,7 @@ const Contact = () => {
           {/* Clinic image */}
           <ScrollReveal>
             <div className="rounded-xl overflow-hidden mb-12 card-shadow">
-              <img src={clinicImage} alt="SK Orthopaedics Clinic - Bahawalpur" className="w-full h-64 md:h-80 object-cover" />
+              <img src={hospitalImage} alt="Midwest Hospital Operation Theatre - Bahawalpur" className="w-full h-64 md:h-80 object-cover" />
             </div>
           </ScrollReveal>
 
@@ -90,7 +90,7 @@ const Contact = () => {
                       <MapPin className="w-5 h-5 text-primary mt-0.5" />
                       <div>
                         <p className="font-medium text-foreground text-sm">Location</p>
-                        <p className="text-muted-foreground text-sm">Bahawalpur, Punjab, Pakistan</p>
+                        <p className="text-muted-foreground text-sm">MID-WEST HOSPITAL, Trust Colony, Street No.3, Bahawalpur</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
