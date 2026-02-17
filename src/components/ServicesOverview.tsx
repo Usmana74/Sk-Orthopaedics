@@ -1,8 +1,10 @@
+import { Link } from "react-router-dom";
 import ScrollReveal from "./ScrollReveal";
 
 const serviceGroups = [
   {
     category: "Knee Arthroscopy & Ligament Reconstruction",
+    slug: "knee-arthroscopy",
     services: [
       "Arthroscopic ACL Reconstruction",
       "Advanced ACL Reconstruction",
@@ -14,6 +16,7 @@ const serviceGroups = [
   },
   {
     category: "Knee Preservation & Replacement",
+    slug: "knee-replacement",
     services: [
       "High Tibial Osteotomy (HTO)",
       "Total Knee Replacement",
@@ -22,6 +25,7 @@ const serviceGroups = [
   },
   {
     category: "Shoulder Arthroscopy & Reconstruction",
+    slug: "shoulder-arthroscopy",
     services: [
       "Arthroscopic Shoulder Capsular Release",
       "Arthroscopic Bankart Repair",
@@ -31,6 +35,7 @@ const serviceGroups = [
   },
   {
     category: "Trauma & Emergency Care",
+    slug: "trauma-management",
     services: ["Trauma Management"],
   },
 ];
@@ -51,8 +56,11 @@ const ServicesOverview = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {serviceGroups.map((group, i) => (
             <ScrollReveal key={group.category} delay={i * 0.1}>
-              <div className="bg-card rounded-xl p-8 card-shadow h-full">
-                <h3 className="font-heading text-xl font-semibold text-foreground mb-5 pb-3 border-b border-border">
+              <Link
+                to={`/services#${group.slug}`}
+                className="block bg-card rounded-xl p-8 card-shadow h-full hover:card-shadow-hover transition-all group"
+              >
+                <h3 className="font-heading text-xl font-semibold text-foreground mb-5 pb-3 border-b border-border group-hover:text-primary transition-colors">
                   {group.category}
                 </h3>
                 <ul className="space-y-3">
@@ -63,7 +71,8 @@ const ServicesOverview = () => {
                     </li>
                   ))}
                 </ul>
-              </div>
+                <p className="text-primary text-sm font-medium mt-5 group-hover:underline">View Details →</p>
+              </Link>
             </ScrollReveal>
           ))}
         </div>
