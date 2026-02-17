@@ -1,8 +1,11 @@
 import ScrollReveal from "@/components/ScrollReveal";
+import BookingModal from "@/components/BookingModal";
 
 const serviceGroups = [
   {
+    id: "knee-arthroscopy",
     category: "Knee Arthroscopy & Ligament Reconstruction",
+    description: "Advanced minimally invasive arthroscopic procedures to restore knee stability, repair ligament damage, and get you back to an active lifestyle.",
     services: [
       { title: "Arthroscopic ACL Reconstruction", desc: "Minimally invasive anterior cruciate ligament reconstruction for knee stability." },
       { title: "Advanced ACL Reconstruction", desc: "Complex revision and multi-ligament ACL procedures using advanced techniques." },
@@ -13,7 +16,9 @@ const serviceGroups = [
     ],
   },
   {
+    id: "knee-replacement",
     category: "Knee Preservation & Replacement",
+    description: "From bone realignment to full joint replacement, we offer the latest techniques to relieve pain and restore mobility for arthritic and damaged knees.",
     services: [
       { title: "High Tibial Osteotomy (HTO)", desc: "Bone realignment surgery to preserve the knee joint and delay replacement." },
       { title: "Total Knee Replacement", desc: "Complete joint replacement for severe arthritis and joint damage." },
@@ -21,7 +26,9 @@ const serviceGroups = [
     ],
   },
   {
+    id: "shoulder-arthroscopy",
     category: "Shoulder Arthroscopy & Reconstruction",
+    description: "Comprehensive shoulder care using arthroscopic and open surgical techniques to treat instability, rotator cuff tears, and degenerative conditions.",
     services: [
       { title: "Arthroscopic Shoulder Capsular Release", desc: "Minimally invasive release for frozen shoulder and capsular contracture." },
       { title: "Arthroscopic Bankart Repair", desc: "Labral repair for shoulder instability and recurrent dislocation." },
@@ -30,7 +37,9 @@ const serviceGroups = [
     ],
   },
   {
+    id: "trauma-management",
     category: "Trauma & Emergency Care",
+    description: "Expert emergency orthopaedic care for fractures, dislocations, and acute musculoskeletal injuries requiring urgent surgical intervention.",
     services: [
       { title: "Trauma Management", desc: "Emergency orthopaedic care for fractures, dislocations, and acute musculoskeletal injuries." },
     ],
@@ -48,18 +57,22 @@ const Services = () => {
       </section>
 
       <section className="section-padding">
-        <div className="container-wide space-y-12">
+        <div className="container-wide space-y-16">
           {serviceGroups.map((group, gi) => (
             <ScrollReveal key={group.category} delay={gi * 0.08}>
-              <div>
-                <h2 className="font-heading text-2xl md:text-3xl font-bold text-foreground mb-6 pb-3 border-b border-border">
+              <div id={group.id} className="scroll-mt-24">
+                <h2 className="font-heading text-2xl md:text-3xl font-bold text-foreground mb-3">
                   {group.category}
                 </h2>
+                <p className="text-muted-foreground mb-8 max-w-3xl">{group.description}</p>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {group.services.map((s) => (
-                    <div key={s.title} className="bg-card rounded-xl p-6 card-shadow">
+                    <div key={s.title} className="bg-card rounded-xl p-6 card-shadow hover:card-shadow-hover transition-all">
                       <h3 className="font-heading text-lg font-semibold text-foreground mb-2">{s.title}</h3>
-                      <p className="text-muted-foreground text-sm leading-relaxed">{s.desc}</p>
+                      <p className="text-muted-foreground text-sm leading-relaxed mb-4">{s.desc}</p>
+                      <BookingModal>
+                        <button className="text-primary text-sm font-medium hover:underline">Book Consultation →</button>
+                      </BookingModal>
                     </div>
                   ))}
                 </div>
