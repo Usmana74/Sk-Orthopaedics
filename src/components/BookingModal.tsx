@@ -29,7 +29,7 @@ const BookingModal = ({ children }: BookingModalProps) => {
   const handleSubmit = () => {
     const dateStr = date ? format(date, "PPP") : "Not specified";
     const message = encodeURIComponent(
-      `Hello Dr. Shoaib, I'd like to book an appointment. Problem: ${problem || "Not specified"}. Date: ${dateStr}.`
+      `Hello Dr. Shoaib Aslam Kurerr, I would like to book an appointment. Problem: ${problem || "Not specified"}. Date: ${dateStr}.`
     );
     window.open(`https://wa.me/923002278796?text=${message}`, "_blank");
     setOpen(false);
