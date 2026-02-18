@@ -1,9 +1,9 @@
 import ScrollReveal from "./ScrollReveal";
 
 const stats = [
-  { value: "5000+", label: "Patients Treated" },
-  { value: "15+", label: "Years Experience" },
-  { value: "3000+", label: "Surgeries Performed" },
+  { value: "500+", label: "Patients Treated" },
+  { value: "5+", label: "Years Experience" },
+  { value: "100+", label: "Successful Surgeries" },
 ];
 
 const StatsSection = () => {

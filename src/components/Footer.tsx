@@ -81,7 +81,7 @@ const Footer = () => {
                 <GoogleIcon className="w-6 h-6" />
               </a>
               <a
-                href="https://facebook.com/skorthopaedics"
+                href="https://www.facebook.com/saorthopaedics"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="opacity-80 hover:opacity-100 transition-opacity"

@@ -32,9 +32,17 @@ const TestimonialsPreview = () => {
         <ScrollReveal>
           <div className="text-center mb-14">
             <p className="text-accent font-semibold text-sm uppercase tracking-widest mb-2">Patient Testimonials</p>
-            <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground">
+            <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-3">
               What Our Patients Say
             </h2>
+            <a
+              href="https://www.google.com/maps/place/MID-WEST+HOSPITAL/@29.3879797,71.6749718,15z/data=!4m8!3m7!1s0x393b91da655623a1:0xd84bcc8df0d10bf8!8m2!3d29.3879797!4d71.6749718!9m1!1b1!16s%2Fg%2F11c0q0_yxl"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-primary text-sm font-semibold hover:underline"
+            >
+              ⭐ Read All Google Reviews →
+            </a>
           </div>
         </ScrollReveal>
 
