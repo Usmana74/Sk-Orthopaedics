@@ -6,6 +6,7 @@ const testimonials = [
   { name: "Fahad Rao", procedure: "Consultation", text: "Dr. Behavior is soo good... I am 100% satisfied after my checkup.", initials: "FR" },
   { name: "Arsalan Maqsood", procedure: "Orthopaedic Care", text: "Dr. Behavior with patients is so good and polite... recommended for other patients.", initials: "AM" },
   { name: "Muhammad Raza", procedure: "Treatment", text: "Wonderful experience, such a nice doctor, totally satisfied from treatment and behavior.", initials: "MR" },
+  { name: "Akif Afeef", procedure: "Orthopaedic Consultation", text: "Very professional and caring doctor. Highly recommended for anyone needing orthopaedic care in Bahawalpur.", initials: "AA" },
 ];
 
 const Testimonials = () => {
