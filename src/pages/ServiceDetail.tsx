@@ -1045,7 +1045,6 @@ const ServiceDetail = () => {
             to="/services"
             className="inline-flex items-center gap-2 text-primary-foreground/70 hover:text-primary-foreground text-sm mb-6 transition-colors"
           >
-            <ArrowLeft className="w-4 h-4" /> Back to Services
           </Link>
           <div className="inline-flex items-center gap-2 bg-accent/90 text-accent-foreground text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full mb-4">
             Patient Education Guide
