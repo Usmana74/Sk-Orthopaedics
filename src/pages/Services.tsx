@@ -1,10 +1,17 @@
 import { Link } from "react-router-dom";
 import ScrollReveal from "@/components/ScrollReveal";
+import serviceKnee from "@/assets/service-knee.jpg";
+import serviceAcl from "@/assets/service-acl.jpg";
+import serviceShoulder from "@/assets/service-shoulder.jpg";
+import serviceSports from "@/assets/service-sports.jpg";
+import serviceArthroscopy from "@/assets/service-arthroscopy.jpg";
+import serviceArthritis from "@/assets/service-arthritis.jpg";
 
 const serviceGroups = [
   {
     category: "Knee Arthroscopy & Ligament Reconstruction",
     description: "Advanced minimally invasive arthroscopic procedures to restore knee stability and get you back to an active lifestyle.",
+    image: serviceAcl,
     services: [
       { title: "Arthroscopic ACL Reconstruction", slug: "arthroscopic-acl-reconstruction", desc: "Minimally invasive anterior cruciate ligament reconstruction for knee stability." },
       { title: "Advanced ACL Reconstruction", slug: "advanced-acl-reconstruction", desc: "Complex revision and multi-ligament ACL procedures using advanced techniques." },
@@ -17,6 +24,7 @@ const serviceGroups = [
   {
     category: "Knee Preservation & Replacement",
     description: "From bone realignment to full joint replacement — the latest techniques to relieve pain and restore mobility.",
+    image: serviceKnee,
     services: [
       { title: "High Tibial Osteotomy (HTO)", slug: "high-tibial-osteotomy", desc: "Bone realignment surgery to preserve the knee joint and delay replacement." },
       { title: "Total Knee Replacement", slug: "total-knee-replacement", desc: "Complete joint replacement for severe arthritis and joint damage." },
@@ -26,6 +34,7 @@ const serviceGroups = [
   {
     category: "Shoulder Arthroscopy & Reconstruction",
     description: "Comprehensive shoulder care using arthroscopic and open surgical techniques for instability, tears, and degeneration.",
+    image: serviceShoulder,
     services: [
       { title: "Arthroscopic Shoulder Capsular Release", slug: "arthroscopic-shoulder-capsular-release", desc: "Minimally invasive release for frozen shoulder and capsular contracture." },
       { title: "Arthroscopic Bankart Repair", slug: "arthroscopic-bankart-repair", desc: "Labral repair for shoulder instability and recurrent dislocation." },
@@ -36,6 +45,7 @@ const serviceGroups = [
   {
     category: "Trauma & Emergency Care",
     description: "Expert emergency orthopaedic care for fractures, dislocations, and acute musculoskeletal injuries.",
+    image: serviceSports,
     services: [
       { title: "Trauma Management", slug: "trauma-management", desc: "Emergency orthopaedic care for fractures, dislocations, and acute injuries." },
     ],
@@ -53,20 +63,35 @@ const Services = () => {
       </section>
 
       <section className="section-padding">
-        <div className="container-wide space-y-16">
+        <div className="container-wide space-y-20">
           {serviceGroups.map((group, gi) => (
             <ScrollReveal key={group.category} delay={gi * 0.08}>
               <div>
-                <h2 className="font-heading text-2xl md:text-3xl font-bold text-foreground mb-3">
-                  {group.category}
-                </h2>
-                <p className="text-muted-foreground mb-8 max-w-3xl">{group.description}</p>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {/* Category header with hero image */}
+                <div className="relative rounded-xl overflow-hidden mb-8 aspect-[3/1]">
+                  <img
+                    src={group.image}
+                    alt={group.category}
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
+                  <div className="absolute inset-0 flex items-center p-8 md:p-12">
+                    <div className="max-w-lg">
+                      <h2 className="font-heading text-2xl md:text-3xl font-bold text-white mb-2">
+                        {group.category}
+                      </h2>
+                      <p className="text-white/70 text-sm md:text-base">{group.description}</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Procedure cards */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                   {group.services.map((s) => (
                     <Link
                       key={s.slug}
                       to={`/services/${s.slug}`}
-                      className="bg-card rounded-xl p-6 card-shadow hover:card-shadow-hover transition-all group"
+                      className="bg-card rounded-xl p-6 card-shadow hover:card-shadow-hover transition-all group border border-border/50"
                     >
                       <h3 className="font-heading text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">{s.title}</h3>
                       <p className="text-muted-foreground text-sm leading-relaxed mb-4">{s.desc}</p>
