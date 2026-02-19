@@ -2,7 +2,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const faqs = [
-  { q: "How do I book an appointment with Dr Shoaib?", a: "You can book an appointment by calling +92 300 1234567, clicking the WhatsApp button on this website, or visiting the clinic directly in Bahawalpur during consultation hours (Mon–Sat, 5:00 PM – 9:00 PM)." },
+  { q: "How do I book an appointment with Dr Shoaib?", a: "You can book an appointment by calling +92 3002278796, clicking the WhatsApp button on this website, or visiting the clinic directly in Bahawalpur during consultation hours (Mon–Sat, 9:00 AM – 11:00 PM)." },
   { q: "What should I bring for my first consultation?", a: "Bring your medical records, test reports, X-rays or MRIs related to your condition, a list of current medications, and details of any past surgeries or allergies." },
   { q: "What is minimally invasive surgery and what are its benefits?", a: "Minimally invasive surgery uses small incisions instead of large cuts. This reduces pain, minimizes scarring, shortens hospital stays, and speeds up recovery compared to traditional open surgery." },
   { q: "How long is the recovery after knee replacement?", a: "Most patients begin walking with assistance within 24–48 hours after surgery. Full recovery typically takes 3–6 months, with physiotherapy playing a crucial role in restoring strength and mobility." },
