@@ -1014,12 +1014,6 @@ const ServiceDetail = () => {
             <p className="text-muted-foreground mb-8">
               The requested procedure page could not be found.
             </p>
-            <Link
-              to="/services"
-              className="text-primary font-medium hover:underline"
-            >
-              ← Back to Services
-            </Link>
           </div>
         </section>
       </main>
