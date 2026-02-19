@@ -1,5 +1,5 @@
 import ScrollReveal from "@/components/ScrollReveal";
-import { Phone, MapPin, Clock } from "lucide-react";
+import { Phone, MapPin, Clock, Mail } from "lucide-react";
 import hospitalImage from "@/assets/hospital-interior.webp";
 
 const WhatsAppIcon = ({ className }: { className?: string }) => (
@@ -8,31 +8,100 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-const Contact = () => {
-  const whatsappUrl =
-    "https://wa.me/923002278796?text=Hello%20Doctor%2C%20I%20would%20like%20to%20book%20an%20appointment.";
+const WHATSAPP_URL =
+  "https://wa.me/923002278796?text=Hello%20Doctor%2C%20I%20would%20like%20to%20book%20an%20appointment.";
 
+const contactItems = [
+  {
+    icon: <Phone className="w-5 h-5 text-primary" />,
+    label: "Phone",
+    value: "+92 300 2278796",
+    href: "tel:+923002278796",
+  },
+  {
+    icon: <Mail className="w-5 h-5 text-primary" />,
+    label: "Email",
+    value: "info@skorthopaedics.com",
+    href: "mailto:info@skorthopaedics.com",
+  },
+  {
+    icon: <MapPin className="w-5 h-5 text-primary" />,
+    label: "Location",
+    value: "MID-WEST HOSPITAL, Trust Colony, Street No. 3, Bahawalpur",
+    href: undefined,
+  },
+  {
+    icon: <Clock className="w-5 h-5 text-primary" />,
+    label: "Hours",
+    value: "Monday – Saturday · 9:00 AM – 11:00 PM",
+    href: undefined,
+  },
+];
+
+const Contact = () => {
   return (
     <main>
-      <section className="bg-primary py-20">
+      {/* Hero */}
+      <section className="bg-primary py-24">
         <div className="container-wide px-4 md:px-8 text-center">
+          <p className="text-primary-foreground/60 text-sm uppercase tracking-widest mb-3 font-medium">Get in Touch</p>
           <h1 className="font-heading text-4xl md:text-5xl font-bold text-primary-foreground mb-4">Contact Us</h1>
-          <p className="text-primary-foreground/70 max-w-xl mx-auto">Get in touch for appointments and consultations.</p>
+          <p className="text-primary-foreground/70 max-w-lg mx-auto text-base">
+            Book an appointment or reach out for orthopaedic consultations with Dr Shoaib Aslam Kurerr.
+          </p>
         </div>
       </section>
 
       <section className="section-padding">
-        <div className="container-wide max-w-6xl mx-auto">
-          {/* Two-column: Map + Contact Info */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-            {/* Left: Map */}
-            <ScrollReveal direction="left">
-              <div className="rounded-xl overflow-hidden card-shadow h-full min-h-[350px]">
+        <div className="container-wide max-w-6xl mx-auto space-y-10">
+
+          {/* Top Row: CTA cards */}
+          <ScrollReveal>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              {/* Call CTA */}
+              <a
+                href="tel:+923002278796"
+                className="flex items-center gap-5 bg-card rounded-2xl p-6 card-shadow hover:card-shadow-hover transition-all group"
+              >
+                <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
+                  <Phone className="w-6 h-6 text-primary" />
+                </div>
+                <div>
+                  <p className="text-xs text-muted-foreground uppercase tracking-wider mb-0.5">Call Directly</p>
+                  <p className="font-semibold text-foreground text-base">+92 300 2278796</p>
+                  <p className="text-sm text-muted-foreground mt-0.5">Available Mon – Sat, 9 AM – 11 PM</p>
+                </div>
+              </a>
+
+              {/* WhatsApp CTA */}
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-5 bg-card rounded-2xl p-6 card-shadow hover:card-shadow-hover transition-all group"
+              >
+                <div className="w-14 h-14 rounded-xl flex items-center justify-center shrink-0 transition-colors" style={{ backgroundColor: "rgba(37,211,102,0.12)" }}>
+                  <WhatsAppIcon className="w-6 h-6" style={{ color: "#25D366" } as React.CSSProperties} />
+                </div>
+                <div>
+                  <p className="text-xs text-muted-foreground uppercase tracking-wider mb-0.5">WhatsApp Appointment</p>
+                  <p className="font-semibold text-foreground text-base">Message on WhatsApp</p>
+                  <p className="text-sm text-muted-foreground mt-0.5">Pre-filled appointment message</p>
+                </div>
+              </a>
+            </div>
+          </ScrollReveal>
+
+          {/* Middle Row: Map + Details */}
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
+            {/* Map — wider */}
+            <ScrollReveal direction="left" className="lg:col-span-3">
+              <div className="rounded-2xl overflow-hidden card-shadow h-full min-h-[380px]">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3467.5!2d71.6749718!3d29.3879797!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x393b91da655623a1%3A0xd84bcc8df0d10bf8!2sMID-WEST%20HOSPITAL!5e0!3m2!1sen!2s!4v1700000000000"
                   width="100%"
                   height="100%"
-                  style={{ border: 0, minHeight: "350px" }}
+                  style={{ border: 0, minHeight: "380px" }}
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
@@ -42,55 +111,38 @@ const Contact = () => {
               </div>
             </ScrollReveal>
 
-            {/* Right: Contact Details */}
-            <ScrollReveal direction="right">
-              <div className="space-y-6 h-full flex flex-col">
-                <div className="bg-card rounded-xl p-8 card-shadow flex-1">
-                  <h2 className="font-heading text-2xl font-bold text-foreground mb-6">Book an Appointment</h2>
-                  <p className="text-muted-foreground leading-relaxed mb-6">
-                    Contact Dr Shoaib Aslam Kurerr for orthopaedic consultations, sports injury assessments, or joint replacement evaluations.
+            {/* Contact Details */}
+            <ScrollReveal direction="right" className="lg:col-span-2">
+              <div className="bg-card rounded-2xl p-7 card-shadow h-full flex flex-col justify-between">
+                <div>
+                  <h2 className="font-heading text-xl font-bold text-foreground mb-1">Practice Details</h2>
+                  <p className="text-sm text-muted-foreground mb-6">
+                    Find us at MID-WEST HOSPITAL, Bahawalpur. Walk-ins welcome during consultation hours.
                   </p>
-
-                  <div className="space-y-4">
-                    <a href="tel:+923002278796" className="flex items-center gap-4 bg-background rounded-xl p-5 card-shadow hover:card-shadow-hover transition-all">
-                      <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
-                        <Phone className="w-6 h-6 text-primary" />
-                      </div>
-                      <div>
-                        <p className="font-semibold text-foreground text-sm">Call Now</p>
-                        <p className="text-muted-foreground text-sm">+92 300 2278796</p>
-                      </div>
-                    </a>
-
-                    <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 bg-background rounded-xl p-5 card-shadow hover:card-shadow-hover transition-all">
-                      <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center">
-                        <WhatsAppIcon className="w-6 h-6 text-accent" />
-                      </div>
-                      <div>
-                        <p className="font-semibold text-foreground text-sm">WhatsApp Appointment</p>
-                        <p className="text-muted-foreground text-sm">Send pre-filled message</p>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-
-                <div className="bg-card rounded-xl p-8 card-shadow">
                   <div className="space-y-5">
-                    <div className="flex items-start gap-3">
-                      <MapPin className="w-5 h-5 text-primary mt-0.5" />
-                      <div>
-                        <p className="font-medium text-foreground text-sm">Location</p>
-                        <p className="text-muted-foreground text-sm">MID-WEST HOSPITAL, Trust Colony, Street No.3, Bahawalpur</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <Clock className="w-5 h-5 text-primary mt-0.5" />
-                      <div>
-                        <p className="font-medium text-foreground text-sm">Consultation Hours</p>
-                        <p className="text-muted-foreground text-sm">Monday – Saturday</p>
-                        <p className="text-muted-foreground text-sm">5:00 PM – 9:00 PM</p>
-                      </div>
-                    </div>
+                    {contactItems.map((item) =>
+                      item.href ? (
+                        <a key={item.label} href={item.href} className="flex items-start gap-3 group">
+                          <div className="w-9 h-9 rounded-lg bg-primary/8 flex items-center justify-center shrink-0 mt-0.5">
+                            {item.icon}
+                          </div>
+                          <div>
+                            <p className="text-xs text-muted-foreground uppercase tracking-wider">{item.label}</p>
+                            <p className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">{item.value}</p>
+                          </div>
+                        </a>
+                      ) : (
+                        <div key={item.label} className="flex items-start gap-3">
+                          <div className="w-9 h-9 rounded-lg bg-primary/8 flex items-center justify-center shrink-0 mt-0.5">
+                            {item.icon}
+                          </div>
+                          <div>
+                            <p className="text-xs text-muted-foreground uppercase tracking-wider">{item.label}</p>
+                            <p className="text-sm font-medium text-foreground">{item.value}</p>
+                          </div>
+                        </div>
+                      )
+                    )}
                   </div>
                 </div>
               </div>
@@ -99,18 +151,23 @@ const Contact = () => {
 
           {/* Hospital Image */}
           <ScrollReveal>
-            <div className="rounded-xl overflow-hidden card-shadow mb-12">
-              <img src={hospitalImage} alt="Midwest Hospital Operation Theatre - Bahawalpur" className="w-full h-64 md:h-80 object-cover" />
+            <div className="rounded-2xl overflow-hidden card-shadow">
+              <img
+                src={hospitalImage}
+                alt="Midwest Hospital Operation Theatre - Bahawalpur"
+                className="w-full h-64 md:h-80 object-cover"
+              />
             </div>
           </ScrollReveal>
 
           {/* Areas We Serve */}
           <ScrollReveal>
-            <div className="bg-card rounded-xl p-8 card-shadow">
-              <h3 className="font-heading text-xl font-semibold text-foreground mb-4">Areas We Serve</h3>
+            <div className="bg-card rounded-2xl p-8 card-shadow">
+              <h3 className="font-heading text-xl font-semibold text-foreground mb-1">Areas We Serve</h3>
+              <p className="text-sm text-muted-foreground mb-5">Patients travel from across Southern Punjab for treatment.</p>
               <div className="flex flex-wrap gap-2">
                 {["Bahawalpur", "Rahim Yar Khan", "Multan", "Lodhran", "Bahawalnagar", "Ahmadpur East"].map((city) => (
-                  <span key={city} className="bg-secondary text-secondary-foreground px-3 py-1.5 rounded-lg text-xs font-medium">
+                  <span key={city} className="bg-secondary text-secondary-foreground px-4 py-2 rounded-lg text-sm font-medium">
                     {city}
                   </span>
                 ))}

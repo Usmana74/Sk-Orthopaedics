@@ -32,7 +32,7 @@ const Navbar = () => {
         <div className="container-wide flex items-center justify-between px-4 py-2 md:px-8">
           <div className="flex items-center gap-4">
             <span className="hidden sm:inline">📍 Bahawalpur, Pakistan</span>
-            <span>🕐 Mon – Sat: 5:00 PM – 9:00 PM</span>
+            <span>🕐 Mon – Sat: 9:00 AM – 11:00 PM</span>
           </div>
           <div className="flex items-center gap-3">
             <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:opacity-80 transition-opacity">
