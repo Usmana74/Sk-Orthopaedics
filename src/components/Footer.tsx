@@ -172,7 +172,7 @@ const Footer = () => {
 
       {/* Floating WhatsApp */}
       <a
-        href="https://wa.me/923002278796?text=Hello%20Doctor%2C%20I%20would%20like%20to%20book%20an%20appointment."
+        href="https://wa.me/923029396988?text=Hello%20Doctor%2C%20I%20would%20like%20to%20book%20an%20appointment."
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 z-50 p-4 rounded-full shadow-xl hover:scale-110 transition-transform"
