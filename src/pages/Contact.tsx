@@ -9,7 +9,7 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
 );
 
 const WHATSAPP_URL =
-  "https://wa.me/923002278796?text=Hello%20Doctor%2C%20I%20would%20like%20to%20book%20an%20appointment.";
+  "https://wa.me/923029396988?text=Hello%20Doctor%2C%20I%20would%20like%20to%20book%20an%20appointment.";
 
 const contactItems = [
   {
