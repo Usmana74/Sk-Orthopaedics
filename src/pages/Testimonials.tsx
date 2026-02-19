@@ -17,7 +17,7 @@ const Testimonials = () => {
           <h1 className="font-heading text-4xl md:text-5xl font-bold text-primary-foreground mb-4">Patient Testimonials</h1>
           <p className="text-primary-foreground/70 max-w-xl mx-auto mb-6">Hear from patients whose lives have been transformed.</p>
           <a
-            href="https://www.google.com/maps/place/MID-WEST+HOSPITAL/@29.3879797,71.6749718,15z/data=!4m8!3m7!1s0x393b91da655623a1:0xd84bcc8df0d10bf8!8m2!3d29.3879797!4d71.6749718!9m1!1b1!16s%2Fg%2F11c0q0_yxl"
+            href="https://www.google.com/search?q=Dr+Shoaib+Aslam+kurerr+orthopedic+surgeon+Reviews&oq=dr+shoa&gs_lcrp=EgZjaHJvbWUqCAgBEEUYJxg7MgYIABBFGDkyCAgBEEUYJxg7MgYIAhBFGDsyBggDEEUYOzIHCAQQABiABDIGCAUQRRg9MgYIBhBFGD0yBggHEEUYPdIBCDQ2NzBqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8#lrd=0x393b91074ca1c0e9:0xf2ec05830f2ce1e2,1,,,,"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-6 py-3 rounded-lg font-semibold text-sm hover:opacity-90 transition-opacity"
