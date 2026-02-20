@@ -8,7 +8,9 @@ const credentials = [
   "ATLS (USA)",
   "MRCS-I (UK – Edinburgh)",
   "Member of Irish Medical Council",
-  "Member of PAS & PASSS",
+  "Member of Pakistan Arthoplasty Society",
+  "Member of Pakistan Arthoscopy and Sports Surgery Society",
+  "POA Fellowship in Sports Surgery & Arthroscopy",
   "Ex-Orthopaedic Surgeon, Mayo Hospital Lahore",
 ];
 
