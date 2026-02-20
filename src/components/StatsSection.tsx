@@ -2,9 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import ScrollReveal from "./ScrollReveal";
 
 const stats = [
-  { value: 2000, suffix: "+", label: "Patients Treated" },
-  { value: 5, suffix: "+", label: "Years Experience" },
-  { value: 100, suffix: "+", label: "Successful Surgeries" },
+  { value: 5000, suffix: "+", label: "Patients Treated" },
+  { value: 8, suffix: "+", label: "Years Experience" },
+  { value: 400, suffix: "+", label: "Successful Surgeries" },
 ];
 
 function useCountUp(target: number, duration = 1800, start = false) {
