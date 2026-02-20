@@ -27,7 +27,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4"
+            className="font-heading text-3xl md:text-4xl lg:text-4xl font-bold text-white leading-tight mb-4"
           >
             Precision in Motion. <br />
             Excellence in <span className="text-primary-blue underline decoration-accent">ORTHOPAEDICS.</span> 
