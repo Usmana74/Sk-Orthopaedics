@@ -32,7 +32,9 @@ const HeroSection = () => {
             transition={{ duration: 0.6, delay: 0.15 }}
             className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground leading-tight mb-8"
           >
-            Precision in Motion. Excellence in Orthopaedics.
+            Dr. Shoaib Aslam Kurerr
+            Orthopaedic & Sports Injury Specialist
+            Knee, Shoulder & Joint Replacement Expert
           </motion.h1>
 
           <motion.div
