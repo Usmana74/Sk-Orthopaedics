@@ -39,7 +39,7 @@ const HeroSection = () => {
              transition={{ duration: 0.8, delay: 0.3 }}
              className="text-white/90 text-lg md:text-xl font-medium mb-10 max-w-lg"
           >
-            Advanced Arthroscopy, Sports Medicine, & Joint Replacement in Bahawalpur. [cite: 8, 27, 212]
+            Advanced Arthroscopy, Sports Medicine, & Joint Replacement in Bahawalpur.
           </motion.p>
 
           <motion.div
@@ -50,7 +50,7 @@ const HeroSection = () => {
           >
             <BookingModal>
               <button className="inline-flex items-center justify-center gap-2 cta-gradient text-white px-8 py-4 rounded-lg font-bold text-base hover:opacity-90 transition-all hover:scale-[1.02] shadow-xl">
-                Book Consultation [cite: 213, 216]
+                Book Consultation
               </button>
             </BookingModal>
           </motion.div>
