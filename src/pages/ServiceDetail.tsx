@@ -35,7 +35,7 @@ const procedures: Record<string, ProcedureInfo> = {
     heroKey: "knee-ligament",
     tagline: "Minimally invasive keyhole surgery to restore full knee stability.",
     introduction: "The ACL is the primary stabiliser of the knee — essential for every twist, pivot, and change of direction. When it tears, the knee becomes unstable and the risk of further joint damage rises rapidly. Arthroscopic ACL Reconstruction replaces the torn ligament with a strong tendon graft through tiny keyhole incisions, restoring full stability without the trauma of open surgery. At Midwest Hospital Bahawalpur, Dr Shoaib Aslam Kurerr performs this procedure using internationally certified techniques, allowing most patients to return to full sport within 6–9 months.",
-    secondaryImage: "https://images.unsplash.com/photo-1666214280557-f1b5022eb634?w=900&q=85",
+    secondaryImage: "https://images.unsplash.com/photo-1511174511562-5f97f4f4e5a2?w=900&q=85",
     overview: [
       "Replaces the torn ACL with a high-strength hamstring or patella tendon graft.",
       "Performed through 2–3 small keyhole portals — minimal scarring and tissue disruption.",
@@ -55,7 +55,7 @@ const procedures: Record<string, ProcedureInfo> = {
     heroKey: "knee-ligament",
     tagline: "Specialist solutions for revision, complex, and multi-ligament ACL cases.",
     introduction: "When a standard ACL reconstruction has failed, or when multiple ligaments of the knee are injured simultaneously, a higher level of surgical expertise is required. Advanced ACL Reconstruction addresses the most challenging presentations — failed prior reconstructions, malpositioned tunnels, and combined multi-ligament injuries — using specialised graft strategies, staged surgical planning, and precise anatomic technique. Dr Shoaib Aslam Kurerr's experience with complex ligament surgery ensures each case receives a fully individualised surgical plan.",
-    secondaryImage: "https://images.unsplash.com/photo-1579684453423-f84349ef60b0?w=900&q=85",
+    secondaryImage: "https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=900&q=85",
     overview: [
       "Addresses failed prior ACL reconstructions and multi-ligament knee injuries.",
       "Uses allograft or quadriceps tendon when prior tunnels are malpositioned.",
@@ -75,7 +75,7 @@ const procedures: Record<string, ProcedureInfo> = {
     heroKey: "knee-ligament",
     tagline: "Restoring posterior knee stability through precise arthroscopic technique.",
     introduction: "The Posterior Cruciate Ligament is the strongest structure in the knee, preventing the shin bone from shifting backward. PCL injuries are less common than ACL tears but cause significant disability — particularly on stairs and slopes. When conservative treatment is insufficient for high-grade tears or combined ligament injuries, arthroscopic PCL reconstruction restores posterior stability through small keyhole portals, avoiding the extensive tissue disruption of traditional open surgery.",
-    secondaryImage: "https://images.unsplash.com/photo-1551076805-e1869033e561?w=900&q=85",
+    secondaryImage: "https://images.unsplash.com/photo-1530026405186-ed1f139313f8?w=900&q=85",
     overview: [
       "Replaces the torn PCL — the primary restraint against backward tibial displacement.",
       "Performed arthroscopically through small portals for minimal disruption.",
@@ -95,7 +95,7 @@ const procedures: Record<string, ProcedureInfo> = {
     heroKey: "knee-ligament",
     tagline: "Preserving the knee's natural shock absorber for lifelong joint health.",
     introduction: "The menisci are the knee's essential shock absorbers — two C-shaped pads of cartilage that distribute load, protect the joint surface, and provide secondary stability. When torn, they cause pain, clicking, and swelling, and if left untreated, accelerate the onset of knee arthritis. Modern arthroscopic repair preserves this critical tissue wherever possible, promoting biological healing and protecting the long-term health of the knee joint.",
-    secondaryImage: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=900&q=85",
+    secondaryImage: "https://images.unsplash.com/photo-1536064479547-7ee40b74b807?w=900&q=85",
     overview: [
       "Repairs torn meniscal cartilage arthroscopically — preserving tissue rather than removing it.",
       "All-inside suture technique approximates tear edges to stimulate biological healing.",
@@ -115,7 +115,7 @@ const procedures: Record<string, ProcedureInfo> = {
     heroKey: "knee-ligament",
     tagline: "Restoring side-to-side knee stability with precision graft reconstruction.",
     introduction: "The collateral ligaments run along the inner (MCL) and outer (LCL) sides of the knee, preventing it from buckling sideways with every step. High-grade tears and those combined with ACL or PCL injuries require surgical reconstruction to restore stable joint function and prevent long-term degeneration. Anatomical graft reconstruction recreates the native ligament footprints on both femur and tibia for optimal biomechanical outcomes.",
-    secondaryImage: "https://images.unsplash.com/photo-1530026405186-ed1f139313f8?w=900&q=85",
+    secondaryImage: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=900&q=85",
     overview: [
       "Reconstructs the medial or lateral collateral ligaments using a tendon graft.",
       "Anatomical footprint fixation restores natural varus/valgus restraint.",
@@ -135,7 +135,7 @@ const procedures: Record<string, ProcedureInfo> = {
     heroKey: "knee-ligament",
     tagline: "Preventing recurrent kneecap dislocation with anatomic ligament restoration.",
     introduction: "The Medial Patellofemoral Ligament tethers the kneecap to the inner side of the femur, preventing it from dislocating outward. A first dislocation tears this ligament in over 90% of cases, and without surgical repair, recurrent dislocations cause progressive cartilage damage and functional disability. MPFL Reconstruction replaces the torn ligament with a tendon graft, guided precisely to the isometric femoral point under fluoroscopy, restoring reliable patellar stability.",
-    secondaryImage: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=900&q=85",
+    secondaryImage: "https://images.unsplash.com/photo-1607962837359-5e7e89f86776?w=900&q=85",
     overview: [
       "Replaces the torn MPFL with a gracilis graft to prevent lateral kneecap dislocation.",
       "Femoral tunnel placed at Schöttle's isometric point under fluoroscopic guidance.",
@@ -155,7 +155,7 @@ const procedures: Record<string, ProcedureInfo> = {
     heroKey: "knee-replacement",
     tagline: "Leg realignment to offload medial arthritis and delay joint replacement.",
     introduction: "For younger, active patients with knee arthritis confined to the inner compartment, High Tibial Osteotomy offers a joint-preserving alternative to replacement. By surgically realigning the tibia, the mechanical axis of the leg is shifted onto the healthier outer cartilage, dramatically reducing pain and allowing years of continued active life. With modern locking plate technology, the correction is precise and early weight-bearing is possible — making this a reliable bridge before knee replacement may eventually be needed.",
-    secondaryImage: "https://images.unsplash.com/photo-1530026405186-ed1f139313f8?w=900&q=85",
+    secondaryImage: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=900&q=85",
     overview: [
       "Realigns the tibia to shift load off the arthritic medial compartment.",
       "Modern locking plate allows precise correction and early weight-bearing.",
@@ -175,7 +175,7 @@ const procedures: Record<string, ProcedureInfo> = {
     heroKey: "knee-replacement",
     tagline: "Eliminating end-stage knee arthritis pain with precision joint arthroplasty.",
     introduction: "Total Knee Replacement is one of the most transformative procedures in modern orthopaedic surgery. For patients with severe, end-stage arthritis that no longer responds to any conservative measure, it offers something that nothing else can — definitive, lasting elimination of pain. All three compartments of the damaged joint are replaced with precision-engineered metal and polyethylene components. Over 95% of implants last 15–20 years, and most patients describe the change as life-changing.",
-    secondaryImage: "https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=900&q=85",
+    secondaryImage: "https://images.unsplash.com/photo-1624628639856-100bf817fd35?w=900&q=85",
     overview: [
       "Resurfaces all three damaged compartments with cobalt-chrome and polyethylene components.",
       "Recommended for severe arthritis where all conservative treatment has failed.",
@@ -215,7 +215,7 @@ const procedures: Record<string, ProcedureInfo> = {
     heroKey: "shoulder",
     tagline: "Releasing the frozen shoulder capsule to restore full range of motion.",
     introduction: "Frozen shoulder — adhesive capsulitis — is a progressively disabling condition in which the shoulder capsule becomes thickened and contracted, trapping the joint in stiffness and pain. It can take 2–3 years to resolve spontaneously, and many patients are left with incomplete recovery. When physiotherapy, injections, and hydrodilatation have failed, arthroscopic capsular release offers definitive surgical treatment — systematically releasing the contracted capsule under direct camera vision and restoring full movement in a single procedure.",
-    secondaryImage: "https://images.unsplash.com/photo-1607962837359-5e7e89f86776?w=900&q=85",
+    secondaryImage: "https://images.unsplash.com/photo-1631815589068-dc4b5d1a2e6c?w=900&q=85",
     overview: [
       "Releases the contracted shoulder capsule using radiofrequency energy under arthroscopic vision.",
       "Indicated for frozen shoulder failing physiotherapy and injections over 6 months.",
@@ -235,7 +235,7 @@ const procedures: Record<string, ProcedureInfo> = {
     heroKey: "shoulder",
     tagline: "Reattaching the shoulder labrum to prevent recurrent dislocation.",
     introduction: "A shoulder dislocation tears the glenoid labrum — the cartilage rim that keeps the ball securely in the socket. In patients under 25, the risk of a second dislocation without surgery approaches 80–90%, with each episode causing progressive bone and cartilage damage. Arthroscopic Bankart Repair reattaches the labrum to the glenoid rim using suture anchors through keyhole portals, recreating the natural bumper that prevents dislocation and restoring the confidence to return to sport.",
-    secondaryImage: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=900&q=85",
+    secondaryImage: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=900&q=85",
     overview: [
       "Reattaches the torn labrum using 3–4 suture anchors through keyhole portals.",
       "Recreates the socket bumper that prevents anterior shoulder dislocation.",
@@ -295,7 +295,7 @@ const procedures: Record<string, ProcedureInfo> = {
     heroKey: "trauma",
     tagline: "Expert surgical fixation for acute fractures and complex musculoskeletal injuries.",
     introduction: "Orthopaedic trauma demands immediate, expert intervention. From simple fractures to complex polytrauma with multiple simultaneous injuries, the quality of the initial surgical fixation directly determines the long-term functional outcome. Dr Shoaib Aslam Kurerr provides comprehensive emergency orthopaedic trauma care at Midwest Hospital Bahawalpur, applying modern minimally invasive fixation techniques and ATLS-guided assessment protocols to restore anatomy, enable early mobilisation, and give every patient the best possible recovery.",
-    secondaryImage: "https://images.unsplash.com/photo-1516549655669-df64b16d1268?w=900&q=85",
+    secondaryImage: "https://images.unsplash.com/photo-1504439468489-c8920d796a29?w=900&q=85",
     overview: [
       "Full spectrum of orthopaedic trauma using minimally invasive fixation wherever possible.",
       "ATLS-guided assessment ensures life-threatening injuries are managed before definitive surgery.",
