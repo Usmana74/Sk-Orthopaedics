@@ -25,16 +25,6 @@ const HeroSection = () => {
             Fellowship Trained Sports & Arthroscopic Surgeon
           </motion.p>
 
-          {/* Headline: Orthopaedics Emphasis [cite: 196, 202, 212, 215, 229, 274] */}
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.15 }}
-            className="font-heading text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6"
-          >
-            Precision in Motion. <br />
-            Excellence in <span className="text-blue-400">ORTHOPAEDICS.</span>
-          </motion.h1>
 
           {/* Subheadline: Specialist Focus [cite: 8, 27, 140, 193] */}
           <motion.p
