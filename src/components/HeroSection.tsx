@@ -44,7 +44,7 @@ const HeroSection = () => {
              className="mb-8"
           >
             <p className="text-white font-semibold text-base md:text-lg">
-              Dr. Shoaib Aslam Kurerr [cite: 9, 27]
+              Dr. Shoaib Aslam Kurerr 
             </p>
             <p className="text-white/70 text-sm md:text-base">
               Expert Knee & Shoulder Specialist in Bahawalpur 
@@ -59,7 +59,7 @@ const HeroSection = () => {
           >
             <BookingModal>
               <button className="cta-gradient text-white px-7 py-3 rounded-lg font-bold text-sm hover:opacity-90 transition-all shadow-xl">
-                Book Consultation [cite: 110, 122, 212]
+                Book Consultation 
               </button>
             </BookingModal>
           </motion.div>
