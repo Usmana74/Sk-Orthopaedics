@@ -108,9 +108,9 @@ const badges = [
 ];
 
 const stats = [
-  { value: "2000+", label: "Patients Treated" },
-  { value: "5+", label: "Years Specialized Practice" },
-  { value: "100+", label: "Complex Surgeries" },
+  { value: "5000+", label: "Patients Treated" },
+  { value: "8+", label: "Years Specialized Practice" },
+  { value: "400+", label: "Complex Surgeries" },
 ];
 
 const About = () => {
