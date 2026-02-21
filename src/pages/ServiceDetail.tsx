@@ -1,13 +1,13 @@
 import { useParams, Link } from "react-router-dom";
 import ScrollReveal from "@/components/ScrollReveal";
-import { ArrowLeft, CheckCircle2, Clock, AlertCircle, ChevronRight } from "lucide-react";
+import { ArrowLeft, Clock, BedDouble, PersonStanding } from "lucide-react";
 
 import heroAcl from "@/assets/hero-acl.jpg";
 import heroKneeReplacement from "@/assets/hero-knee-replacement.jpg";
 import heroShoulder from "@/assets/hero-shoulder.jpg";
 import heroTrauma from "@/assets/hero-trauma.jpg";
 
-// ─── Anatomical SVG Diagrams ──────────────────────────────────────────────────
+// ─── SVG Diagrams ─────────────────────────────────────────────────────────────
 
 const KneeJointDiagram = () => (
   <svg viewBox="0 0 320 360" className="w-full max-w-xs mx-auto" aria-label="Knee joint anatomy diagram">
@@ -25,29 +25,19 @@ const KneeJointDiagram = () => (
         <stop offset="100%" stopColor="hsl(25,75%,50%)" />
       </linearGradient>
     </defs>
-    {/* Femur */}
     <ellipse cx="160" cy="80" rx="55" ry="65" fill="url(#boneGrad)" stroke="hsl(210,30%,65%)" strokeWidth="1.5"/>
     <ellipse cx="125" cy="148" rx="20" ry="25" fill="url(#boneGrad)" stroke="hsl(210,30%,65%)" strokeWidth="1.5"/>
     <ellipse cx="195" cy="148" rx="20" ry="25" fill="url(#boneGrad)" stroke="hsl(210,30%,65%)" strokeWidth="1.5"/>
-    {/* Articular cartilage */}
     <ellipse cx="125" cy="165" rx="20" ry="8" fill="url(#cartGrad)" opacity="0.9"/>
     <ellipse cx="195" cy="165" rx="20" ry="8" fill="url(#cartGrad)" opacity="0.9"/>
-    {/* Menisci */}
     <path d="M108,175 Q125,170 142,175 Q125,185 108,175Z" fill="hsl(190,50%,55%)" opacity="0.85"/>
     <path d="M178,175 Q195,170 212,175 Q195,185 178,175Z" fill="hsl(190,50%,55%)" opacity="0.85"/>
-    {/* Tibia */}
     <rect x="100" y="185" width="120" height="140" rx="12" fill="url(#boneGrad)" stroke="hsl(210,30%,65%)" strokeWidth="1.5"/>
-    {/* Tibial cartilage */}
     <rect x="105" y="185" width="110" height="10" rx="4" fill="url(#cartGrad)" opacity="0.9"/>
-    {/* ACL */}
     <line x1="145" y1="175" x2="175" y2="145" stroke="url(#ligGrad)" strokeWidth="5" strokeLinecap="round"/>
-    {/* PCL */}
     <line x1="175" y1="175" x2="145" y2="145" stroke="hsl(210,70%,45%)" strokeWidth="5" strokeLinecap="round" opacity="0.85"/>
-    {/* MCL */}
     <line x1="100" y1="155" x2="100" y2="210" stroke="hsl(140,55%,45%)" strokeWidth="4" strokeLinecap="round"/>
-    {/* LCL */}
     <line x1="220" y1="155" x2="220" y2="210" stroke="hsl(140,55%,45%)" strokeWidth="4" strokeLinecap="round"/>
-    {/* Labels */}
     <text x="230" y="155" fontSize="10" fill="hsl(25,85%,40%)" fontWeight="600">ACL</text>
     <text x="230" y="170" fontSize="10" fill="hsl(210,70%,38%)" fontWeight="600">PCL</text>
     <text x="55" y="188" fontSize="10" fill="hsl(140,55%,35%)" fontWeight="600">MCL</text>
@@ -66,33 +56,22 @@ const ShoulderJointDiagram = () => (
         <stop offset="100%" stopColor="hsl(210,30%,78%)" />
       </linearGradient>
     </defs>
-    {/* Clavicle */}
     <path d="M20,80 Q100,60 150,85" stroke="url(#shBoneGrad)" strokeWidth="18" fill="none" strokeLinecap="round"/>
     <path d="M20,80 Q100,60 150,85" stroke="hsl(210,30%,65%)" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
-    {/* Scapula/Glenoid */}
     <path d="M130,70 L155,85 L145,170 L120,180 L115,130Z" fill="url(#shBoneGrad)" stroke="hsl(210,30%,65%)" strokeWidth="1.5"/>
-    {/* Glenoid cavity */}
     <ellipse cx="150" cy="125" rx="14" ry="22" fill="hsl(210,40%,82%)" stroke="hsl(210,30%,65%)" strokeWidth="1"/>
-    {/* Labrum */}
     <ellipse cx="150" cy="125" rx="18" ry="26" fill="none" stroke="hsl(190,60%,55%)" strokeWidth="4" opacity="0.8"/>
-    {/* Humeral head */}
     <circle cx="200" cy="115" r="45" fill="url(#shBoneGrad)" stroke="hsl(210,30%,65%)" strokeWidth="1.5"/>
-    {/* Articular cartilage on head */}
     <path d="M158,103 Q175,95 185,115 Q175,135 158,133 Q162,118 158,103Z" fill="hsl(190,55%,72%)" opacity="0.9"/>
-    {/* Humerus shaft */}
     <rect x="185" y="158" width="30" height="120" rx="15" fill="url(#shBoneGrad)" stroke="hsl(210,30%,65%)" strokeWidth="1.5"/>
-    {/* Rotator cuff tendons */}
     <path d="M165,90 Q195,75 225,85" stroke="hsl(25,85%,55%)" strokeWidth="6" fill="none" strokeLinecap="round" opacity="0.9"/>
     <path d="M165,140 Q195,155 225,148" stroke="hsl(25,75%,55%)" strokeWidth="5" fill="none" strokeLinecap="round" opacity="0.85"/>
-    {/* Acromion */}
     <path d="M130,70 Q170,50 210,65 L210,78 Q170,63 130,83Z" fill="hsl(210,35%,80%)" stroke="hsl(210,30%,65%)" strokeWidth="1.2"/>
-    {/* Labels */}
     <text x="70" y="55" fontSize="10" fill="hsl(210,32%,20%)" fontWeight="700">Clavicle</text>
     <text x="115" y="205" fontSize="10" fill="hsl(210,32%,20%)" fontWeight="700">Scapula</text>
     <text x="240" y="115" fontSize="10" fill="hsl(210,32%,20%)" fontWeight="700">Humerus</text>
     <text x="50" y="120" fontSize="9" fill="hsl(190,55%,35%)" fontWeight="600">Labrum</text>
     <text x="155" y="72" fontSize="9" fill="hsl(25,80%,35%)" fontWeight="600">Rotator Cuff</text>
-    <text x="175" y="60" fontSize="8" fill="hsl(25,80%,35%)">(Supraspinatus)</text>
     <line x1="155" y1="73" x2="190" y2="80" stroke="hsl(25,80%,45%)" strokeWidth="1" strokeDasharray="3,2"/>
     <line x1="70" y1="117" x2="133" y2="115" stroke="hsl(190,55%,45%)" strokeWidth="1" strokeDasharray="3,2"/>
   </svg>
@@ -114,26 +93,18 @@ const KneeReplacementDiagram = () => (
         <stop offset="100%" stopColor="hsl(40,30%,80%)" />
       </linearGradient>
     </defs>
-    {/* Femur bone */}
     <ellipse cx="160" cy="70" rx="52" ry="60" fill="url(#boneGrad2)" stroke="hsl(40,25%,65%)" strokeWidth="1.5"/>
-    {/* Femoral component (metal) */}
     <path d="M108,140 Q125,130 160,128 Q195,130 212,140 L208,162 Q195,152 160,150 Q125,152 112,162Z" fill="url(#metalGrad)" stroke="hsl(210,20%,50%)" strokeWidth="1.5"/>
     <ellipse cx="125" cy="153" rx="18" ry="12" fill="url(#metalGrad)" stroke="hsl(210,20%,50%)" strokeWidth="1"/>
     <ellipse cx="195" cy="153" rx="18" ry="12" fill="url(#metalGrad)" stroke="hsl(210,20%,50%)" strokeWidth="1"/>
-    {/* Polyethylene insert */}
     <rect x="108" y="166" width="104" height="18" rx="4" fill="url(#polyGrad)" stroke="hsl(210,15%,70%)" strokeWidth="1.2"/>
-    {/* Tibial baseplate (metal) */}
     <rect x="104" y="184" width="112" height="14" rx="4" fill="url(#metalGrad)" stroke="hsl(210,20%,50%)" strokeWidth="1.5"/>
-    {/* Tibial stem */}
     <rect x="148" y="198" width="24" height="60" rx="6" fill="url(#metalGrad)" stroke="hsl(210,20%,50%)" strokeWidth="1.2"/>
-    {/* Tibia bone */}
     <rect x="100" y="258" width="120" height="90" rx="12" fill="url(#boneGrad2)" stroke="hsl(40,25%,65%)" strokeWidth="1.5"/>
-    {/* Labels */}
     <text x="225" y="145" fontSize="9" fill="hsl(210,30%,25%)" fontWeight="700">Femoral</text>
     <text x="225" y="157" fontSize="9" fill="hsl(210,30%,25%)" fontWeight="700">Component</text>
     <text x="225" y="175" fontSize="9" fill="hsl(210,20%,35%)" fontWeight="700">Polyethylene</text>
-    <text x="225" y="195" fontSize="9" fill="hsl(210,30%,25%)" fontWeight="700">Tibial</text>
-    <text x="225" y="207" fontSize="9" fill="hsl(210,30%,25%)" fontWeight="700">Baseplate</text>
+    <text x="225" y="195" fontSize="9" fill="hsl(210,30%,25%)" fontWeight="700">Tibial Baseplate</text>
     <text x="160" y="65" fontSize="11" fill="hsl(40,30%,30%)" fontWeight="700" textAnchor="middle">Femur</text>
     <text x="160" y="300" fontSize="11" fill="hsl(40,30%,30%)" fontWeight="700" textAnchor="middle">Tibia</text>
     <line x1="220" y1="148" x2="205" y2="148" stroke="hsl(210,30%,40%)" strokeWidth="1" strokeDasharray="3,2"/>
@@ -154,15 +125,10 @@ const TraumaDiagram = () => (
         <stop offset="100%" stopColor="hsl(210,20%,60%)" />
       </linearGradient>
     </defs>
-    {/* Bone shaft upper */}
     <rect x="120" y="20" width="80" height="120" rx="20" fill="url(#tboneGrad)" stroke="hsl(40,25%,65%)" strokeWidth="1.5"/>
-    {/* Fracture line */}
     <path d="M118,140 L152,133 L168,147 L202,140" stroke="hsl(0,70%,45%)" strokeWidth="2.5" fill="none" strokeLinecap="round"/>
-    {/* Bone shaft lower */}
     <rect x="120" y="150" width="80" height="120" rx="20" fill="url(#tboneGrad)" stroke="hsl(40,25%,65%)" strokeWidth="1.5"/>
-    {/* Plate */}
     <rect x="107" y="90" width="18" height="110" rx="5" fill="url(#plateGrad)" stroke="hsl(210,20%,50%)" strokeWidth="1.5"/>
-    {/* Screws */}
     {[100, 120, 155, 175].map((y, i) => (
       <g key={i}>
         <line x1="107" y1={y} x2="140" y2={y} stroke="url(#plateGrad)" strokeWidth="5" strokeLinecap="round"/>
@@ -170,11 +136,9 @@ const TraumaDiagram = () => (
         <circle cx="107" cy={y} r="4" fill="url(#plateGrad)" stroke="hsl(210,20%,40%)" strokeWidth="1"/>
       </g>
     ))}
-    {/* Labels */}
-    <text x="230" y="142" fontSize="10" fill="hsl(0,65%,35%)" fontWeight="700">Fracture Line</text>
-    <text x="60" y="138" fontSize="10" fill="hsl(210,30%,25%)" fontWeight="700">Plate</text>
-    <text x="60" y="155" fontSize="9" fill="hsl(210,25%,40%)">&amp; Screws</text>
-    <text x="160" y="45" fontSize="10" fill="hsl(40,30%,30%)" fontWeight="700" textAnchor="middle">Bone Shaft</text>
+    <text x="230" y="142" fontSize="10" fill="hsl(0,65%,35%)" fontWeight="700">Fracture</text>
+    <text x="60" y="138" fontSize="10" fill="hsl(210,30%,25%)" fontWeight="700">Plate &amp;</text>
+    <text x="60" y="152" fontSize="10" fill="hsl(210,30%,25%)" fontWeight="700">Screws</text>
     <line x1="220" y1="139" x2="205" y2="139" stroke="hsl(0,65%,40%)" strokeWidth="1" strokeDasharray="3,2"/>
     <line x1="83" y1="140" x2="106" y2="140" stroke="hsl(210,30%,40%)" strokeWidth="1" strokeDasharray="3,2"/>
   </svg>
@@ -183,17 +147,19 @@ const TraumaDiagram = () => (
 // ─── Procedure Data ───────────────────────────────────────────────────────────
 
 type HeroKey = "knee-ligament" | "knee-replacement" | "shoulder" | "trauma";
+type DiagramType = "knee" | "shoulder" | "replacement" | "trauma";
 
 interface ProcedureInfo {
   title: string;
   category: string;
   heroKey: HeroKey;
   tagline: string;
-  intro: string[];
+  overview: string[];           // exactly 3 bullet points
+  stats: { time: string; stay: string; walking: string };
   symptoms: string[];
-  stepByStep: { heading: string; detail: string }[];
+  steps: { heading: string; detail: string }[];
   recovery: { timeline: string; details: string[] };
-  diagram: "knee" | "shoulder" | "replacement" | "trauma";
+  diagram: DiagramType;
 }
 
 const heroImages: Record<HeroKey, string> = {
@@ -208,62 +174,33 @@ const procedures: Record<string, ProcedureInfo> = {
     title: "Arthroscopic ACL Reconstruction",
     category: "Knee Ligament Surgery",
     heroKey: "knee-ligament",
-    tagline: "Restoring knee stability through minimally invasive keyhole surgery",
+    tagline: "Minimally invasive keyhole surgery to restore full knee stability.",
     diagram: "knee",
-    intro: [
-      "The Anterior Cruciate Ligament (ACL) is one of the four major ligaments of the knee joint, serving as the primary stabilizer against forward movement of the shin bone (tibia). It runs diagonally through the center of the knee and is essential for activities that involve pivoting, cutting, jumping, and sudden changes of direction.",
-      "ACL tears are among the most common sports injuries, affecting athletes of all levels as well as individuals involved in active occupations. The injury typically occurs during sudden deceleration, awkward landing from a jump, or a direct blow to the knee. Patients often report a distinctive 'pop' at the moment of injury, followed by immediate swelling and instability.",
-      "When conservative management — including physiotherapy and bracing — fails to restore adequate function, or when the patient wishes to return to high-demand physical activity, Arthroscopic ACL Reconstruction offers a gold-standard solution. Dr. Shoaib Aslam Kurerr performs this procedure using modern minimally invasive techniques at Midwest Hospital, Bahawalpur.",
+    overview: [
+      "Replaces the torn Anterior Cruciate Ligament with a high-strength tendon graft (hamstring or patella tendon).",
+      "Performed through 2–3 small keyhole incisions — no large open cuts, minimal scarring.",
+      "Restores full stability for sport, pivoting, cutting, and jumping.",
     ],
+    stats: { time: "60–90 min", stay: "Same-day / 1 night", walking: "24–48 hours" },
     symptoms: [
-      "A loud 'pop' or 'snapping' sensation at the time of injury",
-      "Rapid onset of knee swelling within 6 hours",
-      "Feeling of knee instability or 'giving way' during walking or activity",
-      "Significant pain and inability to continue physical activity",
-      "Limited range of motion and difficulty fully straightening the knee",
-      "Positive findings on clinical tests (Lachman test, Anterior Drawer test)",
-      "MRI-confirmed ACL tear with associated meniscal or cartilage injury",
+      "Audible 'pop' at time of injury with immediate swelling",
+      "Knee instability or 'giving way' during walking or sport",
+      "Inability to pivot, cut, or jump without pain",
+      "MRI-confirmed ACL tear",
     ],
-    stepByStep: [
-      {
-        heading: "Pre-operative Planning",
-        detail:
-          "A thorough clinical examination combined with MRI imaging defines the full extent of injury, identifies any associated meniscal or cartilage damage, and guides the selection of the appropriate graft — typically the patient's own hamstring tendon (autograft) for optimal healing.",
-      },
-      {
-        heading: "Anaesthesia & Positioning",
-        detail:
-          "The procedure is performed under spinal or general anaesthesia. The patient is positioned with the leg in a leg holder to allow full arthroscopic access to the knee joint.",
-      },
-      {
-        heading: "Arthroscopic Diagnosis",
-        detail:
-          "Small 'keyhole' incisions (portals) are made around the knee and a tiny camera (arthroscope) is inserted, providing a high-definition view of all structures within the joint. Any associated meniscal tears are addressed concurrently.",
-      },
-      {
-        heading: "Graft Harvesting & Preparation",
-        detail:
-          "The hamstring graft (gracilis and semitendinosus tendons) is harvested through a small incision, folded to the appropriate diameter, and prepared with sutures at each end for fixation.",
-      },
-      {
-        heading: "Tunnel Drilling & Graft Placement",
-        detail:
-          "Using precise anatomic guides, bone tunnels are drilled in the femur and tibia at the exact attachment points of the native ACL. The prepared graft is passed through these tunnels, replicating the natural orientation of the ligament.",
-      },
-      {
-        heading: "Fixation & Wound Closure",
-        detail:
-          "The graft is secured with bioabsorbable or titanium implants (endobutton and interference screw) under appropriate tension. The knee is examined for correct graft tension and full range of motion before closure.",
-      },
+    steps: [
+      { heading: "Pre-op Planning", detail: "MRI review, graft selection, associated meniscal injury identified." },
+      { heading: "Graft Harvest", detail: "Hamstring tendons harvested through a small incision and prepared." },
+      { heading: "Arthroscopic Tunnels", detail: "Bone tunnels drilled at anatomic ACL footprints under camera guidance." },
+      { heading: "Graft Fixation", detail: "Graft passed and secured with bioabsorbable or titanium implants." },
     ],
     recovery: {
-      timeline: "6 – 9 months to full sports return",
+      timeline: "6–9 months to full sport",
       details: [
-        "Day 1–2: Compression, ice, and limb elevation. Physiotherapy begins with gentle range-of-motion exercises.",
-        "Week 1–2: Weight-bearing with crutches is encouraged. Straight-leg raises and quadriceps activation begin.",
-        "Week 4–6: Crutches are typically weaned off. Cycling and pool exercises commence.",
-        "Month 3–4: Strength training, proprioception exercises, and jogging on flat surfaces begin.",
-        "Month 6–9: Sport-specific training and return-to-play testing. Full clearance after functional assessment.",
+        "Week 1–2: Crutches, ice, compression. Gentle range-of-motion exercises.",
+        "Week 4–6: Cycling and pool work. Crutches weaned.",
+        "Month 3–4: Jogging on flat surfaces. Strengthening programme.",
+        "Month 6–9: Sport-specific training. Clearance after functional testing.",
       ],
     },
   },
@@ -272,55 +209,33 @@ const procedures: Record<string, ProcedureInfo> = {
     title: "Advanced ACL Reconstruction",
     category: "Knee Ligament Surgery",
     heroKey: "knee-ligament",
-    tagline: "Specialized solutions for complex, revision, and multi-ligament ACL cases",
+    tagline: "Specialist solutions for revision, complex, and multi-ligament ACL cases.",
     diagram: "knee",
-    intro: [
-      "Advanced ACL Reconstruction addresses the most challenging presentations of ACL insufficiency — including failed prior reconstructions (revision surgery), multi-ligament knee injuries, and anatomically complex cases where standard techniques are insufficient. These situations require a higher level of surgical expertise, meticulous pre-operative planning, and specialized graft strategies.",
-      "Patients presenting with a second ACL rupture after prior reconstruction, or those with combined ACL, PCL, and collateral ligament injuries following high-energy trauma, require individualized surgical solutions. Dr. Shoaib Aslam Kurerr's expertise in complex ligament reconstruction ensures that each case is approached with a customized, evidence-based plan.",
-      "Modern techniques in revision ACL surgery include the use of allograft (donor tendon), quadriceps tendon autograft, and anatomic tunnel repositioning. These strategies overcome the challenges of tunnel widening and hardware interference from prior surgery.",
+    overview: [
+      "Addresses failed prior ACL reconstructions, multi-ligament injuries, and anatomically complex cases.",
+      "Uses allograft, quadriceps tendon, or staged bone-grafting when prior tunnels are malpositioned.",
+      "Combines ACL, PCL, and collateral reconstruction in a single planned surgical setting.",
     ],
+    stats: { time: "90–150 min", stay: "1–2 nights", walking: "24–48 hours (protected)" },
     symptoms: [
-      "Persistent knee instability after a previous ACL reconstruction",
-      "Giving-way episodes during daily activities or sport",
-      "Combined knee swelling with collateral ligament tenderness",
-      "MRI showing graft failure, tunnel malposition, or associated ligament tears",
-      "High-energy trauma with multi-directional knee instability",
-      "Positive clinical instability tests in multiple planes",
+      "Persistent instability after a previous ACL reconstruction",
+      "Giving-way with daily activities or low-demand sport",
+      "MRI showing graft failure or tunnel malposition",
+      "Multi-directional instability after high-energy knee trauma",
     ],
-    stepByStep: [
-      {
-        heading: "Comprehensive Pre-operative Assessment",
-        detail:
-          "MRI, weight-bearing X-rays, and clinical examination map existing hardware, tunnel positions, bone quality, and all associated ligament injuries to create a precise surgical blueprint.",
-      },
-      {
-        heading: "Graft Selection",
-        detail:
-          "Based on available tissue (after prior harvesting), allograft tendons or the quadriceps tendon may be selected. Graft choice is tailored to maximize strength and healing potential.",
-      },
-      {
-        heading: "Hardware Removal & Tunnel Preparation",
-        detail:
-          "Existing fixation implants are removed arthroscopically or through small open incisions. Malpositioned tunnels may require bone grafting and staged reconstruction over 3–6 months to allow healing before new tunnels are drilled.",
-      },
-      {
-        heading: "Anatomic Reconstruction",
-        detail:
-          "New tunnels are created in anatomically correct positions. For multi-ligament cases, collateral ligament reconstructions are performed simultaneously using additional grafts and fixation anchors.",
-      },
-      {
-        heading: "Fixation & Tensioning",
-        detail:
-          "All grafts are fixed under appropriate tension and knee position to ensure natural biomechanics are restored. Fluoroscopic guidance confirms correct implant placement.",
-      },
+    steps: [
+      { heading: "3D Planning", detail: "CT and MRI map tunnels, hardware, bone quality, and all ligament injuries." },
+      { heading: "Hardware Removal", detail: "Prior implants removed; malpositioned tunnels bone-grafted if required." },
+      { heading: "Graft Selection", detail: "Allograft or quadriceps autograft chosen based on available tissue." },
+      { heading: "Anatomic Reconstruction", detail: "New tunnels at correct positions; multi-ligament grafts tensioned in sequence." },
     ],
     recovery: {
-      timeline: "9 – 12 months to full return to activity",
+      timeline: "9–12 months to full activity",
       details: [
-        "Week 1–4: Protected weight-bearing with crutches. Early range-of-motion physiotherapy.",
-        "Month 2–3: Gradual progression to full weight-bearing. Aquatic therapy begins.",
-        "Month 4–6: Strengthening programme, proprioceptive training, low-impact cardio.",
-        "Month 8–12: Sport-specific rehabilitation. Return-to-play criteria assessed with functional testing.",
+        "Week 1–4: Protected weight-bearing, early range-of-motion physiotherapy.",
+        "Month 2–3: Aquatic therapy and progressive strengthening.",
+        "Month 4–6: Low-impact cardio, proprioceptive training.",
+        "Month 8–12: Return-to-play functional testing and clearance.",
       ],
     },
   },
@@ -329,55 +244,33 @@ const procedures: Record<string, ProcedureInfo> = {
     title: "Arthroscopic PCL Reconstruction",
     category: "Knee Ligament Surgery",
     heroKey: "knee-ligament",
-    tagline: "Restoring posterior knee stability through advanced arthroscopic technique",
+    tagline: "Restoring posterior knee stability through precise arthroscopic technique.",
     diagram: "knee",
-    intro: [
-      "The Posterior Cruciate Ligament (PCL) is the strongest ligament in the knee and the primary restraint against posterior (backward) displacement of the tibia. It runs from the back of the tibia to the inner side of the femur, crossing behind the ACL within the knee joint.",
-      "PCL injuries are less common than ACL tears but are significantly debilitating when they occur. They typically result from a direct blow to the front of the flexed knee — such as a 'dashboard injury' in road traffic accidents — or from severe hyperflexion of the knee. Isolated PCL tears may sometimes be managed conservatively; however, high-grade injuries and those associated with other ligament damage require surgical reconstruction.",
-      "Arthroscopic PCL reconstruction at Midwest Hospital, Bahawalpur under Dr. Shoaib Aslam Kurerr's care restores posterior stability with minimal tissue disruption and accelerated recovery compared to traditional open surgery.",
+    overview: [
+      "Replaces the torn Posterior Cruciate Ligament — the primary restraint against backward tibial displacement.",
+      "Performed arthroscopically through small portals for minimal soft tissue disruption.",
+      "Graft fixed at 90° flexion to replicate natural PCL tension and restore normal knee biomechanics.",
     ],
+    stats: { time: "60–90 min", stay: "Same-day / 1 night", walking: "Day 2–3 (braced)" },
     symptoms: [
-      "Posterior knee pain worsened by walking downstairs",
-      "A feeling of the knee 'sinking back' when bearing weight",
-      "Swelling and stiffness after injury",
-      "Difficulty going downstairs or running downhill",
+      "Posterior knee pain worsened by descending stairs",
+      "Feeling of the knee 'sinking back' when weight-bearing",
       "Positive Posterior Drawer Test on clinical examination",
-      "MRI-confirmed PCL tear, often with associated bone bruising",
+      "MRI-confirmed PCL tear, often with bone bruising",
     ],
-    stepByStep: [
-      {
-        heading: "Pre-operative Planning",
-        detail:
-          "MRI imaging assesses PCL grade and identifies associated injuries to the posterolateral corner, ACL, or menisci. Stress X-rays quantify the degree of posterior tibial subluxation.",
-      },
-      {
-        heading: "Arthroscopic Evaluation",
-        detail:
-          "The knee is thoroughly examined under arthroscopic vision. Any meniscal or chondral injuries are treated concurrently. The remnant PCL tissue is assessed for augmentation versus full reconstruction.",
-      },
-      {
-        heading: "Graft Preparation",
-        detail:
-          "An Achilles tendon allograft or hamstring autograft is prepared to the appropriate diameter and length. The tibial inlay or transtibial technique is selected based on the injury pattern.",
-      },
-      {
-        heading: "Tunnel Drilling & Graft Passage",
-        detail:
-          "Anatomic tibial and femoral tunnels are created. The graft is passed and positioned to replicate the native PCL's anterolateral bundle, which is most critical for knee stability.",
-      },
-      {
-        heading: "Fixation at Correct Knee Position",
-        detail:
-          "Fixation is performed with the knee in 90° of flexion and an anterior tibial force applied — the position that best tensions the PCL graft. Interference screws and cortical buttons secure the graft.",
-      },
+    steps: [
+      { heading: "Imaging Assessment", detail: "MRI and stress X-rays grade the PCL injury and identify associated damage." },
+      { heading: "Arthroscopic Evaluation", detail: "Meniscal and cartilage injuries addressed concurrently." },
+      { heading: "Graft Preparation", detail: "Achilles allograft or hamstring autograft prepared to appropriate diameter." },
+      { heading: "Fixation at 90°", detail: "Graft secured at 90° flexion with anterior tibial force to achieve correct tension." },
     ],
     recovery: {
-      timeline: "6 – 9 months to full activity",
+      timeline: "6–9 months to full activity",
       details: [
-        "Week 1–4: Knee brace in extension. Gentle range-of-motion exercises begin.",
-        "Week 4–8: Progressive weight-bearing. Hamstring activation is prioritized.",
-        "Month 3–4: Stationary cycling and swimming. Closed-chain strengthening.",
-        "Month 5–9: Return to sport-specific training after functional testing.",
+        "Week 1–4: Knee brace in extension. Gentle range-of-motion exercises.",
+        "Week 4–8: Progressive weight-bearing. Hamstring activation prioritized.",
+        "Month 3–4: Cycling, swimming, closed-chain strengthening.",
+        "Month 5–9: Return to sport after functional testing.",
       ],
     },
   },
@@ -386,55 +279,33 @@ const procedures: Record<string, ProcedureInfo> = {
     title: "Meniscus Repair",
     category: "Knee Ligament Surgery",
     heroKey: "knee-ligament",
-    tagline: "Preserving the knee's natural shock absorber for long-term joint health",
+    tagline: "Preserving the knee's natural shock absorber for lifelong joint health.",
     diagram: "knee",
-    intro: [
-      "The menisci are two C-shaped fibrocartilaginous pads — the medial and lateral meniscus — that sit between the femur and tibia within the knee joint. They serve as critical shock absorbers, distribute load across the joint surface, enhance lubrication, and provide secondary stability to the knee.",
-      "Meniscal tears rank among the most frequent orthopaedic injuries and occur across a wide spectrum of patients — from young athletes sustaining acute twisting injuries to older individuals experiencing degenerative tears. Symptoms include localized knee pain along the joint line, clicking, locking, and swelling. Left untreated, significant tears lead to accelerated cartilage wear and early arthritis.",
-      "The primary goal of modern meniscal surgery is preservation — repairing tears wherever possible rather than removing meniscal tissue. Dr. Shoaib Aslam Kurerr specializes in arthroscopic meniscal repair, using advanced suture techniques that promote healing and protect the long-term health of the knee joint.",
+    overview: [
+      "Repairs torn meniscal cartilage arthroscopically — preserving tissue rather than removing it.",
+      "All-inside suture technique approximates the tear edges to stimulate biological healing.",
+      "Protects the knee from accelerated cartilage wear and early-onset arthritis.",
     ],
+    stats: { time: "30–60 min", stay: "Same-day", walking: "Day 1 (repair: protected)" },
     symptoms: [
-      "Joint-line pain — medial or lateral — that worsens with squatting or twisting",
-      "Knee swelling that develops gradually after activity",
-      "Clicking, catching, or locking of the knee during movement",
-      "Inability to fully straighten or bend the knee",
-      "Pain when climbing stairs or rising from a seated position",
-      "Positive McMurray's or Thessaly test on clinical examination",
+      "Joint-line pain worsened by squatting or twisting",
+      "Clicking, catching, or locking of the knee",
+      "Swelling that develops gradually after activity",
+      "Positive McMurray's or Thessaly test",
     ],
-    stepByStep: [
-      {
-        heading: "Diagnostic Arthroscopy",
-        detail:
-          "The entire meniscus is mapped under arthroscopic vision. The location, pattern, and blood supply of the tear determine whether repair or selective trimming (partial meniscectomy) is the most appropriate treatment.",
-      },
-      {
-        heading: "Tear Preparation",
-        detail:
-          "The edges of the tear are refreshed using a small rasp or shaver to stimulate a vascular healing response — a critical step for successful repair.",
-      },
-      {
-        heading: "Suture Placement (All-Inside Technique)",
-        detail:
-          "Using modern all-inside repair devices, self-tensioning sutures are passed through the meniscal tear and compressed against the outer capsule, approximating the tear edges under optimal tension.",
-      },
-      {
-        heading: "Biological Augmentation",
-        detail:
-          "For complex or avascular tears, platelet-rich plasma (PRP) or fibrin clot may be applied at the repair site to enhance the biological healing environment.",
-      },
-      {
-        heading: "Concurrent Procedures",
-        detail:
-          "Any associated ACL or cartilage pathology identified during arthroscopy is addressed in the same surgical sitting, minimizing the need for future procedures.",
-      },
+    steps: [
+      { heading: "Diagnostic Arthroscopy", detail: "Tear mapped — location and blood supply determine repair vs trimming." },
+      { heading: "Tear Preparation", detail: "Tear edges freshened with a rasp to stimulate healing response." },
+      { heading: "Suture Placement", detail: "All-inside self-tensioning devices compress the tear under optimal tension." },
+      { heading: "Biological Augmentation", detail: "PRP or fibrin clot applied for complex avascular-zone tears." },
     ],
     recovery: {
-      timeline: "4 – 6 months for repair; 4–6 weeks for trimming",
+      timeline: "4–6 months (repair) · 4–6 weeks (trimming)",
       details: [
-        "Trimming (Partial Meniscectomy): Weight-bearing begins within days. Return to activity within 4–6 weeks.",
-        "Repair — Week 1–6: Protected weight-bearing in a brace. Knee flexion gradually increased to 90°.",
-        "Repair — Month 2–3: Full weight-bearing. Strengthening and proprioception exercises.",
-        "Repair — Month 4–6: Return to cutting and pivoting sports after functional clearance.",
+        "Trimming: Weight-bearing within days. Return to activity at 4–6 weeks.",
+        "Repair Week 1–6: Braced, protected weight-bearing. Flexion to 90°.",
+        "Repair Month 2–3: Full weight-bearing, strengthening and proprioception.",
+        "Repair Month 4–6: Return to cutting and pivoting sport after clearance.",
       ],
     },
   },
@@ -443,49 +314,32 @@ const procedures: Record<string, ProcedureInfo> = {
     title: "MCL & LCL Reconstruction",
     category: "Knee Ligament Surgery",
     heroKey: "knee-ligament",
-    tagline: "Restoring side-to-side stability to the knee with precision graft reconstruction",
+    tagline: "Restoring side-to-side knee stability with precision graft reconstruction.",
     diagram: "knee",
-    intro: [
-      "The Medial Collateral Ligament (MCL) and Lateral Collateral Ligament (LCL) are the primary restraints that prevent the knee from buckling inward (valgus) or outward (varus). They run along the inner and outer sides of the knee joint respectively and are essential for day-to-day stability with every step.",
-      "Isolated MCL injuries are common in contact sports and usually heal with conservative management. However, high-grade (Grade III) tears, chronic ligament insufficiency, and injuries that occur in combination with ACL or PCL tears often require surgical reconstruction to restore stable knee function and prevent long-term joint degeneration.",
-      "Dr. Shoaib Aslam Kurerr employs anatomical graft reconstruction techniques for both MCL and LCL, restoring the native ligament footprints for optimal biomechanical outcomes.",
+    overview: [
+      "Reconstructs the medial (MCL) or lateral (LCL) collateral ligaments using a tendon graft.",
+      "Anatomical footprint fixation on femur and tibia restores natural varus/valgus restraint.",
+      "Frequently combined with ACL or PCL reconstruction in multi-ligament knee injuries.",
     ],
+    stats: { time: "60–90 min", stay: "Same-day / 1 night", walking: "Day 1–2 (braced)" },
     symptoms: [
       "Pain along the inner (MCL) or outer (LCL) side of the knee",
-      "Swelling and bruising after injury",
       "Feeling of the knee buckling inward or outward",
-      "Valgus stress pain — inner knee pain when the outer knee is pushed",
-      "Combined instability suggesting multi-ligament injury",
-      "Positive varus/valgus stress testing on clinical examination",
+      "Swelling and bruising after valgus or varus injury",
+      "Positive varus/valgus stress testing",
     ],
-    stepByStep: [
-      {
-        heading: "Ligament Assessment",
-        detail:
-          "Stress X-rays and MRI quantify the degree of laxity and identify the precise location of the injury — whether at the femoral origin, tibial insertion, or midsubstance — guiding the reconstruction approach.",
-      },
-      {
-        heading: "Graft Preparation",
-        detail:
-          "An autograft (gracilis or semitendinosus tendon) or allograft is prepared to recreate the native ligament. Graft diameter and length are matched to the patient's anatomy.",
-      },
-      {
-        heading: "Anatomic Fixation",
-        detail:
-          "Bony tunnels or anchors are placed at the precise anatomic attachment points of the native ligament on both the femur and tibia. The graft is passed through and secured.",
-      },
-      {
-        heading: "Multi-ligament Coordination",
-        detail:
-          "When performed alongside ACL or PCL reconstruction, the sequence and tensioning of each graft is carefully orchestrated to restore normal knee kinematics without over-constraining any single structure.",
-      },
+    steps: [
+      { heading: "Ligament Grading", detail: "Stress X-rays and MRI define the level and location of the injury." },
+      { heading: "Graft Preparation", detail: "Autograft (gracilis/semitendinosus) or allograft matched to native ligament." },
+      { heading: "Anatomic Fixation", detail: "Tunnels or anchors placed at precise femoral and tibial footprints." },
+      { heading: "Multi-ligament Tensioning", detail: "All graft tensions coordinated to restore natural knee kinematics." },
     ],
     recovery: {
-      timeline: "4 – 6 months",
+      timeline: "4–6 months",
       details: [
-        "Week 1–4: Hinged knee brace. Gentle range-of-motion exercises and protected weight-bearing.",
-        "Month 2–3: Brace weaned. Progressive strengthening.",
-        "Month 4–6: Return to full activities with functional assessment.",
+        "Week 1–4: Hinged brace. Protected weight-bearing and gentle range of motion.",
+        "Month 2–3: Brace weaned. Progressive strengthening commenced.",
+        "Month 4–6: Return to full activities after functional assessment.",
       ],
     },
   },
@@ -494,215 +348,137 @@ const procedures: Record<string, ProcedureInfo> = {
     title: "MPFL Reconstruction",
     category: "Knee Ligament Surgery",
     heroKey: "knee-ligament",
-    tagline: "Preventing recurrent kneecap dislocation with anatomic ligament restoration",
+    tagline: "Preventing recurrent kneecap dislocation with anatomic ligament restoration.",
     diagram: "knee",
-    intro: [
-      "The Medial Patellofemoral Ligament (MPFL) is a thin but critically important ligament that tethers the kneecap (patella) to the inner side of the femur, preventing it from dislocating laterally (outward). A first-time patellar dislocation tears this ligament in over 90% of cases, and without repair, recurrent dislocations become increasingly common.",
-      "Recurrent patellar instability causes significant disability, pain, and cartilage damage. Patients experience anxiety about simple activities such as walking on uneven ground or climbing stairs. MPFL reconstruction replaces the torn ligament with a tendon graft, recreating the natural patellar restraint.",
-      "Dr. Shoaib Aslam Kurerr's MPFL reconstruction technique is guided by precise anatomic landmarks and intraoperative fluoroscopy to ensure the femoral tunnel is placed at the isometric point — the position that provides optimal graft function through the full range of knee motion.",
+    overview: [
+      "Replaces the torn Medial Patellofemoral Ligament (MPFL) with a gracilis tendon graft to prevent lateral kneecap dislocation.",
+      "Femoral tunnel placed at the isometric Schöttle's point under fluoroscopic guidance for precise graft function.",
+      "Eliminates the apprehension and instability that limits activity after recurrent patellar dislocation.",
     ],
+    stats: { time: "45–75 min", stay: "Same-day", walking: "Day 1–2 (brace)" },
     symptoms: [
-      "Recurrent episodes of the kneecap 'slipping out' or feeling unstable",
-      "Swelling and pain over the inner side of the kneecap after dislocation",
-      "Apprehension when the kneecap is pushed laterally (Patellar Apprehension Sign)",
-      "Knee giving way during twisting or running activities",
-      "MRI showing MPFL disruption or chondral damage on the patella",
+      "Recurrent kneecap slipping out during activity",
+      "Swelling and inner-knee pain after dislocation episodes",
+      "Positive Patellar Apprehension Sign on examination",
+      "MRI confirming MPFL disruption",
     ],
-    stepByStep: [
-      {
-        heading: "Fluoroscopic Landmark Identification",
-        detail:
-          "The isometric point on the femur (Schöttle's point) is identified fluoroscopically. This is the precise attachment of the native MPFL, and correct placement is essential for graft function.",
-      },
-      {
-        heading: "Graft Harvesting",
-        detail:
-          "The gracilis tendon is harvested from the inner thigh through a small incision and prepared as a free graft.",
-      },
-      {
-        heading: "Patellar Fixation",
-        detail:
-          "Two small tunnels or suture anchors are placed in the medial edge of the patella. The graft is secured here first, maintaining appropriate tension.",
-      },
-      {
-        heading: "Femoral Fixation",
-        detail:
-          "A bone tunnel at Schöttle's point receives the other end of the graft, which is fixed with an interference screw at 30° of knee flexion to reproduce the native MPFL tension curve.",
-      },
-      {
-        heading: "Bony Alignment Assessment",
-        detail:
-          "If associated tibial tuberosity malposition or trochlear dysplasia is present, additional bony procedures (TTO or sulcus-deepening trochleoplasty) are considered to address the underlying instability.",
-      },
+    steps: [
+      { heading: "Fluoroscopic Landmark", detail: "Schöttle's isometric point on femur confirmed under X-ray guidance." },
+      { heading: "Gracilis Harvest", detail: "Graft harvested through a small inner thigh incision." },
+      { heading: "Patellar Fixation", detail: "Graft secured to medial patella via tunnels or suture anchors." },
+      { heading: "Femoral Fixation", detail: "Graft fixed at 30° flexion with interference screw at Schöttle's point." },
     ],
     recovery: {
-      timeline: "4 – 6 months to return to sport",
+      timeline: "4–6 months to sport",
       details: [
         "Week 1–2: Straight-leg brace. Quadriceps setting exercises.",
-        "Week 3–6: Gradual range-of-motion exercises. Weight-bearing as tolerated.",
+        "Week 3–6: Range-of-motion exercises. Weight-bearing as tolerated.",
         "Month 2–3: Strengthening. Cycling and swimming.",
-        "Month 4–6: Return to sport-specific training after functional assessment.",
+        "Month 4–6: Return to sport after functional assessment.",
       ],
     },
   },
 
   "high-tibial-osteotomy": {
     title: "High Tibial Osteotomy (HTO)",
-    category: "Knee Preservation & Joint Replacement",
+    category: "Knee Preservation & Replacement",
     heroKey: "knee-replacement",
-    tagline: "Realigning the leg to offload arthritis and delay joint replacement",
+    tagline: "Leg realignment to offload medial arthritis and delay joint replacement.",
     diagram: "replacement",
-    intro: [
-      "High Tibial Osteotomy (HTO) is a joint-preserving procedure designed for younger, active patients (typically under 55–60 years) who suffer from medial compartment knee arthritis with associated varus (bow-leg) deformity. By surgically realigning the tibia, the mechanical axis of the leg is shifted away from the worn compartment, redistributing weight onto the healthier portion of the joint.",
-      "Unlike knee replacement — which is a definitive solution but best suited to older, less active patients — HTO is designed to extend the lifespan of the natural knee. Appropriately selected patients can expect 10–15 years of significant pain relief before knee replacement may become necessary.",
-      "The procedure is performed at Midwest Hospital, Bahawalpur under Dr. Shoaib Aslam Kurerr's care using modern locking plate technology (open-wedge HTO), which allows precise angular correction and early weight-bearing.",
+    overview: [
+      "Surgically realigns the tibia to shift load away from the arthritic medial compartment onto healthier cartilage.",
+      "Performed with a modern locking plate — allows precise correction and early weight-bearing.",
+      "Best suited to active patients under 60 with isolated medial arthritis and varus (bow-leg) deformity.",
     ],
+    stats: { time: "60–90 min", stay: "1–2 nights", walking: "Week 1–2 (crutches)" },
     symptoms: [
-      "Pain on the inner (medial) side of the knee, especially with prolonged walking",
+      "Inner-knee pain worsened by walking and stairs",
       "Visible bow-leg deformity (varus alignment)",
-      "Stiffness after rest that improves with movement",
-      "Pain worsening on slopes and stairs",
-      "X-rays showing joint space narrowing confined to the medial compartment",
-      "Younger, active patient seeking to preserve the natural knee",
+      "X-ray showing medial compartment joint space narrowing",
+      "Active patient seeking to preserve natural knee",
     ],
-    stepByStep: [
-      {
-        heading: "Pre-operative Planning",
-        detail:
-          "Full-length (hip-to-ankle) weight-bearing X-rays are analyzed to calculate the precise angular correction required. The target is to shift the mechanical axis 62–66% across the tibial width.",
-      },
-      {
-        heading: "Surgical Approach",
-        detail:
-          "An incision is made on the inner side of the upper tibia. The pes anserine tendons are carefully retracted to expose the tibial surface.",
-      },
-      {
-        heading: "Bone Cut (Osteotomy)",
-        detail:
-          "A transverse cut is made across the tibia below the knee joint, leaving the lateral cortex intact as a hinge. The medial side is gradually opened using calibrated spreaders to the calculated degree of correction.",
-      },
-      {
-        heading: "Plate Fixation",
-        detail:
-          "A specifically designed locking plate is applied across the osteotomy to maintain the corrected position. The open wedge may be filled with bone graft or a synthetic bone substitute to accelerate healing.",
-      },
+    steps: [
+      { heading: "Full-Length X-ray Planning", detail: "Angular correction calculated to shift mechanical axis to 62–66% of tibial width." },
+      { heading: "Tibial Osteotomy", detail: "Transverse cut made below the knee, leaving the lateral cortex as a hinge." },
+      { heading: "Wedge Opening", detail: "Medial side gradually opened to the calculated correction angle." },
+      { heading: "Locking Plate Fixation", detail: "Plate applied to hold correction; void filled with bone graft or substitute." },
     ],
     recovery: {
       timeline: "6 months to full recovery",
       details: [
-        "Week 1–2: Crutches with partial weight-bearing. Knee range-of-motion exercises.",
-        "Week 6–8: Progressive weight-bearing as bone healing is confirmed on X-ray.",
-        "Month 3–4: Full weight-bearing and return to light activities.",
-        "Month 5–6: Return to recreational sport and manual work.",
+        "Week 1–2: Crutches with partial weight-bearing.",
+        "Week 6–8: Progressive weight-bearing as bone healing confirmed on X-ray.",
+        "Month 3–4: Full weight-bearing and light activities.",
+        "Month 5–6: Return to sport and manual work.",
       ],
     },
   },
 
   "total-knee-replacement": {
     title: "Total Knee Replacement",
-    category: "Knee Preservation & Joint Replacement",
+    category: "Knee Preservation & Replacement",
     heroKey: "knee-replacement",
-    tagline: "Eliminating severe knee arthritis pain with precision joint arthroplasty",
+    tagline: "Eliminating end-stage knee arthritis pain with precision joint arthroplasty.",
     diagram: "replacement",
-    intro: [
-      "Total Knee Replacement (TKR), or total knee arthroplasty, is one of the most successful and transformative procedures in modern orthopaedic surgery. It involves replacing all three compartments of the damaged knee joint with precision-engineered prosthetic components made of cobalt-chromium alloy, titanium, and high-grade polyethylene.",
-      "The procedure is typically recommended for patients with severe, end-stage knee arthritis — whether osteoarthritis, rheumatoid arthritis, or post-traumatic arthritis — who have failed adequate conservative management including analgesia, physiotherapy, injections, and lifestyle modifications. These patients experience disabling pain that disrupts sleep, limits walking distance, and prevents independence in daily activities.",
-      "Modern TKR implants are engineered for longevity, with over 95% of implants functioning well at 20 years. Dr. Shoaib Aslam Kurerr performs total knee arthroplasty at Midwest Hospital, Bahawalpur, utilizing precise alignment techniques to optimize implant positioning and long-term outcomes.",
+    overview: [
+      "Resurfaces all three damaged knee compartments with cobalt-chrome and polyethylene prosthetic components.",
+      "Recommended for patients with severe arthritis where conservative treatment has failed.",
+      "Over 95% of implants last 15–20 years, delivering durable, pain-free mobility.",
     ],
+    stats: { time: "90–120 min", stay: "3–5 days", walking: "Day 1 with frame" },
     symptoms: [
-      "Severe knee pain that persists at rest and disturbs sleep",
-      "Significant limitation of walking distance (< 500 metres)",
-      "Inability to perform stairs, shopping, or basic domestic tasks",
-      "Visible deformity of the knee (varus or valgus)",
-      "Advanced joint space loss on X-ray across multiple compartments",
-      "Failure of conservative measures including injections and physiotherapy",
+      "Severe pain at rest and during sleep",
+      "Walking distance under 500 metres",
+      "Advanced joint loss on X-ray across multiple compartments",
+      "Failed conservative management including injections",
     ],
-    stepByStep: [
-      {
-        heading: "Pre-operative Assessment",
-        detail:
-          "Full-length X-rays, blood tests, cardiovascular review, and pre-operative physiotherapy assessment are completed. Implant size is templated from radiographs.",
-      },
-      {
-        heading: "Surgical Approach",
-        detail:
-          "A midline skin incision and medial parapatellar arthrotomy expose the entire knee joint. The patella is reflected laterally to access all three compartments.",
-      },
-      {
-        heading: "Bone Resection",
-        detail:
-          "Using precision cutting guides, measured amounts of bone are removed from the distal femur, proximal tibia, and patella. Alignment is verified with mechanical alignment rods or computer-assisted navigation.",
-      },
-      {
-        heading: "Trial Components",
-        detail:
-          "Temporary trial implants are inserted to assess alignment, stability, range of motion, and patellar tracking before definitive implant selection.",
-      },
-      {
-        heading: "Cementation & Closure",
-        detail:
-          "Definitive femoral, tibial, and patellar components are cemented in place. The wound is meticulously closed in layers and a drain placed if indicated.",
-      },
+    steps: [
+      { heading: "Pre-op Templating", detail: "Full-length X-rays used to template implant sizes and plan alignment." },
+      { heading: "Bone Resection", detail: "Precise cuts on femur, tibia, and patella guided by alignment instruments." },
+      { heading: "Trial Components", detail: "Temporary implants verify alignment, stability, and patellar tracking." },
+      { heading: "Cementation", detail: "Final components cemented; wound closed in layers." },
     ],
     recovery: {
-      timeline: "3 – 6 months to full recovery",
+      timeline: "3–6 months to full recovery",
       details: [
-        "Day 1: Physiotherapy begins. Walking with a frame on the day of surgery.",
-        "Day 3–5: Discharge home with walking aids, wound care instructions, and DVT prophylaxis.",
-        "Week 3–6: Outpatient physiotherapy. Stair climbing, and independent walking.",
-        "Month 3: Return to driving and most daily activities.",
-        "Month 6: Full recovery. Patients can walk unlimited distances without pain.",
+        "Day 1: Walking with a frame. Physiotherapy begins.",
+        "Week 3–6: Independent walking, stair climbing.",
+        "Month 3: Driving and most daily activities.",
+        "Month 6: Unlimited walking. Pain-free function restored.",
       ],
     },
   },
 
   "partial-knee-replacement": {
     title: "Partial Knee Replacement",
-    category: "Knee Preservation & Joint Replacement",
+    category: "Knee Preservation & Replacement",
     heroKey: "knee-replacement",
-    tagline: "Targeted resurfacing of the damaged compartment with natural knee preservation",
+    tagline: "Targeted resurfacing of the damaged compartment — preserving healthy tissue.",
     diagram: "replacement",
-    intro: [
-      "Partial, or unicompartmental, knee replacement (UKR) resurfaces only the damaged compartment of the knee — most commonly the medial (inner) compartment — while preserving the healthy bone, cartilage, and ligaments in the other compartments. This makes it a highly attractive option for eligible patients who wish to maintain the most natural-feeling knee possible.",
-      "Compared to total knee replacement, partial knee replacement involves a smaller incision, less bone removal, reduced blood loss, lower complication rates, and significantly faster recovery. Patients consistently report that a partial knee replacement feels more like their natural knee than a total replacement.",
-      "Patient selection is critical: the procedure is most appropriate for patients with isolated single-compartment arthritis, intact ACL and collateral ligaments, and a correctable deformity. Dr. Shoaib Aslam Kurerr carefully evaluates each patient to determine whether partial or total replacement is the optimal choice.",
+    overview: [
+      "Resurfaces only the damaged knee compartment through a smaller incision than total replacement.",
+      "Preserves healthy bone, ligaments, and cartilage for a more natural-feeling outcome.",
+      "Faster recovery and less blood loss than total knee replacement.",
     ],
+    stats: { time: "60–90 min", stay: "1–2 nights", walking: "Day 1" },
     symptoms: [
       "Pain localized to the inner or outer side of the knee",
-      "Pain with activity that is relieved with rest",
-      "Stiffness that improves with movement",
-      "X-rays showing arthritis confined to one compartment",
+      "Single-compartment arthritis confirmed on X-ray",
       "Intact ACL confirmed clinically and on MRI",
-      "Correctable deformity (< 15° varus or valgus)",
+      "Correctable deformity under 15°",
     ],
-    stepByStep: [
-      {
-        heading: "Precise Patient Selection",
-        detail:
-          "Clinical examination, MRI, and weight-bearing X-rays confirm single-compartment disease, intact ligaments, and appropriate bone quality.",
-      },
-      {
-        heading: "Minimally Invasive Approach",
-        detail:
-          "A short skin incision (8–10 cm) and a limited arthrotomy expose only the affected compartment, preserving the intact quadriceps mechanism.",
-      },
-      {
-        heading: "Bone Preparation",
-        detail:
-          "Precision cutting guides resurface only the femoral condyle and tibial plateau of the damaged compartment, removing a minimum amount of bone.",
-      },
-      {
-        heading: "Implant Insertion",
-        detail:
-          "A small metal femoral implant and a flat tibial baseplate with polyethylene insert are cemented in place. Final alignment is verified through the full range of motion.",
-      },
+    steps: [
+      { heading: "Patient Selection", detail: "MRI and weight-bearing X-rays confirm single-compartment disease and intact ligaments." },
+      { heading: "Minimal Approach", detail: "8–10 cm incision exposing only the affected compartment." },
+      { heading: "Bone Preparation", detail: "Only the damaged condyle and plateau resurfaced — minimum bone removal." },
+      { heading: "Implant Cementation", detail: "Metal femoral implant and tibial baseplate with polyethylene insert cemented." },
     ],
     recovery: {
-      timeline: "6 – 12 weeks to full daily function",
+      timeline: "6–12 weeks to daily function",
       details: [
-        "Day 1: Walking with a frame. Less pain than total replacement.",
-        "Week 2–3: Walking without aids for most patients.",
-        "Week 4–6: Return to light work and driving.",
+        "Day 1: Walking with frame. Less pain than total replacement.",
+        "Week 2–3: Most patients walking without aids.",
+        "Week 4–6: Return to driving and light work.",
         "Week 8–12: Return to recreational activities and sport.",
       ],
     },
@@ -710,50 +486,33 @@ const procedures: Record<string, ProcedureInfo> = {
 
   "arthroscopic-shoulder-capsular-release": {
     title: "Arthroscopic Shoulder Capsular Release",
-    category: "Shoulder Arthroscopy & Reconstruction",
+    category: "Shoulder Surgery",
     heroKey: "shoulder",
-    tagline: "Precisely releasing the frozen shoulder capsule to restore full range of motion",
+    tagline: "Precisely releasing the frozen shoulder capsule to restore full range of motion.",
     diagram: "shoulder",
-    intro: [
-      "Frozen shoulder, medically termed adhesive capsulitis, is a painful and debilitating condition characterized by progressive stiffness and loss of movement of the shoulder joint. It occurs when the normally loose shoulder capsule — the fibrous envelope surrounding the joint — becomes thickened, inflamed, and contracted, severely restricting motion in all directions.",
-      "The condition typically progresses through three phases: the painful 'freezing' phase (3–9 months), the stiff 'frozen' phase (9–18 months), and the 'thawing' phase where spontaneous recovery occurs — but this can take 2–3 years and may be incomplete. For patients in whom aggressive physiotherapy, corticosteroid injections, and hydrodilatation have failed to provide adequate relief, Arthroscopic Shoulder Capsular Release offers definitive surgical treatment.",
-      "Dr. Shoaib Aslam Kurerr performs this procedure at Midwest Hospital using radiofrequency ablation to precisely release the contracted capsule, restoring full range of motion under direct arthroscopic vision.",
+    overview: [
+      "Releases the thickened, contracted shoulder capsule using radiofrequency energy under arthroscopic vision.",
+      "Indicated for frozen shoulder (adhesive capsulitis) that has failed physiotherapy and injections.",
+      "Restores full range of motion in the same surgical sitting through keyhole portals.",
     ],
+    stats: { time: "30–45 min", stay: "Same-day", walking: "Immediately" },
     symptoms: [
-      "Progressive loss of shoulder movement in all planes — especially internal rotation and abduction",
-      "Severe pain at the end of range of motion",
-      "Difficulty reaching behind the back (e.g., fastening a bra, tucking in a shirt)",
-      "Pain that disturbs sleep, particularly when lying on the affected shoulder",
-      "Duration of symptoms greater than 6 months despite conservative treatment",
-      "MRI showing capsular thickening and reduced joint volume",
+      "Progressive loss of shoulder movement in all planes",
+      "Severe pain at end range — especially internal rotation",
+      "Symptoms lasting over 6 months despite conservative treatment",
+      "Night pain disrupting sleep",
     ],
-    stepByStep: [
-      {
-        heading: "Beach Chair Positioning",
-        detail:
-          "The patient is positioned semi-upright in the beach chair position under general anaesthesia with an interscalene nerve block for post-operative analgesia.",
-      },
-      {
-        heading: "Diagnostic Arthroscopy",
-        detail:
-          "A camera is inserted through a posterior portal. The inflamed and thickened capsule is visualized, confirming the diagnosis and the distribution of contracture.",
-      },
-      {
-        heading: "Systematic Capsular Release",
-        detail:
-          "Using a radiofrequency probe through an anterior portal, the capsule is systematically released — beginning at the rotator interval (anterior capsule), continuing inferiorly along the axillary recess, and finally addressing the posterior capsule.",
-      },
-      {
-        heading: "Manipulation Under Anaesthesia",
-        detail:
-          "After capsular release, the shoulder is gently manipulated through full range of motion to break any remaining adhesions and confirm complete restoration of movement.",
-      },
+    steps: [
+      { heading: "Diagnostic Arthroscopy", detail: "Thickened, inflamed capsule visualised and extent of contracture mapped." },
+      { heading: "Anterior Capsular Release", detail: "Rotator interval and anterior capsule divided with radiofrequency probe." },
+      { heading: "Inferior & Posterior Release", detail: "Axillary recess and posterior capsule released systematically." },
+      { heading: "Manipulation", detail: "Shoulder manipulated through full range of motion to break residual adhesions." },
     ],
     recovery: {
-      timeline: "6 – 12 weeks to regain functional motion",
+      timeline: "6–12 weeks to full functional motion",
       details: [
-        "Day 1: Aggressive physiotherapy begins immediately to maintain the motion achieved in theatre.",
-        "Week 1–4: Daily physiotherapy with heat, stretching, and active assisted exercises.",
+        "Day 1: Aggressive physiotherapy begins immediately to maintain intraoperative gains.",
+        "Week 1–4: Daily physiotherapy — heat, stretching, active assisted exercises.",
         "Month 2–3: Full functional motion restored in the majority of patients.",
         "Month 3+: Strengthening and return to all activities.",
       ],
@@ -762,56 +521,34 @@ const procedures: Record<string, ProcedureInfo> = {
 
   "arthroscopic-bankart-repair": {
     title: "Arthroscopic Bankart Repair",
-    category: "Shoulder Arthroscopy & Reconstruction",
+    category: "Shoulder Surgery",
     heroKey: "shoulder",
-    tagline: "Reattaching the shoulder labrum to prevent recurrent dislocation",
+    tagline: "Reattaching the shoulder labrum to prevent recurrent dislocation.",
     diagram: "shoulder",
-    intro: [
-      "A Bankart lesion is a tear of the glenoid labrum — the fibrocartilaginous rim that deepens the shoulder socket (glenoid) and serves as the primary stabilizer against anterior dislocation. It is present in the vast majority of first-time anterior shoulder dislocations and is the most common cause of recurrent instability.",
-      "Following a first dislocation, the risk of recurrence is heavily influenced by age: in patients under 25 years, the recurrence rate without surgery can approach 80–90%. Recurrent dislocations cause progressive labral and bone damage, increasing the complexity of future surgery and the risk of permanent joint deterioration.",
-      "Arthroscopic Bankart Repair is the gold-standard treatment for traumatic anterior shoulder instability. Under Dr. Shoaib Aslam Kurerr's care at Midwest Hospital, this procedure achieves a success rate exceeding 90%, allowing patients to return to sport, overhead work, and active lifestyles with confidence.",
+    overview: [
+      "Reattaches the torn glenoid labrum using 3–4 suture anchors inserted arthroscopically through keyhole portals.",
+      "Restores the natural socket 'bumper' that prevents anterior shoulder dislocation.",
+      "Achieves over 90% success rate — allowing return to sport, overhead work, and contact activities.",
     ],
+    stats: { time: "45–75 min", stay: "Same-day", walking: "Immediately" },
     symptoms: [
-      "Recurrent episodes of shoulder slipping out or 'subluxing'",
-      "Apprehension when the arm is raised and rotated externally",
-      "Anterior shoulder pain and weakness",
-      "A sense of instability during overhead activities or contact sport",
-      "MRI or CT arthrogram confirming labral tear ± Hill-Sachs lesion",
-      "Young, active patient with anterior shoulder instability",
+      "Recurrent shoulder slipping out or subluxing",
+      "Apprehension when arm is raised and rotated outward",
+      "Instability during overhead sport or contact activities",
+      "MRI/CT arthrogram confirming labral tear",
     ],
-    stepByStep: [
-      {
-        heading: "Positioning & Setup",
-        detail:
-          "The patient is positioned in lateral decubitus or beach chair position. Arm traction provides distraction of the shoulder joint for arthroscopic access.",
-      },
-      {
-        heading: "Arthroscopic Assessment",
-        detail:
-          "The full extent of the labral tear is mapped. Associated lesions — Hill-Sachs impaction on the humeral head, anterior glenoid bone loss — are quantified to assess whether additional procedures are required.",
-      },
-      {
-        heading: "Labral Mobilization",
-        detail:
-          "The torn labrum and attached anterior capsule are elevated from the glenoid neck using an elevator, fully mobilizing the tissue for reattachment.",
-      },
-      {
-        heading: "Anchor Placement & Suturing",
-        detail:
-          "3–4 bioabsorbable suture anchors are inserted along the anterior glenoid rim. Sutures are passed through the labrum and tied arthroscopically, reattaching and tensioning the labrum against the glenoid rim.",
-      },
-      {
-        heading: "Glenoid Rim Restoration",
-        detail:
-          "The repaired labrum recreates the natural bumper effect, effectively deepening the shoulder socket and re-establishing the 'concavity compression' mechanism that keeps the joint stable.",
-      },
+    steps: [
+      { heading: "Arthroscopic Assessment", detail: "Tear extent, Hill-Sachs lesion, and glenoid bone loss quantified." },
+      { heading: "Labral Mobilization", detail: "Torn labrum elevated fully from the glenoid neck." },
+      { heading: "Anchor Insertion", detail: "3–4 suture anchors placed along anterior glenoid rim." },
+      { heading: "Labral Reattachment", detail: "Sutures passed through labrum and tied — restoring bumper effect." },
     ],
     recovery: {
-      timeline: "4 – 6 months to return to sport",
+      timeline: "4–6 months to return to sport",
       details: [
-        "Week 1–4: Arm sling immobilization. Pendulum exercises and elbow/wrist movement.",
-        "Week 4–8: Sling removal. Active assisted range-of-motion exercises.",
-        "Month 3–4: Strengthening of rotator cuff and periscapular muscles.",
+        "Week 1–4: Sling immobilization. Pendulum and elbow exercises.",
+        "Week 4–8: Sling removed. Active-assisted range of motion begins.",
+        "Month 3–4: Rotator cuff and scapular strengthening.",
         "Month 4–6: Sport-specific training and contact sport clearance.",
       ],
     },
@@ -819,113 +556,69 @@ const procedures: Record<string, ProcedureInfo> = {
 
   "arthroscopic-rotator-cuff-repair": {
     title: "Arthroscopic Rotator Cuff Repair",
-    category: "Shoulder Arthroscopy & Reconstruction",
+    category: "Shoulder Surgery",
     heroKey: "shoulder",
-    tagline: "Restoring shoulder strength and eliminating pain from rotator cuff tears",
+    tagline: "Reattaching torn shoulder tendons to restore strength and eliminate pain.",
     diagram: "shoulder",
-    intro: [
-      "The rotator cuff is a group of four muscles and their tendons — supraspinatus, infraspinatus, teres minor, and subscapularis — that form a dynamic sleeve around the humeral head, stabilizing and powering shoulder movement. The supraspinatus tendon is most commonly torn, typically at its insertion on the 'footprint' of the greater tuberosity.",
-      "Rotator cuff tears are common and affect both younger patients following acute trauma (a fall or heavy lifting) and older individuals where the tendon is progressively attenuated by chronic impingement and degenerative wear. Symptoms include pain — especially with overhead activity and at night — and progressive weakness that limits function.",
-      "Arthroscopic Rotator Cuff Repair reattaches the torn tendon to its bony footprint using suture anchors, restoring the tendon's normal tension and force transmission. Dr. Shoaib Aslam Kurerr performs this at Midwest Hospital, Bahawalpur, using modern double-row repair techniques that maximize the contact area of the tendon against bone, optimizing healing.",
+    overview: [
+      "Reattaches the torn supraspinatus (or other cuff) tendon to its bony footprint using arthroscopic suture anchors.",
+      "Double-row repair technique maximizes tendon-to-bone contact area for optimal healing.",
+      "Eliminates chronic night pain and progressive weakness caused by cuff deficiency.",
     ],
+    stats: { time: "60–90 min", stay: "Same-day", walking: "Immediately" },
     symptoms: [
-      "Dull aching pain in the shoulder, often worse at night",
-      "Pain with overhead reaching, lifting, or behind-the-back activities",
-      "Progressive shoulder weakness — difficulty raising the arm",
-      "Tenderness over the greater tuberosity or anterior acromion",
-      "Positive Jobe's (Empty Can) test indicating supraspinatus weakness",
-      "MRI confirming full-thickness or significant partial-thickness tear",
+      "Dull aching shoulder pain — worse at night and overhead",
+      "Progressive shoulder weakness when lifting or reaching",
+      "Positive Jobe's Empty Can test — supraspinatus weakness",
+      "MRI confirming full-thickness rotator cuff tear",
     ],
-    stepByStep: [
-      {
-        heading: "Diagnostic Arthroscopy",
-        detail:
-          "The shoulder is inspected from the subacromial space. The tear size, shape, and tendon mobility are assessed. Any impinging bone spurs (acromioplasty) or biceps tendon pathology (tenodesis) are addressed.",
-      },
-      {
-        heading: "Tendon Mobilization",
-        detail:
-          "Adhesions and scar tissue are released from the bursal and articular surfaces of the tear to restore tendon elasticity and allow it to reach the bony footprint without tension.",
-      },
-      {
-        heading: "Footprint Preparation",
-        detail:
-          "The greater tuberosity footprint is gently decorticated to create a vascular, bleeding bone bed that promotes tendon-to-bone healing.",
-      },
-      {
-        heading: "Suture Anchor Insertion",
-        detail:
-          "Suture anchors loaded with strong sutures are inserted into the prepared footprint. For larger tears, a double-row repair is used — medial row anchors placed first, followed by lateral row anchors — to maximize footprint coverage.",
-      },
-      {
-        heading: "Tendon Repair",
-        detail:
-          "Sutures are passed through the tendon using dedicated penetrators. Knots are tied arthroscopically, drawing the tendon firmly down onto the bone footprint under direct vision.",
-      },
+    steps: [
+      { heading: "Subacromial Inspection", detail: "Tear size and tendon mobility assessed. Bone spurs removed (acromioplasty) if required." },
+      { heading: "Tendon Mobilization", detail: "Scar tissue released to allow tendon to reach bony footprint without tension." },
+      { heading: "Footprint Preparation", detail: "Greater tuberosity decorticated to create a vascular healing bed." },
+      { heading: "Double-Row Repair", detail: "Medial and lateral anchor rows placed; sutures draw tendon firmly onto bone." },
     ],
     recovery: {
-      timeline: "4 – 6 months to full strength",
+      timeline: "4–6 months to full strength",
       details: [
-        "Week 1–6: Arm sling. Pendulum exercises only — the repair must be protected.",
-        "Week 6–12: Active assisted range-of-motion exercises begin. Sling discontinued.",
-        "Month 3–4: Active strengthening of rotator cuff and deltoid.",
-        "Month 4–6: Full strength recovery. Return to manual work and sport.",
+        "Week 1–6: Arm sling. Pendulum exercises only — repair must be protected.",
+        "Week 6–12: Active-assisted range of motion. Sling discontinued.",
+        "Month 3–4: Active rotator cuff and deltoid strengthening.",
+        "Month 4–6: Full strength. Return to manual work and sport.",
       ],
     },
   },
 
   "shoulder-replacement": {
     title: "Shoulder Replacement",
-    category: "Shoulder Arthroscopy & Reconstruction",
+    category: "Shoulder Surgery",
     heroKey: "shoulder",
-    tagline: "Precision shoulder arthroplasty for end-stage arthritis and complex fractures",
+    tagline: "Precision shoulder arthroplasty for end-stage arthritis and irreparable tears.",
     diagram: "shoulder",
-    intro: [
-      "Shoulder replacement, or shoulder arthroplasty, replaces the damaged surfaces of the glenohumeral joint — the ball (humeral head) and/or the socket (glenoid) — with prosthetic components. It is one of the most effective procedures for eliminating pain and restoring function in patients with severe shoulder arthritis, complex fractures, or irreparable rotator cuff tears.",
-      "Two principal designs are available: the Anatomic Total Shoulder Replacement (aTSR), which replicates the native joint geometry and is suited for patients with an intact rotator cuff, and the Reverse Total Shoulder Replacement (rTSR), where the ball-and-socket relationship is switched. rTSR is specifically indicated when the rotator cuff is massively torn, as it transfers the primary motor function from the cuff to the deltoid muscle.",
-      "Dr. Shoaib Aslam Kurerr performs both anatomic and reverse shoulder replacement at Midwest Hospital, Bahawalpur, tailoring the implant selection and surgical technique to each patient's individual anatomy and pathology.",
+    overview: [
+      "Replaces the damaged ball and socket of the shoulder with prosthetic components tailored to the patient's anatomy.",
+      "Reverse total shoulder replacement is used when the rotator cuff is massively torn — transferring function to the deltoid.",
+      "Eliminates constant pain and restores overhead function lost to advanced shoulder arthritis.",
     ],
+    stats: { time: "90–120 min", stay: "2–3 nights", walking: "Immediately" },
     symptoms: [
-      "Severe, constant shoulder pain unresponsive to medications and injections",
-      "Profound limitation of shoulder movement — often less than 90° elevation",
-      "X-rays showing advanced glenohumeral joint space loss",
-      "History of severe shoulder fracture with head collapse (avascular necrosis)",
-      "Irreparable rotator cuff tear with pseudoparalysis (inability to elevate the arm)",
-      "Previous shoulder arthroplasty requiring revision",
+      "Severe, constant shoulder pain unresponsive to injections and medication",
+      "Less than 90° elevation of the arm",
+      "Advanced glenohumeral joint space loss on X-ray",
+      "Irreparable rotator cuff tear with inability to elevate the arm",
     ],
-    stepByStep: [
-      {
-        heading: "Implant Planning",
-        detail:
-          "Pre-operative CT scan with 3D templating determines humeral and glenoid implant sizing and allows virtual placement of components for optimal positioning.",
-      },
-      {
-        heading: "Deltopectoral Approach",
-        detail:
-          "A standard anterior approach through the deltopectoral interval provides excellent exposure of the shoulder joint with minimal muscle disruption.",
-      },
-      {
-        heading: "Humeral Preparation",
-        detail:
-          "The humeral head is resected at the anatomic neck angle and the canal is reamed to accept the humeral stem. A trial stem is placed and the correct humeral head size selected.",
-      },
-      {
-        heading: "Glenoid Preparation (Anatomic) or Baseplate (Reverse)",
-        detail:
-          "For anatomic replacement, the glenoid is reamed and a polyethylene or metal-backed component is cemented in place. For reverse replacement, a glenosphere baseplate is fixed with central screws and a glenosphere ball is attached.",
-      },
-      {
-        heading: "Trial & Final Fixation",
-        detail:
-          "Trial reduction verifies stability, range of motion, and soft tissue tension. Final components are cemented or press-fit. The subscapularis is repaired meticulously to preserve anterior stability.",
-      },
+    steps: [
+      { heading: "CT 3D Planning", detail: "Pre-operative templating determines humeral and glenoid implant sizing." },
+      { heading: "Deltopectoral Approach", detail: "Anterior approach through the deltopectoral interval — minimal muscle disruption." },
+      { heading: "Humeral Preparation", detail: "Humeral head resected; stem reamed to correct angle." },
+      { heading: "Glenoid/Baseplate Fixation", detail: "Polyethylene glenoid (anatomic) or glenosphere baseplate (reverse) fixed." },
     ],
     recovery: {
-      timeline: "3 – 6 months to full function",
+      timeline: "3–6 months to full function",
       details: [
-        "Week 1–6: Arm sling. Physiotherapy focuses on passive range of motion and subscapularis protection.",
-        "Week 6–12: Active exercises begin. Strengthening of the deltoid (reverse) or rotator cuff (anatomic).",
-        "Month 3–6: Full recovery. Lifting restrictions are gradually removed.",
+        "Week 1–6: Arm sling. Passive range-of-motion physiotherapy.",
+        "Week 6–12: Active exercises begin. Deltoid strengthening (reverse).",
+        "Month 3–6: Full recovery. Lifting restrictions gradually removed.",
       ],
     },
   },
@@ -934,70 +627,63 @@ const procedures: Record<string, ProcedureInfo> = {
     title: "Trauma & Fracture Management",
     category: "Orthopaedic Trauma",
     heroKey: "trauma",
-    tagline: "Expert surgical care for acute fractures and complex musculoskeletal injuries",
+    tagline: "Expert surgical fixation for acute fractures and complex musculoskeletal injuries.",
     diagram: "trauma",
-    intro: [
-      "Orthopaedic trauma encompasses the full spectrum of acute injuries to the bones, joints, and soft tissues of the musculoskeletal system — from isolated simple fractures to complex polytrauma with multiple simultaneous injuries. Timely, expert surgical intervention is essential to restore anatomy, enable early mobilization, and optimize functional outcomes.",
-      "Dr. Shoaib Aslam Kurerr provides comprehensive emergency orthopaedic trauma care at Midwest Hospital, Bahawalpur, serving the surgical needs of patients from Bahawalpur and across southern Punjab. His expertise spans all categories of skeletal trauma — from fragility fractures in elderly patients to high-energy peri-articular fractures in young individuals.",
-      "Modern orthopaedic trauma surgery prioritizes minimally invasive fracture fixation (MIPO) wherever possible, reducing soft tissue disruption, accelerating healing, and improving functional recovery. The principle of 'damage control orthopaedics' is applied for life-threatening polytrauma — stabilizing fractures rapidly to enable patient resuscitation before definitive fixation.",
+    overview: [
+      "Covers all orthopaedic trauma — from simple fractures to complex polytrauma — using minimally invasive fixation (MIPO) wherever possible.",
+      "Urgent ATLS-guided assessment ensures life-threatening injuries are managed before definitive fracture surgery.",
+      "Intramedullary nails, locking plates, and cannulated screws restore anatomy and enable early mobilization.",
     ],
+    stats: { time: "Varies by injury", stay: "1–5 days", walking: "As soon as fixation allows" },
     symptoms: [
-      "Pain, swelling, and deformity at the site of injury",
+      "Pain, swelling, and deformity at the injury site",
       "Inability to bear weight on the injured limb",
-      "Abnormal mobility or crepitus at the fracture site",
-      "Neurovascular compromise — numbness, pallor, or pulselessness distal to injury",
-      "Open (compound) fractures with bone visible through a wound",
-      "Dislocation of a major joint (hip, knee, shoulder, elbow, ankle)",
+      "Neurovascular compromise distal to the fracture",
+      "Open fracture or major joint dislocation",
     ],
-    stepByStep: [
-      {
-        heading: "Emergency Assessment & Resuscitation",
-        detail:
-          "ATLS (Advanced Trauma Life Support) principles guide the primary and secondary survey. Life-threatening injuries are identified and treated first. Fractures are splinted and neurovascular status assessed.",
-      },
-      {
-        heading: "Imaging & Planning",
-        detail:
-          "X-rays in two planes and CT scanning (for periarticular and spinal injuries) define the fracture pattern and guide implant selection. Templating ensures correct plate, nail, or screw sizing.",
-      },
-      {
-        heading: "Surgical Fixation",
-        detail:
-          "Depending on the fracture, fixation is achieved with intramedullary nails (for long bone shaft fractures), locking plates (for periarticular fractures), cannulated screws (for femoral neck fractures), or external fixators (for temporization or open fractures).",
-      },
-      {
-        heading: "Wound Management",
-        detail:
-          "Open fractures are debrided urgently. Wound closure strategies range from primary closure to negative pressure wound therapy (wound VAC) and plastic surgical reconstruction for complex soft tissue defects.",
-      },
-      {
-        heading: "Definitive Fixation & Early Mobilization",
-        detail:
-          "Once the patient's physiological status is optimized, definitive fracture fixation is performed. Early mobilization — partial or full weight-bearing depending on fixation stability — is prioritized to prevent complications of immobility.",
-      },
+    steps: [
+      { heading: "ATLS Assessment", detail: "Life-threatening injuries identified and treated first. Fractures splinted." },
+      { heading: "Imaging & Planning", detail: "X-ray and CT define fracture pattern. Implant templating performed." },
+      { heading: "Surgical Fixation", detail: "Nail, plate, or external fixator selected based on fracture pattern and patient status." },
+      { heading: "Early Mobilization", detail: "Physiotherapy begins as soon as fixation stability allows." },
     ],
     recovery: {
-      timeline: "Variable — 6 weeks (simple) to 12 months (complex)",
+      timeline: "6 weeks (simple) – 12 months (complex)",
       details: [
-        "Immediate: Analgesia, limb elevation, DVT prophylaxis.",
-        "Week 1–4: Protected mobilization with physiotherapy beginning as early as the fracture fixation allows.",
-        "Month 2–6: Progressive loading as radiological and clinical healing is confirmed.",
-        "Month 6–12: Return to full work and physical activities for complex polytrauma cases.",
+        "Immediate: Analgesia, elevation, DVT prophylaxis.",
+        "Week 1–4: Protected mobilization. Physiotherapy as fracture healing allows.",
+        "Month 2–6: Progressive loading confirmed by X-ray.",
+        "Month 6–12: Full return to work and activities for complex cases.",
       ],
     },
   },
 };
 
-// ─── Diagram Selector ─────────────────────────────────────────────────────────
+// ─── Helpers ─────────────────────────────────────────────────────────────────
 
-const DiagramComponent = ({ type }: { type: ProcedureInfo["diagram"] }) => {
+const DiagramComponent = ({ type }: { type: DiagramType }) => {
   if (type === "knee") return <KneeJointDiagram />;
   if (type === "shoulder") return <ShoulderJointDiagram />;
   if (type === "replacement") return <KneeReplacementDiagram />;
   return <TraumaDiagram />;
 };
 
-// ─── Main Page ────────────────────────────────────────────────────────────────
+const CheckIcon = () => (
+  <svg viewBox="0 0 20 20" fill="none" className="w-5 h-5 shrink-0 mt-0.5">
+    <circle cx="10" cy="10" r="9" stroke="hsl(var(--primary))" strokeWidth="1.5" />
+    <path d="M6.5 10.5l2.5 2.5 4.5-5" stroke="hsl(var(--primary))" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+const AlertIcon = () => (
+  <svg viewBox="0 0 20 20" fill="none" className="w-5 h-5 shrink-0 mt-0.5">
+    <circle cx="10" cy="10" r="9" stroke="hsl(var(--accent))" strokeWidth="1.5" />
+    <line x1="10" y1="6" x2="10" y2="11" stroke="hsl(var(--accent))" strokeWidth="1.75" strokeLinecap="round" />
+    <circle cx="10" cy="13.5" r="0.75" fill="hsl(var(--accent))" />
+  </svg>
+);
+
+// ─── Page ─────────────────────────────────────────────────────────────────────
 
 const ServiceDetail = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -1008,196 +694,181 @@ const ServiceDetail = () => {
       <main>
         <section className="section-padding text-center">
           <div className="container-wide">
-            <h1 className="font-heading text-3xl font-bold text-foreground mb-4">
-              Procedure Not Found
-            </h1>
-            <p className="text-muted-foreground mb-8">
-              The requested procedure page could not be found.
-            </p>
+            <h1 className="font-heading text-3xl font-bold text-foreground mb-4">Procedure Not Found</h1>
+            <p className="text-muted-foreground mb-8">The requested procedure page could not be found.</p>
+            <Link to="/services" className="text-primary font-medium hover:underline">← Back to Services</Link>
           </div>
         </section>
       </main>
     );
   }
 
-  const heroSrc = heroImages[procedure.heroKey];
-
-  const handleBooking = () => {
-    const message = encodeURIComponent(
-      `Hello Dr. Shoaib Aslam Kurerr, I have read the guide on ${procedure.title} and would like to book a consultation.`
-    );
-    window.open(`https://wa.me/923002278796?text=${message}`, "_blank");
-  };
+  const whatsappUrl = `https://wa.me/923002278796?text=Hello%20Dr.%20Shoaib%2C%20I%20am%20interested%20in%20the%20${encodeURIComponent(procedure.title)}%20and%20would%20like%20to%20discuss%20my%20case.`;
 
   return (
     <main>
-      {/* ── Editorial Hero ───────────────────────────────────────────────── */}
-      <section className="relative h-[60vh] min-h-[440px] flex items-end overflow-hidden">
+      {/* ── Hero: Image + Title only ────────────────────────────────────── */}
+      <section className="relative h-[55vh] min-h-[380px] flex items-end overflow-hidden">
         <img
-          src={heroSrc}
-          alt={`${procedure.title} procedure`}
+          src={heroImages[procedure.heroKey]}
+          alt={procedure.title}
           className="absolute inset-0 w-full h-full object-cover object-center"
           loading="eager"
         />
-        <div className="absolute inset-0 hero-overlay" />
-        <div className="relative z-10 container-wide px-4 md:px-8 pb-12 w-full">
-          <Link
-            to="/services"
-            className="inline-flex items-center gap-2 text-primary-foreground/70 hover:text-primary-foreground text-sm mb-6 transition-colors"
-          >
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-transparent" />
+        <div className="relative z-10 container-wide px-4 md:px-8 pb-10 w-full">
+          <Link to="/services" className="inline-flex items-center gap-1.5 text-white/60 hover:text-white text-xs mb-5 transition-colors">
+            <ArrowLeft className="w-3.5 h-3.5" /> All Procedures
           </Link>
-          <p className="text-primary-foreground/75 font-semibold text-sm uppercase tracking-widest mb-2">
-            {procedure.category}
-          </p>
-          <h1 className="font-heading text-3xl md:text-5xl lg:text-6xl font-bold text-primary-foreground leading-tight max-w-3xl">
+          <p className="text-white/60 text-xs uppercase tracking-widest mb-2 font-medium">{procedure.category}</p>
+          <h1 className="font-heading text-2xl md:text-4xl font-bold text-white leading-tight max-w-2xl mb-2">
             {procedure.title}
           </h1>
-          <p className="text-primary-foreground/80 text-lg mt-3 max-w-2xl">
-            {procedure.tagline}
-          </p>
+          <p className="text-white/70 text-sm md:text-base max-w-xl">{procedure.tagline}</p>
         </div>
       </section>
 
-      {/* ── Article Body ─────────────────────────────────────────────────── */}
-      <article className="section-padding">
+      {/* ── Quick Stats Bar ─────────────────────────────────────────────── */}
+      <div className="bg-foreground text-background">
+        <div className="container-wide px-4 md:px-8">
+          <div className="grid grid-cols-3 divide-x divide-background/10">
+            {[
+              { icon: <Clock className="w-4 h-4" />, label: "Surgery Time", value: procedure.stats.time },
+              { icon: <BedDouble className="w-4 h-4" />, label: "Hospital Stay", value: procedure.stats.stay },
+              { icon: <PersonStanding className="w-4 h-4" />, label: "Walking", value: procedure.stats.walking },
+            ].map((stat) => (
+              <div key={stat.label} className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 py-4 px-3 sm:px-6 text-center sm:text-left">
+                <span className="text-background/50 shrink-0">{stat.icon}</span>
+                <div>
+                  <p className="text-background/50 text-xs uppercase tracking-wider leading-none mb-0.5">{stat.label}</p>
+                  <p className="text-background font-semibold text-xs sm:text-sm leading-tight">{stat.value}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* ── Main Content ────────────────────────────────────────────────── */}
+      <section className="section-padding">
         <div className="container-wide max-w-5xl mx-auto">
-          <div className="grid lg:grid-cols-3 gap-12">
-            {/* Main Content */}
-            <div className="lg:col-span-2 space-y-14">
+          <div className="grid lg:grid-cols-3 gap-10">
 
-              {/* What & Why */}
-              <ScrollReveal>
-                <section>
-                  <h2 className="font-heading text-2xl md:text-3xl font-bold text-foreground mb-6 pb-3 border-b border-border">
-                    Understanding the Condition
-                  </h2>
-                  <div className="space-y-4">
-                    {procedure.intro.map((para, i) => (
-                      <p key={i} className="text-muted-foreground leading-relaxed text-base">
-                        {para}
-                      </p>
-                    ))}
-                  </div>
-                </section>
-              </ScrollReveal>
+            {/* Left: Content */}
+            <div className="lg:col-span-2 space-y-12">
 
-              {/* Symptoms & Diagnosis */}
+              {/* Overview */}
               <ScrollReveal>
-                <section>
-                  <h2 className="font-heading text-2xl md:text-3xl font-bold text-foreground mb-6 pb-3 border-b border-border">
-                    Signs & Symptoms
+                <div>
+                  <h2 className="font-heading text-xl font-bold text-foreground mb-5 pb-3 border-b border-border">
+                    What is {procedure.title}?
                   </h2>
-                  <p className="text-muted-foreground mb-5 text-base">
-                    You may be a candidate for this procedure if you experience one or more of the following:
-                  </p>
                   <ul className="space-y-3">
-                    {procedure.symptoms.map((s, i) => (
+                    {procedure.overview.map((point, i) => (
                       <li key={i} className="flex items-start gap-3">
-                        <AlertCircle className="w-5 h-5 text-accent shrink-0 mt-0.5" />
-                        <span className="text-muted-foreground text-base">{s}</span>
+                        <CheckIcon />
+                        <span className="text-muted-foreground text-sm leading-relaxed">{point}</span>
                       </li>
                     ))}
                   </ul>
-                </section>
+                </div>
               </ScrollReveal>
 
-              {/* Step-by-Step Procedure */}
+              {/* Symptoms */}
               <ScrollReveal>
-                <section>
-                  <h2 className="font-heading text-2xl md:text-3xl font-bold text-foreground mb-6 pb-3 border-b border-border">
-                    The Procedure — Step by Step
+                <div>
+                  <h2 className="font-heading text-xl font-bold text-foreground mb-5 pb-3 border-b border-border">
+                    When Is It Needed?
                   </h2>
-                  <p className="text-muted-foreground mb-6 text-base">
-                    Dr. Shoaib Aslam Kurerr performs {procedure.title.toLowerCase()} using modern evidence-based surgical techniques at Midwest Hospital, Bahawalpur. Here is a patient-friendly overview of the surgical process:
-                  </p>
-                  <div className="space-y-6">
-                    {procedure.stepByStep.map((step, i) => (
+                  <ul className="space-y-3">
+                    {procedure.symptoms.map((s, i) => (
+                      <li key={i} className="flex items-start gap-3">
+                        <AlertIcon />
+                        <span className="text-muted-foreground text-sm leading-relaxed">{s}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </ScrollReveal>
+
+              {/* Steps */}
+              <ScrollReveal>
+                <div>
+                  <h2 className="font-heading text-xl font-bold text-foreground mb-6 pb-3 border-b border-border">
+                    Procedure Overview
+                  </h2>
+                  <div className="space-y-5">
+                    {procedure.steps.map((step, i) => (
                       <div key={i} className="flex gap-4">
                         <div className="flex flex-col items-center shrink-0">
-                          <div className="w-8 h-8 rounded-full cta-gradient text-primary-foreground flex items-center justify-center text-sm font-bold shrink-0">
+                          <div className="w-7 h-7 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xs font-bold shrink-0">
                             {i + 1}
                           </div>
-                          {i < procedure.stepByStep.length - 1 && (
+                          {i < procedure.steps.length - 1 && (
                             <div className="w-px flex-1 bg-border mt-2" />
                           )}
                         </div>
-                        <div className="pb-6">
-                          <h3 className="font-heading font-bold text-foreground text-lg mb-1">
-                            {step.heading}
-                          </h3>
-                          <p className="text-muted-foreground leading-relaxed text-base">
-                            {step.detail}
-                          </p>
+                        <div className="pb-5">
+                          <p className="font-semibold text-foreground text-sm mb-0.5">{step.heading}</p>
+                          <p className="text-muted-foreground text-sm leading-relaxed">{step.detail}</p>
                         </div>
                       </div>
                     ))}
                   </div>
-                </section>
+                </div>
               </ScrollReveal>
 
               {/* Recovery */}
               <ScrollReveal>
-                <section>
-                  <h2 className="font-heading text-2xl md:text-3xl font-bold text-foreground mb-2 pb-3 border-b border-border">
-                    Recovery & Rehabilitation
+                <div>
+                  <h2 className="font-heading text-xl font-bold text-foreground mb-2 pb-3 border-b border-border">
+                    Recovery
                   </h2>
-                  <div className="inline-flex items-center gap-2 bg-secondary text-secondary-foreground text-sm font-semibold px-4 py-2 rounded-full mb-6 mt-4">
-                    <Clock className="w-4 h-4 text-primary" />
-                    Expected Timeline: {procedure.recovery.timeline}
+                  <div className="inline-flex items-center gap-2 bg-secondary text-foreground text-xs font-semibold px-3 py-1.5 rounded-full mb-5 mt-3">
+                    <Clock className="w-3.5 h-3.5 text-primary" />
+                    {procedure.recovery.timeline}
                   </div>
-                  <ul className="space-y-4">
+                  <ul className="space-y-2.5">
                     {procedure.recovery.details.map((d, i) => (
                       <li key={i} className="flex items-start gap-3">
-                        <CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                        <span className="text-muted-foreground text-base">{d}</span>
+                        <CheckIcon />
+                        <span className="text-muted-foreground text-sm leading-relaxed">{d}</span>
                       </li>
                     ))}
                   </ul>
-                </section>
+                </div>
               </ScrollReveal>
             </div>
 
-            {/* Sidebar */}
-            <aside className="lg:col-span-1 space-y-8">
-              {/* Anatomical Diagram */}
+            {/* Right: Sidebar */}
+            <aside className="lg:col-span-1 space-y-6">
+
+              {/* Anatomy Diagram */}
               <ScrollReveal>
-                <div className="bg-card rounded-2xl p-6 card-shadow border border-border">
-                  <h3 className="font-heading font-bold text-foreground text-lg mb-1">
-                    Anatomy Overview
-                  </h3>
-                  <p className="text-muted-foreground text-sm mb-5">
-                    Illustrated anatomical diagram for patient reference.
-                  </p>
+                <div className="bg-card rounded-2xl p-6 card-shadow border border-border/60">
+                  <h3 className="font-heading font-bold text-foreground text-base mb-1">Anatomy Overview</h3>
+                  <p className="text-muted-foreground text-xs mb-4">Illustrated diagram for patient reference.</p>
                   <DiagramComponent type={procedure.diagram} />
-                  <p className="text-muted-foreground text-xs mt-4 text-center italic">
-                    Illustrative diagram — not to scale
-                  </p>
+                  <p className="text-muted-foreground text-xs mt-3 text-center italic">Illustrative — not to scale</p>
                 </div>
               </ScrollReveal>
 
               {/* Quick Facts */}
               <ScrollReveal>
-                <div className="bg-secondary rounded-2xl p-6 border border-border">
-                  <h3 className="font-heading font-bold text-foreground text-lg mb-4">
-                    Procedure at a Glance
-                  </h3>
+                <div className="bg-secondary rounded-2xl p-5 border border-border/60">
+                  <h3 className="font-heading font-bold text-foreground text-base mb-4">At a Glance</h3>
                   <dl className="space-y-3">
-                    <div>
-                      <dt className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Specialty</dt>
-                      <dd className="text-foreground font-medium text-sm mt-0.5">{procedure.category}</dd>
-                    </div>
-                    <div>
-                      <dt className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Recovery</dt>
-                      <dd className="text-foreground font-medium text-sm mt-0.5">{procedure.recovery.timeline}</dd>
-                    </div>
-                    <div>
-                      <dt className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Hospital</dt>
-                      <dd className="text-foreground font-medium text-sm mt-0.5">Midwest Hospital, Bahawalpur</dd>
-                    </div>
-                    <div>
-                      <dt className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Surgeon</dt>
-                      <dd className="text-foreground font-medium text-sm mt-0.5">Dr. Shoaib Aslam Kurerr</dd>
-                    </div>
+                    {[
+                      { label: "Specialty", value: procedure.category },
+                      { label: "Surgery Time", value: procedure.stats.time },
+                      { label: "Hospital Stay", value: procedure.stats.stay },
+                      { label: "Hospital", value: "Midwest Hospital, Bahawalpur" },
+                    ].map(({ label, value }) => (
+                      <div key={label}>
+                        <dt className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">{label}</dt>
+                        <dd className="text-foreground font-medium text-sm mt-0.5">{value}</dd>
+                      </div>
+                    ))}
                   </dl>
                 </div>
               </ScrollReveal>
@@ -1205,52 +876,60 @@ const ServiceDetail = () => {
               {/* Sticky CTA */}
               <ScrollReveal>
                 <div className="bg-primary rounded-2xl p-6 text-center sticky top-24">
-                  <h3 className="font-heading font-bold text-primary-foreground text-xl mb-2">
-                    Consult with Dr. Shoaib
+                  <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center mx-auto mb-4">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 text-white">
+                      <path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6 6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3" />
+                      <path d="M8 15v1a6 6 0 0 0 6 6 6 6 0 0 0 6-6v-4" />
+                      <circle cx="20" cy="10" r="2" />
+                    </svg>
+                  </div>
+                  <h3 className="font-heading font-bold text-primary-foreground text-lg mb-2">
+                    Consult with Dr Shoaib
                   </h3>
-                  <p className="text-primary-foreground/80 text-sm mb-5 leading-relaxed">
-                    Get expert advice on whether {procedure.title.toLowerCase()} is the right treatment for your condition.
+                  <p className="text-primary-foreground/70 text-xs mb-5 leading-relaxed">
+                    Discuss whether this procedure is right for your condition — in person at Midwest Hospital, Bahawalpur.
                   </p>
-                  <button
-                    onClick={handleBooking}
-                    className="w-full inline-flex items-center justify-center gap-2 bg-accent text-accent-foreground px-6 py-3 rounded-xl font-semibold text-base hover:opacity-90 transition-all"
+                  <a
+                    href={whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full inline-flex items-center justify-center gap-2 bg-white text-primary px-5 py-3 rounded-xl font-semibold text-sm hover:bg-white/90 transition-colors"
                   >
-                    Book Consultation
-                    <ChevronRight className="w-4 h-4" />
-                  </button>
-                  <p className="text-primary-foreground/60 text-xs mt-3">
-                    Via WhatsApp · +92 300 2278796
-                  </p>
+                    <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4" style={{ color: "#25D366" }}>
+                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                    </svg>
+                    Book via WhatsApp
+                  </a>
+                  <p className="text-primary-foreground/50 text-xs mt-3">+92 300 2278796</p>
                 </div>
               </ScrollReveal>
             </aside>
           </div>
         </div>
-      </article>
+      </section>
 
-      {/* ── Footer CTA Banner ─────────────────────────────────────────────── */}
-      <section className="bg-secondary border-t border-border py-16">
-        <div className="container-wide max-w-3xl mx-auto px-4 md:px-8 text-center">
+      {/* ── Footer CTA ──────────────────────────────────────────────────── */}
+      <section className="bg-secondary border-t border-border py-14">
+        <div className="container-wide max-w-2xl mx-auto px-4 md:px-8 text-center">
           <ScrollReveal>
-            <p className="text-accent font-semibold text-sm uppercase tracking-widest mb-3">
-              Expert Orthopaedic Care · Bahawalpur
-            </p>
-            <h2 className="font-heading text-2xl md:text-4xl font-bold text-foreground mb-4">
+            <h2 className="font-heading text-2xl md:text-3xl font-bold text-foreground mb-3">
               Ready to Take the Next Step?
             </h2>
-            <p className="text-muted-foreground text-base mb-8 max-w-xl mx-auto">
-              Dr. Shoaib Aslam Kurerr at Midwest Hospital provides the highest standard of orthopaedic surgical care. Schedule a consultation today.
+            <p className="text-muted-foreground text-sm mb-7 max-w-lg mx-auto">
+              Dr Shoaib Aslam Kurerr consults Monday – Saturday at Midwest Hospital, Bahawalpur.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button
-                onClick={handleBooking}
-                className="inline-flex items-center justify-center gap-2 cta-gradient text-primary-foreground px-8 py-3.5 rounded-xl font-semibold text-base hover:opacity-90 transition-all"
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 cta-gradient text-primary-foreground px-7 py-3 rounded-xl font-semibold text-sm hover:opacity-90 transition-all"
               >
                 Book via WhatsApp
-              </button>
+              </a>
               <Link
                 to="/services"
-                className="inline-flex items-center justify-center gap-2 border border-border bg-card text-foreground px-8 py-3.5 rounded-xl font-semibold text-base hover:bg-secondary transition-all"
+                className="inline-flex items-center justify-center gap-2 border border-border bg-card text-foreground px-7 py-3 rounded-xl font-semibold text-sm hover:bg-secondary/80 transition-all"
               >
                 View All Procedures
               </Link>
