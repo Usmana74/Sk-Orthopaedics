@@ -25,8 +25,7 @@ const DoctorIntro = () => {
                 Dr Shoaib Aslam Kurerr
               </h2>
               <p className="text-muted-foreground leading-relaxed mb-6">
-                With extensive training and experience in orthopaedic surgery, Dr Shoaib Aslam Kurerr is dedicated to providing the highest quality musculoskeletal care to patients in Bahawalpur and surrounding cities. He believes in a patient-first approach, combining modern surgical techniques with compassionate care.
-              </p>
+With a specialized Fellowship in Sports Surgery and Arthroscopy and extensive training in orthopaedic surgery, Dr. Shoaib Aslam Kurerr is dedicated to providing the highest quality musculoskeletal care to patients in Bahawalpur and surrounding cities. As an expert in minimally invasive 'keyhole' surgery , he believes in a patient-first approach, combining advanced modern surgical techniques with compassionate care              </p>
 
               <div className="space-y-2 mb-8">
                 {[
