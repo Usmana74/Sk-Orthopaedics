@@ -50,7 +50,7 @@ function FeaturedPost({ post }: { post: Post }) {
       <Link to={`/blog/${post.slug.current}`} className="group block">
         <div className="grid md:grid-cols-[1.15fr_0.85fr] border border-slate-200 hover:border-slate-300 transition-colors duration-500 overflow-hidden shadow-sm hover:shadow-md">
 
-          {/* Image side */}
+          {/* Image */}
           <div className="aspect-[16/10] md:aspect-auto overflow-hidden bg-slate-100 min-h-[300px]">
             <img
               src={urlFor(post.mainImage).width(900).height(620).url()}
@@ -59,7 +59,7 @@ function FeaturedPost({ post }: { post: Post }) {
             />
           </div>
 
-          {/* Content side */}
+          {/* Content */}
           <div className="flex flex-col justify-between p-8 md:p-10 bg-slate-50/70 border-t md:border-t-0 md:border-l border-slate-200">
             <div>
               <div className="flex items-center gap-3 mb-7">
@@ -115,22 +115,15 @@ function ArticleCard({ post, index }: { post: Post; index: number }) {
 
         {/* Content */}
         <div className="flex flex-col flex-1 p-5">
-          {/* Date */}
           <p className="text-[8px] font-bold uppercase tracking-[0.3em] text-slate-300 mb-2.5">
             {formatDate(post.publishedAt)}
           </p>
-
-          {/* Title */}
           <h3 className="font-heading text-base font-bold text-slate-900 leading-[1.35] tracking-tight mb-2.5 group-hover:text-primary transition-colors duration-200 line-clamp-2 flex-1">
             {post.title}
           </h3>
-
-          {/* Excerpt */}
           <p className="text-[11px] text-slate-400 leading-relaxed line-clamp-1 mb-4">
             {post.excerpt}…
           </p>
-
-          {/* CTA */}
           <div className="pt-3.5 border-t border-slate-100 group-hover:border-primary/20 transition-colors flex items-center gap-1.5 text-[8px] font-bold uppercase tracking-[0.25em] text-slate-400 group-hover:text-primary duration-200">
             Read Article
             <ArrowRight size={10} className="group-hover:translate-x-0.5 transition-transform duration-200" />
@@ -169,72 +162,45 @@ const Blogs = () => {
   return (
     <main className="bg-white min-h-screen">
 
-      {/* ─── Hero Banner — matches site theme exactly ──────────────────────── */}
-      <section
-        className="relative flex items-center justify-center text-center"
-        style={{
-          background: "linear-gradient(135deg, #2a5298 0%, #3a6bc7 60%, #2a5298 100%)",
-          minHeight: "300px",
-          paddingTop: "120px",
-          paddingBottom: "80px",
-        }}
-      >
-        {/* Subtle grid texture overlay — matches site's hero pattern */}
-        <div
-          className="absolute inset-0 opacity-[0.06]"
-          style={{
-            backgroundImage:
-              "repeating-linear-gradient(0deg,transparent,transparent 40px,rgba(255,255,255,1) 40px,rgba(255,255,255,1) 41px), repeating-linear-gradient(90deg,transparent,transparent 40px,rgba(255,255,255,1) 40px,rgba(255,255,255,1) 41px)",
-          }}
-        />
-
-        <div className="relative z-10 max-w-2xl mx-auto px-6">
-          {/* Eyebrow */}
-          <p className="text-[10px] font-bold uppercase tracking-[0.45em] text-white/60 mb-5">
+      {/* ─── Hero — flat bg-primary, identical to FAQ / Services / Contact ─── */}
+      <section className="bg-primary py-24 md:py-28 text-center">
+        <div className="container-wide px-4 md:px-8">
+          <p className="text-primary-foreground/60 text-sm uppercase tracking-widest mb-3 font-medium">
             The Clinical Journal
           </p>
-
-          {/* Title — matches "Our Services" heading style from your site */}
-          <h1 className="font-heading text-4xl md:text-6xl font-bold text-white leading-tight mb-5">
+          <h1 className="font-heading text-4xl md:text-5xl font-bold text-primary-foreground mb-4 leading-tight">
             Blogs
           </h1>
-
-          {/* Sub-copy */}
-          <p className="text-sm md:text-base text-white/70 leading-[1.85] max-w-lg mx-auto">
+          <p className="text-primary-foreground/70 max-w-lg mx-auto text-base leading-relaxed">
             Evidence-based orthopaedic insights and surgical guides by{" "}
-            <span className="text-white font-semibold">Dr. Shoaib Aslam Kurerr</span>,
+            <span className="text-primary-foreground font-semibold">Dr. Shoaib Aslam Kurerr</span>,
             Consultant Orthopaedic Surgeon, Midwest Hospital Bahawalpur.
           </p>
         </div>
       </section>
 
-      {/* ─── Content area — white/light grey like rest of site ─────────────── */}
+      {/* ─── Content ─────────────────────────────────────────────────────────── */}
       <div className="bg-slate-50/60">
 
-        {/* ─── Featured Article ──────────────────────────────────────────────── */}
+        {/* Featured */}
         {featured && (
           <section className="py-14 md:py-20 border-b border-slate-200">
             <div className="container-wide max-w-6xl mx-auto px-6">
-
-              {/* Section label */}
               <div className="flex items-center gap-3 mb-8">
                 <span className="h-px w-8 bg-primary" />
                 <p className="text-[9px] font-bold uppercase tracking-[0.4em] text-primary">
                   Featured Article
                 </p>
               </div>
-
               <FeaturedPost post={featured} />
             </div>
           </section>
         )}
 
-        {/* ─── Articles Grid ─────────────────────────────────────────────────── */}
+        {/* Grid */}
         {rest.length > 0 && (
           <section className="py-14 md:py-20">
             <div className="container-wide max-w-6xl mx-auto px-6">
-
-              {/* Section label */}
               <div className="flex items-center gap-4 mb-12">
                 <span className="h-px w-8 bg-primary" />
                 <p className="text-[9px] font-bold uppercase tracking-[0.4em] text-primary shrink-0">
@@ -245,7 +211,6 @@ const Blogs = () => {
                   {rest.length} Article{rest.length !== 1 ? "s" : ""}
                 </p>
               </div>
-
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 {rest.map((post, i) => (
                   <ArticleCard key={post.slug.current} post={post} index={i} />
@@ -255,7 +220,7 @@ const Blogs = () => {
           </section>
         )}
 
-        {/* ─── Empty State ───────────────────────────────────────────────────── */}
+        {/* Empty */}
         {posts.length === 0 && (
           <section className="py-40 text-center">
             <p className="text-[9px] font-bold uppercase tracking-[0.4em] text-slate-300 mb-2">
@@ -268,7 +233,6 @@ const Blogs = () => {
         )}
 
       </div>
-
     </main>
   );
 };
