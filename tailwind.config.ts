@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import typography from "@tailwindcss/typography"; // 1. Import the typography plugin
 
 export default {
   darkMode: ["class"],
@@ -106,7 +107,22 @@ export default {
         "slide-in-right": "slide-in-right 0.6s ease-out forwards",
         "count-up": "count-up 0.5s ease-out forwards",
       },
+      // 2. Add Typography specific configuration (optional but recommended)
+      typography: {
+        DEFAULT: {
+          css: {
+            maxWidth: '100ch', // Medical articles look better slightly wider
+            color: 'hsl(var(--foreground))',
+            h1: { fontFamily: 'Playfair Display, serif' },
+            h2: { fontFamily: 'Playfair Display, serif' },
+            h3: { fontFamily: 'Playfair Display, serif' },
+          },
+        },
+      },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    typography, // 3. Include the plugin in the plugins array
+  ],
 } satisfies Config;
