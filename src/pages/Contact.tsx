@@ -1,105 +1,438 @@
-import { motion } from "framer-motion";
 import ScrollReveal from "@/components/ScrollReveal";
-import { Phone, MapPin, Clock, Mail, Send, Award } from "lucide-react";
-import hospitalVisual from "@/assets/Hospital.webp"; 
+import { Phone, MapPin, Clock, Mail, Send, ArrowRight } from "lucide-react";
+import { useState } from "react";
+import hospitalImage from "@/assets/hospital-interior.webp";
 
-const ContactPage = () => {
-  const whatsappUrl = "https://wa.me/923002278796?text=Hello%20Dr.%20Shoaib%2C%20I%20would%20like%20to%20book%20an%20appointment.%0A%0APatient%20Name%3A%0AClinic%20to%20Visit%3A%0APrimary%20Problem%3A";
+// ─── WhatsApp Icon ────────────────────────────────────────────────────────────
+
+const WhatsAppIcon = ({ className, style }: { className?: string; style?: React.CSSProperties }) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" className={className} style={style}>
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+  </svg>
+);
+
+// ─── Config ───────────────────────────────────────────────────────────────────
+
+const WHATSAPP_URL =
+  "https://wa.me/923029396988?text=Hello%20Doctor%2C%20I%20would%20like%20to%20book%20an%20appointment.";
+
+const contactDetails = [
+  {
+    icon: Phone,
+    label: "Phone",
+    value: "+92 300 2278796",
+    subvalue: "Mon – Sat · 9:00 AM – 11:00 PM",
+    href: "tel:+923002278796",
+  },
+  {
+    icon: Mail,
+    label: "Email",
+    value: "info@skorthopaedics.com",
+    subvalue: "We reply within 24 hours",
+    href: "mailto:info@skorthopaedics.com",
+  },
+  {
+    icon: MapPin,
+    label: "Location",
+    value: "MID-WEST HOSPITAL",
+    subvalue: "Trust Colony, Street No. 3, Bahawalpur",
+    href: "https://maps.google.com/?q=MID-WEST+HOSPITAL+Bahawalpur",
+  },
+  {
+    icon: Clock,
+    label: "Consultation Hours",
+    value: "Mon – Sat: 9:00 AM – 11:00 PM",
+    subvalue: "Walk-ins welcome during hours",
+    href: undefined,
+  },
+];
+
+const cities = [
+  "Bahawalpur",
+  "Rahim Yar Khan",
+  "Multan",
+  "Lodhran",
+  "Bahawalnagar",
+  "Ahmadpur East",
+];
+
+// ─── Form Types ───────────────────────────────────────────────────────────────
+
+interface FormData {
+  name: string;
+  phone: string;
+  email: string;
+  message: string;
+}
+
+// ─── Main ─────────────────────────────────────────────────────────────────────
+
+const Contact = () => {
+  const [form, setForm] = useState<FormData>({ name: "", phone: "", email: "", message: "" });
+  const [submitted, setSubmitted] = useState(false);
+
+  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  }
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    // Wire to your backend / EmailJS / Formspree here
+    setSubmitted(true);
+  }
 
   return (
-    <main className="bg-white">
-      {/* 1. Header Hero */}
-      <section className="pt-24 pb-12 bg-slate-50 border-b border-slate-100">
-        <div className="container-wide px-6 text-center">
-          <motion.h1 className="font-heading text-3xl md:text-5xl font-bold text-foreground mb-4">
-            Precision in Motion. <br />
-            Excellence in <span className="text-primary">ORTHOPAEDICS.</span>
-          </motion.h1>
-          <div className="flex justify-center items-center gap-2 text-primary font-bold text-sm tracking-widest uppercase">
-            <Award className="w-4 h-4" />
-            Fellowship Trained Sports & Arthroscopic Surgeon
-          </div>
+    <main className="bg-white min-h-screen">
+
+      {/* ─── Hero Banner — identical to Blog.tsx ─────────────────────────────── */}
+      <section
+        className="relative flex items-center justify-center text-center"
+        style={{
+          background: "linear-gradient(135deg, #2a5298 0%, #3a6bc7 60%, #2a5298 100%)",
+          minHeight: "300px",
+          paddingTop: "120px",
+          paddingBottom: "80px",
+        }}
+      >
+        {/* Subtle grid texture — same as Blog hero */}
+        <div
+          className="absolute inset-0 opacity-[0.06]"
+          style={{
+            backgroundImage:
+              "repeating-linear-gradient(0deg,transparent,transparent 40px,rgba(255,255,255,1) 40px,rgba(255,255,255,1) 41px),repeating-linear-gradient(90deg,transparent,transparent 40px,rgba(255,255,255,1) 40px,rgba(255,255,255,1) 41px)",
+          }}
+        />
+
+        <div className="relative z-10 max-w-2xl mx-auto px-6">
+          <p className="text-[10px] font-bold uppercase tracking-[0.45em] text-white/60 mb-5">
+            Get in Touch
+          </p>
+          <h1 className="font-heading text-4xl md:text-6xl font-bold text-white leading-tight mb-5">
+            Contact Us
+          </h1>
+          <p className="text-sm md:text-base text-white/70 leading-[1.85] max-w-lg mx-auto">
+            Book an appointment or reach out for orthopaedic consultations with{" "}
+            <span className="text-white font-semibold">Dr. Shoaib Aslam Kurerr</span>,
+            Consultant Orthopaedic Surgeon, Midwest Hospital Bahawalpur.
+          </p>
         </div>
       </section>
 
-      {/* 2. Action Strip */}
-      <div className="container-wide px-6 -mt-8 relative z-20">
-        <div className="grid md:grid-cols-2 gap-4 max-w-4xl mx-auto">
-          <a href="tel:+923002278796" className="flex items-center justify-center gap-3 bg-white border-2 border-primary text-primary py-4 rounded-2xl font-bold hover:bg-primary hover:text-white transition-all shadow-lg">
-            <Phone className="w-5 h-5" /> Call: +92 300 2278796
-          </a>
-          <a href={whatsappUrl} target="_blank" className="flex items-center justify-center gap-3 bg-[#25D366] text-white py-4 rounded-2xl font-bold hover:opacity-90 transition-all shadow-lg">
-             Book via WhatsApp
-          </a>
+      {/* ─── Body — same bg-slate-50/60 as Blog grid section ────────────────── */}
+      <div className="bg-slate-50/60">
+        <div className="container-wide max-w-6xl mx-auto px-6 py-14 md:py-20 space-y-10">
+
+          {/* ── Quick Reach Strip ─────────────────────────────────────────────── */}
+          <ScrollReveal>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+
+              {/* Call */}
+              <a
+                href="tel:+923002278796"
+                className="group flex items-center gap-5 bg-white border border-slate-100 hover:border-slate-200 hover:shadow-md transition-all duration-300 p-6"
+              >
+                <div className="w-12 h-12 bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
+                  <Phone className="w-5 h-5 text-primary" />
+                </div>
+                <div className="min-w-0">
+                  <p className="text-[9px] font-bold uppercase tracking-[0.3em] text-slate-400 mb-0.5">
+                    Call Directly
+                  </p>
+                  <p className="text-sm font-semibold text-slate-900 group-hover:text-primary transition-colors">
+                    +92 300 2278796
+                  </p>
+                  <p className="text-xs text-slate-400 mt-0.5">Mon – Sat, 9 AM – 11 PM</p>
+                </div>
+                <ArrowRight
+                  size={14}
+                  className="ml-auto text-slate-300 group-hover:text-primary group-hover:translate-x-0.5 transition-all shrink-0"
+                />
+              </a>
+
+              {/* WhatsApp */}
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-5 bg-white border border-slate-100 hover:border-slate-200 hover:shadow-md transition-all duration-300 p-6"
+              >
+                <div
+                  className="w-12 h-12 flex items-center justify-center shrink-0 transition-colors"
+                  style={{ backgroundColor: "rgba(37,211,102,0.1)" }}
+                >
+                  <WhatsAppIcon className="w-5 h-5" style={{ color: "#25D366" }} />
+                </div>
+                <div className="min-w-0">
+                  <p className="text-[9px] font-bold uppercase tracking-[0.3em] text-slate-400 mb-0.5">
+                    WhatsApp
+                  </p>
+                  <p className="text-sm font-semibold text-slate-900 group-hover:text-primary transition-colors">
+                    Book an Appointment
+                  </p>
+                  <p className="text-xs text-slate-400 mt-0.5">Pre-filled appointment message</p>
+                </div>
+                <ArrowRight
+                  size={14}
+                  className="ml-auto text-slate-300 group-hover:text-primary group-hover:translate-x-0.5 transition-all shrink-0"
+                />
+              </a>
+
+            </div>
+          </ScrollReveal>
+
+          {/* ── Form + Details ────────────────────────────────────────────────── */}
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 items-start">
+
+            {/* Contact Form */}
+            <ScrollReveal direction="left" className="lg:col-span-3">
+              <div className="bg-white border border-slate-100 p-7 md:p-8 h-full">
+
+                {/* Section label — same pattern as Blog "Featured Article" */}
+                <div className="flex items-center gap-3 mb-7">
+                  <span className="h-px w-8 bg-primary" />
+                  <p className="text-[9px] font-bold uppercase tracking-[0.35em] text-primary">
+                    Send a Message
+                  </p>
+                </div>
+
+                <h2 className="font-heading text-xl font-bold text-slate-900 mb-1">
+                  Get in Touch
+                </h2>
+                <p className="text-sm text-slate-500 leading-relaxed mb-7">
+                  Fill out the form and we'll get back to you within 24 hours.
+                </p>
+
+                {submitted ? (
+                  <div className="flex flex-col items-center justify-center py-14 text-center gap-4">
+                    <div className="w-14 h-14 bg-primary/10 flex items-center justify-center">
+                      <Send className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <p className="font-heading text-lg font-bold text-slate-900 mb-1">Message Sent</p>
+                      <p className="text-sm text-slate-500">
+                        Thank you for reaching out. We'll respond shortly.
+                      </p>
+                    </div>
+                    <button
+                      onClick={() => { setForm({ name: "", phone: "", email: "", message: "" }); setSubmitted(false); }}
+                      className="text-[9px] font-bold uppercase tracking-[0.25em] text-primary hover:underline underline-offset-2 mt-1"
+                    >
+                      Send Another
+                    </button>
+                  </div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="space-y-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-[9px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-2">
+                          Full Name <span className="text-primary">*</span>
+                        </label>
+                        <input
+                          type="text"
+                          name="name"
+                          required
+                          value={form.name}
+                          onChange={handleChange}
+                          placeholder="Your full name"
+                          className="w-full px-4 py-3 border border-slate-200 bg-white text-sm text-slate-900 placeholder:text-slate-300 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-[9px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-2">
+                          Phone <span className="text-primary">*</span>
+                        </label>
+                        <input
+                          type="tel"
+                          name="phone"
+                          required
+                          value={form.phone}
+                          onChange={handleChange}
+                          placeholder="+92 300 0000000"
+                          className="w-full px-4 py-3 border border-slate-200 bg-white text-sm text-slate-900 placeholder:text-slate-300 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-[9px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-2">
+                        Email Address
+                      </label>
+                      <input
+                        type="email"
+                        name="email"
+                        value={form.email}
+                        onChange={handleChange}
+                        placeholder="your@email.com"
+                        className="w-full px-4 py-3 border border-slate-200 bg-white text-sm text-slate-900 placeholder:text-slate-300 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-[9px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-2">
+                        Message <span className="text-primary">*</span>
+                      </label>
+                      <textarea
+                        name="message"
+                        required
+                        rows={5}
+                        value={form.message}
+                        onChange={handleChange}
+                        placeholder="Describe your concern or enquiry…"
+                        className="w-full px-4 py-3 border border-slate-200 bg-white text-sm text-slate-900 placeholder:text-slate-300 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all resize-none"
+                      />
+                    </div>
+
+                    <button
+                      type="submit"
+                      className="w-full flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-[11px] uppercase tracking-[0.2em] py-4 transition-colors duration-200"
+                    >
+                      <Send size={13} />
+                      Send Message
+                    </button>
+
+                    <p className="text-[9px] text-slate-400 text-center tracking-wide pt-1">
+                      Or call us at{" "}
+                      <a href="tel:+923002278796" className="text-primary font-bold hover:underline underline-offset-2">
+                        +92 300 2278796
+                      </a>
+                    </p>
+                  </form>
+                )}
+              </div>
+            </ScrollReveal>
+
+            {/* Practice Details */}
+            <ScrollReveal direction="right" className="lg:col-span-2 space-y-5">
+
+              <div className="bg-white border border-slate-100 p-7">
+                {/* Section label */}
+                <div className="flex items-center gap-3 mb-6">
+                  <span className="h-px w-8 bg-primary" />
+                  <p className="text-[9px] font-bold uppercase tracking-[0.35em] text-primary">
+                    Practice Details
+                  </p>
+                </div>
+
+                <div className="space-y-5">
+                  {contactDetails.map((item) => {
+                    const Icon = item.icon;
+                    const inner = (
+                      <div className="flex items-start gap-4 group">
+                        <div className="w-9 h-9 bg-primary/8 flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-primary/15 transition-colors">
+                          <Icon className="w-4 h-4 text-primary" />
+                        </div>
+                        <div>
+                          <p className="text-[8px] font-bold uppercase tracking-[0.25em] text-slate-400 mb-0.5">
+                            {item.label}
+                          </p>
+                          <p className="text-sm font-semibold text-slate-900 group-hover:text-primary transition-colors leading-snug">
+                            {item.value}
+                          </p>
+                          {item.subvalue && (
+                            <p className="text-xs text-slate-400 mt-0.5">{item.subvalue}</p>
+                          )}
+                        </div>
+                      </div>
+                    );
+                    return item.href ? (
+                      <a
+                        key={item.label}
+                        href={item.href}
+                        target={item.href.startsWith("http") ? "_blank" : undefined}
+                        rel="noopener noreferrer"
+                      >
+                        {inner}
+                      </a>
+                    ) : (
+                      <div key={item.label}>{inner}</div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Areas We Serve */}
+              <div className="bg-white border border-slate-100 p-7">
+                <div className="flex items-center gap-3 mb-5">
+                  <span className="h-px w-8 bg-primary" />
+                  <p className="text-[9px] font-bold uppercase tracking-[0.35em] text-primary">
+                    Areas We Serve
+                  </p>
+                </div>
+                <p className="text-xs text-slate-400 leading-relaxed mb-4">
+                  Patients travel from across Southern Punjab for treatment.
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {cities.map((city) => (
+                    <span
+                      key={city}
+                      className="bg-slate-50 border border-slate-200 text-slate-600 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.15em]"
+                    >
+                      {city}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+            </ScrollReveal>
+          </div>
+
+          {/* ── Map ───────────────────────────────────────────────────────────── */}
+          <ScrollReveal>
+            <div className="bg-white border border-slate-100 overflow-hidden">
+
+              {/* Map header — same editorial label pattern */}
+              <div className="px-7 py-5 border-b border-slate-100 flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <span className="h-px w-8 bg-primary" />
+                  <div>
+                    <p className="text-[9px] font-bold uppercase tracking-[0.35em] text-primary">
+                      Find Us
+                    </p>
+                    <p className="text-xs text-slate-400 mt-0.5">
+                      MID-WEST HOSPITAL · Trust Colony, Street No. 3, Bahawalpur
+                    </p>
+                  </div>
+                </div>
+                <a
+                  href="https://maps.google.com/?q=MID-WEST+HOSPITAL+Bahawalpur"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1.5 text-[9px] font-bold uppercase tracking-[0.2em] text-slate-400 hover:text-primary transition-colors shrink-0"
+                >
+                  Open in Maps
+                  <ArrowRight size={10} />
+                </a>
+              </div>
+
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3467.5!2d71.6749718!3d29.3879797!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x393b91da655623a1%3A0xd84bcc8df0d10bf8!2sMID-WEST%20HOSPITAL!5e0!3m2!1sen!2s!4v1700000000000"
+                width="100%"
+                height="360"
+                style={{ border: 0, display: "block" }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="MID-WEST HOSPITAL - Bahawalpur"
+              />
+            </div>
+          </ScrollReveal>
+
+          {/* ── Hospital Image ────────────────────────────────────────────────── */}
+          <ScrollReveal>
+            <div className="overflow-hidden border border-slate-100">
+              <img
+                src={hospitalImage}
+                alt="Midwest Hospital Operation Theatre - Bahawalpur"
+                className="w-full h-56 md:h-64 object-cover grayscale-[0.15] hover:grayscale-0 transition-all duration-700"
+              />
+            </div>
+          </ScrollReveal>
+
         </div>
       </div>
 
-      {/* 3. Info & Form Section */}
-      <section className="py-20">
-        <div className="container-wide max-w-6xl">
-          <div className="grid lg:grid-cols-12 gap-16">
-            <div className="lg:col-span-4 space-y-10">
-              <ScrollReveal direction="left">
-                <h3 className="font-heading text-2xl font-bold mb-8">Clinical Hours & Location</h3>
-                <div className="space-y-8">
-                  <div className="flex gap-4">
-                    <MapPin className="text-primary w-6 h-6 shrink-0" />
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      <strong>Midwest Hospital</strong><br />
-                      Trust Colony, Street No. 3, Bahawalpur
-                    </p>
-                  </div>
-                  <div className="flex gap-4">
-                    <Clock className="text-primary w-6 h-6 shrink-0" />
-                    <p className="text-sm text-muted-foreground">
-                      Monday – Saturday<br />9:00 AM – 11:00 PM
-                    </p>
-                  </div>
-                  <div className="flex gap-4">
-                    <Mail className="text-primary w-6 h-6 shrink-0" />
-                    <p className="text-sm text-muted-foreground">info@skorthopaedics.com</p>
-                  </div>
-                </div>
-              </ScrollReveal>
-            </div>
-
-            <div className="lg:col-span-8">
-              <ScrollReveal direction="right">
-                <div className="bg-slate-50 p-8 md:p-12 rounded-[3rem] border border-slate-100">
-                  <form className="space-y-6">
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <input type="text" placeholder="Your Name" className="w-full p-4 rounded-2xl bg-white border-none text-sm outline-none focus:ring-2 focus:ring-primary/20" />
-                      <input type="tel" placeholder="Phone Number" className="w-full p-4 rounded-2xl bg-white border-none text-sm outline-none focus:ring-2 focus:ring-primary/20" />
-                    </div>
-                    <textarea placeholder="Describe your orthopaedic concern..." rows={4} className="w-full p-4 rounded-2xl bg-white border-none text-sm outline-none focus:ring-2 focus:ring-primary/20 resize-none" />
-                    <button className="w-full bg-primary text-white py-4 rounded-2xl font-bold flex items-center justify-center gap-2 hover:opacity-90 transition-all">
-                      <Send className="w-4 h-4" /> Send Appointment Request
-                    </button>
-                  </form>
-                </div>
-              </ScrollReveal>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 4. Surgical Visual & Map */}
-      <section className="pb-24 container-wide">
-        <div className="grid md:grid-cols-2 gap-6 h-[450px]">
-          <div className="rounded-[3rem] overflow-hidden shadow-2xl relative">
-            <img src={hospitalVisual} alt="Surgical Theatre" className="w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-black/20 flex items-end p-10">
-              <p className="text-white font-bold text-lg">Advanced Surgical Facility</p>
-            </div>
-          </div>
-          <div className="rounded-[3rem] overflow-hidden shadow-2xl border border-slate-100">
-            <iframe 
-              src="https://www.google.com/maps/dir//MID-WEST+HOSPITAL+-+Trust+Colony,+Bahawalpur,+Trust+colony,+Street+No.3,+corner,+Bahawalpur,+63100,+Pakistan/@29.0902458,71.4893011,15z/data=!3m1!4b1!4m8!4m7!1m0!1m5!1m1!1s0x393b91da655623a1:0xd84bcc8df0d10bf8!2m2!1d71.6749718!2d29.3879797?entry=ttu&g_ep=EgoyMDI2MDIxMS4wIKXMDSoASAFQAw%3D%3D`[cite" 
-              width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" 
-            />
-          </div>
-        </div>
-      </section>
     </main>
   );
 };
+
+export default Contact;
