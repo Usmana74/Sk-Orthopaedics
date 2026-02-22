@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { client, urlFor } from '@/lib/sanity';
 import ScrollReveal from "@/components/ScrollReveal";
 
-// Keep your color mapping for categories
+// Extended color mapping to be more robust
 const categoryColors: Record<string, string> = {
   "Joint Replacement": "bg-blue-50 text-blue-700",
   "Sports Medicine": "bg-green-50 text-green-700",
@@ -18,7 +18,7 @@ const Blogs = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // GROQ Query to fetch posts, their categories, and the plain text excerpt
+    // GROQ Query: Optimized to get category and plain text excerpt
     const query = `*[_type == "post"] | order(publishedAt desc) {
       title,
       slug,
@@ -30,10 +30,13 @@ const Blogs = () => {
 
     client.fetch(query)
       .then((data) => {
-        setPosts(data);
+        setPosts(data || []);
         setLoading(false);
       })
-      .catch(console.error);
+      .catch((err) => {
+        console.error("Sanity Fetch Error:", err);
+        setLoading(false);
+      });
   }, []);
 
   if (loading) {
@@ -41,18 +44,30 @@ const Blogs = () => {
       <div className="h-screen flex items-center justify-center bg-slate-50">
         <div className="animate-pulse flex flex-col items-center">
           <div className="h-12 w-12 bg-primary/20 rounded-full mb-4"></div>
-          <p className="text-muted-foreground font-medium italic">Loading articles...</p>
+          <p className="text-muted-foreground font-medium italic">Loading medical articles...</p>
         </div>
       </div>
     );
   }
 
-  // Destructure the first post as featured, the rest go to the grid
+  // Fallback if the doctor hasn't published anything yet
+  if (posts.length === 0) {
+    return (
+      <div className="min-h-screen flex items-center justify-center text-center px-4">
+        <div>
+          <h2 className="font-heading text-2xl font-bold mb-2">No Articles Found</h2>
+          <p className="text-muted-foreground mb-6">Check back soon for new orthopaedic insights.</p>
+          <Link to="/" className="text-primary font-bold hover:underline">Return Home</Link>
+        </div>
+      </div>
+    );
+  }
+
   const [featured, ...rest] = posts;
 
   return (
-    <main>
-      {/* Hero */}
+    <main className="bg-white">
+      {/* Hero Section */}
       <section className="bg-primary py-20">
         <div className="container-wide px-4 md:px-8 text-center">
           <p className="text-primary-foreground/60 text-xs uppercase tracking-widest mb-3 font-medium">Patient Education</p>
@@ -66,114 +81,114 @@ const Blogs = () => {
       </section>
 
       <section className="section-padding">
-        <div className="container-wide max-w-6xl mx-auto">
+        <div className="container-wide max-w-6xl mx-auto px-4">
 
-          {/* Featured Article (Dynamic) */}
-          {featured && (
-            <ScrollReveal>
-              <Link
-                to={`/blog/${featured.slug.current}`}
-                className="group block rounded-2xl overflow-hidden card-shadow hover:card-shadow-hover transition-all mb-14"
-              >
-                <div className="flex flex-col lg:flex-row">
-                  <div className="relative w-full lg:w-1/2 h-64 lg:h-auto min-h-[350px] overflow-hidden">
-                    <img
-                      src={urlFor(featured.mainImage).width(800).url()}
-                      alt={featured.title}
-                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
+          {/* Featured Article - Always singular /blog/ */}
+          <ScrollReveal>
+            <Link
+              to={`/blog/${featured.slug.current}`}
+              className="group block rounded-3xl overflow-hidden card-shadow hover:card-shadow-hover transition-all mb-14 bg-white"
+            >
+              <div className="flex flex-col lg:flex-row">
+                <div className="relative w-full lg:w-1/2 h-64 lg:h-auto min-h-[350px] overflow-hidden">
+                  <img
+                    src={urlFor(featured.mainImage).width(800).url()}
+                    alt={featured.title}
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                </div>
+                <div className="bg-card flex flex-col justify-center p-8 lg:p-12 lg:w-1/2">
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className={`text-[10px] uppercase tracking-widest font-bold px-3 py-1 rounded-full ${categoryColors[featured.category] || 'bg-slate-100 text-slate-600'}`}>
+                      {featured.category || 'General'}
+                    </span>
+                    <span className="text-[10px] text-muted-foreground uppercase tracking-widest font-bold">Featured</span>
                   </div>
-                  <div className="bg-card flex flex-col justify-center p-8 lg:p-12 lg:w-1/2">
-                    <div className="flex items-center gap-3 mb-4">
-                      <span className={`text-xs font-semibold px-3 py-1 rounded-full ${categoryColors[featured.category] || 'bg-slate-100 text-slate-600'}`}>
-                        {featured.category || 'General'}
-                      </span>
-                      <span className="text-xs text-muted-foreground uppercase tracking-wider">Latest News</span>
-                    </div>
-                    <h2 className="font-heading text-2xl md:text-3xl font-bold text-foreground mb-4 leading-snug group-hover:text-primary transition-colors">
-                      {featured.title}
-                    </h2>
-                    <p className="text-muted-foreground text-sm leading-relaxed mb-6 line-clamp-3">
-                      {featured.excerpt}...
-                    </p>
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-3 text-xs text-muted-foreground">
-                        <span>{new Date(featured.publishedAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
-                      </div>
-                      <span className="text-primary text-sm font-semibold group-hover:underline">Read Article →</span>
-                    </div>
+                  <h2 className="font-heading text-2xl md:text-4xl font-bold text-foreground mb-4 leading-tight group-hover:text-primary transition-colors">
+                    {featured.title}
+                  </h2>
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-6 line-clamp-3">
+                    {featured.excerpt}...
+                  </p>
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs text-muted-foreground">
+                      {new Date(featured.publishedAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+                    </span>
+                    <span className="text-primary text-sm font-bold group-hover:underline">Read Full Article →</span>
                   </div>
                 </div>
-              </Link>
-            </ScrollReveal>
-          )}
-
-          {/* Divider */}
-          <ScrollReveal>
-            <div className="flex items-center gap-4 mb-10">
-              <div className="flex-1 h-px bg-border" />
-              <span className="text-xs text-muted-foreground uppercase tracking-widest font-medium">Browse All Topics</span>
-              <div className="flex-1 h-px bg-border" />
-            </div>
+              </div>
+            </Link>
           </ScrollReveal>
 
-          {/* Blog Grid (Dynamic) */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {rest.map((post, i) => (
-              <ScrollReveal key={post.slug.current} delay={i * 0.08}>
-                <Link
-                  to={`/blog/${post.slug.current}`}
-                  className="group flex flex-col bg-card rounded-2xl overflow-hidden card-shadow hover:card-shadow-hover transition-all h-full"
-                >
-                  <div className="relative h-48 overflow-hidden">
-                    <img
-                      src={urlFor(post.mainImage).width(500).url()}
-                      alt={post.title}
-                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                    <div className="absolute top-3 left-3">
-                      <span className={`text-xs font-semibold px-3 py-1 rounded-full backdrop-blur-md shadow-sm ${categoryColors[post.category] || 'bg-white/90 text-slate-600'}`}>
-                        {post.category || 'Medical'}
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="flex flex-col flex-1 p-6">
-                    <h3 className="font-heading text-base font-bold text-foreground mb-3 leading-snug group-hover:text-primary transition-colors line-clamp-2">
-                      {post.title}
-                    </h3>
-                    <p className="text-muted-foreground text-sm leading-relaxed mb-5 flex-1 line-clamp-3">
-                      {post.excerpt}...
-                    </p>
-                    <div className="flex items-center justify-between pt-4 border-t border-border/50">
-                      <div className="text-xs text-muted-foreground">
-                        {new Date(post.publishedAt).toLocaleDateString()}
-                      </div>
-                      <span className="text-primary text-xs font-semibold group-hover:underline">Read →</span>
-                    </div>
-                  </div>
-                </Link>
+          {/* Grid Section - Only shows if there are more than 1 post */}
+          {rest.length > 0 && (
+            <>
+              <ScrollReveal>
+                <div className="flex items-center gap-4 mb-10">
+                  <div className="flex-1 h-px bg-border" />
+                  <span className="text-[10px] text-muted-foreground uppercase tracking-widest font-bold">All Articles</span>
+                  <div className="flex-1 h-px bg-border" />
+                </div>
               </ScrollReveal>
-            ))}
-          </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {rest.map((post, i) => (
+                  <ScrollReveal key={post.slug.current} delay={i * 0.05}>
+                    <Link
+                      to={`/blog/${post.slug.current}`}
+                      className="group flex flex-col bg-white rounded-2xl overflow-hidden card-shadow hover:card-shadow-hover transition-all h-full"
+                    >
+                      <div className="relative h-52 overflow-hidden">
+                        <img
+                          src={urlFor(post.mainImage).width(500).url()}
+                          alt={post.title}
+                          className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                        <div className="absolute top-4 left-4">
+                          <span className={`text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full backdrop-blur-md shadow-sm ${categoryColors[post.category] || 'bg-white/90 text-slate-600'}`}>
+                            {post.category || 'Orthopaedics'}
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="flex flex-col flex-1 p-6">
+                        <h3 className="font-heading text-lg font-bold text-foreground mb-3 leading-tight group-hover:text-primary transition-colors line-clamp-2">
+                          {post.title}
+                        </h3>
+                        <p className="text-muted-foreground text-sm leading-relaxed mb-6 flex-1 line-clamp-3">
+                          {post.excerpt}...
+                        </p>
+                        <div className="flex items-center justify-between pt-4 border-t border-slate-100">
+                          <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">
+                            {new Date(post.publishedAt).toLocaleDateString()}
+                          </span>
+                          <span className="text-primary text-xs font-bold group-hover:underline">Read →</span>
+                        </div>
+                      </div>
+                    </Link>
+                  </ScrollReveal>
+                ))}
+              </div>
+            </>
+          )}
 
           {/* Bottom CTA */}
           <ScrollReveal>
-            <div className="mt-16 bg-primary rounded-2xl p-8 md:p-12 text-center">
-              <p className="text-primary-foreground/70 text-xs uppercase tracking-widest mb-3">Expert Orthopaedic Care</p>
-              <h3 className="font-heading text-2xl md:text-3xl font-bold text-primary-foreground mb-4">
-                Have Questions About Your Joint Health?
+            <div className="mt-20 bg-primary rounded-3xl p-8 md:p-14 text-center">
+              <h3 className="font-heading text-2xl md:text-4xl font-bold text-primary-foreground mb-4">
+                Personalized Care for Your Joints
               </h3>
-              <p className="text-primary-foreground/70 max-w-lg mx-auto text-sm mb-7 leading-relaxed">
-                Dr Shoaib Aslam Kurerr offers professional consultations at MID-WEST HOSPITAL, Bahawalpur.
+              <p className="text-primary-foreground/70 max-w-xl mx-auto text-sm mb-8 leading-relaxed">
+                Consult with Dr Shoaib Aslam Kurerr for specialized sports surgery and joint replacement at MID-WEST HOSPITAL, Bahawalpur.
               </p>
               <a
-                href="https://wa.me/923002278796?text=Hello%20Dr.%20Shoaib%20Aslam%20Kurerr%2C%20I%20would%20like%20to%20book%20a%20consultation."
+                href="https://wa.me/923002278796?text=Hello%20Dr.%20Shoaib%2C%20I%20saw%20your%20blog%20and%20want%20to%20consult%20regarding%20my%20case."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-white text-primary font-semibold px-7 py-3 rounded-lg text-sm hover:bg-white/90 transition-colors"
+                className="inline-flex items-center gap-2 bg-white text-primary font-bold px-8 py-4 rounded-xl text-sm hover:bg-slate-50 transition-colors shadow-xl shadow-black/10"
               >
-                Book a Consultation
+                Book Appointment via WhatsApp
               </a>
             </div>
           </ScrollReveal>
