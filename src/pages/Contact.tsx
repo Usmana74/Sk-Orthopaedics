@@ -1,6 +1,9 @@
 import ScrollReveal from "@/components/ScrollReveal";
-import { Phone, MapPin, Clock, Mail } from "lucide-react";
+import { Phone, MapPin, Clock, Mail, Send, ChevronRight } from "lucide-react";
+import { useState } from "react";
 import hospitalImage from "@/assets/hospital-interior.webp";
+
+// ─── WhatsApp Icon ────────────────────────────────────────────────────────────
 
 const WhatsAppIcon = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
@@ -8,174 +11,374 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
+// ─── Config ───────────────────────────────────────────────────────────────────
+
 const WHATSAPP_URL =
   "https://wa.me/923029396988?text=Hello%20Doctor%2C%20I%20would%20like%20to%20book%20an%20appointment.";
 
-const contactItems = [
+const contactDetails = [
   {
-    icon: <Phone className="w-5 h-5 text-primary" />,
+    icon: Phone,
     label: "Phone",
     value: "+92 300 2278796",
+    subvalue: "Mon – Sat, 9:00 AM – 11:00 PM",
     href: "tel:+923002278796",
   },
   {
-    icon: <Mail className="w-5 h-5 text-primary" />,
+    icon: Mail,
     label: "Email",
     value: "info@skorthopaedics.com",
+    subvalue: "We reply within 24 hours",
     href: "mailto:info@skorthopaedics.com",
   },
   {
-    icon: <MapPin className="w-5 h-5 text-primary" />,
+    icon: MapPin,
     label: "Location",
-    value: "MID-WEST HOSPITAL, Trust Colony, Street No. 3, Bahawalpur",
-    href: undefined,
+    value: "MID-WEST HOSPITAL",
+    subvalue: "Trust Colony, Street No. 3, Bahawalpur",
+    href: "https://maps.google.com/?q=MID-WEST+HOSPITAL+Bahawalpur",
   },
   {
-    icon: <Clock className="w-5 h-5 text-primary" />,
+    icon: Clock,
     label: "Hours",
-    value: "Monday – Saturday · 9:00 AM – 11:00 PM",
+    value: "Mon – Sat: 9:00 AM – 11:00 PM",
+    subvalue: "Walk-ins welcome during consultation hours",
     href: undefined,
   },
 ];
 
+const cities = [
+  "Bahawalpur",
+  "Rahim Yar Khan",
+  "Multan",
+  "Lodhran",
+  "Bahawalnagar",
+  "Ahmadpur East",
+];
+
+// ─── Form State ───────────────────────────────────────────────────────────────
+
+interface FormData {
+  name: string;
+  phone: string;
+  email: string;
+  message: string;
+}
+
+// ─── Main Component ───────────────────────────────────────────────────────────
+
 const Contact = () => {
+  const [form, setForm] = useState<FormData>({
+    name: "",
+    phone: "",
+    email: "",
+    message: "",
+  });
+  const [submitted, setSubmitted] = useState(false);
+
+  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  }
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    // Wire up to your email/backend here
+    setSubmitted(true);
+  }
+
   return (
     <main>
-      {/* Hero */}
-      <section className="bg-primary py-24">
-        <div className="container-wide px-4 md:px-8 text-center">
-          <p className="text-primary-foreground/60 text-sm uppercase tracking-widest mb-3 font-medium">Get in Touch</p>
-          <h1 className="font-heading text-4xl md:text-5xl font-bold text-primary-foreground mb-4">Contact Us</h1>
-          <p className="text-primary-foreground/70 max-w-lg mx-auto text-base">
-            Book an appointment or reach out for orthopaedic consultations with Dr Shoaib Aslam Kurerr.
+
+      {/* ─── Hero Banner ──────────────────────────────────────────────────────── */}
+      <section className="bg-primary py-24 md:py-28 text-center">
+        <div className="container-wide px-4 md:px-8">
+          <p className="text-primary-foreground/60 text-[10px] font-bold uppercase tracking-[0.4em] mb-4">
+            Get in Touch
+          </p>
+          <h1 className="font-heading text-4xl md:text-5xl font-bold text-primary-foreground mb-4 leading-tight">
+            Contact Us
+          </h1>
+          <p className="text-primary-foreground/70 max-w-lg mx-auto text-sm md:text-base leading-relaxed">
+            Book an appointment or reach out for orthopaedic consultations with{" "}
+            <span className="text-primary-foreground font-semibold">Dr. Shoaib Aslam Kurerr</span>.
           </p>
         </div>
       </section>
 
-      <section className="section-padding">
-        <div className="container-wide max-w-6xl mx-auto space-y-10">
+      {/* ─── Quick CTA Strip ──────────────────────────────────────────────────── */}
+      <div className="bg-white border-b border-slate-100">
+        <div className="container-wide max-w-6xl mx-auto px-4 md:px-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-slate-100">
 
-          {/* Top Row: CTA cards */}
-          <ScrollReveal>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              {/* Call CTA */}
-              <a
-                href="tel:+923002278796"
-                className="flex items-center gap-5 bg-card rounded-2xl p-6 card-shadow hover:card-shadow-hover transition-all group"
+            {/* Call */}
+            <a
+              href="tel:+923002278796"
+              className="flex items-center gap-4 py-5 px-4 group hover:bg-slate-50 transition-colors"
+            >
+              <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
+                <Phone className="w-4 h-4 text-primary" />
+              </div>
+              <div className="min-w-0">
+                <p className="text-[9px] font-bold uppercase tracking-[0.25em] text-muted-foreground mb-0.5">Call Directly</p>
+                <p className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">
+                  +92 300 2278796
+                </p>
+              </div>
+              <ChevronRight size={14} className="ml-auto text-slate-300 group-hover:text-primary group-hover:translate-x-0.5 transition-all shrink-0" />
+            </a>
+
+            {/* WhatsApp */}
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-4 py-5 px-4 group hover:bg-slate-50 transition-colors"
+            >
+              <div
+                className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 transition-colors"
+                style={{ backgroundColor: "rgba(37,211,102,0.1)" }}
               >
-                <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
-                  <Phone className="w-6 h-6 text-primary" />
-                </div>
-                <div>
-                  <p className="text-xs text-muted-foreground uppercase tracking-wider mb-0.5">Call Directly</p>
-                  <p className="font-semibold text-foreground text-base">+92 300 2278796</p>
-                  <p className="text-sm text-muted-foreground mt-0.5">Available Mon – Sat, 9 AM – 11 PM</p>
-                </div>
-              </a>
+                <WhatsAppIcon className="w-4 h-4" style={{ color: "#25D366" } as React.CSSProperties} />
+              </div>
+              <div className="min-w-0">
+                <p className="text-[9px] font-bold uppercase tracking-[0.25em] text-muted-foreground mb-0.5">WhatsApp</p>
+                <p className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">
+                  Book an Appointment
+                </p>
+              </div>
+              <ChevronRight size={14} className="ml-auto text-slate-300 group-hover:text-primary group-hover:translate-x-0.5 transition-all shrink-0" />
+            </a>
 
-              {/* WhatsApp CTA */}
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-5 bg-card rounded-2xl p-6 card-shadow hover:card-shadow-hover transition-all group"
-              >
-                <div className="w-14 h-14 rounded-xl flex items-center justify-center shrink-0 transition-colors" style={{ backgroundColor: "rgba(37,211,102,0.12)" }}>
-                  <WhatsAppIcon className="w-6 h-6" style={{ color: "#25D366" } as React.CSSProperties} />
-                </div>
-                <div>
-                  <p className="text-xs text-muted-foreground uppercase tracking-wider mb-0.5">WhatsApp Appointment</p>
-                  <p className="font-semibold text-foreground text-base">Message on WhatsApp</p>
-                  <p className="text-sm text-muted-foreground mt-0.5">Pre-filled appointment message</p>
-                </div>
-              </a>
-            </div>
-          </ScrollReveal>
+          </div>
+        </div>
+      </div>
 
-          {/* Middle Row: Map + Details */}
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
-            {/* Map — wider */}
+      {/* ─── Main Content ─────────────────────────────────────────────────────── */}
+      <section className="section-padding bg-slate-50/60">
+        <div className="container-wide max-w-6xl mx-auto px-4 md:px-8 space-y-8">
+
+          {/* ── Row 1: Contact Form + Details ── */}
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 items-start">
+
+            {/* Contact Form — wider */}
             <ScrollReveal direction="left" className="lg:col-span-3">
-              <div className="rounded-2xl overflow-hidden card-shadow h-full min-h-[380px]">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3467.5!2d71.6749718!3d29.3879797!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x393b91da655623a1%3A0xd84bcc8df0d10bf8!2sMID-WEST%20HOSPITAL!5e0!3m2!1sen!2s!4v1700000000000"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0, minHeight: "380px" }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="MID-WEST HOSPITAL - Bahawalpur"
-                  className="w-full h-full"
-                />
+              <div className="bg-card rounded-2xl p-7 md:p-8 card-shadow h-full">
+                <h2 className="font-heading text-xl font-bold text-foreground mb-1">
+                  Send a Message
+                </h2>
+                <p className="text-sm text-muted-foreground mb-7">
+                  Fill out the form below and we'll get back to you as soon as possible.
+                </p>
+
+                {submitted ? (
+                  <div className="flex flex-col items-center justify-center py-12 text-center gap-4">
+                    <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center">
+                      <Send className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <p className="font-heading text-lg font-bold text-foreground mb-1">Message Sent</p>
+                      <p className="text-sm text-muted-foreground">
+                        Thank you for reaching out. We'll respond within 24 hours.
+                      </p>
+                    </div>
+                    <button
+                      onClick={() => { setForm({ name: "", phone: "", email: "", message: "" }); setSubmitted(false); }}
+                      className="text-[9px] font-bold uppercase tracking-[0.2em] text-primary mt-2 hover:underline underline-offset-2"
+                    >
+                      Send Another
+                    </button>
+                  </div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="space-y-4">
+
+                    {/* Name + Phone */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-[9px] font-bold uppercase tracking-[0.2em] text-muted-foreground mb-2">
+                          Full Name <span className="text-primary">*</span>
+                        </label>
+                        <input
+                          type="text"
+                          name="name"
+                          required
+                          value={form.name}
+                          onChange={handleChange}
+                          placeholder="Your full name"
+                          className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-background text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-[9px] font-bold uppercase tracking-[0.2em] text-muted-foreground mb-2">
+                          Phone Number <span className="text-primary">*</span>
+                        </label>
+                        <input
+                          type="tel"
+                          name="phone"
+                          required
+                          value={form.phone}
+                          onChange={handleChange}
+                          placeholder="+92 300 0000000"
+                          className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-background text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Email */}
+                    <div>
+                      <label className="block text-[9px] font-bold uppercase tracking-[0.2em] text-muted-foreground mb-2">
+                        Email Address
+                      </label>
+                      <input
+                        type="email"
+                        name="email"
+                        value={form.email}
+                        onChange={handleChange}
+                        placeholder="your@email.com"
+                        className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-background text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all"
+                      />
+                    </div>
+
+                    {/* Message */}
+                    <div>
+                      <label className="block text-[9px] font-bold uppercase tracking-[0.2em] text-muted-foreground mb-2">
+                        Message <span className="text-primary">*</span>
+                      </label>
+                      <textarea
+                        name="message"
+                        required
+                        rows={5}
+                        value={form.message}
+                        onChange={handleChange}
+                        placeholder="Describe your concern or enquiry…"
+                        className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-background text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all resize-none"
+                      />
+                    </div>
+
+                    <button
+                      type="submit"
+                      className="w-full flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold text-sm py-3.5 rounded-xl transition-colors duration-200"
+                    >
+                      <Send size={14} />
+                      Send Message
+                    </button>
+
+                    <p className="text-[9px] text-muted-foreground text-center tracking-wide">
+                      Or call directly at{" "}
+                      <a href="tel:+923002278796" className="text-primary font-bold hover:underline underline-offset-2">
+                        +92 300 2278796
+                      </a>
+                    </p>
+                  </form>
+                )}
               </div>
             </ScrollReveal>
 
             {/* Contact Details */}
             <ScrollReveal direction="right" className="lg:col-span-2">
-              <div className="bg-card rounded-2xl p-7 card-shadow h-full flex flex-col justify-between">
-                <div>
-                  <h2 className="font-heading text-xl font-bold text-foreground mb-1">Practice Details</h2>
-                  <p className="text-sm text-muted-foreground mb-6">
-                    Find us at MID-WEST HOSPITAL, Bahawalpur. Walk-ins welcome during consultation hours.
-                  </p>
-                  <div className="space-y-5">
-                    {contactItems.map((item) =>
-                      item.href ? (
-                        <a key={item.label} href={item.href} className="flex items-start gap-3 group">
-                          <div className="w-9 h-9 rounded-lg bg-primary/8 flex items-center justify-center shrink-0 mt-0.5">
-                            {item.icon}
-                          </div>
-                          <div>
-                            <p className="text-xs text-muted-foreground uppercase tracking-wider">{item.label}</p>
-                            <p className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">{item.value}</p>
-                          </div>
-                        </a>
-                      ) : (
-                        <div key={item.label} className="flex items-start gap-3">
-                          <div className="w-9 h-9 rounded-lg bg-primary/8 flex items-center justify-center shrink-0 mt-0.5">
-                            {item.icon}
-                          </div>
-                          <div>
-                            <p className="text-xs text-muted-foreground uppercase tracking-wider">{item.label}</p>
-                            <p className="text-sm font-medium text-foreground">{item.value}</p>
-                          </div>
+              <div className="bg-card rounded-2xl p-7 card-shadow">
+                <h2 className="font-heading text-xl font-bold text-foreground mb-1">Practice Details</h2>
+                <p className="text-sm text-muted-foreground mb-6">
+                  Find us at MID-WEST HOSPITAL, Bahawalpur. Walk-ins welcome.
+                </p>
+
+                <div className="space-y-4">
+                  {contactDetails.map((item) => {
+                    const Icon = item.icon;
+                    const inner = (
+                      <div className="flex items-start gap-3.5 group">
+                        <div className="w-10 h-10 rounded-xl bg-primary/8 flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-primary/15 transition-colors">
+                          <Icon className="w-4 h-4 text-primary" />
                         </div>
-                      )
-                    )}
+                        <div>
+                          <p className="text-[8px] font-bold uppercase tracking-[0.25em] text-muted-foreground mb-0.5">
+                            {item.label}
+                          </p>
+                          <p className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors leading-tight">
+                            {item.value}
+                          </p>
+                          {item.subvalue && (
+                            <p className="text-xs text-muted-foreground mt-0.5">{item.subvalue}</p>
+                          )}
+                        </div>
+                      </div>
+                    );
+
+                    return item.href ? (
+                      <a key={item.label} href={item.href} target={item.href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer">
+                        {inner}
+                      </a>
+                    ) : (
+                      <div key={item.label}>{inner}</div>
+                    );
+                  })}
+                </div>
+
+                {/* Divider */}
+                <div className="border-t border-slate-100 mt-7 pt-6">
+                  <p className="text-[8px] font-bold uppercase tracking-[0.25em] text-muted-foreground mb-3">
+                    Areas We Serve
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {cities.map((city) => (
+                      <span
+                        key={city}
+                        className="bg-secondary text-secondary-foreground px-3 py-1 rounded-lg text-xs font-medium"
+                      >
+                        {city}
+                      </span>
+                    ))}
                   </div>
                 </div>
               </div>
             </ScrollReveal>
           </div>
 
-          {/* Hospital Image */}
+          {/* ── Row 2: Map ── */}
+          <ScrollReveal>
+            <div className="bg-card rounded-2xl overflow-hidden card-shadow">
+              <div className="px-7 py-5 border-b border-slate-100 flex items-center justify-between">
+                <div>
+                  <h3 className="font-heading text-base font-bold text-foreground">Find Us</h3>
+                  <p className="text-xs text-muted-foreground mt-0.5">
+                    MID-WEST HOSPITAL · Trust Colony, Street No. 3, Bahawalpur
+                  </p>
+                </div>
+                <a
+                  href="https://maps.google.com/?q=MID-WEST+HOSPITAL+Bahawalpur"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[9px] font-bold uppercase tracking-[0.2em] text-primary hover:underline underline-offset-2 shrink-0"
+                >
+                  Open in Maps
+                </a>
+              </div>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3467.5!2d71.6749718!3d29.3879797!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x393b91da655623a1%3A0xd84bcc8df0d10bf8!2sMID-WEST%20HOSPITAL!5e0!3m2!1sen!2s!4v1700000000000"
+                width="100%"
+                height="380"
+                style={{ border: 0, display: "block" }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="MID-WEST HOSPITAL - Bahawalpur"
+              />
+            </div>
+          </ScrollReveal>
+
+          {/* ── Row 3: Hospital Image ── */}
           <ScrollReveal>
             <div className="rounded-2xl overflow-hidden card-shadow">
               <img
                 src={hospitalImage}
                 alt="Midwest Hospital Operation Theatre - Bahawalpur"
-                className="w-full h-64 md:h-80 object-cover"
+                className="w-full h-56 md:h-72 object-cover"
               />
             </div>
           </ScrollReveal>
 
-          {/* Areas We Serve */}
-          <ScrollReveal>
-            <div className="bg-card rounded-2xl p-8 card-shadow">
-              <h3 className="font-heading text-xl font-semibold text-foreground mb-1">Areas We Serve</h3>
-              <p className="text-sm text-muted-foreground mb-5">Patients travel from across Southern Punjab for treatment.</p>
-              <div className="flex flex-wrap gap-2">
-                {["Bahawalpur", "Rahim Yar Khan", "Multan", "Lodhran", "Bahawalnagar", "Ahmadpur East"].map((city) => (
-                  <span key={city} className="bg-secondary text-secondary-foreground px-4 py-2 rounded-lg text-sm font-medium">
-                    {city}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </ScrollReveal>
         </div>
       </section>
+
     </main>
   );
 };
