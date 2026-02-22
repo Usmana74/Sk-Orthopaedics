@@ -154,8 +154,7 @@ const About = () => {
                   Dr. Shoaib Aslam Kurerr
                 </h2>
                 <p className="text-slate-600 leading-relaxed text-base">
-                  Dr. Shoaib Aslam Kurerr is a highly specialized Orthopaedic Surgeon with an advanced **Fellowship in Sports Surgery and Arthroscopy**. He specializes in minimally invasive "keyhole" procedures for knee and shoulder conditions, bringing international surgical standards to Bahawalpur.
-                </p>
+Bringing international surgical excellence to the heart of Southern Punjab, Dr. Shoaib Aslam Kurerr is a specialized Orthopaedic Surgeon with a prestigious Fellowship in Sports Surgery and Arthroscopy. He focuses on advanced 'keyhole' techniques to ensure faster recovery and superior outcomes for patients with knee and shoulder injuries.                </p>
                 
                 {/* Responsive Stats Grid */}
                 <div className="grid grid-cols-3 gap-3 md:gap-4 py-6">
