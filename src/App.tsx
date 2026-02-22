@@ -50,8 +50,8 @@ const App = () => (
           <Route path="/faqs" element={<FAQs />} />
 
           {/* Dynamic Blog Routes Integrated with Sanity CMS */}
-          <Route path="/blogs" element={<Blogs />} />
-          <Route path="/blogs/:slug" element={<BlogDetail />} />
+          <Route path="/blog" element={<Blogs />} />
+          <Route path="/blog/:slug" element={<BlogDetail />} />
 
           {/* Contact & Utility Routes */}
           <Route path="/contact" element={<Contact />} />
