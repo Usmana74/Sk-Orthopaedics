@@ -117,6 +117,16 @@ const ptComponents: PortableTextComponents = {
   },
 };
 
+// ─── Author bio portable text (no line-clamp) ─────────────────────────────────
+
+const bioComponents: PortableTextComponents = {
+  block: {
+    normal: ({ children }) => (
+      <p className="text-sm text-slate-500 leading-[1.8] mb-3 last:mb-0">{children}</p>
+    ),
+  },
+};
+
 // ─── Skeleton ─────────────────────────────────────────────────────────────────
 
 function ArticleSkeleton() {
@@ -128,7 +138,7 @@ function ArticleSkeleton() {
         <div className="h-8 w-4/5 bg-slate-100 rounded" />
         <div className="h-8 w-3/5 bg-slate-100 rounded" />
         <div className="h-[360px] w-full bg-slate-50 rounded mt-6" />
-        {[100,95,90,85,80].map(w => (
+        {[100, 95, 90, 85, 80].map(w => (
           <div key={w} className="h-4 bg-slate-50 rounded" style={{ width: `${w}%` }} />
         ))}
       </div>
@@ -196,8 +206,8 @@ const BlogDetail = () => {
 
       {/* ─── Reading Progress ───────────────────────────────────────────────── */}
       <div
-        className="fixed top-0 left-0 h-[2px] bg-primary z-[60] transition-none"
-        style={{ width: `${scrollPct}%` }}
+        className="fixed top-0 left-0 h-[2px] bg-primary z-[60]"
+        style={{ width: `${scrollPct}%`, transition: "none" }}
       />
 
       {/* ─── Sticky Sub-Navbar ──────────────────────────────────────────────── */}
@@ -212,7 +222,6 @@ const BlogDetail = () => {
             The Journal
           </Link>
 
-          {/* Truncated title — hidden on small screens */}
           <p className="hidden md:block text-[9px] font-bold uppercase tracking-[0.15em] text-slate-500 truncate text-center flex-1 px-4">
             {post.title}
           </p>
@@ -233,8 +242,6 @@ const BlogDetail = () => {
 
           {/* ── Header ── */}
           <header className="mb-10">
-
-            {/* Date + read time */}
             <div className="flex items-center gap-5 mb-7">
               <div className="flex items-center gap-1.5 text-[9px] font-bold uppercase tracking-[0.25em] text-slate-400">
                 <Calendar size={11} strokeWidth={2} />
@@ -248,12 +255,10 @@ const BlogDetail = () => {
               )}
             </div>
 
-            {/* Title */}
             <h1 className="font-heading text-3xl md:text-5xl font-bold text-slate-900 leading-[1.2] tracking-tight mb-8">
               {post.title}
             </h1>
 
-            {/* Double rule */}
             <div className="flex flex-col gap-[3px]">
               <div className="h-[2px] bg-slate-900" />
               <div className="h-px bg-slate-900/20" />
@@ -284,7 +289,6 @@ const BlogDetail = () => {
 
           {/* ── Body ── */}
           <ScrollReveal>
-            {/* Drop-cap on first paragraph */}
             <div className="
               [&>p:first-of-type::first-letter]:font-heading
               [&>p:first-of-type::first-letter]:text-5xl
@@ -305,35 +309,45 @@ const BlogDetail = () => {
             <div className="h-px bg-slate-900/20" />
           </div>
 
-          {/* ── Author ── */}
+          {/* ── Author Card — full width, no clipping ── */}
           <footer>
             <p className="text-[9px] font-bold uppercase tracking-[0.4em] text-slate-300 mb-6">
               Authored &amp; Reviewed By
             </p>
 
-            <div className="flex items-start gap-5 p-6 border border-slate-100 bg-slate-50/50">
-              {post.authorImage && (
-                <img
-                  src={urlFor(post.authorImage).width(120).height(120).url()}
-                  alt={post.authorName}
-                  className="w-14 h-14 rounded-full object-cover grayscale border-2 border-white shadow-sm shrink-0"
-                />
-              )}
-              <div className="min-w-0">
-                <p className="font-heading text-xl font-bold text-slate-900 leading-tight mb-0.5">
-                  {post.authorName}
-                </p>
-                <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-primary mb-3">
-                  Consultant Orthopaedic Surgeon · Midwest Hospital, Bahawalpur
-                </p>
-                {post.authorBio && (
-                  <div className="text-xs text-slate-500 leading-relaxed line-clamp-3">
-                    <PortableText
-                      value={post.authorBio}
-                      components={{
-                        block: { normal: ({ children }) => <p className="mb-0">{children}</p> },
-                      }}
+            <div className="border border-slate-200 bg-slate-50/60 overflow-hidden">
+
+              {/* Top accent bar */}
+              <div className="h-[3px] bg-primary w-full" />
+
+              <div className="p-7 md:p-8">
+
+                {/* Author identity row */}
+                <div className="flex items-center gap-5 mb-6 pb-6 border-b border-slate-200">
+                  {post.authorImage && (
+                    <img
+                      src={urlFor(post.authorImage).width(160).height(160).url()}
+                      alt={post.authorName}
+                      className="w-16 h-16 md:w-20 md:h-20 rounded-full object-cover grayscale border-[3px] border-white shadow-md shrink-0"
                     />
+                  )}
+                  <div>
+                    <p className="font-heading text-xl md:text-2xl font-bold text-slate-900 leading-tight mb-1">
+                      {post.authorName}
+                    </p>
+                    <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-primary">
+                      Consultant Orthopaedic Surgeon
+                    </p>
+                    <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-slate-400 mt-0.5">
+                      Midwest Hospital, Bahawalpur
+                    </p>
+                  </div>
+                </div>
+
+                {/* Bio — full text, no line-clamp */}
+                {post.authorBio && (
+                  <div>
+                    <PortableText value={post.authorBio} components={bioComponents} />
                   </div>
                 )}
               </div>
