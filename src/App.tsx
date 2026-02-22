@@ -16,14 +16,13 @@ import Services from "./pages/Services";
 import ServiceDetail from "./pages/ServiceDetail";
 import Testimonials from "./pages/Testimonials";
 import FAQs from "./pages/FAQs";
-import Blogs from "./pages/Blog"; // Now dynamic with Sanity
-import BlogDetail from "./pages/BlogDetail"; // New full article page
+import Blogs from "./pages/Blog"; // Component from your Blog.tsx file
+import BlogDetail from "./pages/BlogDetail";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
-// Ensures the page scrolls to the top when navigating to a new blog post or service
 const ScrollToTop = () => {
   const { pathname } = useLocation();
   useEffect(() => {
@@ -41,7 +40,6 @@ const App = () => (
         <ScrollToTop />
         <Navbar />
         <Routes>
-          {/* Main Website Routes */}
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
@@ -49,11 +47,10 @@ const App = () => (
           <Route path="/testimonials" element={<Testimonials />} />
           <Route path="/faqs" element={<FAQs />} />
 
-          {/* Dynamic Blog Routes Integrated with Sanity CMS */}
+          {/* Corrected to singular to match your Blogs.tsx links */}
           <Route path="/blog" element={<Blogs />} />
           <Route path="/blog/:slug" element={<BlogDetail />} />
 
-          {/* Contact & Utility Routes */}
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
