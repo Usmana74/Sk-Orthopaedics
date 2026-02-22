@@ -16,7 +16,7 @@ import Services from "./pages/Services";
 import ServiceDetail from "./pages/ServiceDetail";
 import Testimonials from "./pages/Testimonials";
 import FAQs from "./pages/FAQs";
-import Blogs from "./pages/Blogs"; // Now dynamic with Sanity
+import Blogs from "./pages/Blog"; // Now dynamic with Sanity
 import BlogDetail from "./pages/BlogDetail"; // New full article page
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
