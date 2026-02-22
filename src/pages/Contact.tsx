@@ -32,7 +32,7 @@ const Contact = () => {
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}
             className="text-white/70 text-sm md:text-base max-w-xl mx-auto leading-relaxed"
           >
-            Schedule your visit with Dr. Shoaib Aslam Kurerr at Midwest Hospital Bahawalpur. [cite: 27, 30]
+            Schedule your visit with Dr. Shoaib Aslam Kurerr at Midwest Hospital Bahawalpur.
           </motion.p>
         </div>
       </section>
