@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 import { client, urlFor } from '@/lib/sanity';
 import ScrollReveal from "@/components/ScrollReveal";
-import { Calendar, Clock, ArrowRight } from "lucide-react";
+import { ArrowRight, Calendar } from "lucide-react";
 
 const categoryColors: Record<string, string> = {
   "Joint Replacement": "text-blue-600 bg-blue-50",
@@ -22,83 +22,45 @@ const Blogs = () => {
       mainImage,
       publishedAt,
       "category": categories[0]->title,
-      "authorName": author->name,
-      "authorImage": author->image,
-      "excerpt": array::join(string::split(pt::text(body), "")[0..180], "")
+      "excerpt": array::join(string::split(pt::text(body), "")[0..140], "")
     }`;
 
-    client.fetch(query)
-      .then((data) => {
-        setPosts(data || []);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error("Sanity Fetch Error:", err);
-        setLoading(false);
-      });
+    client.fetch(query).then((data) => {
+      setPosts(data || []);
+      setLoading(false);
+    });
   }, []);
 
-  if (loading) {
-    return (
-      <div className="h-screen flex items-center justify-center bg-white">
-        <div className="flex flex-col items-center gap-4">
-          <div className="w-10 h-10 border-4 border-primary/20 border-t-primary rounded-full animate-spin" />
-          <p className="text-slate-400 font-medium animate-pulse">Fetching Insights...</p>
-        </div>
-      </div>
-    );
-  }
+  if (loading) return <div className="h-screen flex items-center justify-center bg-white animate-pulse text-slate-400 uppercase tracking-widest text-xs">Loading Journal...</div>;
 
   const [featured, ...rest] = posts;
 
   return (
-    <main className="bg-white">
-      {/* ── Editorial Header ────────────────────────────────────────── */}
-      <section className="pt-24 pb-16 border-b border-slate-100">
-        <div className="container-wide px-4 md:px-8">
-          <div className="max-w-3xl">
-            <h1 className="font-heading text-5xl md:text-7xl font-bold text-slate-900 mb-6 tracking-tight">
-              The <span className="text-primary italic font-medium">Journal</span>
-            </h1>
-            <p className="text-slate-500 text-lg md:text-xl leading-relaxed font-body max-w-2xl">
-              Professional orthopaedic perspectives, surgical innovations, and patient recovery guides from Midwest Hospital.
-            </p>
-          </div>
+    <main className="bg-white min-h-screen">
+      {/* ── Compact Header ── */}
+      <section className="pt-20 pb-12 border-b border-slate-100">
+        <div className="container-wide max-w-6xl px-6">
+          <h1 className="font-heading text-4xl md:text-5xl font-bold text-slate-900 mb-4 tracking-tight">Clinical Insights</h1>
+          <p className="text-slate-500 text-sm max-w-lg leading-relaxed">Evidence-based orthopaedic guides and surgical updates from Dr. Shoaib Aslam Kurerr.</p>
         </div>
       </section>
 
-      {/* ── Featured Spotlight ──────────────────────────────────────── */}
+      {/* ── Refined Featured Section ── */}
       {featured && (
-        <section className="py-12 border-b border-slate-100">
-          <div className="container-wide px-4 md:px-8">
+        <section className="py-12 bg-slate-50/30">
+          <div className="container-wide max-w-6xl px-6">
             <ScrollReveal>
-              <Link to={`/blog/${featured.slug.current}`} className="group grid lg:grid-cols-12 gap-8 items-center">
-                <div className="lg:col-span-7 overflow-hidden rounded-sm">
-                  <img
-                    src={urlFor(featured.mainImage).width(1200).url()}
-                    alt={featured.title}
-                    className="w-full h-[400px] md:h-[550px] object-cover grayscale-[0.3] group-hover:grayscale-0 transition-all duration-700"
-                  />
+              <Link to={`/blog/${featured.slug.current}`} className="group grid md:grid-cols-2 gap-10 items-center bg-white p-6 rounded-sm border border-slate-100 shadow-sm transition-all hover:shadow-md">
+                <div className="aspect-[16/10] overflow-hidden rounded-sm bg-slate-100">
+                  <img src={urlFor(featured.mainImage).width(800).url()} className="w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700" alt={featured.title} />
                 </div>
-                <div className="lg:col-span-5 flex flex-col justify-center">
-                  <div className="flex items-center gap-4 mb-6">
-                    <span className={`px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] rounded-full ${categoryColors[featured.category] || 'bg-slate-100 text-slate-500'}`}>
-                      {featured.category || 'Clinical'}
-                    </span>
-                    <div className="h-px w-8 bg-slate-200" />
-                    <span className="text-[10px] text-slate-400 uppercase tracking-widest font-bold">Featured Cover</span>
-                  </div>
-                  <h2 className="font-heading text-3xl md:text-5xl font-bold text-slate-900 mb-6 leading-[1.1] group-hover:text-primary transition-colors">
-                    {featured.title}
-                  </h2>
-                  <p className="text-slate-500 leading-relaxed mb-8 text-base">
-                    {featured.excerpt}...
-                  </p>
-                  <div className="flex items-center gap-6 pt-6 border-t border-slate-100">
-                    <div className="flex items-center gap-2 text-xs font-bold text-slate-900 uppercase tracking-wider">
-                      Read Article <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                    </div>
-                  </div>
+                <div>
+                  <span className={`inline-block px-2 py-0.5 text-[9px] font-bold uppercase tracking-widest mb-4 ${categoryColors[featured.category] || 'bg-slate-100 text-slate-500'}`}>
+                    {featured.category || 'Featured'}
+                  </span>
+                  <h2 className="font-heading text-2xl md:text-3xl font-bold text-slate-900 mb-4 leading-snug group-hover:text-primary transition-colors">{featured.title}</h2>
+                  <p className="text-slate-500 text-sm leading-relaxed mb-6 line-clamp-2">{featured.excerpt}...</p>
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-primary flex items-center gap-2">Read Analysis <ArrowRight size={12} /></span>
                 </div>
               </Link>
             </ScrollReveal>
@@ -106,76 +68,26 @@ const Blogs = () => {
         </section>
       )}
 
-      {/* ── Article Feed ────────────────────────────────────────────── */}
-      <section className="py-20 bg-slate-50/50">
-        <div className="container-wide px-4 md:px-8">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-20">
-            {rest.map((post, i) => (
-              <ScrollReveal key={post.slug.current} delay={i * 0.1}>
-                <Link to={`/blog/${post.slug.current}`} className="group flex flex-col h-full">
-                  <div className="relative mb-8 overflow-hidden rounded-sm aspect-[4/5]">
-                    <img
-                      src={urlFor(post.mainImage).width(600).url()}
-                      alt={post.title}
-                      className="absolute inset-0 w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
-                    />
-                    <div className="absolute bottom-4 left-4">
-                      <span className="bg-white px-3 py-1.5 text-[9px] font-bold uppercase tracking-widest text-slate-900 shadow-xl">
-                        {post.category || 'Orthopaedics'}
-                      </span>
-                    </div>
+      {/* ── Professional Small Grid ── */}
+      <section className="py-16">
+        <div className="container-wide max-w-6xl px-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+            {rest.map((post) => (
+              <ScrollReveal key={post.slug.current}>
+                <Link to={`/blog/${post.slug.current}`} className="group block border-t border-slate-100 pt-6">
+                  <div className="aspect-video mb-6 overflow-hidden rounded-sm bg-slate-50">
+                    <img src={urlFor(post.mainImage).width(500).url()} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt={post.title} />
                   </div>
-                  
-                  <div className="flex flex-col flex-1">
-                    <div className="flex items-center gap-3 text-[10px] font-bold text-slate-400 uppercase tracking-[0.15em] mb-4">
-                      <Calendar size={12} />
-                      {new Date(post.publishedAt).toLocaleDateString()}
-                    </div>
-                    <h3 className="font-heading text-2xl font-bold text-slate-900 mb-4 leading-tight group-hover:text-primary transition-colors">
-                      {post.title}
-                    </h3>
-                    <p className="text-slate-500 text-sm leading-relaxed mb-6 line-clamp-3">
-                      {post.excerpt}...
-                    </p>
-                    <div className="mt-auto flex items-center gap-3 pt-6 border-t border-slate-200/60">
-                      <img src={urlFor(post.authorImage).url()} className="w-8 h-8 rounded-full grayscale" />
-                      <span className="text-[10px] font-bold uppercase tracking-widest text-slate-900">{post.authorName}</span>
-                    </div>
+                  <div className="flex items-center gap-3 mb-3">
+                    <span className="text-[9px] font-bold uppercase tracking-tighter text-slate-400">{new Date(post.publishedAt).toLocaleDateString()}</span>
+                    <div className="h-px w-4 bg-slate-200" />
+                    <span className="text-[9px] font-bold uppercase tracking-widest text-primary italic">{post.category}</span>
                   </div>
+                  <h3 className="font-heading text-lg font-bold text-slate-900 mb-3 leading-tight group-hover:text-primary transition-colors line-clamp-2">{post.title}</h3>
+                  <p className="text-slate-500 text-xs leading-relaxed line-clamp-2 mb-4">{post.excerpt}...</p>
                 </Link>
               </ScrollReveal>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Footer Consultation ─────────────────────────────────────── */}
-      <section className="py-24 border-t border-slate-100">
-        <div className="container-wide px-4 md:px-8">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-block px-4 py-1.5 rounded-full bg-primary/5 text-primary text-[10px] font-bold uppercase tracking-[0.2em] mb-8">
-              Expert Guidance
-            </div>
-            <h2 className="font-heading text-4xl md:text-6xl font-bold text-slate-900 mb-8 leading-tight">
-              Questions about your <span className="italic">recovery</span>?
-            </h2>
-            <p className="text-slate-500 text-lg mb-12 max-w-xl mx-auto">
-              Bridge the gap between information and clinical expertise. Consult with Dr. Shoaib for personalized surgical plans.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <a
-                href="https://wa.me/923002278796"
-                className="w-full sm:w-auto px-10 py-5 bg-slate-900 text-white font-bold text-xs uppercase tracking-[0.2em] hover:bg-primary transition-all shadow-2xl shadow-slate-200"
-              >
-                Book Appointment
-              </a>
-              <Link
-                to="/contact"
-                className="w-full sm:w-auto px-10 py-5 border border-slate-200 text-slate-900 font-bold text-xs uppercase tracking-[0.2em] hover:bg-slate-50 transition-all"
-              >
-                Find Our Clinic
-              </Link>
-            </div>
           </div>
         </div>
       </section>
