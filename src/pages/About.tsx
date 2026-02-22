@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import ScrollReveal from "@/components/ScrollReveal";
-import { Phone, CheckCircle, Award, ShieldCheck, Star } from "lucide-react";
+import { CheckCircle, ShieldCheck } from "lucide-react";
 import doctorSeated from "@/assets/doctor-seated.jpg";
 import doctorSurgery from "@/assets/doctor-surgery-blue.jpg";
 import hospitalImage from "@/assets/hospital-interior.webp";
@@ -227,7 +227,8 @@ const About = () => {
                   </div>
                 </div>
                 <div className="md:w-2/5 min-h-[300px] relative">
-                  <img src={doctorSurgery} alt="Surgery" className="absolute inset-0 w-full h-full object-cover" />
+                  {/* Added object-top to fix cropping */}
+                  <img src={doctorSurgery} alt="Surgery" className="absolute inset-0 w-full h-full object-cover object-top" />
                   <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-primary via-transparent to-transparent" />
                 </div>
               </div>
