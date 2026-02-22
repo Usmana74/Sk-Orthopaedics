@@ -2,10 +2,27 @@ import { useParams, Link } from "react-router-dom";
 import ScrollReveal from "@/components/ScrollReveal";
 import { ArrowLeft, Clock, BedDouble, PersonStanding } from "lucide-react";
 
+// ─── Asset Imports (Mapped to your provided filenames) ──────────────────────
 import heroAcl from "@/assets/hero-acl.jpg";
 import heroKneeReplacement from "@/assets/hero-knee-replacement.jpg";
 import heroShoulder from "@/assets/hero-shoulder.jpg";
 import heroTrauma from "@/assets/hero-trauma.jpg";
+
+// Sub-Procedure Images
+import imgAcl from "@/assets/Acl.jpg";
+import imgAdvancedAcl from "@/assets/advanced Acl.jpg";
+import imgBankart from "@/assets/arthroscopic-bankart-repair.jpg";
+import imgRotatorCuff from "@/assets/arthroscopic-rotator-cuff-repair.jpg";
+import imgCapsularRelease from "@/assets/arthroscopic-shoulder-capsular-release.jpg";
+import imgHto from "@/assets/hto.jpg";
+import imgMeniscus from "@/assets/maniscus repair.jpg";
+import imgMclLcl from "@/assets/mcl & lcl.jpg";
+import imgMpfl from "@/assets/mpfl.jpg";
+import imgPartialKnee from "@/assets/partial-knee-replacement.jpg";
+import imgPcl from "@/assets/pcl.jpg";
+import imgShoulderReplace from "@/assets/shoulder-replacement.jpg";
+import imgTotalKnee from "@/assets/total knee replacement.jpg";
+import imgTraumaManage from "@/assets/trauma-management.jpg";
 
 type HeroKey = "knee-ligament" | "knee-replacement" | "shoulder" | "trauma";
 
@@ -34,279 +51,279 @@ const procedures: Record<string, ProcedureInfo> = {
     category: "Knee Ligament Surgery",
     heroKey: "knee-ligament",
     tagline: "Minimally invasive keyhole surgery to restore full knee stability.",
-    introduction: "The ACL is the primary stabiliser of the knee — essential for every twist, pivot, and change of direction. When it tears, the knee becomes unstable and the risk of further joint damage rises rapidly. Arthroscopic ACL Reconstruction replaces the torn ligament with a strong tendon graft through tiny keyhole incisions, restoring full stability without the trauma of open surgery. At Midwest Hospital Bahawalpur, Dr Shoaib Aslam Kurerr performs this procedure using internationally certified techniques, allowing most patients to return to full sport within 6–9 months.",
-    secondaryImage: "https://images.unsplash.com/photo-1511174511562-5f97f4f4e5a2?w=900&q=85",
+    introduction: "The ACL is the primary stabiliser of the knee — essential for every twist, pivot, and change of direction. Arthroscopic ACL Reconstruction replaces the torn ligament with a strong tendon graft through tiny keyhole incisions, restoring full stability without the trauma of open surgery. Dr Shoaib Aslam Kurerr performs this procedure using internationally certified techniques.",
+    secondaryImage: imgAcl,
     overview: [
-      "Replaces the torn ACL with a high-strength hamstring or patella tendon graft.",
-      "Performed through 2–3 small keyhole portals — minimal scarring and tissue disruption.",
-      "Restores full stability for sport, pivoting, cutting, and jumping.",
+      "Replaces the torn ACL with a high-strength tendon graft.",
+      "Performed through 2–3 small keyhole portals — minimal scarring.",
+      "Restores full stability for sport, pivoting, and jumping.",
     ],
     stats: { time: "60–90 min", stay: "Same-day / 1 night", walking: "24–48 hours" },
     steps: [
-      { heading: "Pre-op Planning", detail: "MRI review, graft selection, associated meniscal injury identified." },
-      { heading: "Graft Harvest", detail: "Hamstring tendons harvested through a small incision and prepared." },
-      { heading: "Arthroscopic Tunnels", detail: "Bone tunnels drilled at anatomic ACL footprints under camera guidance." },
-      { heading: "Graft Fixation", detail: "Graft passed and secured with bioabsorbable or titanium implants." },
+      { heading: "Pre-op Planning", detail: "MRI review and graft selection." },
+      { heading: "Graft Harvest", detail: "Hamstring or patella tendon prepared for reconstruction." },
+      { heading: "Arthroscopic Tunnels", detail: "Bone tunnels drilled at anatomic footprints." },
+      { heading: "Graft Fixation", detail: "Graft secured with bioabsorbable or titanium implants." },
     ],
   },
   "advanced-acl-reconstruction": {
     title: "Advanced ACL Reconstruction",
     category: "Knee Ligament Surgery",
     heroKey: "knee-ligament",
-    tagline: "Specialist solutions for revision, complex, and multi-ligament ACL cases.",
-    introduction: "When a standard ACL reconstruction has failed, or when multiple ligaments of the knee are injured simultaneously, a higher level of surgical expertise is required. Advanced ACL Reconstruction addresses the most challenging presentations — failed prior reconstructions, malpositioned tunnels, and combined multi-ligament injuries — using specialised graft strategies, staged surgical planning, and precise anatomic technique. Dr Shoaib Aslam Kurerr's experience with complex ligament surgery ensures each case receives a fully individualised surgical plan.",
-    secondaryImage: "https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=900&q=85",
+    tagline: "Specialist solutions for revision and complex ACL cases.",
+    introduction: "When a standard ACL reconstruction has failed or multiple ligaments are injured, advanced techniques are required. This involves specialized graft strategies and staged surgical planning to address failed prior reconstructions or malpositioned tunnels.",
+    secondaryImage: imgAdvancedAcl,
     overview: [
-      "Addresses failed prior ACL reconstructions and multi-ligament knee injuries.",
-      "Uses allograft or quadriceps tendon when prior tunnels are malpositioned.",
-      "Combines ACL, PCL, and collateral reconstruction in a single planned surgical setting.",
+      "Addresses failed prior ACL reconstructions.",
+      "Uses allograft or quadriceps tendon for robust stability.",
+      "Combines ACL, PCL, and collateral reconstruction if required.",
     ],
     stats: { time: "90–150 min", stay: "1–2 nights", walking: "24–48 hours (protected)" },
     steps: [
-      { heading: "3D Planning", detail: "CT and MRI map tunnels, hardware, bone quality, and all ligament injuries." },
-      { heading: "Hardware Removal", detail: "Prior implants removed; malpositioned tunnels bone-grafted if required." },
-      { heading: "Graft Selection", detail: "Allograft or quadriceps autograft chosen based on available tissue." },
-      { heading: "Anatomic Reconstruction", detail: "New tunnels at correct positions; multi-ligament grafts tensioned in sequence." },
+      { heading: "3D Planning", detail: "CT and MRI map existing tunnels and hardware." },
+      { heading: "Hardware Removal", detail: "Prior implants removed and tunnels bone-grafted if needed." },
+      { heading: "Graft Selection", detail: "High-strength tissue chosen based on prior failures." },
+      { heading: "Anatomic Reconstruction", detail: "New tunnels placed at correct mechanical positions." },
     ],
   },
   "arthroscopic-pcl-reconstruction": {
     title: "Arthroscopic PCL Reconstruction",
     category: "Knee Ligament Surgery",
     heroKey: "knee-ligament",
-    tagline: "Restoring posterior knee stability through precise arthroscopic technique.",
-    introduction: "The Posterior Cruciate Ligament is the strongest structure in the knee, preventing the shin bone from shifting backward. PCL injuries are less common than ACL tears but cause significant disability — particularly on stairs and slopes. When conservative treatment is insufficient for high-grade tears or combined ligament injuries, arthroscopic PCL reconstruction restores posterior stability through small keyhole portals, avoiding the extensive tissue disruption of traditional open surgery.",
-    secondaryImage: "https://images.unsplash.com/photo-1530026405186-ed1f139313f8?w=900&q=85",
+    tagline: "Restoring posterior knee stability through precise technique.",
+    introduction: "The Posterior Cruciate Ligament (PCL) prevents the shin bone from shifting backward. PCL injuries cause significant disability on stairs and slopes. Arthroscopic reconstruction restores stability through keyhole portals, avoiding extensive tissue disruption.",
+    secondaryImage: imgPcl,
     overview: [
-      "Replaces the torn PCL — the primary restraint against backward tibial displacement.",
-      "Performed arthroscopically through small portals for minimal disruption.",
-      "Graft fixed at 90° flexion to replicate natural PCL tension.",
+      "Replaces the PCL to prevent backward tibial displacement.",
+      "Performed arthroscopically for minimal tissue disruption.",
+      "Graft tensioned at 90° to replicate natural knee mechanics.",
     ],
     stats: { time: "60–90 min", stay: "Same-day / 1 night", walking: "Day 2–3 (braced)" },
     steps: [
-      { heading: "Imaging Assessment", detail: "MRI and stress X-rays grade the PCL injury and identify associated damage." },
-      { heading: "Arthroscopic Evaluation", detail: "Meniscal and cartilage injuries addressed concurrently." },
-      { heading: "Graft Preparation", detail: "Achilles allograft or hamstring autograft prepared to correct diameter." },
-      { heading: "Fixation at 90°", detail: "Graft secured at 90° flexion with anterior tibial force for correct tension." },
+      { heading: "Imaging Assessment", detail: "Stress X-rays grade the injury and identify associated damage." },
+      { heading: "Evaluation", detail: "Meniscal and cartilage injuries addressed concurrently." },
+      { heading: "Graft Preparation", detail: "Allograft or autograft prepared to specific diameter." },
+      { heading: "Anatomic Fixation", detail: "Graft secured with anterior tibial force for correct tension." },
     ],
   },
   "meniscus-repair": {
     title: "Meniscus Repair",
     category: "Knee Ligament Surgery",
     heroKey: "knee-ligament",
-    tagline: "Preserving the knee's natural shock absorber for lifelong joint health.",
-    introduction: "The menisci are the knee's essential shock absorbers — two C-shaped pads of cartilage that distribute load, protect the joint surface, and provide secondary stability. When torn, they cause pain, clicking, and swelling, and if left untreated, accelerate the onset of knee arthritis. Modern arthroscopic repair preserves this critical tissue wherever possible, promoting biological healing and protecting the long-term health of the knee joint.",
-    secondaryImage: "https://images.unsplash.com/photo-1536064479547-7ee40b74b807?w=900&q=85",
+    tagline: "Preserving the knee's natural shock absorber.",
+    introduction: "The menisci distribute load and protect the joint surface. Modern arthroscopic repair preserves this critical tissue wherever possible, promoting biological healing rather than tissue removal, protecting the long-term health of the joint.",
+    secondaryImage: imgMeniscus,
     overview: [
-      "Repairs torn meniscal cartilage arthroscopically — preserving tissue rather than removing it.",
-      "All-inside suture technique approximates tear edges to stimulate biological healing.",
-      "Protects the knee from accelerated cartilage wear and early-onset arthritis.",
+      "Repairs torn cartilage arthroscopically — preserving vital tissue.",
+      "All-inside suture technique stimulates biological healing.",
+      "Protects the knee from early-onset arthritis.",
     ],
     stats: { time: "30–60 min", stay: "Same-day", walking: "Day 1 (protected)" },
     steps: [
-      { heading: "Diagnostic Arthroscopy", detail: "Tear mapped — location and blood supply determine repair vs trimming." },
-      { heading: "Tear Preparation", detail: "Tear edges freshened with a rasp to stimulate healing response." },
-      { heading: "Suture Placement", detail: "All-inside self-tensioning devices compress the tear under optimal tension." },
-      { heading: "Biological Augmentation", detail: "PRP or fibrin clot applied for complex avascular-zone tears." },
+      { heading: "Diagnostic Scan", detail: "Tear location and blood supply determine repair strategy." },
+      { heading: "Tear Preparation", detail: "Tear edges freshened to stimulate a healing response." },
+      { heading: "Suture Placement", detail: "Specialized devices compress the tear under optimal tension." },
+      { heading: "Biological Augmentation", detail: "PRP applied for complex avascular-zone repairs." },
     ],
   },
   "mcl-lcl-reconstruction": {
     title: "MCL & LCL Reconstruction",
     category: "Knee Ligament Surgery",
     heroKey: "knee-ligament",
-    tagline: "Restoring side-to-side knee stability with precision graft reconstruction.",
-    introduction: "The collateral ligaments run along the inner (MCL) and outer (LCL) sides of the knee, preventing it from buckling sideways with every step. High-grade tears and those combined with ACL or PCL injuries require surgical reconstruction to restore stable joint function and prevent long-term degeneration. Anatomical graft reconstruction recreates the native ligament footprints on both femur and tibia for optimal biomechanical outcomes.",
-    secondaryImage: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=900&q=85",
+    tagline: "Restoring side-to-side knee stability with precision grafts.",
+    introduction: "High-grade tears of the collateral ligaments require surgical reconstruction to prevent buckling. Anatomical graft reconstruction recreates the native ligament footprints for optimal biomechanical outcomes.",
+    secondaryImage: imgMclLcl,
     overview: [
-      "Reconstructs the medial or lateral collateral ligaments using a tendon graft.",
-      "Anatomical footprint fixation restores natural varus/valgus restraint.",
-      "Frequently combined with ACL or PCL reconstruction in multi-ligament injuries.",
+      "Reconstructs the medial or lateral ligaments using tendon grafts.",
+      "Anatomical fixation restores natural varus/valgus restraint.",
+      "Often combined with ACL/PCL surgery for multi-ligament injuries.",
     ],
     stats: { time: "60–90 min", stay: "Same-day / 1 night", walking: "Day 1–2 (braced)" },
     steps: [
-      { heading: "Ligament Grading", detail: "Stress X-rays and MRI define the level and location of injury." },
-      { heading: "Graft Preparation", detail: "Autograft or allograft matched to native ligament size." },
-      { heading: "Anatomic Fixation", detail: "Tunnels or anchors placed at precise femoral and tibial footprints." },
-      { heading: "Multi-ligament Tensioning", detail: "All graft tensions coordinated to restore natural knee kinematics." },
+      { heading: "Ligament Grading", detail: "Stress X-rays define the level and location of the injury." },
+      { heading: "Graft Preparation", detail: "Matched to native ligament size for stability." },
+      { heading: "Anatomic Fixation", detail: "Tunnels placed at precise femoral and tibial footprints." },
+      { heading: "Multi-ligament Sync", detail: "Coordinated tensioning to restore natural kinetics." },
     ],
   },
   "mpfl-reconstruction": {
     title: "MPFL Reconstruction",
     category: "Knee Ligament Surgery",
     heroKey: "knee-ligament",
-    tagline: "Preventing recurrent kneecap dislocation with anatomic ligament restoration.",
-    introduction: "The Medial Patellofemoral Ligament tethers the kneecap to the inner side of the femur, preventing it from dislocating outward. A first dislocation tears this ligament in over 90% of cases, and without surgical repair, recurrent dislocations cause progressive cartilage damage and functional disability. MPFL Reconstruction replaces the torn ligament with a tendon graft, guided precisely to the isometric femoral point under fluoroscopy, restoring reliable patellar stability.",
-    secondaryImage: "https://images.unsplash.com/photo-1607962837359-5e7e89f86776?w=900&q=85",
+    tagline: "Preventing recurrent kneecap dislocation.",
+    introduction: "The MPFL tethers the kneecap to the inner side of the femur. Reconstruction replaces the torn ligament with a tendon graft, restoring reliable patellar stability and preventing progressive cartilage damage.",
+    secondaryImage: imgMpfl,
     overview: [
-      "Replaces the torn MPFL with a gracilis graft to prevent lateral kneecap dislocation.",
-      "Femoral tunnel placed at Schöttle's isometric point under fluoroscopic guidance.",
-      "Eliminates the apprehension and instability that limits daily activity.",
+      "Replaces the MPFL with a gracilis graft to prevent dislocation.",
+      "Uses fluoroscopic guidance for precise isometric placement.",
+      "Eliminates the 'apprehension' during daily activity.",
     ],
     stats: { time: "45–75 min", stay: "Same-day", walking: "Day 1–2 (brace)" },
     steps: [
-      { heading: "Fluoroscopic Landmark", detail: "Schöttle's isometric point on femur confirmed under X-ray guidance." },
+      { heading: "Landmark Confirmation", detail: "Isometric point on femur confirmed under X-ray." },
       { heading: "Gracilis Harvest", detail: "Graft harvested through a small inner thigh incision." },
-      { heading: "Patellar Fixation", detail: "Graft secured to medial patella via tunnels or suture anchors." },
-      { heading: "Femoral Fixation", detail: "Graft fixed at 30° flexion with interference screw." },
+      { heading: "Patellar Fixation", detail: "Graft secured to medial patella via tunnels." },
+      { heading: "Final Tensioning", detail: "Fixed at 30° flexion for optimal stability." },
     ],
   },
   "high-tibial-osteotomy": {
     title: "High Tibial Osteotomy (HTO)",
-    category: "Knee Preservation & Replacement",
+    category: "Knee Preservation",
     heroKey: "knee-replacement",
-    tagline: "Leg realignment to offload medial arthritis and delay joint replacement.",
-    introduction: "For younger, active patients with knee arthritis confined to the inner compartment, High Tibial Osteotomy offers a joint-preserving alternative to replacement. By surgically realigning the tibia, the mechanical axis of the leg is shifted onto the healthier outer cartilage, dramatically reducing pain and allowing years of continued active life. With modern locking plate technology, the correction is precise and early weight-bearing is possible — making this a reliable bridge before knee replacement may eventually be needed.",
-    secondaryImage: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=900&q=85",
+    tagline: "Leg realignment to offload arthritis and delay replacement.",
+    introduction: "HTO is a joint-preserving alternative to replacement for active patients. By realigning the tibia, we shift the load onto healthier cartilage, reducing pain and allowing for continued active life.",
+    secondaryImage: imgHto,
     overview: [
-      "Realigns the tibia to shift load off the arthritic medial compartment.",
-      "Modern locking plate allows precise correction and early weight-bearing.",
-      "Suited to active patients under 60 with isolated medial arthritis and varus deformity.",
+      "Realigns the tibia to shift load off arthritic compartments.",
+      "Modern locking plates allow for early weight-bearing.",
+      "Best suited for active patients under 60 with isolated arthritis.",
     ],
     stats: { time: "60–90 min", stay: "1–2 nights", walking: "Week 1–2 (crutches)" },
     steps: [
-      { heading: "Full-Length X-ray Planning", detail: "Angular correction calculated to shift mechanical axis optimally." },
-      { heading: "Tibial Osteotomy", detail: "Transverse cut below the knee, leaving lateral cortex as a hinge." },
-      { heading: "Wedge Opening", detail: "Medial side gradually opened to the calculated correction angle." },
-      { heading: "Locking Plate Fixation", detail: "Plate applied to hold correction; void filled with bone graft." },
+      { heading: "3D Planning", detail: "Angular correction calculated via full-length X-rays." },
+      { heading: "Tibial Osteotomy", detail: "Transverse cut made below the knee joint." },
+      { heading: "Wedge Opening", detail: "Medial side opened to the calculated correction angle." },
+      { heading: "Plate Fixation", detail: "Locking plate holds the new alignment securely." },
     ],
   },
   "total-knee-replacement": {
     title: "Total Knee Replacement",
-    category: "Knee Preservation & Replacement",
+    category: "Knee Replacement",
     heroKey: "knee-replacement",
-    tagline: "Eliminating end-stage knee arthritis pain with precision joint arthroplasty.",
-    introduction: "Total Knee Replacement is one of the most transformative procedures in modern orthopaedic surgery. For patients with severe, end-stage arthritis that no longer responds to any conservative measure, it offers something that nothing else can — definitive, lasting elimination of pain. All three compartments of the damaged joint are replaced with precision-engineered metal and polyethylene components. Over 95% of implants last 15–20 years, and most patients describe the change as life-changing.",
-    secondaryImage: "https://images.unsplash.com/photo-1624628639856-100bf817fd35?w=900&q=85",
+    tagline: "Eliminating end-stage arthritis pain with precision.",
+    introduction: "Total Knee Replacement replaces all three compartments of the damaged joint with precision-engineered metal and polyethylene components, offering a definitive elimination of pain for severe arthritis.",
+    secondaryImage: imgTotalKnee,
     overview: [
-      "Resurfaces all three damaged compartments with cobalt-chrome and polyethylene components.",
-      "Recommended for severe arthritis where all conservative treatment has failed.",
-      "Over 95% of implants last 15–20 years, delivering durable, pain-free mobility.",
+      "Resurfaces the entire joint with cobalt-chrome components.",
+      "Recommended for severe, end-stage arthritis.",
+      "Over 95% of implants last 15–20 years.",
     ],
     stats: { time: "90–120 min", stay: "3–5 days", walking: "Day 1 with frame" },
     steps: [
-      { heading: "Pre-op Templating", detail: "Full-length X-rays template implant sizes and alignment planning." },
-      { heading: "Bone Resection", detail: "Precise cuts on femur, tibia, and patella using alignment instruments." },
-      { heading: "Trial Components", detail: "Temporary implants verify alignment, stability, and patellar tracking." },
-      { heading: "Cementation", detail: "Final components cemented; wound closed in layers." },
+      { heading: "Pre-op Templating", detail: "X-rays determine implant sizes and alignment." },
+      { heading: "Bone Resection", detail: "Damaged surfaces removed using alignment instruments." },
+      { heading: "Trial Verification", detail: "Temporary implants used to check stability and tracking." },
+      { heading: "Cementation", detail: "Final components bonded to the bone." },
     ],
   },
   "partial-knee-replacement": {
     title: "Partial Knee Replacement",
-    category: "Knee Preservation & Replacement",
+    category: "Knee Replacement",
     heroKey: "knee-replacement",
-    tagline: "Targeted resurfacing of the damaged compartment — preserving healthy tissue.",
-    introduction: "For patients whose arthritis is confined to a single compartment of the knee, partial replacement offers all the pain relief of a total replacement with a significantly faster recovery and a more natural-feeling result. Only the damaged portion is resurfaced through a smaller incision, leaving healthy bone, cartilage, and ligaments completely untouched. Patients consistently report that the knee feels more like their own than after a total replacement.",
-    secondaryImage: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=900&q=85",
+    tagline: "Targeted resurfacing — preserving healthy tissue.",
+    introduction: "For arthritis confined to a single compartment, partial replacement offers faster recovery and a more natural-feeling result by leaving healthy bone and ligaments untouched.",
+    secondaryImage: imgPartialKnee,
     overview: [
-      "Resurfaces only the damaged compartment — preserving all healthy tissue.",
-      "Smaller incision, less blood loss, and faster recovery than total replacement.",
-      "Results in a more natural-feeling knee than total arthroplasty.",
+      "Resurfaces only the damaged portion of the knee.",
+      "Smaller incision and faster recovery than total replacement.",
+      "Results in a knee that feels more 'natural' to the patient.",
     ],
     stats: { time: "60–90 min", stay: "1–2 nights", walking: "Day 1" },
     steps: [
-      { heading: "Patient Selection", detail: "MRI and X-rays confirm single-compartment disease and intact ligaments." },
-      { heading: "Minimal Approach", detail: "8–10 cm incision exposing only the affected compartment." },
-      { heading: "Bone Preparation", detail: "Only the damaged condyle and plateau resurfaced." },
-      { heading: "Implant Cementation", detail: "Metal femoral implant and tibial polyethylene insert cemented." },
+      { heading: "Patient Selection", detail: "MRI confirms single-compartment disease." },
+      { heading: "Minimal Approach", detail: "Small incision focused on the affected area." },
+      { heading: "Bone Prep", detail: "Only the damaged condyle is resurfaced." },
+      { heading: "Fixation", detail: "Metal and polyethylene components cemented in place." },
     ],
   },
   "arthroscopic-shoulder-capsular-release": {
-    title: "Arthroscopic Shoulder Capsular Release",
+    title: "Shoulder Capsular Release",
     category: "Shoulder Surgery",
     heroKey: "shoulder",
-    tagline: "Releasing the frozen shoulder capsule to restore full range of motion.",
-    introduction: "Frozen shoulder — adhesive capsulitis — is a progressively disabling condition in which the shoulder capsule becomes thickened and contracted, trapping the joint in stiffness and pain. It can take 2–3 years to resolve spontaneously, and many patients are left with incomplete recovery. When physiotherapy, injections, and hydrodilatation have failed, arthroscopic capsular release offers definitive surgical treatment — systematically releasing the contracted capsule under direct camera vision and restoring full movement in a single procedure.",
-    secondaryImage: "https://images.unsplash.com/photo-1631815589068-dc4b5d1a2e6c?w=900&q=85",
+    tagline: "Releasing the frozen shoulder capsule.",
+    introduction: "Adhesive capsulitis (Frozen Shoulder) traps the joint in stiffness. When physiotherapy fails, arthroscopic release systematically frees the contracted capsule to restore full movement.",
+    secondaryImage: imgCapsularRelease,
     overview: [
-      "Releases the contracted shoulder capsule using radiofrequency energy under arthroscopic vision.",
-      "Indicated for frozen shoulder failing physiotherapy and injections over 6 months.",
-      "Restores full range of motion in the same sitting through keyhole portals.",
+      "Releases the shoulder capsule using radiofrequency energy.",
+      "Restores full range of motion in a single procedure.",
+      "Highly effective for cases failing conservative treatment.",
     ],
     stats: { time: "30–45 min", stay: "Same-day", walking: "Immediately" },
     steps: [
-      { heading: "Diagnostic Arthroscopy", detail: "Thickened capsule visualised and contracture distribution mapped." },
-      { heading: "Anterior Capsular Release", detail: "Rotator interval and anterior capsule divided with radiofrequency probe." },
-      { heading: "Inferior & Posterior Release", detail: "Axillary recess and posterior capsule released systematically." },
-      { heading: "Manipulation", detail: "Shoulder taken through full range of motion to break residual adhesions." },
+      { heading: "Diagnosis", detail: "Thickened capsule mapped under direct vision." },
+      { heading: "Capsular Division", detail: "Contracted tissue divided with a radiofrequency probe." },
+      { heading: "Global Release", detail: "Systematic release of anterior and posterior adhesions." },
+      { heading: "Manipulation", detail: "Gentle movement to confirm full range restored." },
     ],
   },
   "arthroscopic-bankart-repair": {
     title: "Arthroscopic Bankart Repair",
     category: "Shoulder Surgery",
     heroKey: "shoulder",
-    tagline: "Reattaching the shoulder labrum to prevent recurrent dislocation.",
-    introduction: "A shoulder dislocation tears the glenoid labrum — the cartilage rim that keeps the ball securely in the socket. In patients under 25, the risk of a second dislocation without surgery approaches 80–90%, with each episode causing progressive bone and cartilage damage. Arthroscopic Bankart Repair reattaches the labrum to the glenoid rim using suture anchors through keyhole portals, recreating the natural bumper that prevents dislocation and restoring the confidence to return to sport.",
-    secondaryImage: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=900&q=85",
+    tagline: "Reattaching the labrum to prevent dislocation.",
+    introduction: "A dislocation tears the labrum—the socket's bumper. Repair reattaches this tissue using suture anchors through keyhole portals, restoring the confidence to return to sports.",
+    secondaryImage: imgBankart,
     overview: [
-      "Reattaches the torn labrum using 3–4 suture anchors through keyhole portals.",
-      "Recreates the socket bumper that prevents anterior shoulder dislocation.",
-      "Over 90% success rate for return to sport and contact activities.",
+      "Reattaches the torn labrum using suture anchors.",
+      "Prevents recurrent anterior shoulder dislocations.",
+      "Over 90% success rate for return to contact sports.",
     ],
     stats: { time: "45–75 min", stay: "Same-day", walking: "Immediately" },
     steps: [
-      { heading: "Arthroscopic Assessment", detail: "Tear extent, Hill-Sachs lesion, and glenoid bone loss quantified." },
-      { heading: "Labral Mobilization", detail: "Torn labrum elevated fully from the glenoid neck." },
-      { heading: "Anchor Insertion", detail: "3–4 suture anchors placed along anterior glenoid rim." },
-      { heading: "Labral Reattachment", detail: "Sutures passed through labrum and tied — restoring bumper effect." },
+      { heading: "Assessment", detail: "Tear extent and bone loss quantified arthroscopically." },
+      { heading: "Mobilization", detail: "Torn labrum elevated from the glenoid neck." },
+      { heading: "Anchor Placement", detail: "Suture anchors placed along the glenoid rim." },
+      { heading: "Reattachment", detail: "Labrum tied down to restore the bumper effect." },
     ],
   },
   "arthroscopic-rotator-cuff-repair": {
-    title: "Arthroscopic Rotator Cuff Repair",
+    title: "Rotator Cuff Repair",
     category: "Shoulder Surgery",
     heroKey: "shoulder",
-    tagline: "Reattaching torn shoulder tendons to restore strength and eliminate pain.",
-    introduction: "The rotator cuff is the group of four tendons that power and stabilise every shoulder movement. When the supraspinatus — the most commonly torn tendon — ruptures, the result is chronic pain, night-time discomfort, and progressive weakness that limits basic activities like reaching overhead or lifting. Arthroscopic repair reattaches the torn tendon to its bony footprint using suture anchors through keyhole portals, restoring the shoulder's strength and eliminating pain without the need for large incisions.",
-    secondaryImage: "https://images.unsplash.com/photo-1584515933487-779824d29309?w=900&q=85",
+    tagline: "Reattaching torn tendons to restore strength.",
+    introduction: "Rotator cuff tears cause chronic pain and weakness. Arthroscopic repair reattaches the tendon to its bony footprint using suture anchors, eliminating night pain and restoring power.",
+    secondaryImage: imgRotatorCuff,
     overview: [
-      "Reattaches the torn tendon to its footprint using arthroscopic suture anchors.",
-      "Double-row repair maximizes contact area for optimal tendon-to-bone healing.",
-      "Eliminates chronic night pain and progressive weakness caused by the tear.",
+      "Reattaches tendons using arthroscopic suture anchors.",
+      "Double-row technique maximizes healing surface area.",
+      "Eliminates chronic pain and restores overhead function.",
     ],
     stats: { time: "60–90 min", stay: "Same-day", walking: "Immediately" },
     steps: [
-      { heading: "Subacromial Inspection", detail: "Tear size and tendon mobility assessed. Bone spurs removed if required." },
-      { heading: "Tendon Mobilization", detail: "Scar tissue released to allow tendon to reach footprint without tension." },
-      { heading: "Footprint Preparation", detail: "Greater tuberosity decorticated to create a vascular healing bed." },
-      { heading: "Double-Row Repair", detail: "Medial and lateral anchor rows draw tendon firmly onto bone." },
+      { heading: "Inspection", detail: "Tear size and tendon mobility assessed." },
+      { heading: "Mobilization", detail: "Scar tissue released to allow tension-free repair." },
+      { heading: "Preparation", detail: "Bone surface prepared to create a healing bed." },
+      { heading: "Double-Row Repair", detail: "Anchors draw tendon firmly onto the bone." },
     ],
   },
   "shoulder-replacement": {
     title: "Shoulder Replacement",
     category: "Shoulder Surgery",
     heroKey: "shoulder",
-    tagline: "Precision shoulder arthroplasty for end-stage arthritis and irreparable tears.",
-    introduction: "When shoulder arthritis has progressed to the point where pain is constant, movement is severely restricted, and no conservative treatment offers relief, shoulder replacement is the definitive solution. Two designs are available: the anatomic replacement for patients with an intact rotator cuff, and the reverse total shoulder for patients with a massive irreparable cuff tear — where the ball-and-socket relationship is inverted to allow the deltoid to power the shoulder instead.",
-    secondaryImage: "https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?w=900&q=85",
+    tagline: "Precision arthroplasty for advanced arthritis.",
+    introduction: "For end-stage arthritis, shoulder replacement is the definitive solution. We offer both anatomic and reverse designs depending on the state of the patient's rotator cuff.",
+    secondaryImage: imgShoulderReplace,
     overview: [
-      "Replaces the damaged shoulder ball and socket with prosthetic components.",
-      "Reverse design used when rotator cuff is massively torn — transfers function to the deltoid.",
-      "Eliminates constant pain and restores overhead function lost to advanced arthritis.",
+      "Replaces the ball and socket with prosthetic components.",
+      "Reverse design used for massive, irreparable cuff tears.",
+      "Restores function lost to advanced joint degeneration.",
     ],
     stats: { time: "90–120 min", stay: "2–3 nights", walking: "Immediately" },
     steps: [
-      { heading: "CT 3D Planning", detail: "Pre-operative templating determines humeral and glenoid implant sizing." },
-      { heading: "Deltopectoral Approach", detail: "Anterior approach through the deltopectoral interval — minimal muscle disruption." },
-      { heading: "Humeral Preparation", detail: "Humeral head resected; stem reamed to correct angle." },
-      { heading: "Glenoid/Baseplate Fixation", detail: "Polyethylene glenoid (anatomic) or glenosphere baseplate (reverse) fixed." },
+      { heading: "3D Planning", detail: "CT planning determines sizing and alignment." },
+      { heading: "Access", detail: "Deltopectoral approach for minimal muscle disruption." },
+      { heading: "Prep", detail: "Humeral and glenoid surfaces shaped for implants." },
+      { heading: "Fixation", detail: "Final components secured; tracking verified." },
     ],
   },
   "trauma-management": {
     title: "Trauma & Fracture Management",
     category: "Orthopaedic Trauma",
     heroKey: "trauma",
-    tagline: "Expert surgical fixation for acute fractures and complex musculoskeletal injuries.",
-    introduction: "Orthopaedic trauma demands immediate, expert intervention. From simple fractures to complex polytrauma with multiple simultaneous injuries, the quality of the initial surgical fixation directly determines the long-term functional outcome. Dr Shoaib Aslam Kurerr provides comprehensive emergency orthopaedic trauma care at Midwest Hospital Bahawalpur, applying modern minimally invasive fixation techniques and ATLS-guided assessment protocols to restore anatomy, enable early mobilisation, and give every patient the best possible recovery.",
-    secondaryImage: "https://images.unsplash.com/photo-1504439468489-c8920d796a29?w=900&q=85",
+    tagline: "Expert surgical fixation for acute fractures.",
+    introduction: "Quality initial surgical fixation determines long-term outcomes. We apply modern minimally invasive techniques and locking plates to restore anatomy and enable early mobilisation.",
+    secondaryImage: imgTraumaManage,
     overview: [
-      "Full spectrum of orthopaedic trauma using minimally invasive fixation wherever possible.",
-      "ATLS-guided assessment ensures life-threatening injuries are managed before definitive surgery.",
-      "Intramedullary nails, locking plates, and screws restore anatomy and enable early mobilisation.",
+      "Comprehensive care for complex and simple fractures.",
+      "Uses intramedullary nails and locking plate technology.",
+      "Focused on restoring anatomy for early mobilization.",
     ],
     stats: { time: "Varies by injury", stay: "1–5 days", walking: "As fixation allows" },
     steps: [
-      { heading: "ATLS Assessment", detail: "Life-threatening injuries identified first. Fractures splinted and neurovascular status checked." },
-      { heading: "Imaging & Planning", detail: "X-ray and CT define fracture pattern. Implant templating performed." },
-      { heading: "Surgical Fixation", detail: "Nail, plate, or external fixator selected based on fracture type and patient status." },
-      { heading: "Early Mobilization", detail: "Physiotherapy begins as soon as fixation stability allows." },
+      { heading: "Assessment", detail: "Fracture pattern defined via X-ray and CT." },
+      { heading: "Planning", detail: "Implant templating and approach selection." },
+      { heading: "Fixation", detail: "Surgical stabilization using plates, nails, or screws." },
+      { heading: "Rehabilitation", detail: "Early mobilization protocol to prevent stiffness." },
     ],
   },
 };
@@ -344,7 +361,6 @@ const ServiceDetail = () => {
 
   return (
     <main>
-
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
       <section className="relative h-[60vh] min-h-[380px] flex items-end overflow-hidden">
         <img
@@ -416,10 +432,8 @@ const ServiceDetail = () => {
       {/* ── Key Points + Procedure Steps ─────────────────────────────────── */}
       <section className="section-padding pt-0">
         <div className="container-wide max-w-5xl mx-auto space-y-8">
-
           <ScrollReveal>
             <div className="grid md:grid-cols-2 gap-6">
-
               {/* Key Points */}
               <div className="bg-card rounded-2xl p-6 card-shadow border border-border/50 space-y-3">
                 <h3 className="font-heading text-base font-bold text-foreground mb-1">Key Points</h3>
@@ -448,7 +462,6 @@ const ServiceDetail = () => {
                   ))}
                 </div>
               </div>
-
             </div>
           </ScrollReveal>
 
@@ -486,7 +499,6 @@ const ServiceDetail = () => {
               </div>
             </div>
           </ScrollReveal>
-
         </div>
       </section>
     </main>
