@@ -27,20 +27,6 @@ const Navbar = () => {
 
   return (
     <>
-      {/* Top bar */}
-      <div className="bg-primary text-primary-foreground text-sm">
-        <div className="container-wide flex items-center justify-between px-4 py-2 md:px-8">
-          <div className="flex items-center gap-4">
-            <span className="hidden sm:inline">📍 Bahawalpur, Pakistan</span>
-            <span>🕐 Mon – Sat: 9:00 AM – 11:00 PM</span>
-          </div>
-          <div className="flex items-center gap-3">
-            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:opacity-80 transition-opacity">
-              <WhatsAppIcon className="w-4 h-4" /> WhatsApp
-            </a>
-          </div>
-        </div>
-      </div>
 
       {/* Main nav */}
       <nav className="sticky top-0 z-50 bg-card/95 backdrop-blur-md border-b border-border">
