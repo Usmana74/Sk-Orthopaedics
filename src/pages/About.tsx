@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import ScrollReveal from "@/components/ScrollReveal";
-import { CheckCircle, ShieldCheck, Award, BookOpen, Building2, Landmark } from "lucide-react";
+import { CheckCircle, ShieldCheck, Award, BookOpen, Building2 } from "lucide-react";
 import doctorSeated from "@/assets/doctor-seated.jpg";
 import doctorSurgery from "@/assets/doctor-surgery-blue.jpg";
 import hospitalImage from "@/assets/hospital-interior.webp";
@@ -45,14 +45,14 @@ const About = () => {
                 Dr. Shoaib Aslam Kurerr
               </h2>
               <p className="text-slate-600 leading-relaxed text-base">
-                With a career built within the most prestigious medical institutions of Pakistan, Dr. Shoaib Aslam Kurerr brings an unmatched level of clinical authority to Bahawalpur. His experience at <strong>Mayo Hospital Lahore</strong> and <strong>King Edward Medical University</strong> ensures that every patient receives treatment aligned with global academic and surgical standards.
+                Dr. Shoaib Aslam Kurerr brings a legacy of clinical excellence to Bahawalpur. As a <strong>Fellow of Trauma and Orthopaedics</strong> with extensive surgical experience at <strong>Mayo Hospital Lahore</strong> and <strong>King Edward Medical University</strong>, his practice is defined by academic rigor and advanced surgical precision.
               </p>
               
               <div className="grid grid-cols-3 gap-3 md:gap-4 py-6">
                 {[
                   { val: "5000+", lab: "Patients" },
-                  { val: "FCPS", lab: "Trauma & Ortho" },
-                  { val: "POA", lab: "Fellow" }
+                  { val: "Ex-Surgeon", lab: "Mayo Hospital" },
+                  { val: "PAO", lab: "Member" }
                 ].map((s, i) => (
                   <div key={i} className="text-center p-4 bg-slate-50 rounded-2xl border border-slate-100">
                     <p className="text-xl md:text-2xl font-bold text-primary">{s.val}</p>
@@ -69,7 +69,7 @@ const About = () => {
         </div>
       </section>
 
-      {/* ─── 3. Verified Qualifications (New Timeline Layout) ─── */}
+      {/* ─── 3. Verified Qualifications (Refined Layout) ─── */}
       <section className="py-20 bg-slate-50 border-y border-slate-100">
         <div className="container-wide max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
@@ -77,70 +77,51 @@ const About = () => {
             <div className="h-1 w-12 bg-primary mx-auto rounded-full" />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Column 1: Core Degrees */}
-            <div className="space-y-4">
-              <h4 className="text-xs font-bold uppercase tracking-widest text-primary mb-4 ml-2">Clinical Foundations</h4>
-              {[
-                { title: "MBBS", inst: "Allama Iqbal Medical College, Lahore", icon: <BookOpen className="w-5 h-5" /> },
-                { title: "FCPS (Trauma & Ortho)", inst: "College of Physicians & Surgeons Pakistan", icon: <Award className="w-5 h-5" /> },
-                { title: "MRCS-I", inst: "Royal College of Surgeons, Edinburgh, UK", icon: <Landmark className="w-5 h-5" /> }
-              ].map((item, i) => (
-                <ScrollReveal key={i} delay={i * 0.1}>
-                  <div className="flex items-center gap-4 bg-white p-5 rounded-2xl border border-slate-200 hover:border-primary/40 transition-colors shadow-sm">
-                    <div className="p-3 rounded-xl bg-primary/5 text-primary">{item.icon}</div>
-                    <div>
-                      <p className="font-bold text-slate-900 text-sm uppercase">{item.title}</p>
-                      <p className="text-slate-500 text-xs">{item.inst}</p>
-                    </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
+            {[
+              { title: "MBBS", inst: "Allama Iqbal Medical College, Lahore", icon: <BookOpen className="w-5 h-5" /> },
+              { title: "FCPS (Trauma & Ortho)", inst: "College of Physicians & Surgeons Pakistan", icon: <Award className="w-5 h-5" /> },
+              { title: "Member PAO", inst: "Pakistan Orthopaedic Association", icon: <ShieldCheck className="w-5 h-5" /> },
+              { title: "Institutional Experience", inst: "Mayo Hospital & King Edward Medical University", icon: <Building2 className="w-5 h-5" /> },
+              { title: "MRCS-I", inst: "Royal College of Surgeons, Edinburgh, UK", icon: <Award className="w-5 h-5" /> },
+              { title: "Member PASSS / PAS", inst: "Arthroplasty & Sports Surgery Societies", icon: <ShieldCheck className="w-5 h-5" /> }
+            ].map((item, i) => (
+              <ScrollReveal key={i} delay={i * 0.05}>
+                <div className="flex items-start gap-4 p-4 border-b border-slate-200 group hover:bg-white hover:rounded-xl hover:shadow-sm transition-all">
+                  <div className="mt-1 text-primary opacity-70 group-hover:opacity-100 transition-opacity">
+                    {item.icon}
                   </div>
-                </ScrollReveal>
-              ))}
-            </div>
-
-            {/* Column 2: Institutional & Societies */}
-            <div className="space-y-4">
-              <h4 className="text-xs font-bold uppercase tracking-widest text-primary mb-4 ml-2">Professional Governance</h4>
-              {[
-                { title: "Ex-Surgeon & Specialist", inst: "Mayo Hospital | King Edward Medical University", icon: <Building2 className="w-5 h-5" /> },
-                { title: "Member PAO", inst: "Pakistan Orthopaedic Association", icon: <ShieldCheck className="w-5 h-5" /> },
-                { title: "Member PASSS / PAS", inst: "Arthroplasty & Sports Surgery Societies", icon: <ShieldCheck className="w-5 h-5" /> }
-              ].map((item, i) => (
-                <ScrollReveal key={i} delay={0.3 + (i * 0.1)}>
-                  <div className="flex items-center gap-4 bg-white p-5 rounded-2xl border border-slate-200 hover:border-primary/40 transition-colors shadow-sm">
-                    <div className="p-3 rounded-xl bg-primary/5 text-primary">{item.icon}</div>
-                    <div>
-                      <p className="font-bold text-slate-900 text-sm uppercase">{item.title}</p>
-                      <p className="text-slate-500 text-xs">{item.inst}</p>
-                    </div>
+                  <div>
+                    <h4 className="font-bold text-slate-900 text-sm md:text-base uppercase tracking-tight">{item.title}</h4>
+                    <p className="text-slate-500 text-xs md:text-sm">{item.inst}</p>
                   </div>
-                </ScrollReveal>
-              ))}
-            </div>
+                </div>
+              </ScrollReveal>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ─── 4. Pinnacle of Training (Updated Data) ─── */}
+      {/* ─── 4. Pinnacle of Training (Mayo & Trauma Fellow Focus) ─── */}
       <section className="py-12 md:py-24">
         <div className="container-wide max-w-6xl mx-auto px-0 md:px-6">
           <ScrollReveal>
             <div className="bg-primary md:rounded-[3rem] overflow-hidden shadow-2xl">
               <div className="flex flex-col md:flex-row">
-                <div className="p-8 md:p-16 md:w-3/5 space-y-6 text-white">
-                  <p className="text-accent font-bold text-[10px] uppercase tracking-[0.3em]">Institutional Heritage</p>
-                  <h3 className="font-heading text-2xl md:text-4xl font-bold leading-tight">
-                    Pinnacle of Training & Clinical Authority
+                <div className="p-8 md:p-16 md:w-3/5 space-y-6">
+                  <p className="text-accent font-bold text-[10px] uppercase tracking-[0.3em]">Pinnacle of Training</p>
+                  <h3 className="font-heading text-2xl md:text-4xl font-bold text-white leading-tight">
+                    Fellowship in Trauma & Orthopaedics
                   </h3>
                   <p className="text-white/70 text-sm md:text-base leading-relaxed">
-                    Trained at <strong>Mayo Hospital Lahore</strong> and <strong>King Edward Medical University</strong>, Dr. Shoaib's expertise is rooted in Pakistan's premier clinical environments. His specialized <strong>Fellowship in Trauma and Orthopaedics</strong> certifies his ability to handle complex surgical interventions with precision.
+                    Rooted in the clinical heritage of <strong>Mayo Hospital Lahore</strong> and <strong>King Edward Medical University</strong>, Dr. Shoaib's training encompasses complex trauma management and advanced joint reconstruction. His PAO fellowship signifies a mastery of both traditional surgical precision and modern arthroscopic techniques.
                   </p>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
                     {[
                       "Fellowship in Trauma & Ortho",
+                      "Mayo Hospital Experience",
                       "Joint Replacement Specialist",
-                      "Advanced Sports Medicine",
-                      "King Edward Medical University Alumnus"
+                      "KEMU Lahore Alumnus"
                     ].map((item, i) => (
                       <div key={i} className="flex items-center gap-3 text-white/90 text-xs font-semibold">
                         <ShieldCheck className="w-4 h-4 text-accent" /> {item}
@@ -169,8 +150,8 @@ const About = () => {
             </ScrollReveal>
             <ScrollReveal direction="right" className="space-y-6">
               <h3 className="font-heading text-2xl md:text-3xl font-bold text-slate-900">Midwest Hospital Facilities</h3>
-              <p className="text-slate-600 text-sm md:text-base">
-                Practicing at Midwest Hospital, Bahawalpur, we ensure that the advanced surgical protocols learned at Mayo Hospital are implemented using modern HD arthroscopic towers and intraoperative C-arm imaging.
+              <p className="text-slate-600 text-sm md:text-base text-balance">
+                Practicing at Midwest Hospital, Bahawalpur, we apply the surgical protocols developed at Punjab's premier medical institutions to provide high-definition arthroscopic care.
               </p>
               <ul className="space-y-3">
                 {[
