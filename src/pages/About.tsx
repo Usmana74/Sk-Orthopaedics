@@ -44,15 +44,15 @@ const About = () => {
               <h2 className="font-heading text-3xl md:text-5xl font-bold text-slate-900 leading-tight">
                 Dr. Shoaib Aslam Kurerr
               </h2>
-              <p className="text-slate-600 leading-relaxed text-base">
-                Dr. Shoaib Aslam Kurerr brings a legacy of clinical excellence to Bahawalpur. As a <strong>Fellow of Trauma and Orthopaedics</strong> with extensive surgical experience at <strong>Mayo Hospital Lahore</strong> and <strong>King Edward Medical University</strong>, his practice is defined by academic rigor and advanced surgical precision.
+              <p className="text-slate-600 leading-relaxed text-base text-justify">
+                A distinguished <strong>Fellow of Trauma and Orthopaedics</strong>, Dr. Shoaib Aslam Kurerr brings the clinical authority of Pakistan’s premier medical institutions to Bahawalpur. Having served as a Specialist Surgeon at <strong>Mayo Hospital Lahore</strong>—the nation's largest tertiary care center—and <strong>King Edward Medical University</strong>, his practice is built on a foundation of high-volume surgical expertise and academic leadership. With an additional <strong>Fellowship in Sports Surgery and Advanced Trauma Management</strong>, he implements the gold standard of surgical protocols in every procedure as an active Member of the Pakistan Orthopaedic Association (POA).
               </p>
               
               <div className="grid grid-cols-3 gap-3 md:gap-4 py-6">
                 {[
                   { val: "5000+", lab: "Patients" },
-                  { val: "Ex-Surgeon", lab: "Mayo Hospital" },
-                  { val: "PAO", lab: "Member" }
+                  { val: "Dual", lab: "Fellowship" },
+                  { val: "POA", lab: "Member" }
                 ].map((s, i) => (
                   <div key={i} className="text-center p-4 bg-slate-50 rounded-2xl border border-slate-100">
                     <p className="text-xl md:text-2xl font-bold text-primary">{s.val}</p>
@@ -69,7 +69,7 @@ const About = () => {
         </div>
       </section>
 
-      {/* ─── 3. Verified Qualifications (Refined Layout) ─── */}
+      {/* ─── 3. Verified Qualifications ─── */}
       <section className="py-20 bg-slate-50 border-y border-slate-100">
         <div className="container-wide max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
@@ -81,7 +81,9 @@ const About = () => {
             {[
               { title: "MBBS", inst: "Allama Iqbal Medical College, Lahore", icon: <BookOpen className="w-5 h-5" /> },
               { title: "FCPS (Trauma & Ortho)", inst: "College of Physicians & Surgeons Pakistan", icon: <Award className="w-5 h-5" /> },
-              { title: "Member PAO", inst: "Pakistan Orthopaedic Association", icon: <ShieldCheck className="w-5 h-5" /> },
+              { title: "Fellowship in Sports Surgery", inst: "Specialized Arthroscopy & Sports Medicine", icon: <ShieldCheck className="w-5 h-5" /> },
+              { title: "Trauma Management Fellowship", inst: "Advanced Reconstructive Trauma Surgery", icon: <ShieldCheck className="w-5 h-5" /> },
+              { title: "Member POA", inst: "Pakistan Orthopaedic Association", icon: <Award className="w-5 h-5" /> },
               { title: "Institutional Experience", inst: "Mayo Hospital & King Edward Medical University", icon: <Building2 className="w-5 h-5" /> },
               { title: "MRCS-I", inst: "Royal College of Surgeons, Edinburgh, UK", icon: <Award className="w-5 h-5" /> },
               { title: "Member PASSS / PAS", inst: "Arthroplasty & Sports Surgery Societies", icon: <ShieldCheck className="w-5 h-5" /> }
@@ -102,26 +104,26 @@ const About = () => {
         </div>
       </section>
 
-      {/* ─── 4. Pinnacle of Training (Mayo & Trauma Fellow Focus) ─── */}
+      {/* ─── 4. Pinnacle of Training ─── */}
       <section className="py-12 md:py-24">
         <div className="container-wide max-w-6xl mx-auto px-0 md:px-6">
           <ScrollReveal>
             <div className="bg-primary md:rounded-[3rem] overflow-hidden shadow-2xl">
               <div className="flex flex-col md:flex-row">
                 <div className="p-8 md:p-16 md:w-3/5 space-y-6">
-                  <p className="text-accent font-bold text-[10px] uppercase tracking-[0.3em]">Pinnacle of Training</p>
+                  <p className="text-accent font-bold text-[10px] uppercase tracking-[0.3em]">Advanced Expertise</p>
                   <h3 className="font-heading text-2xl md:text-4xl font-bold text-white leading-tight">
-                    Fellowship in Trauma & Orthopaedics
+                    Dual Fellowship in Trauma & Sports Surgery
                   </h3>
                   <p className="text-white/70 text-sm md:text-base leading-relaxed">
-                    Rooted in the clinical heritage of <strong>Mayo Hospital Lahore</strong> and <strong>King Edward Medical University</strong>, Dr. Shoaib's training encompasses complex trauma management and advanced joint reconstruction. His PAO fellowship signifies a mastery of both traditional surgical precision and modern arthroscopic techniques.
+                    Rooted in the clinical heritage of <strong>Mayo Hospital Lahore</strong> and <strong>King Edward Medical University</strong>, Dr. Shoaib's dual fellowships signify a mastery of complex trauma management and modern sports medicine. This specialized training allows for high-precision joint reconstruction and faster recovery times.
                   </p>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
                     {[
-                      "Fellowship in Trauma & Ortho",
-                      "Mayo Hospital Experience",
+                      "Advanced Trauma Management",
+                      "Sports Surgery Fellowship",
                       "Joint Replacement Specialist",
-                      "KEMU Lahore Alumnus"
+                      "KEMU & Mayo Hospital Alumnus"
                     ].map((item, i) => (
                       <div key={i} className="flex items-center gap-3 text-white/90 text-xs font-semibold">
                         <ShieldCheck className="w-4 h-4 text-accent" /> {item}
