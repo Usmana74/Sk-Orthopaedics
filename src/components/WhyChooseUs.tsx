@@ -11,8 +11,8 @@ const reasons = [
         <circle cx="20" cy="10" r="2" />
       </svg>
     ),
-    title: "Extensive Experience",
-    desc: "Years of hands-on orthopaedic practice across Pakistan and internationally.",
+    title: "Clinical Excellence",
+    desc: "Extensive experience at Mayo Hospital Lahore, Pakistan's largest tertiary care center, specialized in complex orthopaedic trauma and joint reconstruction",
   },
   {
     icon: (
@@ -23,7 +23,7 @@ const reasons = [
         <path d="M9.5 8.5l1.5 1.5 3-3" />
       </svg>
     ),
-    title: "International Certifications",
+    title: "National & International Certifications",
     desc: "FCPS, ATLS (USA), MRCS-I (UK Edinburgh) and Irish Medical Council member.",
   },
   {
