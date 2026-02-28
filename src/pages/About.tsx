@@ -1,111 +1,49 @@
 import { motion } from "framer-motion";
 import ScrollReveal from "@/components/ScrollReveal";
-import { CheckCircle, ShieldCheck } from "lucide-react";
+import { CheckCircle, ShieldCheck, Award, BookOpen } from "lucide-react";
 import doctorSeated from "@/assets/doctor-seated.jpg";
 import doctorSurgery from "@/assets/doctor-surgery-blue.jpg";
 import hospitalImage from "@/assets/hospital-interior.webp";
 
-// ─── Credential Badge SVGs (Kept as is) ────────────────────────────────────────
-const AIMCBadge = () => (
-  <svg viewBox="0 0 80 80" className="w-10 h-10 mx-auto mb-2">
-    <circle cx="40" cy="40" r="38" fill="hsl(var(--primary)/0.08)" stroke="hsl(var(--primary)/0.2)" strokeWidth="1.5"/>
-    <text x="40" y="28" textAnchor="middle" fontSize="9" fontWeight="700" fill="hsl(var(--primary))" fontFamily="serif">AIMC</text>
-    <line x1="20" y1="33" x2="60" y2="33" stroke="hsl(var(--primary)/0.3)" strokeWidth="1"/>
-    <text x="40" y="44" textAnchor="middle" fontSize="6" fill="hsl(var(--foreground)/0.7)" fontFamily="serif">Allama Iqbal</text>
-    <text x="40" y="52" textAnchor="middle" fontSize="6" fill="hsl(var(--foreground)/0.7)" fontFamily="serif">Medical College</text>
-    <text x="40" y="63" textAnchor="middle" fontSize="7" fontWeight="600" fill="hsl(var(--primary))" fontFamily="serif">MBBS</text>
-  </svg>
+// ─── Refined Credential Badges ──────────────────────────────────────────────
+const BadgeContainer = ({ children, colorClass = "bg-primary/10 border-primary/20" }) => (
+  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center border ${colorClass} mb-4 mx-auto`}>
+    {children}
+  </div>
 );
 
-const FCPSBadge = () => (
-  <svg viewBox="0 0 80 80" className="w-10 h-10 mx-auto mb-2">
-    <circle cx="40" cy="40" r="38" fill="hsl(var(--primary)/0.08)" stroke="hsl(var(--primary)/0.2)" strokeWidth="1.5"/>
-    <text x="40" y="28" textAnchor="middle" fontSize="9" fontWeight="700" fill="hsl(var(--primary))" fontFamily="serif">FCPS</text>
-    <line x1="20" y1="33" x2="60" y2="33" stroke="hsl(var(--primary)/0.3)" strokeWidth="1"/>
-    <text x="40" y="43" textAnchor="middle" fontSize="5.5" fill="hsl(var(--foreground)/0.7)" fontFamily="serif">College of Physicians</text>
-    <text x="40" y="51" textAnchor="middle" fontSize="5.5" fill="hsl(var(--foreground)/0.7)" fontFamily="serif">& Surgeons Pakistan</text>
-    <text x="40" y="63" textAnchor="middle" fontSize="6.5" fontWeight="600" fill="hsl(var(--primary))" fontFamily="serif">Trauma & Ortho</text>
-  </svg>
-);
+const qualifications = [
+  { 
+    title: "MBBS", 
+    desc: "Allama Iqbal Medical College", 
+    icon: <BookOpen className="w-6 h-6 text-primary" />,
+    detail: "Lahore"
+  },
+  { 
+    title: "FCPS", 
+    desc: "Fellow of Trauma & Orthopaedics", 
+    icon: <Award className="w-6 h-6 text-primary" />,
+    detail: "CPSP Pakistan"
+  },
+  { 
+    title: "Ex-Surgeon", 
+    desc: "Mayo Hospital | King Edward Medical University", 
+    icon: <ShieldCheck className="w-6 h-6 text-red-600" />,
+    detail: "Lahore"
+  },
+  { 
+    title: "MRCS-I", 
+    desc: "Royal College of Surgeons", 
+    icon: <Award className="w-6 h-6 text-blue-600" />,
+    detail: "Edinburgh, UK"
+  }
+];
 
-const ATLSBadge = () => (
-  <svg viewBox="0 0 80 80" className="w-10 h-10 mx-auto mb-2">
-    <circle cx="40" cy="40" r="38" fill="hsl(25,80%,55%,0.08)" stroke="hsl(25,80%,55%,0.25)" strokeWidth="1.5"/>
-    <text x="40" y="28" textAnchor="middle" fontSize="9" fontWeight="700" fill="hsl(25,80%,45%)" fontFamily="serif">ATLS</text>
-    <line x1="20" y1="33" x2="60" y2="33" stroke="hsl(25,80%,55%,0.3)" strokeWidth="1"/>
-    <text x="40" y="43" textAnchor="middle" fontSize="5.5" fill="hsl(var(--foreground)/0.7)" fontFamily="serif">Advanced Trauma</text>
-    <text x="40" y="51" textAnchor="middle" fontSize="5.5" fill="hsl(var(--foreground)/0.7)" fontFamily="serif">Life Support</text>
-    <text x="40" y="63" textAnchor="middle" fontSize="6.5" fontWeight="600" fill="hsl(25,80%,45%)" fontFamily="serif">USA Certified</text>
-  </svg>
-);
-
-const MRCSBadge = () => (
-  <svg viewBox="0 0 80 80" className="w-10 h-10 mx-auto mb-2">
-    <circle cx="40" cy="40" r="38" fill="hsl(210,60%,40%,0.08)" stroke="hsl(210,60%,40%,0.2)" strokeWidth="1.5"/>
-    <text x="40" y="28" textAnchor="middle" fontSize="9" fontWeight="700" fill="hsl(210,60%,35%)" fontFamily="serif">MRCS-I</text>
-    <line x1="20" y1="33" x2="60" y2="33" stroke="hsl(210,60%,40%,0.3)" strokeWidth="1"/>
-    <text x="40" y="43" textAnchor="middle" fontSize="5.5" fill="hsl(var(--foreground)/0.7)" fontFamily="serif">Royal College of</text>
-    <text x="40" y="51" textAnchor="middle" fontSize="5.5" fill="hsl(var(--foreground)/0.7)" fontFamily="serif">Surgeons</text>
-    <text x="40" y="63" textAnchor="middle" fontSize="6.5" fontWeight="600" fill="hsl(210,60%,35%)" fontFamily="serif">Edinburgh, UK</text>
-  </svg>
-);
-
-const IrishBadge = () => (
-  <svg viewBox="0 0 80 80" className="w-10 h-10 mx-auto mb-2">
-    <circle cx="40" cy="40" r="38" fill="hsl(140,50%,40%,0.08)" stroke="hsl(140,50%,40%,0.2)" strokeWidth="1.5"/>
-    <text x="40" y="26" textAnchor="middle" fontSize="7" fontWeight="700" fill="hsl(140,50%,35%)" fontFamily="serif">IRISH</text>
-    <text x="40" y="35" textAnchor="middle" fontSize="7" fontWeight="700" fill="hsl(140,50%,35%)" fontFamily="serif">MEDICAL</text>
-    <line x1="20" y1="39" x2="60" y2="39" stroke="hsl(140,50%,40%,0.3)" strokeWidth="1"/>
-    <text x="40" y="50" textAnchor="middle" fontSize="5.5" fill="hsl(var(--foreground)/0.7)" fontFamily="serif">Council Member</text>
-    <text x="40" y="63" textAnchor="middle" fontSize="6.5" fontWeight="600" fill="hsl(140,50%,35%)" fontFamily="serif">Ireland</text>
-  </svg>
-);
-
-const MayoBadge = () => (
-  <svg viewBox="0 0 80 80" className="w-10 h-10 mx-auto mb-2">
-    <circle cx="40" cy="40" r="38" fill="hsl(0,60%,45%,0.08)" stroke="hsl(0,60%,45%,0.2)" strokeWidth="1.5"/>
-    <text x="40" y="26" textAnchor="middle" fontSize="8" fontWeight="700" fill="hsl(0,60%,40%)" fontFamily="serif">MAYO</text>
-    <text x="40" y="35" textAnchor="middle" fontSize="8" fontWeight="700" fill="hsl(0,60%,40%)" fontFamily="serif">HOSPITAL</text>
-    <line x1="20" y1="39" x2="60" y2="39" stroke="hsl(0,60%,45%,0.3)" strokeWidth="1"/>
-    <text x="40" y="50" textAnchor="middle" fontSize="5.5" fill="hsl(var(--foreground)/0.7)" fontFamily="serif">Ex-Orthopaedic</text>
-    <text x="40" y="58" textAnchor="middle" fontSize="5.5" fill="hsl(var(--foreground)/0.7)" fontFamily="serif">Surgeon</text>
-    <text x="40" y="68" textAnchor="middle" fontSize="6" fontWeight="600" fill="hsl(0,60%,40%)" fontFamily="serif">Lahore</text>
-  </svg>
-);
-
-const POABadge = () => (
-  <svg viewBox="0 0 80 80" className="w-10 h-10 mx-auto mb-2">
-    <circle cx="40" cy="40" r="38" fill="hsl(var(--primary)/0.08)" stroke="hsl(var(--primary)/0.2)" strokeWidth="1.5"/>
-    <text x="40" y="26" textAnchor="middle" fontSize="7" fontWeight="700" fill="hsl(var(--primary))" fontFamily="serif">PAO</text>
-    <line x1="22" y1="30" x2="58" y2="30" stroke="hsl(var(--primary)/0.3)" strokeWidth="1"/>
-    <text x="40" y="40" textAnchor="middle" fontSize="5" fill="hsl(var(--foreground)/0.7)" fontFamily="serif">Pakistan</text>
-    <text x="40" y="47" textAnchor="middle" fontSize="5" fill="hsl(var(--foreground)/0.7)" fontFamily="serif">Arthroplasty</text>
-    <text x="40" y="54" textAnchor="middle" fontSize="5" fill="hsl(var(--foreground)/0.7)" fontFamily="serif">Society</text>
-    <text x="40" y="65" textAnchor="middle" fontSize="6" fontWeight="600" fill="hsl(var(--primary))" fontFamily="serif">Member</text>
-  </svg>
-);
-
-const PASSBadge = () => (
-  <svg viewBox="0 0 80 80" className="w-10 h-10 mx-auto mb-2">
-    <circle cx="40" cy="40" r="38" fill="hsl(var(--accent)/0.1)" stroke="hsl(var(--accent)/0.3)" strokeWidth="1.5"/>
-    <text x="40" y="26" textAnchor="middle" fontSize="7" fontWeight="700" fill="hsl(var(--accent))" fontFamily="serif">PASSS</text>
-    <line x1="18" y1="30" x2="62" y2="30" stroke="hsl(var(--accent)/0.3)" strokeWidth="1"/>
-    <text x="40" y="40" textAnchor="middle" fontSize="4.8" fill="hsl(var(--foreground)/0.7)" fontFamily="serif">Pakistan Arthroscopy</text>
-    <text x="40" y="47" textAnchor="middle" fontSize="4.8" fill="hsl(var(--foreground)/0.7)" fontFamily="serif">& Sports Surgery</text>
-    <text x="40" y="54" textAnchor="middle" fontSize="4.8" fill="hsl(var(--foreground)/0.7)" fontFamily="serif">Society</text>
-    <text x="40" y="65" textAnchor="middle" fontSize="6" fontWeight="600" fill="hsl(var(--accent))" fontFamily="serif">Member</text>
-  </svg>
-);
-
-const badges = [
-  { component: <AIMCBadge />, label: "MBBS", sub: "Allama Iqbal Medical College" },
-  { component: <FCPSBadge />, label: "FCPS", sub: "Trauma & Orthopaedics" },
-  { component: <ATLSBadge />, label: "ATLS", sub: "USA Certified" },
-  { component: <MRCSBadge />, label: "MRCS-I", sub: "Edinburgh, UK" },
-  { component: <IrishBadge />, label: "Irish Medical Council", sub: "Registered Member" },
-  { component: <MayoBadge />, label: "Mayo Hospital", sub: "Lahore — Ex-Surgeon" },
-  { component: <POABadge />, label: "PAO", sub: "Pakistan Arthroplasty Society" },
-  { component: <PASSBadge />, label: "PASSS", sub: "Pakistan Arthroscopy & Sports Surgery" },
+const memberships = [
+  { label: "POA", sub: "Pakistan Orthopaedic Association" },
+  { label: "PAS", sub: "Pakistan Arthroplasty Society" },
+  { label: "PASSS", sub: "Pak Arthroscopy & Sports Surgery" },
+  { label: "ATLS", sub: "Advanced Trauma Life Support (USA)" }
 ];
 
 const About = () => {
@@ -113,156 +51,134 @@ const About = () => {
 
   return (
     <main className="bg-white">
-      {/* ─── 1. Clean Hero Banner ─── */}
-      <section className="relative pt-32 pb-20 bg-gradient-to-br from-[#2a5298] to-[#1e3c72] text-center overflow-hidden">
+      {/* ─── 1. Hero Banner ─── */}
+      <section className="relative pt-32 pb-20 bg-gradient-to-br from-[#1e3c72] to-[#2a5298] text-center overflow-hidden">
         <div className="relative z-10 container-wide px-6">
-          <motion.p 
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-            className="text-white/60 text-[10px] font-bold uppercase tracking-[0.4em] mb-4"
-          >
-            Surgical Excellence
+          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-white/60 text-[10px] font-bold uppercase tracking-[0.4em] mb-4">
+            Global Expertise | Local Care
           </motion.p>
-          <h1 className="font-heading text-4xl md:text-6xl font-bold text-white mb-4">About Our Practice</h1>
-          <p className="text-white/70 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
-            Meet Dr. Shoaib Aslam Kurerr — a specialist dedicated to restoring mobility through 
-            advanced orthopaedic techniques and fellowship-trained precision.
+          <h1 className="font-heading text-4xl md:text-6xl font-bold text-white mb-4">Dr. Shoaib Aslam Kurerr</h1>
+          <p className="text-white/70 max-w-3xl mx-auto text-sm md:text-base leading-relaxed">
+            Fellow of Trauma & Orthopaedics with extensive surgical experience at Mayo Hospital Lahore and King Edward Medical University.
           </p>
         </div>
       </section>
 
-      {/* ─── 2. Bio Section ─── */}
+      {/* ─── 2. Professional Bio ─── */}
       <section className="py-16 md:py-24">
         <div className="container-wide max-w-6xl mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <ScrollReveal direction="left">
-              {/* Removed overlay text from image group */}
               <div className="relative group">
+                <div className="absolute -inset-4 bg-primary/5 rounded-[3rem] -z-10 group-hover:bg-primary/10 transition-colors duration-500" />
                 <img
                   src={doctorSeated}
                   alt="Dr Shoaib Aslam Kurerr"
-                  className="rounded-[2.5rem] w-full max-w-md mx-auto object-cover aspect-[4/5] shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]"
+                  className="rounded-[2.5rem] w-full max-w-md mx-auto object-cover aspect-[4/5] shadow-2xl"
                 />
               </div>
             </ScrollReveal>
 
-            <ScrollReveal direction="right">
-              <div className="space-y-6">
+            <ScrollReveal direction="right" className="space-y-8">
+              <div className="space-y-4">
                 <div className="inline-flex items-center gap-2 text-primary font-bold text-xs uppercase tracking-widest">
                   <span className="w-8 h-px bg-primary" /> Specialist Profile
                 </div>
                 <h2 className="font-heading text-3xl md:text-5xl font-bold text-slate-900 leading-tight">
-                  Dr. Shoaib Aslam Kurerr
+                  Academic Precision, <br /><span className="text-primary">Surgical Excellence.</span>
                 </h2>
                 <p className="text-slate-600 leading-relaxed text-base">
-Bringing international surgical excellence to the heart of Southern Punjab, Dr. Shoaib Aslam Kurerr is a specialized Orthopaedic Surgeon with a prestigious Fellowship in Sports Surgery and Arthroscopy. He focuses on advanced 'keyhole' techniques to ensure faster recovery and superior outcomes for patients with knee and shoulder injuries.                </p>
-                
-                {/* Responsive Stats Grid */}
-                <div className="grid grid-cols-3 gap-3 md:gap-4 py-6">
-                  {[
-                    { val: "5000+", lab: "Patients" },
-                    { val: "8+", lab: "Years" },
-                    { val: "400+", lab: "Surgeries" }
-                  ].map((s, i) => (
-                    <div key={i} className="text-center p-4 bg-slate-50 rounded-2xl border border-slate-100">
-                      <p className="text-xl md:text-2xl font-bold text-primary">{s.val}</p>
-                      <p className="text-[10px] font-bold text-slate-400 uppercase tracking-tighter">{s.lab}</p>
-                    </div>
-                  ))}
-                </div>
-
-                <a href={whatsappUrl} target="_blank" className="inline-flex items-center gap-3 bg-primary text-white px-8 py-4 rounded-xl font-bold text-sm shadow-lg hover:opacity-90 transition-all">
-                  Book Clinical Consultation
-                </a>
+                  As an <strong>Ex-Surgeon at Mayo Hospital Lahore</strong>—the biggest hospital in Punjab—Dr. Shoaib has managed some of the most complex orthopaedic cases in the country. His tenure at <strong>King Edward Medical University</strong> has instilled a commitment to evidence-based practice and international safety standards in every procedure he performs.
+                </p>
               </div>
+
+              <div className="grid grid-cols-3 gap-4">
+                {[
+                  { val: "5000+", lab: "Consultations" },
+                  { val: "Mayo", lab: "Ex-Surgeon" },
+                  { val: "FCPS", lab: "Certified" }
+                ].map((s, i) => (
+                  <div key={i} className="text-center p-4 bg-slate-50 rounded-2xl border border-slate-100">
+                    <p className="text-lg md:text-xl font-bold text-primary">{s.val}</p>
+                    <p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">{s.lab}</p>
+                  </div>
+                ))}
+              </div>
+
+              <a href={whatsappUrl} target="_blank" className="inline-flex items-center gap-3 bg-primary text-white px-8 py-4 rounded-xl font-bold text-sm shadow-lg hover:-translate-y-1 transition-all">
+                Book Professional Consultation
+              </a>
             </ScrollReveal>
           </div>
         </div>
       </section>
 
-      {/* ─── 3. Credential Grid ─── */}
-      <section className="py-20 bg-slate-50 border-y border-slate-100">
+      {/* ─── 3. Verified Qualifications (Updated Pattern) ─── */}
+      <section className="py-20 bg-slate-50">
         <div className="container-wide max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="font-heading text-2xl md:text-4xl font-bold text-slate-900 mb-4">Verified Qualifications</h2>
-            <div className="h-1 w-12 bg-primary mx-auto rounded-full" />
+            <h2 className="font-heading text-2xl md:text-4xl font-bold text-slate-900 mb-2">Verified Qualifications</h2>
+            <p className="text-slate-500 text-sm">Academic foundations from premier medical institutions</p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-            {badges.map((badge, i) => (
-              <ScrollReveal key={i} delay={i * 0.05}>
-                <div className="bg-white p-6 rounded-[2rem] text-center border border-slate-200/60 shadow-sm hover:shadow-xl transition-all h-full flex flex-col justify-center">
-                  <div className="scale-110 mb-2">{badge.component}</div>
-                  <p className="font-bold text-slate-900 text-xs md:text-sm uppercase tracking-wide">{badge.label}</p>
-                  <p className="text-slate-400 text-[10px] mt-1 leading-tight">{badge.sub}</p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+            {qualifications.map((q, i) => (
+              <ScrollReveal key={i} delay={i * 0.1}>
+                <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm hover:border-primary/30 transition-all h-full text-center">
+                  <BadgeContainer>{q.icon}</BadgeContainer>
+                  <h4 className="font-bold text-slate-900 text-lg mb-1">{q.title}</h4>
+                  <p className="text-slate-600 text-xs font-medium mb-2">{q.desc}</p>
+                  <p className="text-primary font-bold text-[10px] uppercase tracking-widest">{q.detail}</p>
                 </div>
               </ScrollReveal>
+            ))}
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {memberships.map((m, i) => (
+              <div key={i} className="bg-white/50 p-4 rounded-2xl border border-dashed border-slate-300 flex flex-col items-center text-center">
+                <span className="font-bold text-primary text-sm mb-1">{m.label}</span>
+                <span className="text-slate-500 text-[10px] leading-tight font-medium">{m.sub}</span>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ─── 4. Fellowship Highlight (Mobile Optimized) ─── */}
+      {/* ─── 4. Pinnacle of Training (Updated Points) ─── */}
       <section className="py-12 md:py-24">
-        {/* px-0 on mobile for full-bleed effect */}
         <div className="container-wide max-w-6xl mx-auto px-0 md:px-6">
           <ScrollReveal>
-            {/* Rounded corners removed on mobile */}
-            <div className="bg-primary md:rounded-[3rem] overflow-hidden shadow-2xl">
+            <div className="bg-slate-900 md:rounded-[3rem] overflow-hidden shadow-2xl">
               <div className="flex flex-col md:flex-row">
                 <div className="p-8 md:p-16 md:w-3/5 space-y-6">
-                  <p className="text-accent font-bold text-[10px] uppercase tracking-[0.3em]">Pinnacle of Training</p>
+                  <p className="text-primary font-bold text-[10px] uppercase tracking-[0.3em]">Advanced Fellowship</p>
                   <h3 className="font-heading text-2xl md:text-4xl font-bold text-white leading-tight">
-                    POA Fellowship in Sports Surgery & Arthroscopy
+                    POA Fellowship: The Elite Standard
                   </h3>
-                  <p className="text-white/70 text-sm md:text-base leading-relaxed">
-                    This prestigious qualification from the Pakistan Orthopaedic Association certifies advanced competency in complex arthroscopic procedures. It places Dr. Shoaib among an elite group of surgeons capable of performing high-precision "keyhole" repairs.
+                  <p className="text-slate-400 text-sm md:text-base leading-relaxed">
+                    This prestigious fellowship by the <strong>Pakistan Orthopaedic Association</strong> represents the highest tier of specialized training. Dr. Shoaib is among the select specialists trained to bridge the gap between traditional surgery and advanced minimally invasive recovery.
                   </p>
-                  <div className="flex flex-wrap gap-4 pt-4">
-                    <div className="flex items-center gap-2 text-white/90 text-xs font-semibold">
-                      <ShieldCheck className="w-4 h-4 text-accent" /> Advanced Arthroscopy
-                    </div>
-                    <div className="flex items-center gap-2 text-white/90 text-xs font-semibold">
-                      <ShieldCheck className="w-4 h-4 text-accent" /> Sports Medicine
-                    </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+                    {[
+                      "Advanced Arthroscopy",
+                      "Joint Replacement",
+                      "Sports Medicine",
+                      "Trauma Management"
+                    ].map((item, i) => (
+                      <div key={i} className="flex items-center gap-3 text-white/90 text-xs font-semibold">
+                        <ShieldCheck className="w-5 h-5 text-primary" /> {item}
+                      </div>
+                    ))}
                   </div>
                 </div>
-                <div className="md:w-2/5 min-h-[300px] relative">
-                  {/* Added object-top to fix cropping */}
-                  <img src={doctorSurgery} alt="Surgery" className="absolute inset-0 w-full h-full object-cover object-top" />
-                  <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-primary via-transparent to-transparent" />
+                <div className="md:w-2/5 min-h-[400px] relative">
+                  <img src={doctorSurgery} alt="Surgery" className="absolute inset-0 w-full h-full object-cover object-top opacity-80" />
+                  <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-slate-900 via-slate-900/40 to-transparent" />
                 </div>
               </div>
             </div>
           </ScrollReveal>
-        </div>
-      </section>
-
-      {/* ─── 5. Facilities Section ─── */}
-      <section className="py-20 bg-white">
-        <div className="container-wide max-w-6xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <ScrollReveal direction="left">
-              <div className="rounded-[2.5rem] overflow-hidden shadow-xl">
-                <img src={hospitalImage} alt="Midwest Hospital" className="w-full h-80 object-cover" />
-              </div>
-            </ScrollReveal>
-            <ScrollReveal direction="right" className="space-y-6">
-              <h3 className="font-heading text-2xl md:text-3xl font-bold text-slate-900">Midwest Hospital Facilities</h3>
-              <p className="text-slate-600 text-sm md:text-base">
-                Operating within Midwest Hospital, Bahawalpur, our practice utilizes high-definition arthroscopic towers and modern sterilization protocols matching international safety standards.
-              </p>
-              <ul className="space-y-3">
-                {[
-                  "Advanced HD Arthroscopic Towers",
-                  "Intraoperative C-arm Imaging",
-                  "Dedicated Orthopaedic Recovery Wing"
-                ].map((item, i) => (
-                  <li key={i} className="flex items-center gap-3 text-sm font-medium text-slate-700">
-                    <CheckCircle className="w-4 h-4 text-primary" /> {item}
-                  </li>
-                ))}
-              </ul>
-            </ScrollReveal>
-          </div>
         </div>
       </section>
     </main>
