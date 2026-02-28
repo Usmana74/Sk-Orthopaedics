@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Phone, Menu, X, GraduationCap, Globe, ChevronRight } from "lucide-react";
+import { Phone, Menu, X, GraduationCap, Globe, ChevronRight, Clock } from "lucide-react";
 
 const WhatsAppIcon = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
@@ -21,14 +21,23 @@ const navLinks = [
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const [formData, setFormData] = useState({ name: "", concern: "Knee Surgery" });
+  const [formData, setFormData] = useState({ 
+    name: "", 
+    concern: "Knee Surgery",
+    duration: "Less than 1 month" 
+  });
   
   const location = useLocation();
   const phoneNumber = "923002278796";
 
   const handleConsultationSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const message = `Hello Dr. Shoaib Aslam, I would like to request an Online Consultation.\n\n*Name:* ${formData.name}\n*Concern:* ${formData.concern}`;
+    const message = `Hello Dr. Shoaib Aslam, I would like to request an Online Consultation.
+    
+*Name:* ${formData.name}
+*Concern:* ${formData.concern}
+*Duration of Issue:* ${formData.duration}`;
+
     window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, "_blank");
     setShowModal(false);
   };
@@ -51,20 +60,35 @@ const Navbar = () => {
             <form onSubmit={handleConsultationSubmit} className="space-y-4">
               <div>
                 <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-1 block">Full Name</label>
-                <input required type="text" className="w-full px-4 py-2 rounded border border-border bg-background outline-none focus:border-primary transition-colors"
+                <input required type="text" className="w-full px-4 py-2 rounded border border-border bg-background outline-none focus:border-primary transition-colors text-sm"
                   onChange={(e) => setFormData({...formData, name: e.target.value})} />
               </div>
-              <div>
-                <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-1 block">Surgical Interest</label>
-                <select className="w-full px-4 py-2 rounded border border-border bg-background outline-none focus:border-primary transition-colors"
-                  onChange={(e) => setFormData({...formData, concern: e.target.value})}>
-                  <option>Knee Surgery</option>
-                  <option>Shoulder Surgery</option>
-                  <option>Sports Medicine</option>
-                  <option>Joint Replacement</option>
-                </select>
+              
+              <div className="grid grid-cols-1 gap-4">
+                <div>
+                  <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-1 block">Surgical Interest</label>
+                  <select className="w-full px-4 py-2 rounded border border-border bg-background outline-none focus:border-primary transition-colors text-sm"
+                    onChange={(e) => setFormData({...formData, concern: e.target.value})}>
+                    <option>Knee Surgery</option>
+                    <option>Shoulder Surgery</option>
+                    <option>Sports Medicine</option>
+                    <option>Joint Replacement</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-1 block">How long have you had this issue?</label>
+                  <select className="w-full px-4 py-2 rounded border border-border bg-background outline-none focus:border-primary transition-colors text-sm"
+                    onChange={(e) => setFormData({...formData, duration: e.target.value})}>
+                    <option>Less than 1 month</option>
+                    <option>1 - 6 months</option>
+                    <option>6 months - 1 year</option>
+                    <option>More than 1 year</option>
+                  </select>
+                </div>
               </div>
-              <button type="submit" className="w-full bg-primary text-primary-foreground py-3 rounded font-bold hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
+
+              <button type="submit" className="w-full bg-primary text-primary-foreground py-3 rounded font-bold hover:opacity-90 transition-opacity flex items-center justify-center gap-2 mt-2">
                 Continue to WhatsApp <ChevronRight className="w-4 h-4" />
               </button>
             </form>
@@ -86,7 +110,7 @@ const Navbar = () => {
               className="flex items-center gap-2 hover:opacity-80 transition-opacity group"
             >
               <span className="w-2 h-2 rounded-full bg-sky-400 animate-pulse" />
-              <span className="font-semibold underline underline-offset-4 tracking-wide">REQUEST ONLINE CONSULTATION</span>
+              <span className="font-semibold underline underline-offset-4 tracking-wide uppercase">Request Online Consultation</span>
             </button>
           </div>
           
@@ -137,14 +161,17 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="lg:hidden bg-card border-t border-border p-6 space-y-4">
+          <div className="lg:hidden bg-card border-t border-border p-6 space-y-4 shadow-xl">
             {navLinks.map((link) => (
               <Link key={link.path} to={link.path} onClick={() => setIsOpen(false)} className="block text-sm font-bold uppercase tracking-wide">
                 {link.label}
               </Link>
             ))}
-            <button onClick={() => {setIsOpen(false); setShowModal(true);}} className="w-full text-left text-primary font-bold text-sm uppercase">
-               Book Online Consultation
+            <button 
+              onClick={() => {setIsOpen(false); setShowModal(true);}} 
+              className="w-full text-left text-primary font-bold text-sm uppercase flex items-center gap-2"
+            >
+               <Globe className="w-4 h-4" /> Book Online Consultation
             </button>
           </div>
         )}
