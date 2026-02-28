@@ -22,7 +22,7 @@ const HeroSection = () => {
             transition={{ duration: 0.5 }}
             className="text-accent font-body font-bold text-[10px] md:text-xs uppercase tracking-[0.25em] mb-3"
           >
-            Fellowship Trained Sports & Arthroscopic Surgeon
+            Fellowship Trained Orthopaedic Sports Surgeon
           </motion.p>
 
           {/* Minimalist Heading [cite: 202, 212, 215, 228] */}
@@ -47,7 +47,7 @@ const HeroSection = () => {
               Dr. Shoaib Aslam Kurerr 
             </p>
             <p className="text-white/70 text-sm md:text-base">
-              Expert Knee & Shoulder Specialist in Bahawalpur 
+              Expert Knee Shoulder & Joint Replacement Specialist 
             </p>
           </motion.div>
 
