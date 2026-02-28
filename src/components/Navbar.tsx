@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Phone, Menu, X } from "lucide-react";
+import { Phone, Menu, X, GraduationCap, Globe } from "lucide-react";
 
 const WhatsAppIcon = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
@@ -20,23 +20,95 @@ const navLinks = [
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [patientName, setPatientName] = useState("");
+  const [concern, setConcern] = useState("Knee");
+  
   const location = useLocation();
+  const phoneNumber = "923002278796";
 
-  const whatsappUrl =
-    "https://wa.me/923002278796?text=Hello%20Doctor%2C%20I%20would%20like%20to%20book%20an%20appointment.";
+  const handleConsultationSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const baseMsg = `Hello Dr. Shoaib Aslam, I would like to book an online consultation.\n\n*Name:* ${patientName}\n*Concern:* ${concern}`;
+    const encodedMsg = encodeURIComponent(baseMsg);
+    window.open(`https://wa.me/${phoneNumber}?text=${encodedMsg}`, "_blank");
+    setShowModal(false);
+  };
 
   return (
     <>
+      {/* Consultation Modal */}
+      {showModal && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+          <div className="bg-card w-full max-w-md rounded-2xl border border-border p-6 shadow-2xl animate-in fade-in zoom-in duration-200">
+            <div className="flex justify-between items-center mb-6">
+              <h2 className="text-xl font-heading font-bold text-primary">Book Consultation</h2>
+              <button onClick={() => setShowModal(false)} className="p-1 hover:bg-muted rounded-full">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            
+            <form onSubmit={handleConsultationSubmit} className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium mb-1.5">Patient Name</label>
+                <input 
+                  required
+                  type="text" 
+                  placeholder="Enter your full name"
+                  className="w-full px-4 py-2 rounded-lg border border-border bg-background focus:ring-2 focus:ring-primary/20 outline-none"
+                  value={patientName}
+                  onChange={(e) => setPatientName(e.target.value)}
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium mb-1.5">Area of Concern</label>
+                <select 
+                  className="w-full px-4 py-2 rounded-lg border border-border bg-background focus:ring-2 focus:ring-primary/20 outline-none"
+                  value={concern}
+                  onChange={(e) => setConcern(e.target.value)}
+                >
+                  <option value="Knee">Knee Replacement / Pain</option>
+                  <option value="Shoulder">Shoulder Surgery / Pain</option>
+                  <option value="Sports Injury">Sports Injury</option>
+                  <option value="Joint Replacement">Joint Replacement</option>
+                  <option value="General Ortho">Other Orthopaedic Issue</option>
+                </select>
+              </div>
+              <button 
+                type="submit"
+                className="w-full bg-primary text-primary-foreground py-3 rounded-xl font-bold hover:opacity-90 transition-opacity flex items-center justify-center gap-2"
+              >
+                <WhatsAppIcon className="w-5 h-5" /> Continue to WhatsApp
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
+
       {/* Top bar */}
       <div className="bg-primary text-primary-foreground text-sm">
         <div className="container-wide flex items-center justify-between px-4 py-2 md:px-8">
-          <div className="flex items-center gap-4">
-            <span className="hidden sm:inline">📍 Bahawalpur, Pakistan</span>
-            <span>🕐 Mon – Sat: 9:00 AM – 11:00 PM</span>
+          <div className="flex items-center gap-4 md:gap-8">
+            <div className="flex items-center gap-1.5 opacity-90">
+              <GraduationCap className="w-4 h-4" />
+              <span className="hidden xs:inline">Fellowship Trained Surgeon</span>
+            </div>
+            <button 
+              onClick={() => setShowModal(true)}
+              className="flex items-center gap-1.5 hover:text-white transition-colors group"
+            >
+              <Globe className="w-4 h-4 group-hover:rotate-12 transition-transform" />
+              <span className="font-medium underline underline-offset-4">Online Consultation Available</span>
+            </button>
           </div>
           <div className="flex items-center gap-3">
-            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:opacity-80 transition-opacity">
-              <WhatsAppIcon className="w-4 h-4" /> WhatsApp
+            <a 
+              href={`https://wa.me/${phoneNumber}`} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="flex items-center gap-1.5 hover:opacity-80 transition-opacity"
+            >
+              <WhatsAppIcon className="w-4 h-4" /> <span className="hidden sm:inline">WhatsApp</span>
             </a>
           </div>
         </div>
@@ -67,7 +139,7 @@ const Navbar = () => {
 
           <div className="hidden lg:flex items-center gap-3">
             <a
-              href="tel:+923002278796"
+              href={`tel:+${phoneNumber}`}
               className="flex items-center gap-2 bg-primary text-primary-foreground px-4 py-2 rounded-lg text-sm font-medium hover:opacity-90 transition-opacity"
             >
               <Phone className="w-4 h-4" /> +92 300 2278796
@@ -97,7 +169,7 @@ const Navbar = () => {
                 </Link>
               ))}
               <a
-                href="tel:+923002278796"
+                href={`tel:+${phoneNumber}`}
                 className="flex items-center gap-2 bg-primary text-primary-foreground px-4 py-2 rounded-lg text-sm font-medium justify-center mt-2"
               >
                 <Phone className="w-4 h-4" /> +92 300 2278796
