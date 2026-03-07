@@ -96,22 +96,19 @@ const Navbar = () => {
         </div>
       )}
 
-      {/* REFINED TOP BAR - Professional & Subtle */}
+      {/* TOP BAR */}
       <div className="bg-primary text-primary-foreground text-[11px] md:text-xs">
         <div className="container-wide flex items-center justify-between px-4 py-2 md:px-8 border-b border-white/10">
           <div className="flex items-center gap-6">
             <div className="flex items-center gap-2 border-r border-white/20 pr-6 hidden sm:flex">
               <GraduationCap className="w-3.5 h-3.5" />
-              <span className="font-medium tracking-wide uppercase opacity-90">Fellowship Trained Surgeon</span>
+              <span className="font-medium tracking-wide uppercase opacity-90">FCPS · Fellowship Trained Orthopaedic Surgeon</span>
             </div>
             
-            <button 
-              onClick={() => setShowModal(true)}
-              className="flex items-center gap-2 hover:opacity-80 transition-opacity group"
-            >
-              <span className="w-2 h-2 rounded-full bg-sky-400 animate-pulse" />
-              <span className="font-semibold underline underline-offset-4 tracking-wide uppercase">Request Online Consultation</span>
-            </button>
+            <div className="flex items-center gap-2">
+              <Globe className="w-3.5 h-3.5 opacity-80" />
+              <span className="font-medium tracking-wide uppercase opacity-90">Online Consultations Available Nationwide</span>
+            </div>
           </div>
           
           <div className="flex items-center">
