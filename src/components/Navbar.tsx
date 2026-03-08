@@ -100,17 +100,24 @@ const Navbar = () => {
       <div className="bg-primary text-primary-foreground text-[11px] md:text-xs">
         <div className="container-wide flex items-center justify-between px-4 py-2 md:px-8 border-b border-white/10">
           <div className="flex items-center gap-6">
+            {/* Left: Credentials */}
             <div className="flex items-center gap-2 border-r border-white/20 pr-6 hidden sm:flex">
               <GraduationCap className="w-3.5 h-3.5" />
               <span className="font-medium tracking-wide uppercase opacity-90">FCPS · Fellowship Trained Orthopaedic Surgeon</span>
             </div>
-            
-            <div className="flex items-center gap-2">
+
+            {/* Center: Nationwide consultation — clicks open modal */}
+            <button
+              onClick={() => setShowModal(true)}
+              className="flex items-center gap-2 hover:opacity-80 transition-opacity group"
+            >
+              <span className="w-2 h-2 rounded-full bg-sky-400 animate-pulse" />
               <Globe className="w-3.5 h-3.5 opacity-80" />
-              <span className="font-medium tracking-wide uppercase opacity-90">Online Consultations Available Nationwide</span>
-            </div>
+              <span className="font-semibold underline underline-offset-4 tracking-wide uppercase">Online Consultations Available Nationwide</span>
+            </button>
           </div>
-          
+
+          {/* Right: WhatsApp */}
           <div className="flex items-center">
             <a href={`https://wa.me/${phoneNumber}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:opacity-80 transition-opacity py-0.5 px-3 rounded bg-white/10">
               <WhatsAppIcon className="w-3 h-3" /> <span className="font-bold">WHATSAPP</span>
