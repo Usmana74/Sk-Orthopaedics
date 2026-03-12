@@ -1,13 +1,6 @@
 import ScrollReveal from "./ScrollReveal";
 import doctorSuitFull from "@/assets/doctor-suit-full.jpg";
 
-const stats = [
-  { val: "5,000+", lab: "Patients Treated" },
-  { val: "400+",   lab: "Surgeries Performed" },
-  { val: "8+",     lab: "Years Experience" },
-  { val: "FCPS",   lab: "Fellowship Certified" },
-];
-
 const reasons = [
   {
     number: "01",
