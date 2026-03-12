@@ -1,6 +1,8 @@
 import ScrollReveal from "./ScrollReveal";
 import doctorSuitFull from "@/assets/doctor-suit-full.jpg";
 
+
+
 const reasons = [
   {
     number: "01",
