@@ -52,7 +52,7 @@ const WHATSAPP_APPOINTMENT_URL =
 const socialLinks = [
   {
     label: "Google",
-    href: "https://www.google.com/search?q=Dr+shaoib+aslam+kurrer",
+    href: "https://www.google.com/search?q=Dr+Shoaib+Aslam+Kurerr",
     icon: <GoogleIcon className="w-5 h-5" />,
   },
   {
@@ -89,12 +89,18 @@ const Footer = () => {
     <footer className="bg-foreground text-background">
       <div className="container-wide section-padding">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+
           {/* Brand */}
           <div className="lg:col-span-1">
-            <h3 className="font-heading text-xl font-bold mb-3">SK – Orthopaedics</h3>
+            <h3 className="font-heading text-xl font-bold mb-1">SK – Orthopaedics</h3>
+            <p className="text-xs opacity-50 mb-3 uppercase tracking-widest">
+              Fellowship-Trained Orthopaedic Surgeon
+            </p>
             <p className="text-sm opacity-70 leading-relaxed mb-5">
-Dr. Shoaib Aslam Kurerr is a highly experienced orthopaedic surgeon specializing in sports injury management and joint replacement surgery, dedicated to restoring mobility and improving patients’ quality of life.            </p>
+              Dr. Shoaib Aslam Kurerr is a fellowship-trained orthopaedic surgeon specializing in sports injury management, arthroscopy, and advanced knee and shoulder joint replacement. With experience at leading institutions including Mayo Hospital Lahore and King Edward Medical University, he provides expert orthopaedic care for patients across Pakistan.
+            </p>
             {/* Social Icons */}
+            <p className="text-xs opacity-50 uppercase tracking-widest mb-3">Follow for Patient Education & Updates</p>
             <div className="flex items-center gap-3 flex-wrap">
               {socialLinks.map((s) => (
                 <a
@@ -111,9 +117,9 @@ Dr. Shoaib Aslam Kurerr is a highly experienced orthopaedic surgeon specializing
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Patient Navigation */}
           <div>
-            <h4 className="font-heading text-base font-semibold mb-4 opacity-90">Quick Links</h4>
+            <h4 className="font-heading text-base font-semibold mb-4 opacity-90">Patient Navigation</h4>
             <div className="flex flex-col gap-2.5">
               {navLinks.map((link) => (
                 <Link
@@ -131,15 +137,21 @@ Dr. Shoaib Aslam Kurerr is a highly experienced orthopaedic surgeon specializing
           <div>
             <h4 className="font-heading text-base font-semibold mb-4 opacity-90">Contact</h4>
             <div className="flex flex-col gap-3 text-sm">
-              <a href="tel:+923002278796" className="flex items-center gap-2.5 opacity-70 hover:opacity-100 transition-opacity">
-                <Phone className="w-4 h-4 shrink-0" /> +92 300 2278796
-              </a>
+              <div>
+                <p className="text-xs opacity-40 uppercase tracking-widest mb-1">Patient Appointment Line</p>
+                <a href="tel:+923002278796" className="flex items-center gap-2.5 opacity-70 hover:opacity-100 transition-opacity">
+                  <Phone className="w-4 h-4 shrink-0" /> +92 300 2278796
+                </a>
+              </div>
               <a href="mailto:info@skorthopaedics.com" className="flex items-center gap-2.5 opacity-70 hover:opacity-100 transition-opacity">
                 <Mail className="w-4 h-4 shrink-0" /> info@skorthopaedics.com
               </a>
               <span className="flex items-start gap-2.5 opacity-70">
                 <MapPin className="w-4 h-4 shrink-0 mt-0.5" />
-                <span>Bahawalpur, Pakistan</span>
+                <span>
+                  Serving patients across Pakistan<br />
+                  <span className="opacity-60 text-xs">Consultation coordination based in Bahawalpur</span>
+                </span>
               </span>
             </div>
           </div>
@@ -148,7 +160,7 @@ Dr. Shoaib Aslam Kurerr is a highly experienced orthopaedic surgeon specializing
           <div>
             <h4 className="font-heading text-base font-semibold mb-4 opacity-90">Book Appointment</h4>
             <p className="text-sm opacity-70 mb-4 leading-relaxed">
-            Call or message us on WhatsApp to schedule.
+              Contact our team to request a consultation, discuss treatment options, or schedule an orthopaedic evaluation with Dr. Shoaib Aslam Kurerr.
             </p>
             <a
               href={WHATSAPP_APPOINTMENT_URL}
@@ -160,12 +172,15 @@ Dr. Shoaib Aslam Kurerr is a highly experienced orthopaedic surgeon specializing
               <WhatsAppIcon className="w-4 h-4" />
               WhatsApp Us
             </a>
+            <p className="text-xs opacity-40 mt-3 italic">
+              Our team responds promptly to consultation requests.
+            </p>
           </div>
         </div>
 
         <div className="border-t border-background/15 mt-12 pt-7 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs opacity-50">© 2026 SK Orthopaedics. All rights reserved.</p>
-          <p className="text-xs opacity-50">Orthopaedic Surgeon · Bahawalpur, Pakistan</p>
+          <p className="text-xs opacity-50">Specialist in Sports Surgery, Arthroscopy, and Joint Replacement · Serving Patients Across Pakistan</p>
         </div>
       </div>
 
