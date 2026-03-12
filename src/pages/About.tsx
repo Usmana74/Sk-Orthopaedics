@@ -194,11 +194,7 @@ Dr. Shoaib Aslam Kurerr is an experienced orthopaedic and sports surgery special
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-6 mb-5 md:mb-6">
             {featuredBadges.map((badge, i) => (
               <ScrollReveal key={i} delay={i * 0.05}>
-                <div className="bg-white p-8 rounded-[2rem] text-center border-2 border-primary/20 shadow-md hover:shadow-xl transition-all h-full flex flex-col justify-center relative overflow-hidden">
-                  {/* Subtle premium indicator */}
-                  <div className="absolute top-3 right-3 bg-primary/10 text-primary text-[9px] font-bold uppercase tracking-widest px-2 py-1 rounded-full">
-                    Premium
-                  </div>
+                <div className="bg-primary/5 p-8 rounded-[2rem] text-center border border-primary/15 shadow-sm hover:shadow-xl transition-all h-full flex flex-col justify-center">
                   <div className="scale-125 mb-3">{badge.component}</div>
                   <p className="font-bold text-slate-900 text-sm md:text-base uppercase tracking-wide">{badge.label}</p>
                   <p className="text-slate-500 text-xs mt-1">{badge.sub}</p>
