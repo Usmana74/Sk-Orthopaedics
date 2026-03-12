@@ -26,7 +26,7 @@ const CTASection = () => {
         <div className="container-wide text-center">
           <ScrollReveal>
             <h2 className="font-heading text-3xl md:text-4xl font-bold text-primary-foreground mb-4">
-              Get Expert Orthopaedic Care in Bahawalpur
+              Get Expert Orthopaedic care across Pakistan
             </h2>
             <p className="text-primary-foreground/80 text-lg mb-3 flex items-center justify-center gap-2">
               <MapPin className="w-5 h-5" /> Bahawalpur & nearby cities
