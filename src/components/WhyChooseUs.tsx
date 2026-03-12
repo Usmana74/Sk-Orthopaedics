@@ -1,8 +1,6 @@
 import ScrollReveal from "./ScrollReveal";
 import doctorSuitFull from "@/assets/doctor-suit-full.jpg";
 
-
-
 const reasons = [
   {
     number: "01",
@@ -60,29 +58,11 @@ const WhyChooseUs = () => {
 
         {/* ── Heading ── */}
         <ScrollReveal>
-          <div className="text-center mb-10">
+          <div className="text-center mb-14">
             <p className="text-accent font-semibold text-xs uppercase tracking-widest mb-2">Why Choose Us</p>
             <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground">
               Why Patients Trust Dr. Shoaib
             </h2>
-          </div>
-        </ScrollReveal>
-
-        {/* ── Stats Bar ── */}
-        <ScrollReveal>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-14">
-            {stats.map((s, i) => (
-              <div
-                key={i}
-                className="relative text-center py-6 px-4 rounded-2xl overflow-hidden border border-primary/10"
-                style={{ backgroundColor: "rgba(29, 97, 165, 0.04)" }}
-              >
-                {/* Subtle corner accent */}
-                <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-primary/20 rounded-tl-2xl" />
-                <p className="font-heading text-2xl md:text-3xl font-bold text-primary mb-1">{s.val}</p>
-                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{s.lab}</p>
-              </div>
-            ))}
           </div>
         </ScrollReveal>
 
