@@ -5,7 +5,6 @@ const stats = [
   { value: 5000, suffix: "+", label: "Patients Treated" },
   { value: 8,    suffix: "+", label: "Years Experience" },
   { value: 400,  suffix: "+", label: "Successful Surgeries" },
-  { value: 4,    suffix: "",  label: "International Certifications", prefix: "FCPS · MRCS · ATLS · IMC" },
 ];
 
 function useCountUp(target: number, duration = 1800, start = false) {
