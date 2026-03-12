@@ -76,7 +76,7 @@ const MayoBadge = () => (
 const POABadge = () => (
   <svg viewBox="0 0 80 80" className="w-10 h-10 mx-auto mb-2">
     <circle cx="40" cy="40" r="38" fill="hsl(var(--primary)/0.08)" stroke="hsl(var(--primary)/0.2)" strokeWidth="1.5"/>
-    <text x="40" y="26" textAnchor="middle" fontSize="7" fontWeight="700" fill="hsl(var(--primary))" fontFamily="serif">PAS</text>
+    <text x="40" y="26" textAnchor="middle" fontSize="7" fontWeight="700" fill="hsl(var(--primary))" fontFamily="serif">PAO</text>
     <line x1="22" y1="30" x2="58" y2="30" stroke="hsl(var(--primary)/0.3)" strokeWidth="1"/>
     <text x="40" y="40" textAnchor="middle" fontSize="5" fill="hsl(var(--foreground)/0.7)" fontFamily="serif">Pakistan</text>
     <text x="40" y="47" textAnchor="middle" fontSize="5" fill="hsl(var(--foreground)/0.7)" fontFamily="serif">Arthroplasty</text>
@@ -119,7 +119,7 @@ const About = () => {
     <main className="bg-white">
       {/* ─── 1. Hero Banner — solid color ─── */}
       <section
-        className="relative pt-32 pb-20 text-center overflow-hidden"
+        className="relative pt-24 pb-10 text-center overflow-hidden"
         style={{ backgroundColor: "rgba(29, 97, 165)" }}
       >
         <div className="relative z-10 container-wide px-6">
