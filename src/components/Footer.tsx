@@ -93,8 +93,7 @@ const Footer = () => {
           <div className="lg:col-span-1">
             <h3 className="font-heading text-xl font-bold mb-3">SK – Orthopaedics</h3>
             <p className="text-sm opacity-70 leading-relaxed mb-5">
-              Expert orthopaedic across Pakistan. Dr Shoaib Aslam Kurerr specialises in sports surgery and joint replacement surgery.
-            </p>
+Dr. Shoaib Aslam Kurerr is a highly experienced orthopaedic surgeon specializing in sports injury management and joint replacement surgery, dedicated to restoring mobility and improving patients’ quality of life.            </p>
             {/* Social Icons */}
             <div className="flex items-center gap-3 flex-wrap">
               {socialLinks.map((s) => (
@@ -140,7 +139,7 @@ const Footer = () => {
               </a>
               <span className="flex items-start gap-2.5 opacity-70">
                 <MapPin className="w-4 h-4 shrink-0 mt-0.5" />
-                <span>Bahawalpur,Pakistan</span>
+                <span>Bahawalpur, Pakistan</span>
               </span>
             </div>
           </div>
@@ -149,7 +148,7 @@ const Footer = () => {
           <div>
             <h4 className="font-heading text-base font-semibold mb-4 opacity-90">Book Appointment</h4>
             <p className="text-sm opacity-70 mb-4 leading-relaxed">
-              Mon – Sat · 9:00 AM – 11:00 PM.<br />Call or message us on WhatsApp to schedule.
+            <br />Call or message us on WhatsApp to schedule.
             </p>
             <a
               href={WHATSAPP_APPOINTMENT_URL}
