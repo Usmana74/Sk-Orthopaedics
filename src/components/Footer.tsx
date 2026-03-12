@@ -93,7 +93,7 @@ const Footer = () => {
           <div className="lg:col-span-1">
             <h3 className="font-heading text-xl font-bold mb-3">SK – Orthopaedics</h3>
             <p className="text-sm opacity-70 leading-relaxed mb-5">
-              Expert orthopaedic care in Bahawalpur. Dr Shoaib Aslam Kurerr specialises in arthroscopy and joint replacement surgery.
+              Expert orthopaedic across Pakistan. Dr Shoaib Aslam Kurerr specialises in sports surgery and joint replacement surgery.
             </p>
             {/* Social Icons */}
             <div className="flex items-center gap-3 flex-wrap">
