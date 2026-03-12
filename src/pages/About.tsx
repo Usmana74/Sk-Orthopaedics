@@ -124,8 +124,7 @@ const About = () => {
           </motion.p>
           <h1 className="font-heading text-4xl md:text-6xl font-bold text-white mb-4">About Our Practice</h1>
           <p className="text-white/70 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
-            Meet Dr. Shoaib Aslam Kurerr — a specialist dedicated to restoring mobility through 
-            advanced orthopaedic techniques and fellowship-trained precision.
+            Dr. Shoaib Aslam Kurerr provides expert orthopaedic care across Pakistan, specializing in sports surgery, arthroscopy, and joint replacement. Combining advanced surgical techniques with a patient-first approach, he ensures superior outcomes and rapid recovery.
           </p>
         </div>
       </section>
@@ -154,8 +153,7 @@ const About = () => {
                   Dr. Shoaib Aslam Kurerr
                 </h2>
                 <p className="text-slate-600 leading-relaxed text-base">
-Bringing international surgical excellence to the heart of Southern Punjab, Dr. Shoaib Aslam Kurerr is a specialized Orthopaedic Surgeon with a prestigious Fellowship in Sports Surgery and Arthroscopy. He focuses on advanced 'keyhole' techniques to ensure faster recovery and superior outcomes for patients with knee and shoulder injuries.                </p>
-                
+Dr. Shoaib Aslam Kurerr is an experienced orthopaedic and sports surgery specialist serving patients across Pakistan. With extensive experience in knee and shoulder replacement, arthroscopy, and sports injury surgery, he has trained and worked at Mayo Hospital Lahore, King Edward Medical University, and other top institutions, performing thousands of successful procedures.    </p>             
                 {/* Responsive Stats Grid */}
                 <div className="grid grid-cols-3 gap-3 md:gap-4 py-6">
                   {[
@@ -214,8 +212,7 @@ Bringing international surgical excellence to the heart of Southern Punjab, Dr. 
                     POA Fellowship in Sports Surgery & Arthroscopy
                   </h3>
                   <p className="text-white/70 text-sm md:text-base leading-relaxed">
-                    This prestigious qualification from the Pakistan Orthopaedic Association certifies advanced competency in complex arthroscopic procedures. It places Dr. Shoaib among an elite group of surgeons capable of performing high-precision "keyhole" repairs.
-                  </p>
+Dr. Shoaib’s POA Fellowship in Sports Surgery & Arthroscopy certifies advanced competency in complex arthroscopic procedures, placing him among Pakistan’s elite surgeons in precision ‘keyhole’ surgery                  </p>
                   <div className="flex flex-wrap gap-4 pt-4">
                     <div className="flex items-center gap-2 text-white/90 text-xs font-semibold">
                       <ShieldCheck className="w-4 h-4 text-accent" /> Advanced Arthroscopy
@@ -223,6 +220,11 @@ Bringing international surgical excellence to the heart of Southern Punjab, Dr. 
                     <div className="flex items-center gap-2 text-white/90 text-xs font-semibold">
                       <ShieldCheck className="w-4 h-4 text-accent" /> Sports Medicine
                     </div>
+
+                  <div className="flex items-center gap-2 text-white/90 text-xs font-semibold">
+                      <ShieldCheck className="w-4 h-4 text-accent" /> Shoulder & Knee Expertise
+                    </div>
+
                   </div>
                 </div>
                 <div className="md:w-2/5 min-h-[300px] relative">
@@ -236,35 +238,6 @@ Bringing international surgical excellence to the heart of Southern Punjab, Dr. 
         </div>
       </section>
 
-      {/* ─── 5. Facilities Section ─── */}
-      <section className="py-20 bg-white">
-        <div className="container-wide max-w-6xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <ScrollReveal direction="left">
-              <div className="rounded-[2.5rem] overflow-hidden shadow-xl">
-                <img src={hospitalImage} alt="Midwest Hospital" className="w-full h-80 object-cover" />
-              </div>
-            </ScrollReveal>
-            <ScrollReveal direction="right" className="space-y-6">
-              <h3 className="font-heading text-2xl md:text-3xl font-bold text-slate-900">Midwest Hospital Facilities</h3>
-              <p className="text-slate-600 text-sm md:text-base">
-                Operating within Midwest Hospital, Bahawalpur, our practice utilizes high-definition arthroscopic towers and modern sterilization protocols matching international safety standards.
-              </p>
-              <ul className="space-y-3">
-                {[
-                  "Advanced HD Arthroscopic Towers",
-                  "Intraoperative C-arm Imaging",
-                  "Dedicated Orthopaedic Recovery Wing"
-                ].map((item, i) => (
-                  <li key={i} className="flex items-center gap-3 text-sm font-medium text-slate-700">
-                    <CheckCircle className="w-4 h-4 text-primary" /> {item}
-                  </li>
-                ))}
-              </ul>
-            </ScrollReveal>
-          </div>
-        </div>
-      </section>
     </main>
   );
 };
