@@ -55,7 +55,7 @@ const IrishBadge = () => (
     <circle cx="40" cy="40" r="38" fill="hsl(140,50%,40%,0.08)" stroke="hsl(140,50%,40%,0.2)" strokeWidth="1.5"/>
     <text x="40" y="26" textAnchor="middle" fontSize="7" fontWeight="700" fill="hsl(140,50%,35%)" fontFamily="serif">IRISH</text>
     <text x="40" y="35" textAnchor="middle" fontSize="7" fontWeight="700" fill="hsl(140,50%,35%)" fontFamily="serif">MEDICAL</text>
-    <line x1="20" y1="39" x2="60" y2="39" stroke="hsl(140,50%,40%,0.3)" strokeWidth="1"/>
+    <line x1="20" y1="39" x2="62" y2="39" stroke="hsl(140,50%,40%,0.3)" strokeWidth="1"/>
     <text x="40" y="50" textAnchor="middle" fontSize="5.5" fill="hsl(var(--foreground)/0.7)" fontFamily="serif">Council Member</text>
     <text x="40" y="63" textAnchor="middle" fontSize="6.5" fontWeight="600" fill="hsl(140,50%,35%)" fontFamily="serif">Ireland</text>
   </svg>
@@ -97,11 +97,15 @@ const PASSBadge = () => (
   </svg>
 );
 
-const badges = [
+// ─── Two-tier: FCPS & MRCS-I are featured (top row), rest are supporting ───
+const featuredBadges = [
+  { component: <FCPSBadge />, label: "FCPS", sub: "Trauma & Orthopaedics", note: "Highest surgical qualification in Pakistan" },
+  { component: <MRCSBadge />, label: "MRCS-I", sub: "Edinburgh, UK", note: "Royal College of Surgeons — internationally recognised" },
+];
+
+const supportingBadges = [
   { component: <AIMCBadge />, label: "MBBS", sub: "Allama Iqbal Medical College" },
-  { component: <FCPSBadge />, label: "FCPS", sub: "Trauma & Orthopaedics" },
   { component: <ATLSBadge />, label: "ATLS", sub: "USA Certified" },
-  { component: <MRCSBadge />, label: "MRCS-I", sub: "Edinburgh, UK" },
   { component: <IrishBadge />, label: "Irish Medical Council", sub: "Registered Member" },
   { component: <MayoBadge />, label: "Mayo Hospital", sub: "Lahore — Ex-Surgeon" },
   { component: <POABadge />, label: "PAO", sub: "Pakistan Arthroplasty Society" },
@@ -113,10 +117,13 @@ const About = () => {
 
   return (
     <main className="bg-white">
-      {/* ─── 1. Clean Hero Banner ─── */}
-      <section className="relative pt-32 pb-20 bg-gradient-to-br from-[#2a5298] to-[#1e3c72] text-center overflow-hidden">
+      {/* ─── 1. Hero Banner — solid color ─── */}
+      <section
+        className="relative pt-32 pb-20 text-center overflow-hidden"
+        style={{ backgroundColor: "rgba(29, 97, 165)" }}
+      >
         <div className="relative z-10 container-wide px-6">
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0 }} animate={{ opacity: 1 }}
             className="text-white/60 text-[10px] font-bold uppercase tracking-[0.4em] mb-4"
           >
@@ -134,7 +141,6 @@ const About = () => {
         <div className="container-wide max-w-6xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <ScrollReveal direction="left">
-              {/* Removed overlay text from image group */}
               <div className="relative group">
                 <img
                   src={doctorSeated}
@@ -153,8 +159,7 @@ const About = () => {
                   Dr. Shoaib Aslam Kurerr
                 </h2>
                 <p className="text-slate-600 leading-relaxed text-base">
-Dr. Shoaib Aslam Kurerr is an experienced orthopaedic and sports surgery specialist serving patients across Pakistan. With extensive experience in knee and shoulder replacement, arthroscopy, and sports injury surgery, he has trained and worked at Mayo Hospital Lahore, King Edward Medical University, and other top institutions, performing thousands of successful procedures.    </p>             
-                {/* Responsive Stats Grid */}
+Dr. Shoaib Aslam Kurerr is an experienced orthopaedic and sports surgery specialist serving patients across Pakistan. With extensive experience in knee and shoulder replacement, arthroscopy, and sports injury surgery, he has trained and worked at Mayo Hospital Lahore, King Edward Medical University, and other top institutions, performing thousands of successful procedures.    </p>
                 <div className="grid grid-cols-3 gap-3 md:gap-4 py-6">
                   {[
                     { val: "5000+", lab: "Patients" },
@@ -177,15 +182,35 @@ Dr. Shoaib Aslam Kurerr is an experienced orthopaedic and sports surgery special
         </div>
       </section>
 
-      {/* ─── 3. Credential Grid ─── */}
+      {/* ─── 3. Credential Grid — Two-Tier Layout ─── */}
       <section className="py-20 bg-slate-50 border-y border-slate-100">
         <div className="container-wide max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="font-heading text-2xl md:text-4xl font-bold text-slate-900 mb-4">Verified Qualifications</h2>
             <div className="h-1 w-12 bg-primary mx-auto rounded-full" />
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-            {badges.map((badge, i) => (
+
+          {/* Top tier — Featured (FCPS & MRCS-I) */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-6 mb-5 md:mb-6">
+            {featuredBadges.map((badge, i) => (
+              <ScrollReveal key={i} delay={i * 0.05}>
+                <div className="bg-white p-8 rounded-[2rem] text-center border-2 border-primary/20 shadow-md hover:shadow-xl transition-all h-full flex flex-col justify-center relative overflow-hidden">
+                  {/* Subtle premium indicator */}
+                  <div className="absolute top-3 right-3 bg-primary/10 text-primary text-[9px] font-bold uppercase tracking-widest px-2 py-1 rounded-full">
+                    Premium
+                  </div>
+                  <div className="scale-125 mb-3">{badge.component}</div>
+                  <p className="font-bold text-slate-900 text-sm md:text-base uppercase tracking-wide">{badge.label}</p>
+                  <p className="text-slate-500 text-xs mt-1">{badge.sub}</p>
+                  <p className="text-slate-400 text-[10px] mt-2 italic leading-snug">{badge.note}</p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+
+          {/* Bottom tier — Supporting (remaining 6) */}
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-5">
+            {supportingBadges.map((badge, i) => (
               <ScrollReveal key={i} delay={i * 0.05}>
                 <div className="bg-white p-6 rounded-[2rem] text-center border border-slate-200/60 shadow-sm hover:shadow-xl transition-all h-full flex flex-col justify-center">
                   <div className="scale-110 mb-2">{badge.component}</div>
@@ -200,10 +225,8 @@ Dr. Shoaib Aslam Kurerr is an experienced orthopaedic and sports surgery special
 
       {/* ─── 4. Fellowship Highlight (Mobile Optimized) ─── */}
       <section className="py-12 md:py-24">
-        {/* px-0 on mobile for full-bleed effect */}
         <div className="container-wide max-w-6xl mx-auto px-0 md:px-6">
           <ScrollReveal>
-            {/* Rounded corners removed on mobile */}
             <div className="bg-primary md:rounded-[3rem] overflow-hidden shadow-2xl">
               <div className="flex flex-col md:flex-row">
                 <div className="p-8 md:p-16 md:w-3/5 space-y-6">
@@ -212,7 +235,7 @@ Dr. Shoaib Aslam Kurerr is an experienced orthopaedic and sports surgery special
                     POA Fellowship in Sports Surgery & Arthroscopy
                   </h3>
                   <p className="text-white/70 text-sm md:text-base leading-relaxed">
-Dr. Shoaib’s POA Fellowship in Sports Surgery & Arthroscopy certifies advanced competency in complex arthroscopic procedures, placing him among Pakistan’s elite surgeons in precision ‘keyhole’ surgery                  </p>
+Dr. Shoaib's POA Fellowship in Sports Surgery & Arthroscopy certifies advanced competency in complex arthroscopic procedures, placing him among Pakistan's elite surgeons in precision 'keyhole' surgery                  </p>
                   <div className="flex flex-wrap gap-4 pt-4">
                     <div className="flex items-center gap-2 text-white/90 text-xs font-semibold">
                       <ShieldCheck className="w-4 h-4 text-accent" /> Advanced Arthroscopy
@@ -220,15 +243,12 @@ Dr. Shoaib’s POA Fellowship in Sports Surgery & Arthroscopy certifies advanced
                     <div className="flex items-center gap-2 text-white/90 text-xs font-semibold">
                       <ShieldCheck className="w-4 h-4 text-accent" /> Sports Medicine
                     </div>
-
-                  <div className="flex items-center gap-2 text-white/90 text-xs font-semibold">
+                    <div className="flex items-center gap-2 text-white/90 text-xs font-semibold">
                       <ShieldCheck className="w-4 h-4 text-accent" /> Shoulder & Knee Expertise
                     </div>
-
                   </div>
                 </div>
                 <div className="md:w-2/5 min-h-[300px] relative">
-                  {/* Added object-top to fix cropping */}
                   <img src={doctorSurgery} alt="Surgery" className="absolute inset-0 w-full h-full object-cover object-top" />
                   <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-primary via-transparent to-transparent" />
                 </div>
