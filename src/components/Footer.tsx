@@ -140,7 +140,7 @@ const Footer = () => {
               </a>
               <span className="flex items-start gap-2.5 opacity-70">
                 <MapPin className="w-4 h-4 shrink-0 mt-0.5" />
-                <span>MID-WEST HOSPITAL, Trust Colony, Street No. 3, Bahawalpur</span>
+                <span>Bahawalpur, Pakistan</span>
               </span>
             </div>
           </div>
