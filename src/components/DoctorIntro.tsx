@@ -25,7 +25,9 @@ const DoctorIntro = () => {
                 Dr Shoaib Aslam Kurerr
               </h2>
               <p className="text-muted-foreground leading-relaxed mb-6">
-With a specialized Fellowship in Sports Surgery and Arthroscopy and extensive training in orthopaedic surgery, Dr. Shoaib Aslam Kurerr is dedicated to providing the highest quality musculoskeletal care to patients in Bahawalpur and across the country. As an expert in minimally invasive 'keyhole' surgery , he believes in a patient-first approach, combining advanced modern surgical techniques with compassionate care              </p>
+**Dr. Shoaib Aslam Kurerr** is an experienced orthopaedic and sports surgery specialist serving patients across Pakistan. With a **Fellowship in Sports Surgery and Arthroscopy**, he specializes in **sports injury treatment, minimally invasive arthroscopic (keyhole) surgery, and knee and shoulder joint replacement**.
+
+He has trained and worked at leading institutions including **Mayo Hospital Lahore** and **King Edward Medical University**, bringing advanced orthopaedic care to patients in **Bahawalpur and throughout Pakistan**.
 
               <div className="space-y-2 mb-8">
                 {[
