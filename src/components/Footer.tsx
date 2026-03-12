@@ -39,10 +39,7 @@ const InstagramIcon = ({ className }: { className?: string }) => (
         <stop offset="100%" stopColor="#bc1888" />
       </linearGradient>
     </defs>
-    <path
-      fill="url(#ig-grad)"
-      d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"
-    />
+    <path fill="url(#ig-grad)" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
   </svg>
 );
 
@@ -50,136 +47,126 @@ const WHATSAPP_APPOINTMENT_URL =
   "https://wa.me/923002278796?text=Hello%20Doctor%2C%20I%20would%20like%20to%20book%20an%20appointment.";
 
 const socialLinks = [
-  {
-    label: "Google",
-    href: "https://www.google.com/search?q=Dr+Shoaib+Aslam+Kurerr",
-    icon: <GoogleIcon className="w-5 h-5" />,
-  },
-  {
-    label: "Facebook",
-    href: "https://www.facebook.com/saorthopaedics",
-    icon: <FacebookIcon className="w-5 h-5" />,
-  },
-  {
-    label: "Instagram",
-    href: "https://www.instagram.com/drshoaibaslamkurrer/",
-    icon: <InstagramIcon className="w-5 h-5" />,
-  },
-  {
-    label: "YouTube",
-    href: "https://www.youtube.com/@dr.shoaibaslamorthopaedics6367",
-    icon: <YouTubeIcon className="w-5 h-5" />,
-  },
-  {
-    label: "WhatsApp",
-    href: WHATSAPP_APPOINTMENT_URL,
-    icon: <WhatsAppIcon className="w-5 h-5" />,
-  },
+  { label: "Google",    href: "https://www.google.com/search?q=Dr+Shoaib+Aslam+Kurerr", icon: <GoogleIcon className="w-4 h-4" /> },
+  { label: "Facebook",  href: "https://www.facebook.com/saorthopaedics",                 icon: <FacebookIcon className="w-4 h-4" /> },
+  { label: "Instagram", href: "https://www.instagram.com/drshoaibaslamkurrer/",          icon: <InstagramIcon className="w-4 h-4" /> },
+  { label: "YouTube",   href: "https://www.youtube.com/@dr.shoaibaslamorthopaedics6367", icon: <YouTubeIcon className="w-4 h-4" /> },
+  { label: "WhatsApp",  href: WHATSAPP_APPOINTMENT_URL,                                  icon: <WhatsAppIcon className="w-4 h-4" /> },
 ];
 
 const navLinks = [
-  { label: "Home", path: "/" },
-  { label: "About Us", path: "/about" },
-  { label: "Services", path: "/services" },
-  { label: "Contact Us", path: "/contact" },
+  { label: "Home",         path: "/" },
+  { label: "About Us",     path: "/about" },
+  { label: "Services",     path: "/services" },
+  { label: "Testimonials", path: "/testimonials" },
+  { label: "FAQs",         path: "/faqs" },
+  { label: "Blogs",        path: "/blog" },
+  { label: "Contact Us",   path: "/contact" },
 ];
 
 const Footer = () => {
   return (
-    <footer className="bg-foreground text-background">
-      <div className="container-wide section-padding">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+    <footer>
 
-          {/* Brand */}
-          <div className="lg:col-span-1">
-            <h3 className="font-heading text-xl font-bold mb-1">SK – Orthopaedics</h3>
-            <p className="text-xs opacity-50 mb-3 uppercase tracking-widest">
-              Fellowship-Trained Orthopaedic Surgeon
-            </p>
-            <p className="text-sm opacity-70 leading-relaxed mb-5">
-Fellowship-trained orthopaedic surgeon specializing in sports injuries, arthroscopy, and joint replacement, with experience at Mayo Hospital Lahore and King Edward Medical University, serving patients across Pakistan.            </p>
-            {/* Social Icons */}
-            <p className="text-xs opacity-50 uppercase tracking-widest mb-3">Follow for Patient Education & Updates</p>
-            <div className="flex items-center gap-3 flex-wrap">
-              {socialLinks.map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={s.label}
-                  className="w-9 h-9 rounded-lg bg-background/10 flex items-center justify-center hover:bg-background/20 transition-colors"
-                >
-                  {s.icon}
-                </a>
-              ))}
-            </div>
-          </div>
+      {/* ── ZONE 1: Blue information zone — matches site primary colour ── */}
+      <div style={{ backgroundColor: "rgba(29, 97, 165)" }}>
+        <div className="container-wide max-w-7xl mx-auto px-6 md:px-10 py-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
 
-          {/* Patient Navigation */}
-          <div>
-            <h4 className="font-heading text-base font-semibold mb-4 opacity-90">Patient Navigation</h4>
-            <div className="flex flex-col gap-2.5">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.path}
-                  to={link.path}
-                  className="text-sm opacity-70 hover:opacity-100 transition-opacity"
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h4 className="font-heading text-base font-semibold mb-4 opacity-90">Contact</h4>
-            <div className="flex flex-col gap-3 text-sm">
-              <div>
-                <p className="text-xs opacity-40 uppercase tracking-widest mb-1">Patient Appointment Line</p>
-                <a href="tel:+923002278796" className="flex items-center gap-2.5 opacity-70 hover:opacity-100 transition-opacity">
-                  <Phone className="w-4 h-4 shrink-0" /> +92 300 2278796
-                </a>
+            {/* Brand */}
+            <div className="lg:col-span-1">
+              <h3 className="font-heading text-xl font-bold text-white mb-0.5">SK – Orthopaedics</h3>
+              <p className="text-[10px] text-white/50 uppercase tracking-widest mb-4">
+                Fellowship-Trained Orthopaedic Surgeon
+              </p>
+              <p className="text-sm text-white/70 leading-relaxed mb-6">
+                Specialising in sports injury management, arthroscopy, and advanced knee and shoulder joint replacement. Trained at Mayo Hospital Lahore and King Edward Medical University, serving patients across Pakistan.
+              </p>
+              <div className="flex items-center gap-2.5 flex-wrap">
+                {socialLinks.map((s) => (
+                  <a
+                    key={s.label}
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={s.label}
+                    className="w-8 h-8 rounded-lg bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
+                  >
+                    {s.icon}
+                  </a>
+                ))}
               </div>
-              <a href="mailto:info@skorthopaedics.com" className="flex items-center gap-2.5 opacity-70 hover:opacity-100 transition-opacity">
-                <Mail className="w-4 h-4 shrink-0" /> info@skorthopaedics.com
-              </a>
-              <span className="flex items-start gap-2.5 opacity-70">
-                <MapPin className="w-4 h-4 shrink-0 mt-0.5" />
-                <span>
-                  Serving patients across Pakistan<br />
-                  <span className="opacity-60 text-xs">Consultation coordination based in Bahawalpur</span>
-                </span>
-              </span>
             </div>
-          </div>
 
-          {/* Book Appointment CTA */}
-          <div>
-            <h4 className="font-heading text-base font-semibold mb-4 opacity-90">Book Appointment</h4>
-            <p className="text-sm opacity-70 mb-4 leading-relaxed">
-              Contact our team to request a consultation, discuss treatment options, or schedule an orthopaedic evaluation with Dr. Shoaib Aslam Kurerr.
-            </p>
-            <a
-              href={WHATSAPP_APPOINTMENT_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-sm font-semibold px-4 py-2.5 rounded-lg transition-colors"
-              style={{ backgroundColor: "#25D366", color: "#fff" }}
-            >
-              <WhatsAppIcon className="w-4 h-4" />
-              WhatsApp Us
-            </a>
-            <p className="text-xs opacity-40 mt-3 italic">
-              Our team responds promptly to consultation requests.
-            </p>
+            {/* Patient Navigation */}
+            <div>
+              <h4 className="text-xs font-bold text-white/50 uppercase tracking-widest mb-5">Patient Navigation</h4>
+              <div className="flex flex-col gap-3">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.path}
+                    to={link.path}
+                    className="text-sm text-white/75 hover:text-white transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Contact */}
+            <div>
+              <h4 className="text-xs font-bold text-white/50 uppercase tracking-widest mb-5">Contact</h4>
+              <div className="flex flex-col gap-4 text-sm">
+                <div>
+                  <p className="text-[10px] text-white/40 uppercase tracking-widest mb-1">Patient Appointment Line</p>
+                  <a href="tel:+923002278796" className="flex items-center gap-2.5 text-white/75 hover:text-white transition-colors">
+                    <Phone className="w-4 h-4 shrink-0" /> +92 300 2278796
+                  </a>
+                </div>
+                <a href="mailto:info@skorthopaedics.com" className="flex items-center gap-2.5 text-white/75 hover:text-white transition-colors">
+                  <Mail className="w-4 h-4 shrink-0" /> info@skorthopaedics.com
+                </a>
+                <div className="flex items-start gap-2.5 text-white/75">
+                  <MapPin className="w-4 h-4 shrink-0 mt-0.5" />
+                  <span>
+                    Serving patients across Pakistan
+                    <span className="block text-xs text-white/40 mt-0.5">Consultation coordination based in Bahawalpur</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Book Appointment */}
+            <div>
+              <h4 className="text-xs font-bold text-white/50 uppercase tracking-widest mb-5">Book Appointment</h4>
+              <p className="text-sm text-white/70 leading-relaxed mb-5">
+                Contact our team to request a consultation, discuss treatment options, or schedule an orthopaedic evaluation with Dr. Shoaib Aslam Kurerr.
+              </p>
+              <a
+                href={WHATSAPP_APPOINTMENT_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm font-bold px-5 py-3 rounded-xl hover:opacity-90 transition-all shadow-lg"
+                style={{ backgroundColor: "#25D366", color: "#fff" }}
+              >
+                <WhatsAppIcon className="w-4 h-4" />
+                WhatsApp Us
+              </a>
+              <p className="text-xs text-white/35 mt-3 italic">
+                Our team responds promptly to consultation requests.
+              </p>
+            </div>
+
           </div>
         </div>
+      </div>
 
-        <div className="border-t border-background/15 mt-12 pt-7 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-xs opacity-50">© 2026 SK Orthopaedics. All rights reserved.</p>
-          <p className="text-xs opacity-50">Specialist in Sports Surgery, Arthroscopy, and Joint Replacement · Serving Patients Across Pakistan</p>
+      {/* ── ZONE 2: Slim dark copyright strip ── */}
+      <div className="bg-slate-900">
+        <div className="container-wide max-w-7xl mx-auto px-6 md:px-10 py-4 flex flex-col sm:flex-row items-center justify-between gap-2">
+          <p className="text-xs text-white/30">© 2026 SK Orthopaedics. All rights reserved.</p>
+          <p className="text-xs text-white/30">Sports Surgery · Arthroscopy · Joint Replacement · Pakistan</p>
         </div>
       </div>
 
