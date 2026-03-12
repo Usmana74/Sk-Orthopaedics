@@ -108,8 +108,8 @@ const supportingBadges = [
   { component: <ATLSBadge />, label: "ATLS", sub: "USA Certified" },
   { component: <IrishBadge />, label: "Irish Medical Council", sub: "Registered Member" },
   { component: <MayoBadge />, label: "Mayo Hospital", sub: "Lahore — Ex-Surgeon" },
-  { component: <POABadge />, label: "PAO", sub: "Pakistan Arthroplasty Society" },
-  { component: <PASSBadge />, label: "PASSS", sub: "Pakistan Arthroscopy & Sports Surgery" },
+  { component: <POABadge />, label: "PAS", sub: "Pakistan Arthroplasty Society" },
+  { component: <PASSBadge />, label: "PASSS", sub: "Pakistan Arthroscopy & Sports Surgery Society" },
 ];
 
 const About = () => {
