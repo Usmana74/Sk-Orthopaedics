@@ -28,9 +28,6 @@ const CTASection = () => {
             <h2 className="font-heading text-3xl md:text-4xl font-bold text-primary-foreground mb-4">
               Get Expert Orthopaedic care across Pakistan
             </h2>
-            <p className="text-primary-foreground/80 text-lg mb-3 flex items-center justify-center gap-2">
-              <MapPin className="w-5 h-5" /> Bahawalpur & nearby cities
-            </p>
             <p className="text-primary-foreground/70 mb-8 max-w-xl mx-auto">
               Book your consultation with Dr Shoaib Aslam Kurerr today. Expert care is just a call away.
             </p>
