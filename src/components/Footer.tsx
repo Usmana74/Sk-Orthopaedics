@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail, MapPin, ChevronRight } from "lucide-react";
 
 const WhatsAppIcon = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
@@ -66,113 +66,161 @@ const navLinks = [
 
 const Footer = () => {
   return (
-    <footer>
+    <footer style={{ backgroundColor: "#0d1f3c" }}>
 
-      {/* ── ZONE 1: Blue information zone — matches site primary colour ── */}
-      <div style={{ backgroundColor: "rgba(29, 97, 165)" }}>
-        <div className="container-wide max-w-7xl mx-auto px-6 md:px-10 py-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+      {/* ── Top accent line in site primary blue ── */}
+      <div style={{ height: "3px", backgroundColor: "rgba(29, 97, 165)" }} />
 
-            {/* Brand */}
-            <div className="lg:col-span-1">
-              <h3 className="font-heading text-xl font-bold text-white mb-0.5">SK – Orthopaedics</h3>
-              <p className="text-[10px] text-white/50 uppercase tracking-widest mb-4">
-                Fellowship-Trained Orthopaedic Surgeon
+      {/* ── Main footer body ── */}
+      <div className="container-wide max-w-7xl mx-auto px-6 md:px-10 pt-14 pb-12">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8">
+
+          {/* ── Brand column (wider) ── */}
+          <div className="md:col-span-4">
+            {/* Logo + tagline */}
+            <div className="mb-6">
+              <h3 className="font-heading text-xl font-bold text-white mb-1">SK – Orthopaedics</h3>
+              <p className="text-[10px] text-white/40 uppercase tracking-[0.2em]">
+                Fellowship-Trained Orthopaedic Surgeon · Pakistan
               </p>
-              <p className="text-sm text-white/70 leading-relaxed mb-6">
-                Specialising in sports injury management, arthroscopy, and advanced knee and shoulder joint replacement. Trained at Mayo Hospital Lahore and King Edward Medical University, serving patients across Pakistan.
-              </p>
-              <div className="flex items-center gap-2.5 flex-wrap">
-                {socialLinks.map((s) => (
-                  <a
-                    key={s.label}
-                    href={s.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={s.label}
-                    className="w-8 h-8 rounded-lg bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
-                  >
-                    {s.icon}
-                  </a>
-                ))}
-              </div>
             </div>
 
-            {/* Patient Navigation */}
-            <div>
-              <h4 className="text-xs font-bold text-white/50 uppercase tracking-widest mb-5">Patient Navigation</h4>
-              <div className="flex flex-col gap-3">
-                {navLinks.map((link) => (
-                  <Link
-                    key={link.path}
-                    to={link.path}
-                    className="text-sm text-white/75 hover:text-white transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-              </div>
+            {/* Concise description — 2 lines max */}
+            <p className="text-sm text-white/55 leading-relaxed mb-6 max-w-xs">
+              Specialising in sports surgery, arthroscopy, and joint replacement. Trained at Mayo Hospital Lahore and King Edward Medical University.
+            </p>
+
+            {/* Credential chips */}
+            <div className="flex flex-wrap gap-2 mb-7">
+              {["FCPS", "MRCS-I", "ATLS", "IMC"].map((cred) => (
+                <span
+                  key={cred}
+                  className="text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-md text-white/70"
+                  style={{ backgroundColor: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.1)" }}
+                >
+                  {cred}
+                </span>
+              ))}
             </div>
 
-            {/* Contact */}
-            <div>
-              <h4 className="text-xs font-bold text-white/50 uppercase tracking-widest mb-5">Contact</h4>
-              <div className="flex flex-col gap-4 text-sm">
-                <div>
-                  <p className="text-[10px] text-white/40 uppercase tracking-widest mb-1">Patient Appointment Line</p>
-                  <a href="tel:+923002278796" className="flex items-center gap-2.5 text-white/75 hover:text-white transition-colors">
-                    <Phone className="w-4 h-4 shrink-0" /> +92 300 2278796
-                  </a>
-                </div>
-                <a href="mailto:info@skorthopaedics.com" className="flex items-center gap-2.5 text-white/75 hover:text-white transition-colors">
-                  <Mail className="w-4 h-4 shrink-0" /> info@skorthopaedics.com
+            {/* Social icons */}
+            <div className="flex items-center gap-2">
+              {socialLinks.map((s) => (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={s.label}
+                  className="w-8 h-8 rounded-lg flex items-center justify-center transition-colors"
+                  style={{ backgroundColor: "rgba(255,255,255,0.06)" }}
+                  onMouseEnter={e => (e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.12)")}
+                  onMouseLeave={e => (e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.06)")}
+                >
+                  {s.icon}
                 </a>
-                <div className="flex items-start gap-2.5 text-white/75">
-                  <MapPin className="w-4 h-4 shrink-0 mt-0.5" />
-                  <span>
-                    Serving patients across Pakistan
-                    <span className="block text-xs text-white/40 mt-0.5">Consultation coordination based in Bahawalpur</span>
-                  </span>
-                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* ── Divider ── */}
+          <div className="hidden md:block md:col-span-1">
+            <div className="h-full w-px mx-auto" style={{ backgroundColor: "rgba(255,255,255,0.06)" }} />
+          </div>
+
+          {/* ── Navigation ── */}
+          <div className="md:col-span-2">
+            <h4 className="text-[10px] font-bold text-white/35 uppercase tracking-[0.25em] mb-5">Navigation</h4>
+            <div className="flex flex-col gap-2.5">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  className="group flex items-center gap-1.5 text-sm text-white/55 hover:text-white transition-colors"
+                >
+                  <ChevronRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -ml-1 transition-opacity text-white/40" />
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* ── Contact ── */}
+          <div className="md:col-span-2">
+            <h4 className="text-[10px] font-bold text-white/35 uppercase tracking-[0.25em] mb-5">Contact</h4>
+            <div className="flex flex-col gap-4 text-sm">
+              <div>
+                <p className="text-[9px] text-white/30 uppercase tracking-widest mb-1.5">Appointment Line</p>
+                <a href="tel:+923002278796" className="flex items-center gap-2 text-white/55 hover:text-white transition-colors">
+                  <Phone className="w-3.5 h-3.5 shrink-0" /> +92 300 2278796
+                </a>
+              </div>
+              <div>
+                <p className="text-[9px] text-white/30 uppercase tracking-widest mb-1.5">Email</p>
+                <a href="mailto:info@skorthopaedics.com" className="flex items-center gap-2 text-white/55 hover:text-white transition-colors break-all">
+                  <Mail className="w-3.5 h-3.5 shrink-0" /> info@skorthopaedics.com
+                </a>
+              </div>
+              <div className="flex items-start gap-2 text-white/55">
+                <MapPin className="w-3.5 h-3.5 shrink-0 mt-0.5" />
+                <span className="text-xs leading-relaxed">
+                  Serving patients across Pakistan
+                  <span className="block text-white/30 text-[10px] mt-0.5">Based in Bahawalpur</span>
+                </span>
               </div>
             </div>
+          </div>
 
-            {/* Book Appointment */}
-            <div>
-              <h4 className="text-xs font-bold text-white/50 uppercase tracking-widest mb-5">Book Appointment</h4>
-              <p className="text-sm text-white/70 leading-relaxed mb-5">
-                Contact our team to request a consultation, discuss treatment options, or schedule an orthopaedic evaluation with Dr. Shoaib Aslam Kurerr.
+          {/* ── Book Appointment ── */}
+          <div className="md:col-span-3">
+            <h4 className="text-[10px] font-bold text-white/35 uppercase tracking-[0.25em] mb-5">Book Appointment</h4>
+
+            {/* Compact CTA card */}
+            <div
+              className="rounded-2xl p-5 mb-4"
+              style={{ backgroundColor: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)" }}
+            >
+              <p className="text-xs text-white/50 leading-relaxed mb-4">
+                Request a consultation or orthopaedic evaluation with Dr. Shoaib Aslam Kurerr.
               </p>
               <a
                 href={WHATSAPP_APPOINTMENT_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm font-bold px-5 py-3 rounded-xl hover:opacity-90 transition-all shadow-lg"
+                className="flex items-center justify-center gap-2 w-full text-sm font-bold py-2.5 rounded-xl hover:opacity-90 transition-all"
                 style={{ backgroundColor: "#25D366", color: "#fff" }}
               >
                 <WhatsAppIcon className="w-4 h-4" />
                 WhatsApp Us
               </a>
-              <p className="text-xs text-white/35 mt-3 italic">
-                Our team responds promptly to consultation requests.
+              <p className="text-center text-[10px] text-white/25 mt-3 italic">
+                Our team responds promptly.
               </p>
             </div>
 
+            <a
+              href="tel:+923002278796"
+              className="flex items-center justify-center gap-2 w-full text-sm font-semibold py-2.5 rounded-xl transition-all text-white/60 hover:text-white"
+              style={{ border: "1px solid rgba(255,255,255,0.1)" }}
+            >
+              <Phone className="w-3.5 h-3.5" /> Call Us
+            </a>
           </div>
+
         </div>
       </div>
 
-      {/* ── ZONE 2: Slim dark copyright strip ── */}
-      <div className="bg-slate-900">
+      {/* ── Bottom copyright strip ── */}
+      <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
         <div className="container-wide max-w-7xl mx-auto px-6 md:px-10 py-4 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <p className="text-xs text-white/30">© 2026 SK Orthopaedics. All rights reserved.</p>
-          <p className="text-xs text-white/30">Sports Surgery · Arthroscopy · Joint Replacement · Pakistan</p>
+          <p className="text-[11px] text-white/25">© 2026 SK Orthopaedics. All rights reserved.</p>
+          <p className="text-[11px] text-white/25">Sports Surgery · Arthroscopy · Joint Replacement</p>
         </div>
       </div>
 
       {/* Floating WhatsApp */}
       <a
-        href="https://wa.me/923002278796?text=Hello%20Doctor%2C%20I%20would%20like%20to%20book%20an%20appointment."
+        href={WHATSAPP_APPOINTMENT_URL}
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 z-50 p-4 rounded-full shadow-xl hover:scale-110 transition-transform"
