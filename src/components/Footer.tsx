@@ -97,8 +97,7 @@ const Footer = () => {
               Fellowship-Trained Orthopaedic Surgeon
             </p>
             <p className="text-sm opacity-70 leading-relaxed mb-5">
-              Dr. Shoaib Aslam Kurerr is a fellowship-trained orthopaedic surgeon specializing in sports injury management, arthroscopy, and advanced knee and shoulder joint replacement. With experience at leading institutions including Mayo Hospital Lahore and King Edward Medical University, he provides expert orthopaedic care for patients across Pakistan.
-            </p>
+Fellowship-trained orthopaedic surgeon specializing in sports injuries, arthroscopy, and joint replacement, with experience at Mayo Hospital Lahore and King Edward Medical University, serving patients across Pakistan.            </p>
             {/* Social Icons */}
             <p className="text-xs opacity-50 uppercase tracking-widest mb-3">Follow for Patient Education & Updates</p>
             <div className="flex items-center gap-3 flex-wrap">
