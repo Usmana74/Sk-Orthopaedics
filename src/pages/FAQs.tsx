@@ -2,14 +2,38 @@ import ScrollReveal from "@/components/ScrollReveal";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const faqs = [
-  { q: "How do I book an appointment with Dr Shoaib?", a: "You can book an appointment by calling +92 3002278796, clicking the WhatsApp button on this website, or visiting the clinic directly in Bahawalpur during consultation hours (Mon–Sat, 9:00 AM – 11:00 PM)." },
-  { q: "What should I bring for my first consultation?", a: "Bring your medical records, test reports, X-rays or MRIs related to your condition, a list of current medications, and details of any past surgeries or allergies." },
-  { q: "What is minimally invasive surgery and what are its benefits?", a: "Minimally invasive surgery uses small incisions instead of large cuts. This reduces pain, minimizes scarring, shortens hospital stays, and speeds up recovery compared to traditional open surgery." },
-  { q: "How long is the recovery after knee replacement?", a: "Most patients begin walking with assistance within 24–48 hours after surgery. Full recovery typically takes 3–6 months, with physiotherapy playing a crucial role in restoring strength and mobility." },
-  { q: "Does Dr Shoaib treat sports injuries?", a: "Yes. Dr Shoaib specializes in sports injury treatment including ACL tears, meniscus injuries, rotator cuff tears, and other athletic injuries. He uses both surgical and non-surgical approaches." },
-  { q: "Is physiotherapy mandatory after surgery?", a: "Physiotherapy is highly recommended as it helps restore movement, strength, and flexibility. Skipping physiotherapy can slow healing and may lead to joint stiffness or reduced function." },
-  { q: "What areas does the clinic serve?", a: "The clinic is based in Bahawalpur and serves patients from nearby cities including Rahim Yar Khan, Multan, Lodhran, Bahawalnagar, and surrounding areas." },
-  { q: "Will I need a blood transfusion during surgery?", a: "Most orthopaedic surgeries do not require blood transfusion. However, major procedures like hip or knee replacements may require it depending on individual circumstances. This will be discussed before surgery." },
+  {
+    q: "How do I book an appointment with Dr Shoaib?",
+    a: "You can schedule a consultation by calling +92 300 2278796 or by using the WhatsApp booking option available on this website. Patients from across Pakistan can contact the clinic team to arrange consultations and surgical evaluations."
+  },
+  {
+    q: "What should I bring for my first consultation?",
+    a: "Please bring any previous medical records, prescriptions, X-rays, MRI scans, or laboratory reports related to your condition, along with a list of current medications and details of any previous surgeries."
+  },
+  {
+    q: "What is minimally invasive surgery and what are its benefits?",
+    a: "Minimally invasive surgery uses small incisions and specialized instruments, often through arthroscopic 'keyhole' techniques. This approach reduces pain, minimizes scarring, shortens hospital stays, and allows patients to recover faster compared to traditional open surgery."
+  },
+  {
+    q: "How long is recovery after knee replacement surgery?",
+    a: "Most patients begin standing or walking with assistance within 24–48 hours after knee replacement surgery. Full recovery generally takes 3–6 months, with physiotherapy playing a crucial role in restoring strength, flexibility, and mobility."
+  },
+  {
+    q: "Does Dr Shoaib treat sports injuries?",
+    a: "Yes. Dr Shoaib has extensive experience in treating sports injuries such as ACL tears, meniscus injuries, rotator cuff tears, ligament damage, and joint instability using advanced arthroscopic and minimally invasive techniques."
+  },
+  {
+    q: "Is physiotherapy necessary after orthopaedic surgery?",
+    a: "Physiotherapy is strongly recommended after most orthopaedic procedures as it helps restore joint movement, muscle strength, and flexibility, ensuring the best possible recovery and long-term mobility."
+  },
+  {
+    q: "Where do patients come from for treatment?",
+    a: "Dr Shoaib treats patients from across Pakistan who seek specialized care for orthopaedic conditions, sports injuries, and joint replacement procedures."
+  },
+  {
+    q: "Will I need a blood transfusion during surgery?",
+    a: "Most orthopaedic procedures do not require a blood transfusion. However, major surgeries such as hip or knee replacements may occasionally require it depending on the patient’s condition, and this is always discussed before surgery."
+  }
 ];
 
 const FAQs = () => {
