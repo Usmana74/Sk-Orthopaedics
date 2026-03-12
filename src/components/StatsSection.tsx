@@ -5,6 +5,7 @@ const stats = [
   { value: 5000, suffix: "+", label: "Patients Treated" },
   { value: 8,    suffix: "+", label: "Years Experience" },
   { value: 400,  suffix: "+", label: "Successful Surgeries" },
+
 ];
 
 function useCountUp(target: number, duration = 1800, start = false) {
@@ -109,7 +110,7 @@ const StatsSection = () => {
         </ScrollReveal>
 
         {/* Stats grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-y-8 gap-x-0">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-y-8 gap-x-0">
           {stats.map((stat, i) => (
             <StatItem
               key={stat.label}
