@@ -148,7 +148,7 @@ Dr. Shoaib Aslam Kurerr is a highly experienced orthopaedic surgeon specializing
           <div>
             <h4 className="font-heading text-base font-semibold mb-4 opacity-90">Book Appointment</h4>
             <p className="text-sm opacity-70 mb-4 leading-relaxed">
-            <br />Call or message us on WhatsApp to schedule.
+            Call or message us on WhatsApp to schedule.
             </p>
             <a
               href={WHATSAPP_APPOINTMENT_URL}
