@@ -26,7 +26,7 @@ const Contact = () => {
             initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
             className="font-heading text-5xl md:text-7xl font-bold text-white mb-4 tracking-tight"
           >
-            CONTACT US
+            Contact Us
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}
@@ -107,39 +107,7 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* ─── Full-Width Map Container ─── */}
-      <section className="py-20 container-wide">
-        <ScrollReveal>
-          <div className="space-y-8">
-             <div className="text-center space-y-2">
-                <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-primary">Practice Location</p>
-                <h3 className="text-xl font-bold text-slate-900 uppercase tracking-widest">MID-WEST HOSPITAL</h3>
-                <p className="text-sm text-slate-400">Trust Colony, Street No. 3, Bahawalpur</p>
-             </div>
-             <div className="rounded-[2.5rem] overflow-hidden shadow-2xl border border-slate-100 h-[450px]">
-                <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3467.5!2d71.6749718!3d29.3879797!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x393b91da655623a1%3A0xd84bcc8df0d10bf8!2sMID-WEST%20HOSPITAL!5e0!3m2!1sen!2s!4v1700000000000" 
-                  width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" 
-                  title="Midwest Hospital Bahawalpur Location"
-                />
-             </div>
-          </div>
-        </ScrollReveal>
-      </section>
-
-      {/* ─── Regional Presence ─── */}
-      <section className="py-12 bg-white border-t border-slate-50">
-        <div className="container-wide text-center">
-          <p className="text-slate-300 text-[10px] font-bold uppercase tracking-[0.25em] mb-6">Serving Patients Across Southern Punjab</p>
-          <div className="flex flex-wrap justify-center gap-4">
-            {["Bahawalpur", "Rahim Yar Khan", "Multan", "Lodhran", "Bahawalnagar", "Ahmadpur East"].map((city) => (
-              <span key={city} className="text-slate-400 text-[11px] font-bold uppercase tracking-widest">
-                {city}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
+    
     </main>
   );
 };
