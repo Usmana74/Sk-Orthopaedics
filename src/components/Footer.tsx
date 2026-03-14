@@ -43,18 +43,24 @@ const InstagramIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-const WHATSAPP_TOPBAR_URL =
-  "https://wa.me/923002278796?text=" +
-  encodeURIComponent(
-    "Hello Dr. Shoaib, I found your website and would like to learn more about your orthopaedic services."
-  );
+// Footer "WhatsApp Us" button — high intent, patient has read the full page
+const WHATSAPP_FOOTER_URL =
+  `https://wa.me/923002278796?text=${encodeURIComponent(
+    "Hello Dr. Shoaib, I have reviewed your practice details and would like to schedule a consultation for orthopaedic care. Please confirm your availability."
+  )}`;
+
+// Floating bubble — generic entry, any page
+const WHATSAPP_FLOATING_URL =
+  `https://wa.me/923002278796?text=${encodeURIComponent(
+    "Hello Dr. Shoaib, I would like to book an appointment for an orthopaedic evaluation. Please guide me on availability."
+  )}`;
 
 const socialLinks = [
   { label: "Google",    href: "https://www.google.com/search?q=Dr+Shoaib+Aslam+Kurerr", icon: <GoogleIcon className="w-4 h-4" /> },
   { label: "Facebook",  href: "https://www.facebook.com/saorthopaedics",                 icon: <FacebookIcon className="w-4 h-4" /> },
   { label: "Instagram", href: "https://www.instagram.com/drshoaibaslamkurrer/",          icon: <InstagramIcon className="w-4 h-4" /> },
   { label: "YouTube",   href: "https://www.youtube.com/@dr.shoaibaslamorthopaedics6367", icon: <YouTubeIcon className="w-4 h-4" /> },
-  { label: "WhatsApp",  href: WHATSAPP_APPOINTMENT_URL,                                  icon: <WhatsAppIcon className="w-4 h-4" /> },
+  { label: "WhatsApp",  href: WHATSAPP_FLOATING_URL,                                  icon: <WhatsAppIcon className="w-4 h-4" /> },
 ];
 
 const navLinks = [
@@ -93,6 +99,18 @@ const Footer = () => {
               Specialising in sports surgery, arthroscopy, and joint replacement. Trained at Mayo Hospital Lahore and King Edward Medical University.
             </p>
 
+            {/* Credential chips */}
+            <div className="flex flex-wrap gap-2 mb-7">
+              {["FCPS", "MRCS-I", "ATLS", "IMC"].map((cred) => (
+                <span
+                  key={cred}
+                  className="text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-md text-white/70"
+                  style={{ backgroundColor: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.1)" }}
+                >
+                  {cred}
+                </span>
+              ))}
+            </div>
 
             {/* Social icons */}
             <div className="flex items-center gap-2">
@@ -175,7 +193,7 @@ const Footer = () => {
                 Request a consultation or orthopaedic evaluation with Dr. Shoaib Aslam Kurerr.
               </p>
               <a
-                href={WHATSAPP_APPOINTMENT_URL}
+                href={WHATSAPP_FOOTER_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 w-full text-sm font-bold py-2.5 rounded-xl hover:opacity-90 transition-all"
@@ -211,7 +229,7 @@ const Footer = () => {
 
       {/* Floating WhatsApp */}
       <a
-        href={WHATSAPP_APPOINTMENT_URL}
+        href={WHATSAPP_FLOATING_URL}
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 z-50 p-4 rounded-full shadow-xl hover:scale-110 transition-transform"
