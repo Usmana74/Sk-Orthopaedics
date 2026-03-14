@@ -43,8 +43,11 @@ const InstagramIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-const WHATSAPP_APPOINTMENT_URL =
-  "https://wa.me/923002278796?text=Hello%20Doctor%2C%20I%20would%20like%20to%20book%20an%20appointment.";
+const WHATSAPP_TOPBAR_URL =
+  "https://wa.me/923002278796?text=" +
+  encodeURIComponent(
+    "Hello Dr. Shoaib, I found your website and would like to learn more about your orthopaedic services."
+  );
 
 const socialLinks = [
   { label: "Google",    href: "https://www.google.com/search?q=Dr+Shoaib+Aslam+Kurerr", icon: <GoogleIcon className="w-4 h-4" /> },
