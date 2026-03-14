@@ -41,26 +41,26 @@ const HeroSection = () => {
       {/* ── Main content ── */}
       <div className="relative z-10 text-center px-6 max-w-2xl mx-auto">
 
-        {/* Credential badge */}
+        {/* Credential badge — unique fellowship, not duplicating top bar */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
           className="inline-flex items-center gap-3 mb-7"
         >
-          <span className="w-8 h-px bg-white/35" />
-          <span className="text-white/55 text-[10px] font-bold uppercase tracking-[0.35em]">
-            FCPS · Fellowship Trained Orthopaedic Surgeon
+          <span className="w-8 h-px bg-white/30" />
+          <span className="text-white/50 text-[10px] font-semibold uppercase tracking-[0.3em]">
+            Sports Surgery · Knee & Shoulder Replacement · Arthroscopy
           </span>
-          <span className="w-8 h-px bg-white/35" />
+          <span className="w-8 h-px bg-white/30" />
         </motion.div>
 
-        {/* Headline */}
+        {/* Headline — scaled down for professional restraint */}
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.15 }}
-          className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight mb-5"
+          className="font-heading text-3xl md:text-4xl lg:text-5xl font-semibold text-white leading-snug tracking-tight mb-5"
         >
           Expert Orthopaedic &amp; <br className="hidden md:block" />
           Sports Surgery Care
