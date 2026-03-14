@@ -56,11 +56,11 @@ const WHATSAPP_FLOATING_URL =
   )}`;
 
 const socialLinks = [
-  { label: "Google",    href: "https://www.google.com/search?q=Dr+Shoaib+Aslam+Kurerr", icon: <GoogleIcon className="w-4 h-4" /> },
-  { label: "Facebook",  href: "https://www.facebook.com/saorthopaedics",                 icon: <FacebookIcon className="w-4 h-4" /> },
-  { label: "Instagram", href: "https://www.instagram.com/drshoaibaslamkurrer/",          icon: <InstagramIcon className="w-4 h-4" /> },
-  { label: "YouTube",   href: "https://www.youtube.com/@dr.shoaibaslamorthopaedics6367", icon: <YouTubeIcon className="w-4 h-4" /> },
-  { label: "WhatsApp",  href: WHATSAPP_FLOATING_URL,                                  icon: <WhatsAppIcon className="w-4 h-4" /> },
+  { label: "Google",    href: "https://www.google.com/search?q=Dr+Shoaib+Aslam+Kurerr", icon: <GoogleIcon className="w-4 h-4" />,    bg: undefined },
+  { label: "Facebook",  href: "https://www.facebook.com/saorthopaedics",                 icon: <FacebookIcon className="w-4 h-4" />,  bg: undefined },
+  { label: "Instagram", href: "https://www.instagram.com/drshoaibaslamkurrer/",          icon: <InstagramIcon className="w-4 h-4" />, bg: undefined },
+  { label: "YouTube",   href: "https://www.youtube.com/@dr.shoaibaslamorthopaedics6367", icon: <YouTubeIcon className="w-4 h-4" />,   bg: undefined },
+  { label: "WhatsApp",  href: WHATSAPP_FLOATING_URL, icon: <WhatsAppIcon className="w-4 h-4" />, bg: "#25D366" },
 ];
 
 const navLinks = [
@@ -109,10 +109,10 @@ const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={s.label}
-                  className="w-8 h-8 rounded-lg flex items-center justify-center transition-colors"
-                  style={{ backgroundColor: "rgba(255,255,255,0.06)" }}
-                  onMouseEnter={e => (e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.12)")}
-                  onMouseLeave={e => (e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.06)")}
+                  className="w-8 h-8 rounded-lg flex items-center justify-center transition-all hover:scale-110"
+                  style={{ backgroundColor: s.bg ?? "rgba(255,255,255,0.06)" }}
+                  onMouseEnter={e => { if (!s.bg) e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.12)" }}
+                  onMouseLeave={e => { if (!s.bg) e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.06)" }}
                 >
                   {s.icon}
                 </a>
