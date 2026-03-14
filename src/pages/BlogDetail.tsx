@@ -338,9 +338,6 @@ const BlogDetail = () => {
                     <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-primary">
                       Consultant Orthopaedic Surgeon
                     </p>
-                    <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-slate-400 mt-0.5">
-                      Midwest Hospital, Bahawalpur
-                    </p>
                   </div>
                 </div>
 

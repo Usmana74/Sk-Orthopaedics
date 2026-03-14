@@ -174,7 +174,7 @@ const Blogs = () => {
           <p className="text-primary-foreground/70 max-w-lg mx-auto text-base leading-relaxed">
             Evidence-based orthopaedic insights and surgical guides by{" "}
             <span className="text-primary-foreground font-semibold">Dr. Shoaib Aslam Kurerr</span>,
-            Consultant Orthopaedic Surgeon, Midwest Hospital Bahawalpur.
+            Consultant Orthopaedic Surgeon
           </p>
         </div>
       </section>
