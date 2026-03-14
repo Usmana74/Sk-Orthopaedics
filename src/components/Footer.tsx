@@ -99,18 +99,6 @@ const Footer = () => {
               Specialising in sports surgery, arthroscopy, and joint replacement. Trained at Mayo Hospital Lahore and King Edward Medical University.
             </p>
 
-            {/* Credential chips */}
-            <div className="flex flex-wrap gap-2 mb-7">
-              {["FCPS", "MRCS-I", "ATLS", "IMC"].map((cred) => (
-                <span
-                  key={cred}
-                  className="text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-md text-white/70"
-                  style={{ backgroundColor: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.1)" }}
-                >
-                  {cred}
-                </span>
-              ))}
-            </div>
 
             {/* Social icons */}
             <div className="flex items-center gap-2">
