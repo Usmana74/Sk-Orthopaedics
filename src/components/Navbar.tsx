@@ -381,21 +381,6 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* Trust Signal Strip */}
-        <div className="hidden lg:block border-t border-border/50 bg-slate-50/80">
-          <div className="container-wide px-8 py-1.5 flex items-center justify-center gap-6 text-[10px] font-semibold uppercase tracking-widest text-slate-400">
-            <span>Sports Surgery</span>
-            <span className="w-1 h-1 rounded-full bg-slate-300" />
-            <span>Arthroscopy Expert</span>
-            <span className="w-1 h-1 rounded-full bg-slate-300" />
-            <span>Knee & Shoulder Replacement</span>
-            <span className="w-1 h-1 rounded-full bg-slate-300" />
-            <span>Mayo Hospital Lahore</span>
-            <span className="w-1 h-1 rounded-full bg-slate-300" />
-            <span>King Edward Medical University</span>
-          </div>
-        </div>
-
         {/* Mobile Menu */}
         {isOpen && (
           <div className="lg:hidden bg-card border-t border-border p-6 space-y-4 shadow-xl">
