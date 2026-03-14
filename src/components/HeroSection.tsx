@@ -6,7 +6,6 @@ import BookingModal from "./BookingModal";
 const HeroSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
 
-  // Parallax — image moves up at half scroll speed
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end start"],
@@ -19,18 +18,18 @@ const HeroSection = () => {
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
 
-      {/* ── Background with Ken Burns + Parallax ── */}
+      {/* ── Background — position shifted to show face ── */}
       <motion.div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-110"
+        className="absolute inset-0 bg-cover bg-no-repeat scale-110"
         style={{
           backgroundImage: `url(${heroImage})`,
+          backgroundPosition: "center 15%",
           y: bgY,
-          // Ken Burns slow zoom via CSS animation
           animation: "kenBurns 18s ease-in-out infinite alternate",
         }}
       />
 
-      {/* Directional gradient — breathes at top, anchors text at bottom */}
+      {/* Directional gradient */}
       <div
         className="absolute inset-0"
         style={{
@@ -39,10 +38,10 @@ const HeroSection = () => {
         }}
       />
 
-      {/* ── Main content — 3 elements ── */}
+      {/* ── Main content ── */}
       <div className="relative z-10 text-center px-6 max-w-2xl mx-auto">
 
-        {/* 1. Credential badge */}
+        {/* Credential badge */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -56,7 +55,7 @@ const HeroSection = () => {
           <span className="w-8 h-px bg-white/35" />
         </motion.div>
 
-        {/* 2. Headline */}
+        {/* Headline */}
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -67,7 +66,7 @@ const HeroSection = () => {
           Sports Surgery Care
         </motion.h1>
 
-        {/* Doctor name — elegant typographic line */}
+        {/* Doctor name */}
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -77,7 +76,7 @@ const HeroSection = () => {
           Dr. Shoaib Aslam Kurerr
         </motion.p>
 
-        {/* 3. CTA */}
+        {/* CTA */}
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
