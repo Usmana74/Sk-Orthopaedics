@@ -3,7 +3,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 import { Phone, MapPin, Clock, Mail, ChevronRight, Award, Globe, ShieldCheck } from "lucide-react";
 
 // WhatsApp Configuration
-const WHATSAPP_NUMBER = "923002278796";
+const WHATSAPP_NUMBER = "923002278196";
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
   "Hello Dr. Shoaib, I would like to book an appointment regarding an orthopaedic concern."
 )}`;
@@ -97,8 +97,8 @@ const Contact = () => {
                 <p className="text-xs text-slate-400 leading-relaxed mb-1">
                   For consultation requests or surgical evaluations, contact our appointment coordination team directly.
                 </p>
-                <a href="tel:+923002278796" className="block text-sm font-semibold text-primary hover:opacity-80 transition-colors tracking-widest">
-                  +92 300 2278796
+                <a href="tel:+923002278196" className="block text-sm font-semibold text-primary hover:opacity-80 transition-colors tracking-widest">
+                  +92 300 2278196
                 </a>
               </div>
             </ScrollReveal>

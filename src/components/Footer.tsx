@@ -45,13 +45,13 @@ const InstagramIcon = ({ className }: { className?: string }) => (
 
 // Footer "WhatsApp Us" button — high intent, patient has read the full page
 const WHATSAPP_FOOTER_URL =
-  `https://wa.me/923002278796?text=${encodeURIComponent(
+  `https://wa.me/923002278196?text=${encodeURIComponent(
     "Hello Dr. Shoaib, I have reviewed your practice details and would like to schedule a consultation for orthopaedic care. Please confirm your availability."
   )}`;
 
 // Floating bubble — generic entry, any page
 const WHATSAPP_FLOATING_URL =
-  `https://wa.me/923002278796?text=${encodeURIComponent(
+  `https://wa.me/923002278196?text=${encodeURIComponent(
     "Hello Dr. Shoaib, I would like to book an appointment for an orthopaedic evaluation. Please guide me on availability."
   )}`;
 
@@ -149,7 +149,7 @@ const Footer = () => {
               <div>
                 <p className="text-[9px] text-white/30 uppercase tracking-widest mb-1.5">Appointment Line</p>
                 <a href="tel:+923002278796" className="flex items-center gap-2 text-white/55 hover:text-white transition-colors">
-                  <Phone className="w-3.5 h-3.5 shrink-0" /> +92 300 2278796
+                  <Phone className="w-3.5 h-3.5 shrink-0" /> +92 300 2278196
                 </a>
               </div>
               <div>

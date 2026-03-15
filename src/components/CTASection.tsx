@@ -11,7 +11,7 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
 
 const CTASection = () => {
   const whatsappUrl =
-    "https://wa.me/923002278796?text=Hello%20Doctor%2C%20I%20would%20like%20to%20book%20an%20appointment.";
+    "https://wa.me/923002278196?text=Hello%20Doctor%2C%20I%20would%20like%20to%20book%20an%20appointment.";
 
   return (
     <section className="relative overflow-hidden">
