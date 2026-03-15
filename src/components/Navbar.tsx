@@ -327,7 +327,8 @@ const Navbar = () => {
             <a
               href={`https://wa.me/${PHONE}`}
               target="_blank" rel="noopener noreferrer"
-              className="flex items-center gap-2 hover:opacity-80 transition-opacity py-0.5 px-3 rounded bg-white/10"
+              className="flex items-center gap-2 hover:opacity-90 transition-opacity py-0.5 px-3 rounded"
+              style={{ backgroundColor: "#25D366" }}
             >
               <WhatsAppIcon className="w-3 h-3" /> <span className="font-bold">WHATSAPP</span>
             </a>
@@ -379,6 +380,21 @@ const Navbar = () => {
           <button className="lg:hidden" onClick={() => setIsOpen(!isOpen)}>
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
+        </div>
+
+        {/* Trust Signal Strip */}
+        <div className="hidden lg:block border-t border-border/50 bg-slate-50/80">
+          <div className="container-wide px-8 py-1.5 flex items-center justify-center gap-6 text-[10px] font-semibold uppercase tracking-widest text-slate-400">
+            <span>Sports Surgery</span>
+            <span className="w-1 h-1 rounded-full bg-slate-300" />
+            <span>Arthroscopy Expert</span>
+            <span className="w-1 h-1 rounded-full bg-slate-300" />
+            <span>Knee & Shoulder Replacement</span>
+            <span className="w-1 h-1 rounded-full bg-slate-300" />
+            <span>Mayo Hospital Lahore</span>
+            <span className="w-1 h-1 rounded-full bg-slate-300" />
+            <span>King Edward Medical University</span>
+          </div>
         </div>
 
         {/* Mobile Menu */}
