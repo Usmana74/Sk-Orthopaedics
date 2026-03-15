@@ -18,7 +18,7 @@ const navLinks = [
   { label: "Contact Us",   path: "/contact" },
 ];
 
-const PHONE = "923002278796";
+const PHONE = "923002278196";
 
 // ── Step definitions ──────────────────────────────────────────────────────────
 const STEPS = [
@@ -341,9 +341,9 @@ const Navbar = () => {
         <div className={`container-wide flex items-center justify-between px-4 md:px-8 transition-all duration-300 ${scrolled ? "py-2" : "py-3"}`}>
 
           <Link to="/" className="flex flex-col">
-            <span className="font-heading text-xl font-bold text-primary">Dr. Shoaib Aslam Kurerr</span>
+            <span className="font-heading text-xl font-bold text-primary">SK - ORTHOPAEDICS</span>
             <span className="text-[10px] text-muted-foreground font-semibold uppercase tracking-widest">
-              Orthopaedic & Sports Surgery Specialist
+              Sports Medicine and Joint Replacement
             </span>
           </Link>
 
@@ -373,7 +373,7 @@ const Navbar = () => {
               href={`tel:+${PHONE}`}
               className="flex items-center gap-2 bg-primary text-primary-foreground px-4 py-2 rounded-lg text-sm font-bold hover:shadow-lg transition-all"
             >
-              <Phone className="w-4 h-4" /> +92 300 2278796
+              <Phone className="w-4 h-4" /> +92 300 2278196
             </a>
           </div>
 
@@ -382,20 +382,6 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* Trust Signal Strip */}
-        <div className="hidden lg:block border-t border-border/50 bg-slate-50/80">
-          <div className="container-wide px-8 py-1.5 flex items-center justify-center gap-6 text-[10px] font-semibold uppercase tracking-widest text-slate-400">
-            <span>Sports Surgery</span>
-            <span className="w-1 h-1 rounded-full bg-slate-300" />
-            <span>Arthroscopy Expert</span>
-            <span className="w-1 h-1 rounded-full bg-slate-300" />
-            <span>Knee & Shoulder Replacement</span>
-            <span className="w-1 h-1 rounded-full bg-slate-300" />
-            <span>Mayo Hospital Lahore</span>
-            <span className="w-1 h-1 rounded-full bg-slate-300" />
-            <span>King Edward Medical University</span>
-          </div>
-        </div>
 
         {/* Mobile Menu */}
         {isOpen && (
