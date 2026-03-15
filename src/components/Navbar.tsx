@@ -320,7 +320,7 @@ const Navbar = () => {
             >
               <span className="w-2 h-2 rounded-full bg-sky-400 animate-pulse" />
               <Globe className="w-3.5 h-3.5 opacity-80" />
-              <span className="font-semibold underline underline-offset-4 tracking-wide uppercase">Online Consultations Available Nationwide</span>
+              <span className="font-semibold underline underline-offset-4 tracking-wide uppercase">Online and In-clinic Consultation</span>
             </button>
           </div>
           <div className="flex items-center">
