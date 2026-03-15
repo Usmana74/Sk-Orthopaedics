@@ -4,7 +4,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 const faqs = [
   {
     q: "How do I book an appointment with Dr Shoaib?",
-    a: "You can schedule a consultation by calling +92 300 2278796 or by using the WhatsApp booking option available on this website. Patients from across Pakistan can contact the clinic team to arrange consultations and surgical evaluations."
+    a: "You can schedule a consultation by calling +92 300 2278196 or by using the WhatsApp booking option available on this website. Patients from across Pakistan can contact the clinic team to arrange consultations and surgical evaluations."
   },
   {
     q: "What should I bring for my first consultation?",

@@ -113,7 +113,7 @@ const supportingBadges = [
 ];
 
 const About = () => {
-  const whatsappUrl = "https://wa.me/923002278796?text=Hello%20Dr.%20Shoaib%2C%20I%20would%20like%20to%20book%20a%20consultation.";
+  const whatsappUrl = "https://wa.me/923002278196?text=Hello%20Dr.%20Shoaib%2C%20I%20would%20like%20to%20book%20a%20consultation.";
 
   return (
     <main className="bg-white">
