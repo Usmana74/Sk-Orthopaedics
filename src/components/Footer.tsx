@@ -90,7 +90,7 @@ const Footer = () => {
             <div className="mb-6">
               <h3 className="font-heading text-xl font-bold text-white mb-1">SK – Orthopaedics</h3>
               <p className="text-[10px] text-white/40 uppercase tracking-[0.2em]">
-                Fellowship-Trained Orthopaedic Surgeon · Pakistan
+                Fellowship-Trained Orthopaedic Sports Surgeon · Pakistan
               </p>
             </div>
 

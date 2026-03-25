@@ -24,7 +24,7 @@ const reasons = [
       </svg>
     ),
     title: "National & International Certifications",
-    desc: "FCPS, ATLS (USA), MRCS-I (Edinburgh, UK), and Irish Medical Council member — credentials recognised across Pakistan and internationally.",
+    desc: "FCPS, ATLS (USA), MRCS-I (Edinburgh, UK), POA fellowship in Sports Surgery and Arthroscopy, and Irish Medical Council member — credentials recognised across Pakistan and internationally.",
   },
   {
     number: "03",
@@ -83,8 +83,8 @@ const WhyChooseUs = () => {
                 className="absolute -bottom-5 -right-4 md:-right-8 rounded-2xl px-5 py-4 shadow-xl border border-white/20"
                 style={{ backgroundColor: "rgba(29, 97, 165)" }}
               >
-                <p className="text-white font-bold text-sm">FCPS · MRCS-I · ATLS</p>
-                <p className="text-white/60 text-[10px] uppercase tracking-widest mt-0.5">International Certifications</p>
+                <p className="text-white font-bold text-sm">FCPS · MRCS(UK) · ATLS(USA)</p>
+                <p className="text-white/60 text-[10px] uppercase tracking-widest mt-0.5">POA fellowship in Sports Surgery</p>
               </div>
               {/* Floating patients badge */}
               <div className="absolute -top-4 -left-4 md:-left-6 bg-white rounded-2xl px-4 py-3 shadow-xl border border-slate-100">

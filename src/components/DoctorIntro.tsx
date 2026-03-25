@@ -34,6 +34,7 @@ He has trained and worked at leading institutions including Mayo Hospital Lahore
                   "FCPS (Trauma & Orthopaedics)",
                   "ATLS (USA)",
                   "MRCS-I (UK – Edinburgh)",
+                  "POA fellowship in Sports Surgery and Arthroscopy",
                   "Member of Irish Medical Council",
                 ].map((cred) => (
                   <div key={cred} className="flex items-center gap-2 text-sm text-foreground">

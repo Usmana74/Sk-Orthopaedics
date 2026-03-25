@@ -9,25 +9,37 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
 );
 
 const navLinks = [
-  { label: "Home",         path: "/" },
-  { label: "About Us",     path: "/about" },
-  { label: "Services",     path: "/services" },
+  { label: "Home", path: "/" },
+  { label: "About Us", path: "/about" },
+  { label: "Services", path: "/services" },
   { label: "Testimonials", path: "/testimonials" },
-  { label: "FAQs",         path: "/faqs" },
-  { label: "Blogs",        path: "/blog" },
-  { label: "Contact Us",   path: "/contact" },
+  { label: "FAQs", path: "/faqs" },
+  { label: "Blogs", path: "/blog" },
+  { label: "Contact Us", path: "/contact" },
 ];
 
 const PHONE = "923002278196";
 
-// ── Step definitions ──────────────────────────────────────────────────────────
 const STEPS = [
   {
-    id: "name",
-    question: "What is your name?",
-    hint: "So we can address you properly.",
-    type: "text",
-    placeholder: "e.g. Ahmed Khan",
+    id: "personal_info",
+    question: "Basic Information",
+    hint: "Please provide your details for Dr. Shoaib.",
+    type: "fields",
+    fields: [
+      {
+        id: "name",
+        question: "What is your name?",
+        hint: "So we can address you properly.",
+        placeholder: "e.g. Ahmed Khan",
+      },
+      {
+        id: "age",
+        question: "What is your age?",
+        hint: "This helps the doctor understand your condition.",
+        placeholder: "e.g. 35",
+      },
+    ],
   },
   {
     id: "concern",
@@ -35,11 +47,12 @@ const STEPS = [
     hint: "Select the option that best describes your condition.",
     type: "options",
     options: [
-      { label: "Knee Pain / Knee Injury",         emoji: "🦵" },
-      { label: "Shoulder Pain / Shoulder Injury",  emoji: "💪" },
-      { label: "Sports Injury",                    emoji: "⚽" },
-      { label: "Joint Replacement Evaluation",     emoji: "🔩" },
+      { label: "Knee Pain / Knee Injury", emoji: "🦵" },
+      { label: "Shoulder Pain / Shoulder Injury", emoji: "💪" },
+      { label: "Sports Injury", emoji: "⚽" },
+      { label: "Joint Replacement Evaluation", emoji: "🔩" },
       { label: "General Orthopaedic Consultation", emoji: "🩺" },
+      { label: "Lower back pain evaluation", emoji: "🧍‍♂️" },
     ],
   },
   {
@@ -48,10 +61,10 @@ const STEPS = [
     hint: "This helps Dr. Shoaib understand the severity.",
     type: "options",
     options: [
-      { label: "Less than 1 month",   emoji: "📅" },
-      { label: "1 – 6 months",        emoji: "🗓️" },
-      { label: "6 months – 1 year",   emoji: "📆" },
-      { label: "More than 1 year",    emoji: "⏳" },
+      { label: "Less than 1 month", emoji: "📅" },
+      { label: "1 – 6 months", emoji: "🗓️" },
+      { label: "6 months – 1 year", emoji: "📆" },
+      { label: "More than 1 year", emoji: "⏳" },
     ],
   },
   {
@@ -61,7 +74,7 @@ const STEPS = [
     type: "options",
     options: [
       { label: "Online / Video Consultation", emoji: "💻" },
-      { label: "In-Clinic Visit",             emoji: "🏥" },
+      { label: "In-Clinic Visit", emoji: "🏥" },
     ],
   },
   {
@@ -75,15 +88,14 @@ const STEPS = [
 
 type FormData = { [key: string]: string };
 
-// ── Consultation Modal ────────────────────────────────────────────────────────
 const ConsultationModal = ({ onClose }: { onClose: () => void }) => {
-  const [step, setStep]         = useState(0);
+  const [step, setStep] = useState(0);
   const [formData, setFormData] = useState<FormData>({});
   const [submitted, setSubmitted] = useState(false);
-  const [textVal, setTextVal]   = useState("");
+  const [textVal, setTextVal] = useState("");
 
   const current = STEPS[step];
-  const isLast  = step === STEPS.length - 1;
+  const isLast = step === STEPS.length - 1;
   const progress = ((step) / STEPS.length) * 100;
 
   const handleOption = (label: string) => {
@@ -94,19 +106,27 @@ const ConsultationModal = ({ onClose }: { onClose: () => void }) => {
   };
 
   const handleText = () => {
-    if (!textVal.trim()) return;
-    const updated = { ...formData, [current.id]: textVal.trim() };
-    setFormData(updated);
-    setTextVal("");
+    let updated = { ...formData };
+    
+    if (current.type === "fields") {
+      // Validate both name and age are present
+      if (!formData.name?.trim() || !formData.age?.trim()) return;
+    } else {
+      if (!textVal.trim()) return;
+      updated[current.id] = textVal.trim();
+      setFormData(updated);
+      setTextVal("");
+    }
+
     if (!isLast) setStep(s => s + 1);
     else confirm(updated);
   };
 
   const confirm = (data: FormData) => {
-    const msg =
-`Hello Dr. Shoaib Aslam, I would like to request a consultation.
+    const msg = `Hello Dr. Shoaib Aslam, I would like to request a consultation.
 
 👤 *Name:* ${data.name}
+🔢 *Age:* ${data.age}
 🩺 *Concern:* ${data.concern}
 ⏱️ *Duration:* ${data.duration}
 📋 *Consultation Type:* ${data.type}
@@ -125,101 +145,51 @@ Please let me know the next steps.`;
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
-      <div
-        className="bg-white w-full max-w-md rounded-2xl shadow-2xl overflow-hidden"
-        style={{ animation: "modalIn 0.25s ease-out" }}
-      >
-
-        {/* ── Header ── */}
+      <div className="bg-white w-full max-w-md rounded-2xl shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-250">
+        
+        {/* Header */}
         <div className="px-6 pt-5 pb-4" style={{ backgroundColor: "rgba(29,97,165)" }}>
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2">
               <Globe className="w-4 h-4 text-white/70" />
-              <span className="text-white text-xs font-bold uppercase tracking-widest">
-                Online Consultation
-              </span>
+              <span className="text-white text-xs font-bold uppercase tracking-widest">Online Consultation</span>
             </div>
-            <button
-              onClick={onClose}
-              className="text-white/60 hover:text-white transition-colors"
-            >
+            <button onClick={onClose} className="text-white/60 hover:text-white transition-colors">
               <X className="w-4 h-4" />
             </button>
           </div>
-
-          {/* Progress bar */}
           {!submitted && (
-            <div className="w-full h-1 bg-white/20 rounded-full overflow-hidden">
-              <div
-                className="h-full bg-white rounded-full transition-all duration-500"
-                style={{ width: `${progress}%` }}
-              />
-            </div>
-          )}
-          {!submitted && (
-            <p className="text-white/50 text-[10px] mt-1.5 text-right">
-              Step {step + 1} of {STEPS.length}
-            </p>
+            <>
+              <div className="w-full h-1 bg-white/20 rounded-full overflow-hidden">
+                <div className="h-full bg-white rounded-full transition-all duration-500" style={{ width: `${progress}%` }} />
+              </div>
+              <p className="text-white/50 text-[10px] mt-1.5 text-right">Step {step + 1} of {STEPS.length}</p>
+            </>
           )}
         </div>
 
-        {/* ── Body ── */}
+        {/* Body */}
         <div className="px-6 py-6 min-h-[300px]">
-
           {submitted ? (
-            // ── Confirmation screen ──
             <div className="flex flex-col items-center text-center py-4 gap-4">
-              <div
-                className="w-16 h-16 rounded-full flex items-center justify-center"
-                style={{ backgroundColor: "#25D366" }}
-              >
+              <div className="w-16 h-16 rounded-full flex items-center justify-center" style={{ backgroundColor: "#25D366" }}>
                 <CheckCircle className="w-8 h-8 text-white" />
               </div>
               <div>
-                <h3 className="font-bold text-slate-900 text-lg mb-1">
-                  Request Sent!
-                </h3>
-                <p className="text-slate-500 text-sm leading-relaxed">
-                  Your consultation request has been sent to Dr. Shoaib's team via WhatsApp. They will respond shortly to confirm your appointment.
-                </p>
+                <h3 className="font-bold text-slate-900 text-lg mb-1">Request Sent!</h3>
+                <p className="text-slate-500 text-sm leading-relaxed">Your consultation request has been sent to Dr. Shoaib's team via WhatsApp.</p>
               </div>
-              <div
-                className="w-full rounded-xl px-4 py-3 text-left mt-2"
-                style={{ backgroundColor: "rgba(29,97,165,0.06)", border: "1px solid rgba(29,97,165,0.12)" }}
-              >
-                <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2">Your Summary</p>
-                {Object.entries(formData).map(([key, val]) => (
-                  <div key={key} className="flex justify-between text-xs py-1 border-b border-slate-100 last:border-0">
-                    <span className="text-slate-400 capitalize">{key}</span>
-                    <span className="text-slate-700 font-medium text-right max-w-[60%]">{val}</span>
-                  </div>
-                ))}
-              </div>
-              <button
-                onClick={onClose}
-                className="w-full py-2.5 rounded-xl text-sm font-bold text-white transition-all hover:opacity-90"
-                style={{ backgroundColor: "rgba(29,97,165)" }}
-              >
-                Close
-              </button>
+              <button onClick={onClose} className="w-full py-2.5 rounded-xl text-sm font-bold text-white transition-all hover:opacity-90" style={{ backgroundColor: "rgba(29,97,165)" }}>Close</button>
             </div>
-
           ) : (
-            // ── Question step ──
-            <div key={step} style={{ animation: "stepIn 0.2s ease-out" }}>
+            <div key={step} className="animate-in slide-in-from-right-4 duration-200">
               <p className="text-slate-400 text-xs mb-1">{current.hint}</p>
-              <h3 className="font-bold text-slate-900 text-base mb-5 leading-snug">
-                {current.question}
-              </h3>
+              <h3 className="font-bold text-slate-900 text-base mb-5 leading-snug">{current.question}</h3>
 
               {current.type === "options" && (
                 <div className="flex flex-col gap-2">
                   {current.options!.map((opt) => (
-                    <button
-                      key={opt.label}
-                      onClick={() => handleOption(opt.label)}
-                      className="flex items-center gap-3 w-full text-left px-4 py-3 rounded-xl border border-slate-200 hover:border-primary/40 hover:bg-primary/4 transition-all text-sm font-medium text-slate-700 group"
-                    >
+                    <button key={opt.label} onClick={() => handleOption(opt.label)} className="flex items-center gap-3 w-full text-left px-4 py-3 rounded-xl border border-slate-200 hover:border-primary/40 hover:bg-primary/4 transition-all text-sm font-medium text-slate-700 group">
                       <span className="text-lg">{opt.emoji}</span>
                       <span className="group-hover:text-primary transition-colors">{opt.label}</span>
                       <ChevronRight className="w-4 h-4 ml-auto text-slate-300 group-hover:text-primary/50 transition-colors" />
@@ -228,28 +198,39 @@ Please let me know the next steps.`;
                 </div>
               )}
 
-              {current.type === "text" && (
-                <div className="space-y-3">
-                  <input
-                    autoFocus
-                    type="text"
-                    value={textVal}
-                    placeholder={current.placeholder}
-                    onChange={e => setTextVal(e.target.value)}
-                    onKeyDown={e => e.key === "Enter" && handleText()}
-                    className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-primary outline-none transition-colors text-sm text-slate-800 placeholder:text-slate-300"
-                  />
+              {(current.type === "text" || current.type === "fields") && (
+                <div className="space-y-4">
+                  {current.type === "fields" ? (
+                    current.fields.map((f) => (
+                      <div key={f.id} className="space-y-1">
+                        <label className="text-[10px] font-bold uppercase text-slate-400 ml-1">{f.question}</label>
+                        <input
+                          type="text"
+                          value={formData[f.id] || ""}
+                          placeholder={f.placeholder}
+                          onChange={e => setFormData({ ...formData, [f.id]: e.target.value })}
+                          className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-primary outline-none text-sm text-slate-800"
+                        />
+                      </div>
+                    ))
+                  ) : (
+                    <input
+                      autoFocus
+                      type="text"
+                      value={textVal}
+                      placeholder={current.placeholder}
+                      onChange={e => setTextVal(e.target.value)}
+                      onKeyDown={e => e.key === "Enter" && handleText()}
+                      className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-primary outline-none text-sm text-slate-800"
+                    />
+                  )}
                   <button
                     onClick={handleText}
-                    disabled={!textVal.trim()}
-                    className="w-full py-3 rounded-xl text-sm font-bold text-white transition-all hover:opacity-90 disabled:opacity-40 flex items-center justify-center gap-2"
+                    disabled={current.type === "fields" ? (!formData.name?.trim() || !formData.age?.trim()) : !textVal.trim()}
+                    className="w-full py-4 rounded-xl text-base font-bold text-white transition-all hover:opacity-90 disabled:opacity-40 flex items-center justify-center gap-2"
                     style={{ backgroundColor: "rgba(29,97,165)" }}
                   >
-                    {isLast ? (
-                      <><WhatsAppIcon className="w-4 h-4" /> Send via WhatsApp</>
-                    ) : (
-                      <>Continue <ChevronRight className="w-4 h-4" /></>
-                    )}
+                    {isLast ? <><WhatsAppIcon className="w-5 h-5" /> Send via WhatsApp</> : <>Continue <ChevronRight className="w-5 h-5" /></>}
                   </button>
                 </div>
               )}
@@ -257,43 +238,25 @@ Please let me know the next steps.`;
           )}
         </div>
 
-        {/* ── Footer — back button + reassurance ── */}
+        {/* Footer */}
         {!submitted && (
           <div className="px-6 pb-5 flex items-center justify-between">
-            <button
-              onClick={goBack}
-              disabled={step === 0}
-              className="flex items-center gap-1 text-xs text-slate-400 hover:text-slate-600 transition-colors disabled:opacity-0"
-            >
+            <button onClick={goBack} disabled={step === 0} className="flex items-center gap-1 text-xs text-slate-400 hover:text-slate-600 transition-colors disabled:opacity-0">
               <ChevronLeft className="w-3.5 h-3.5" /> Back
             </button>
-            <p className="text-[10px] text-slate-300 italic">
-              Our team responds promptly to all requests.
-            </p>
+            <p className="text-[10px] text-slate-300 italic">Our team responds promptly.</p>
           </div>
         )}
-
       </div>
-
-      <style>{`
-        @keyframes modalIn {
-          from { opacity: 0; transform: scale(0.96) translateY(8px); }
-          to   { opacity: 1; transform: scale(1) translateY(0); }
-        }
-        @keyframes stepIn {
-          from { opacity: 0; transform: translateX(12px); }
-          to   { opacity: 1; transform: translateX(0); }
-        }
-      `}</style>
     </div>
   );
 };
 
-// ── Navbar ────────────────────────────────────────────────────────────────────
+// Navbar stays the same as your original code
 const Navbar = () => {
-  const [isOpen,    setIsOpen]    = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const [scrolled,  setScrolled]  = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -305,8 +268,6 @@ const Navbar = () => {
   return (
     <>
       {showModal && <ConsultationModal onClose={() => setShowModal(false)} />}
-
-      {/* ─── TOP BAR ─── */}
       <div className="bg-primary text-primary-foreground text-[11px] md:text-xs">
         <div className="container-wide flex items-center justify-between px-4 py-2 md:px-8 border-b border-white/10">
           <div className="flex items-center gap-6">
@@ -314,47 +275,28 @@ const Navbar = () => {
               <GraduationCap className="w-3.5 h-3.5" />
               <span className="font-medium tracking-wide uppercase opacity-90">FCPS · Fellowship Trained Orthopaedic Surgeon</span>
             </div>
-            <button
-              onClick={() => setShowModal(true)}
-              className="flex items-center gap-2 hover:opacity-80 transition-opacity group"
-            >
+            <button onClick={() => setShowModal(true)} className="flex items-center gap-2 hover:opacity-80 transition-opacity group">
               <span className="w-2 h-2 rounded-full bg-sky-400 animate-pulse" />
               <Globe className="w-3.5 h-3.5 opacity-80" />
               <span className="font-semibold underline underline-offset-4 tracking-wide uppercase">Online and In-clinic Consultation</span>
             </button>
           </div>
-          <div className="flex items-center">
-            <a
-              href={`https://wa.me/${PHONE}`}
-              target="_blank" rel="noopener noreferrer"
-              className="flex items-center gap-2 hover:opacity-90 transition-opacity py-0.5 px-3 rounded"
-              style={{ backgroundColor: "#25D366" }}
-            >
-              <WhatsAppIcon className="w-3 h-3" /> <span className="font-bold">WHATSAPP</span>
-            </a>
-          </div>
+          <a href={`https://wa.me/${PHONE}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:opacity-90 transition-opacity py-0.5 px-3 rounded" style={{ backgroundColor: "#25D366" }}>
+            <WhatsAppIcon className="w-3 h-3" /> <span className="font-bold">WHATSAPP</span>
+          </a>
         </div>
       </div>
 
-      {/* ─── MAIN NAVIGATION ─── */}
       <nav className="sticky top-0 z-50 bg-card/95 backdrop-blur-md border-b border-border">
         <div className={`container-wide flex items-center justify-between px-4 md:px-8 transition-all duration-300 ${scrolled ? "py-2" : "py-3"}`}>
-
           <Link to="/" className="flex flex-col">
             <span className="font-heading text-xl font-bold text-primary">SK - ORTHOPAEDICS</span>
-            <span className="text-[10px] text-muted-foreground font-semibold uppercase tracking-widest">
-              Sports Medicine and Joint Replacement
-            </span>
+            <span className="text-[10px] text-muted-foreground font-semibold uppercase tracking-widest">Sports Medicine and Joint Replacement</span>
           </Link>
 
           <div className="hidden lg:flex items-center gap-6">
             {navLinks.map((link) => (
-              <Link
-                key={link.path} to={link.path}
-                className={`text-sm font-medium transition-colors hover:text-primary ${
-                  location.pathname === link.path ? "text-primary" : "text-foreground"
-                }`}
-              >
+              <Link key={link.path} to={link.path} className={`text-sm font-medium transition-colors hover:text-primary ${location.pathname === link.path ? "text-primary" : "text-foreground"}`}>
                 {link.label}
               </Link>
             ))}
@@ -362,17 +304,11 @@ const Navbar = () => {
 
           <div className="hidden lg:flex items-center gap-3">
             {scrolled && (
-              <button
-                onClick={() => setShowModal(true)}
-                className="flex items-center gap-2 bg-[#25D366] text-white px-4 py-2 rounded-lg text-sm font-bold hover:opacity-90 transition-all animate-in fade-in slide-in-from-right-2 duration-200"
-              >
+              <button onClick={() => setShowModal(true)} className="flex items-center gap-2 bg-[#25D366] text-white px-4 py-2 rounded-lg text-sm font-bold hover:opacity-90 transition-all">
                 <WhatsAppIcon className="w-4 h-4" /> Consult Now
               </button>
             )}
-            <a
-              href={`tel:+${PHONE}`}
-              className="flex items-center gap-2 bg-primary text-primary-foreground px-4 py-2 rounded-lg text-sm font-bold hover:shadow-lg transition-all"
-            >
+            <a href={`tel:+${PHONE}`} className="flex items-center gap-2 bg-primary text-primary-foreground px-4 py-2 rounded-lg text-sm font-bold hover:shadow-lg transition-all">
               <Phone className="w-4 h-4" /> +92 300 2278196
             </a>
           </div>
@@ -382,21 +318,12 @@ const Navbar = () => {
           </button>
         </div>
 
-
-        {/* Mobile Menu */}
         {isOpen && (
           <div className="lg:hidden bg-card border-t border-border p-6 space-y-4 shadow-xl">
             {navLinks.map((link) => (
-              <Link key={link.path} to={link.path} onClick={() => setIsOpen(false)}
-                className="block text-sm font-bold uppercase tracking-wide"
-              >
-                {link.label}
-              </Link>
+              <Link key={link.path} to={link.path} onClick={() => setIsOpen(false)} className="block text-sm font-bold uppercase tracking-wide">{link.label}</Link>
             ))}
-            <button
-              onClick={() => { setIsOpen(false); setShowModal(true); }}
-              className="w-full text-left text-primary font-bold text-sm uppercase flex items-center gap-2"
-            >
+            <button onClick={() => { setIsOpen(false); setShowModal(true); }} className="w-full text-left text-primary font-bold text-sm uppercase flex items-center gap-2">
               <Globe className="w-4 h-4" /> Book Online Consultation
             </button>
           </div>
