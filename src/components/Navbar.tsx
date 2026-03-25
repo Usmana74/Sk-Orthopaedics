@@ -227,10 +227,10 @@ Please let me know the next steps.`;
                   <button
                     onClick={handleText}
                     disabled={current.type === "fields" ? (!formData.name?.trim() || !formData.age?.trim()) : !textVal.trim()}
-                    className="w-full py-4 rounded-xl text-base font-bold text-white transition-all hover:opacity-90 disabled:opacity-40 flex items-center justify-center gap-2"
+                    className="w-full py-5 rounded-xl text-base font-bold text-white transition-all hover:opacity-90 disabled:opacity-40 flex items-center justify-center gap-2"
                     style={{ backgroundColor: "rgba(29,97,165)" }}
                   >
-                    {isLast ? <><WhatsAppIcon className="w-5 h-5" /> Send via WhatsApp</> : <>Continue <ChevronRight className="w-5 h-5" /></>}
+                    {isLast ? <><WhatsAppIcon className="w-6 h-6" /> Send via WhatsApp</> : <>Continue <ChevronRight className="w-5 h-5" /></>}
                   </button>
                 </div>
               )}
