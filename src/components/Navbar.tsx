@@ -22,6 +22,17 @@ const PHONE = "923002278196";
 
 const STEPS = [
   {
+    id: "status",
+    question: "How can we help you today?",
+    hint: "Select your visit status.",
+    type: "options",
+    options: [
+      { label: "New Visit", emoji: "👋" },
+      { label: "Follow up", emoji: "🔄" },
+      { label: "X-Ray / MRI Evaluation", emoji: "🦴" },
+    ],
+  },
+  {
     id: "personal_info",
     question: "Basic Information",
     hint: "Please provide your details for Dr. Shoaib.",
@@ -112,12 +123,13 @@ const ConsultationModal = ({ onClose }: { onClose: () => void }) => {
   const confirm = (data: FormData) => {
     const msg = `Hello Dr. Shoaib Aslam, I would like to request a consultation.
 
+📋 *Status:* ${data.status}
 👤 *Name:* ${data.name}
 🔢 *Age:* ${data.age}
 🩺 *Concern:* ${data.concern}
 ⏱️ *Duration:* ${data.duration}
-📋 *Consultation Type:* ${data.type}
-📱 *Contact Number:* ${data.phone}
+📍 *Type:* ${data.type}
+📱 *WhatsApp:* ${data.phone}
 
 Please let me know the next steps.`;
     window.open(`https://wa.me/${PHONE}?text=${encodeURIComponent(msg)}`, "_blank");
@@ -213,7 +225,7 @@ Please let me know the next steps.`;
         {!submitted && (
           <div className="px-6 pb-5 flex items-center justify-between">
             <button onClick={goBack} disabled={step === 0} className="flex items-center gap-1 text-xs text-slate-400 hover:text-slate-600 transition-colors disabled:opacity-0"><ChevronLeft className="w-3.5 h-3.5" /> Back</button>
-            <p className="text-[10px] text-slate-300 italic">Our team responds promptly to all requests.</p>
+            <p className="text-[10px] text-slate-300 italic">Our team responds promptly.</p>
           </div>
         )}
       </div>
@@ -237,11 +249,9 @@ const Navbar = () => {
     <>
       {showModal && <ConsultationModal onClose={() => setShowModal(false)} />}
       
-      {/* ─── EQUALLY SPACED TOP BAR ─── */}
       <div className="bg-primary text-primary-foreground text-[11px] md:text-xs border-b border-white/10">
         <div className="container-wide flex items-center justify-between px-4 py-2 md:px-8">
           
-          {/* Left section */}
           <div className="flex-1 flex items-center justify-start hidden sm:flex">
             <div className="flex items-center gap-2">
               <GraduationCap className="w-3.5 h-3.5" />
@@ -249,7 +259,6 @@ const Navbar = () => {
             </div>
           </div>
 
-          {/* Center section */}
           <div className="flex-1 flex items-center justify-center">
             <button onClick={() => setShowModal(true)} className="flex items-center gap-2 hover:opacity-80 transition-opacity group">
               <span className="w-2 h-2 rounded-full bg-sky-400 animate-pulse" />
@@ -258,7 +267,6 @@ const Navbar = () => {
             </button>
           </div>
 
-          {/* Right section with Larger rectangular WhatsApp button */}
           <div className="flex-1 flex items-center justify-end">
             <a href={`https://wa.me/${PHONE}`} target="_blank" rel="noopener noreferrer" 
                className="flex items-center gap-2 hover:opacity-90 transition-opacity py-1 px-4 rounded" 

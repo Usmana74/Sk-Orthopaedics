@@ -116,8 +116,8 @@ const Contact = () => {
                 <p className="text-xs text-slate-400 leading-relaxed mb-1">
                   For medical questions, consultation requests, or treatment information, our support team will assist you.
                 </p>
-                <a href="mailto:info@skorthopaedics.com" className="block text-sm font-semibold text-primary hover:opacity-80 transition-colors tracking-wide">
-                  info@skorthopaedics.com
+                <a href="mailto:shoaibkurrer@yahoo.com" className="block text-sm font-semibold text-primary hover:opacity-80 transition-colors tracking-wide">
+                  shoaibkurrer@yahoo.com
                 </a>
               </div>
             </ScrollReveal>
