@@ -131,7 +131,7 @@ Please let me know the next steps.`;
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
-      <div className="bg-white w-full max-w-md rounded-2xl shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+      <div className="bg-white w-full max-w-md rounded-2xl shadow-2xl overflow-hidden" style={{ animation: "modalIn 0.25s ease-out" }}>
         <div className="px-6 pt-5 pb-4" style={{ backgroundColor: "rgba(29,97,165)" }}>
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2">
@@ -155,13 +155,13 @@ Please let me know the next steps.`;
             <div className="flex flex-col items-center text-center py-4 gap-4">
               <div className="w-16 h-16 rounded-full flex items-center justify-center" style={{ backgroundColor: "#25D366" }}><CheckCircle className="w-8 h-8 text-white" /></div>
               <h3 className="font-bold text-slate-900 text-lg">Request Sent!</h3>
-              <p className="text-slate-500 text-sm">Your consultation request has been sent via WhatsApp.</p>
-              <button onClick={onClose} className="w-full py-3 rounded-xl text-sm font-bold text-white" style={{ backgroundColor: "rgba(29,97,165)" }}>Close</button>
+              <p className="text-slate-500 text-sm leading-relaxed">Your consultation request has been sent to Dr. Shoaib's team via WhatsApp.</p>
+              <button onClick={onClose} className="w-full py-2.5 rounded-xl text-sm font-bold text-white transition-all hover:opacity-90" style={{ backgroundColor: "rgba(29,97,165)" }}>Close</button>
             </div>
           ) : (
-            <div key={step} className="animate-in slide-in-from-right-4 duration-200">
+            <div key={step} style={{ animation: "stepIn 0.2s ease-out" }}>
               <p className="text-slate-400 text-xs mb-1">{current.hint}</p>
-              <h3 className="font-bold text-slate-900 text-base mb-5">{current.question}</h3>
+              <h3 className="font-bold text-slate-900 text-base mb-5 leading-snug">{current.question}</h3>
 
               {current.type === "options" && (
                 <div className="flex flex-col gap-2">
@@ -169,7 +169,7 @@ Please let me know the next steps.`;
                     <button key={opt.label} onClick={() => handleOption(opt.label)} className="flex items-center gap-3 w-full text-left px-4 py-3 rounded-xl border border-slate-200 hover:border-primary/40 hover:bg-primary/4 transition-all text-sm font-medium text-slate-700 group">
                       <span className="text-lg">{opt.emoji}</span>
                       <span className="group-hover:text-primary transition-colors">{opt.label}</span>
-                      <ChevronRight className="w-4 h-4 ml-auto text-slate-300" />
+                      <ChevronRight className="w-4 h-4 ml-auto text-slate-300 group-hover:text-primary/50 transition-colors" />
                     </button>
                   ))}
                 </div>
@@ -184,7 +184,7 @@ Please let me know the next steps.`;
                         <input
                           type="text" value={formData[f.id] || ""} placeholder={f.placeholder}
                           onChange={e => setFormData({ ...formData, [f.id]: e.target.value })}
-                          className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-primary outline-none text-sm text-slate-800"
+                          className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-primary outline-none transition-colors text-sm text-slate-800 placeholder:text-slate-300"
                         />
                       </div>
                     ))
@@ -193,13 +193,13 @@ Please let me know the next steps.`;
                       autoFocus type="text" value={textVal} placeholder={current.placeholder}
                       onChange={e => setTextVal(e.target.value)}
                       onKeyDown={e => e.key === "Enter" && handleText()}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-primary outline-none text-sm text-slate-800"
+                      className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-primary outline-none transition-colors text-sm text-slate-800 placeholder:text-slate-300"
                     />
                   )}
                   <button
                     onClick={handleText}
                     disabled={current.type === "fields" ? (!formData.name?.trim() || !formData.age?.trim()) : !textVal.trim()}
-                    className="w-full py-4 rounded-xl text-base font-bold text-white flex items-center justify-center gap-2"
+                    className="w-full py-4 rounded-xl text-base font-bold text-white transition-all hover:opacity-90 disabled:opacity-40 flex items-center justify-center gap-2"
                     style={{ backgroundColor: "rgba(29,97,165)" }}
                   >
                     {isLast ? <><WhatsAppIcon className="w-5 h-5" /> Send via WhatsApp</> : <>Continue <ChevronRight className="w-5 h-5" /></>}
@@ -212,8 +212,8 @@ Please let me know the next steps.`;
 
         {!submitted && (
           <div className="px-6 pb-5 flex items-center justify-between">
-            <button onClick={goBack} disabled={step === 0} className="flex items-center gap-1 text-xs text-slate-400 hover:text-slate-600 disabled:opacity-0"><ChevronLeft className="w-3.5 h-3.5" /> Back</button>
-            <p className="text-[10px] text-slate-300 italic">Our team responds promptly.</p>
+            <button onClick={goBack} disabled={step === 0} className="flex items-center gap-1 text-xs text-slate-400 hover:text-slate-600 transition-colors disabled:opacity-0"><ChevronLeft className="w-3.5 h-3.5" /> Back</button>
+            <p className="text-[10px] text-slate-300 italic">Our team responds promptly to all requests.</p>
           </div>
         )}
       </div>
@@ -237,31 +237,33 @@ const Navbar = () => {
     <>
       {showModal && <ConsultationModal onClose={() => setShowModal(false)} />}
       
-      {/* ─── BALANCED TOP BAR ─── */}
+      {/* ─── EQUALLY SPACED TOP BAR ─── */}
       <div className="bg-primary text-primary-foreground text-[11px] md:text-xs border-b border-white/10">
         <div className="container-wide flex items-center justify-between px-4 py-2 md:px-8">
           
+          {/* Left section */}
           <div className="flex-1 flex items-center justify-start hidden sm:flex">
             <div className="flex items-center gap-2">
-              <GraduationCap className="w-4 h-4 text-sky-300" />
-              <span className="font-medium tracking-wide uppercase opacity-90">FCPS Trained Surgeon</span>
+              <GraduationCap className="w-3.5 h-3.5" />
+              <span className="font-medium tracking-wide uppercase opacity-90">FCPS · Fellowship Trained Surgeon</span>
             </div>
           </div>
 
+          {/* Center section */}
           <div className="flex-1 flex items-center justify-center">
-            <button onClick={() => setShowModal(true)} className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+            <button onClick={() => setShowModal(true)} className="flex items-center gap-2 hover:opacity-80 transition-opacity group">
               <span className="w-2 h-2 rounded-full bg-sky-400 animate-pulse" />
               <Globe className="w-3.5 h-3.5 opacity-80" />
-              <span className="font-semibold underline underline-offset-4 tracking-wide uppercase">Online & In-clinic Visit</span>
+              <span className="font-semibold underline underline-offset-4 tracking-wide uppercase">Online and In-clinic Consultation</span>
             </button>
           </div>
 
+          {/* Right section with Larger rectangular WhatsApp button */}
           <div className="flex-1 flex items-center justify-end">
             <a href={`https://wa.me/${PHONE}`} target="_blank" rel="noopener noreferrer" 
-               className="flex items-center gap-3 hover:scale-105 transition-transform py-1.5 px-4 rounded-full" 
+               className="flex items-center gap-2 hover:opacity-90 transition-opacity py-1 px-4 rounded" 
                style={{ backgroundColor: "#25D366" }}>
-              <WhatsAppIcon className="w-6 h-6" /> 
-              <span className="font-bold tracking-tight">WHATSAPP</span>
+              <WhatsAppIcon className="w-5 h-5" /> <span className="font-bold">WHATSAPP</span>
             </a>
           </div>
 
@@ -272,12 +274,12 @@ const Navbar = () => {
         <div className={`container-wide flex items-center justify-between px-4 md:px-8 transition-all duration-300 ${scrolled ? "py-2" : "py-3"}`}>
           <Link to="/" className="flex flex-col">
             <span className="font-heading text-xl font-bold text-primary leading-tight">SK - ORTHOPAEDICS</span>
-            <span className="text-[10px] text-muted-foreground font-semibold uppercase tracking-widest">Sports Medicine & Joint Replacement</span>
+            <span className="text-[10px] text-muted-foreground font-semibold uppercase tracking-widest">Sports Medicine and Joint Replacement</span>
           </Link>
 
           <div className="hidden lg:flex items-center gap-6">
             {navLinks.map((link) => (
-              <Link key={link.path} to={link.path} className={`text-sm font-medium hover:text-primary ${location.pathname === link.path ? "text-primary" : "text-foreground"}`}>{link.label}</Link>
+              <Link key={link.path} to={link.path} className={`text-sm font-medium transition-colors hover:text-primary ${location.pathname === link.path ? "text-primary" : "text-foreground"}`}>{link.label}</Link>
             ))}
           </div>
 
@@ -293,14 +295,18 @@ const Navbar = () => {
         </div>
 
         {isOpen && (
-          <div className="lg:hidden bg-card border-t border-border p-6 space-y-4 shadow-xl animate-in slide-in-from-top-2">
+          <div className="lg:hidden bg-card border-t border-border p-6 space-y-4 shadow-xl">
             {navLinks.map((link) => (
-              <Link key={link.path} to={link.path} onClick={() => setIsOpen(false)} className="block text-sm font-bold uppercase">{link.label}</Link>
+              <Link key={link.path} to={link.path} onClick={() => setIsOpen(false)} className="block text-sm font-bold uppercase tracking-wide">{link.label}</Link>
             ))}
-            <button onClick={() => { setIsOpen(false); setShowModal(true); }} className="w-full text-left text-primary font-bold text-sm uppercase flex items-center gap-2"><Globe className="w-4 h-4" /> Online Consultation</button>
+            <button onClick={() => { setIsOpen(false); setShowModal(true); }} className="w-full text-left text-primary font-bold text-sm uppercase flex items-center gap-2"><Globe className="w-4 h-4" /> Book Online Consultation</button>
           </div>
         )}
       </nav>
+      <style>{`
+        @keyframes modalIn { from { opacity: 0; transform: scale(0.96) translateY(8px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+        @keyframes stepIn { from { opacity: 0; transform: translateX(12px); } to { opacity: 1; transform: translateX(0); } }
+      `}</style>
     </>
   );
 };
