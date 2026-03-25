@@ -27,18 +27,8 @@ const STEPS = [
     hint: "Please provide your details for Dr. Shoaib.",
     type: "fields",
     fields: [
-      {
-        id: "name",
-        question: "What is your name?",
-        hint: "So we can address you properly.",
-        placeholder: "e.g. Ahmed Khan",
-      },
-      {
-        id: "age",
-        question: "What is your age?",
-        hint: "This helps the doctor understand your condition.",
-        placeholder: "e.g. 35",
-      },
+      { id: "name", question: "What is your name?", placeholder: "e.g. Ahmed Khan" },
+      { id: "age", question: "What is your age?", placeholder: "e.g. 35" }
     ],
   },
   {
@@ -107,9 +97,7 @@ const ConsultationModal = ({ onClose }: { onClose: () => void }) => {
 
   const handleText = () => {
     let updated = { ...formData };
-    
     if (current.type === "fields") {
-      // Validate both name and age are present
       if (!formData.name?.trim() || !formData.age?.trim()) return;
     } else {
       if (!textVal.trim()) return;
@@ -117,7 +105,6 @@ const ConsultationModal = ({ onClose }: { onClose: () => void }) => {
       setFormData(updated);
       setTextVal("");
     }
-
     if (!isLast) setStep(s => s + 1);
     else confirm(updated);
   };
@@ -133,7 +120,6 @@ const ConsultationModal = ({ onClose }: { onClose: () => void }) => {
 📱 *Contact Number:* ${data.phone}
 
 Please let me know the next steps.`;
-
     window.open(`https://wa.me/${PHONE}?text=${encodeURIComponent(msg)}`, "_blank");
     setSubmitted(true);
   };
@@ -145,18 +131,14 @@ Please let me know the next steps.`;
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
-      <div className="bg-white w-full max-w-md rounded-2xl shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-250">
-        
-        {/* Header */}
+      <div className="bg-white w-full max-w-md rounded-2xl shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
         <div className="px-6 pt-5 pb-4" style={{ backgroundColor: "rgba(29,97,165)" }}>
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2">
               <Globe className="w-4 h-4 text-white/70" />
               <span className="text-white text-xs font-bold uppercase tracking-widest">Online Consultation</span>
             </div>
-            <button onClick={onClose} className="text-white/60 hover:text-white transition-colors">
-              <X className="w-4 h-4" />
-            </button>
+            <button onClick={onClose} className="text-white/60 hover:text-white transition-colors"><X className="w-4 h-4" /></button>
           </div>
           {!submitted && (
             <>
@@ -168,23 +150,18 @@ Please let me know the next steps.`;
           )}
         </div>
 
-        {/* Body */}
         <div className="px-6 py-6 min-h-[300px]">
           {submitted ? (
             <div className="flex flex-col items-center text-center py-4 gap-4">
-              <div className="w-16 h-16 rounded-full flex items-center justify-center" style={{ backgroundColor: "#25D366" }}>
-                <CheckCircle className="w-8 h-8 text-white" />
-              </div>
-              <div>
-                <h3 className="font-bold text-slate-900 text-lg mb-1">Request Sent!</h3>
-                <p className="text-slate-500 text-sm leading-relaxed">Your consultation request has been sent to Dr. Shoaib's team via WhatsApp.</p>
-              </div>
-              <button onClick={onClose} className="w-full py-2.5 rounded-xl text-sm font-bold text-white transition-all hover:opacity-90" style={{ backgroundColor: "rgba(29,97,165)" }}>Close</button>
+              <div className="w-16 h-16 rounded-full flex items-center justify-center" style={{ backgroundColor: "#25D366" }}><CheckCircle className="w-8 h-8 text-white" /></div>
+              <h3 className="font-bold text-slate-900 text-lg">Request Sent!</h3>
+              <p className="text-slate-500 text-sm">Your consultation request has been sent via WhatsApp.</p>
+              <button onClick={onClose} className="w-full py-3 rounded-xl text-sm font-bold text-white" style={{ backgroundColor: "rgba(29,97,165)" }}>Close</button>
             </div>
           ) : (
             <div key={step} className="animate-in slide-in-from-right-4 duration-200">
               <p className="text-slate-400 text-xs mb-1">{current.hint}</p>
-              <h3 className="font-bold text-slate-900 text-base mb-5 leading-snug">{current.question}</h3>
+              <h3 className="font-bold text-slate-900 text-base mb-5">{current.question}</h3>
 
               {current.type === "options" && (
                 <div className="flex flex-col gap-2">
@@ -192,7 +169,7 @@ Please let me know the next steps.`;
                     <button key={opt.label} onClick={() => handleOption(opt.label)} className="flex items-center gap-3 w-full text-left px-4 py-3 rounded-xl border border-slate-200 hover:border-primary/40 hover:bg-primary/4 transition-all text-sm font-medium text-slate-700 group">
                       <span className="text-lg">{opt.emoji}</span>
                       <span className="group-hover:text-primary transition-colors">{opt.label}</span>
-                      <ChevronRight className="w-4 h-4 ml-auto text-slate-300 group-hover:text-primary/50 transition-colors" />
+                      <ChevronRight className="w-4 h-4 ml-auto text-slate-300" />
                     </button>
                   ))}
                 </div>
@@ -205,9 +182,7 @@ Please let me know the next steps.`;
                       <div key={f.id} className="space-y-1">
                         <label className="text-[10px] font-bold uppercase text-slate-400 ml-1">{f.question}</label>
                         <input
-                          type="text"
-                          value={formData[f.id] || ""}
-                          placeholder={f.placeholder}
+                          type="text" value={formData[f.id] || ""} placeholder={f.placeholder}
                           onChange={e => setFormData({ ...formData, [f.id]: e.target.value })}
                           className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-primary outline-none text-sm text-slate-800"
                         />
@@ -215,10 +190,7 @@ Please let me know the next steps.`;
                     ))
                   ) : (
                     <input
-                      autoFocus
-                      type="text"
-                      value={textVal}
-                      placeholder={current.placeholder}
+                      autoFocus type="text" value={textVal} placeholder={current.placeholder}
                       onChange={e => setTextVal(e.target.value)}
                       onKeyDown={e => e.key === "Enter" && handleText()}
                       className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-primary outline-none text-sm text-slate-800"
@@ -227,10 +199,10 @@ Please let me know the next steps.`;
                   <button
                     onClick={handleText}
                     disabled={current.type === "fields" ? (!formData.name?.trim() || !formData.age?.trim()) : !textVal.trim()}
-                    className="w-full py-5 rounded-xl text-base font-bold text-white transition-all hover:opacity-90 disabled:opacity-40 flex items-center justify-center gap-2"
+                    className="w-full py-4 rounded-xl text-base font-bold text-white flex items-center justify-center gap-2"
                     style={{ backgroundColor: "rgba(29,97,165)" }}
                   >
-                    {isLast ? <><WhatsAppIcon className="w-6 h-6" /> Send via WhatsApp</> : <>Continue <ChevronRight className="w-5 h-5" /></>}
+                    {isLast ? <><WhatsAppIcon className="w-5 h-5" /> Send via WhatsApp</> : <>Continue <ChevronRight className="w-5 h-5" /></>}
                   </button>
                 </div>
               )}
@@ -238,12 +210,9 @@ Please let me know the next steps.`;
           )}
         </div>
 
-        {/* Footer */}
         {!submitted && (
           <div className="px-6 pb-5 flex items-center justify-between">
-            <button onClick={goBack} disabled={step === 0} className="flex items-center gap-1 text-xs text-slate-400 hover:text-slate-600 transition-colors disabled:opacity-0">
-              <ChevronLeft className="w-3.5 h-3.5" /> Back
-            </button>
+            <button onClick={goBack} disabled={step === 0} className="flex items-center gap-1 text-xs text-slate-400 hover:text-slate-600 disabled:opacity-0"><ChevronLeft className="w-3.5 h-3.5" /> Back</button>
             <p className="text-[10px] text-slate-300 italic">Our team responds promptly.</p>
           </div>
         )}
@@ -252,7 +221,6 @@ Please let me know the next steps.`;
   );
 };
 
-// Navbar stays the same as your original code
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -268,46 +236,52 @@ const Navbar = () => {
   return (
     <>
       {showModal && <ConsultationModal onClose={() => setShowModal(false)} />}
-      <div className="bg-primary text-primary-foreground text-[11px] md:text-xs">
-        <div className="container-wide flex items-center justify-between px-4 py-2 md:px-8 border-b border-white/10">
-          <div className="flex items-center gap-6">
-            <div className="flex items-center gap-2 border-r border-white/20 pr-6 hidden sm:flex">
-              <GraduationCap className="w-3.5 h-3.5" />
-              <span className="font-medium tracking-wide uppercase opacity-90">FCPS · Fellowship Trained Orthopaedic Surgeon</span>
+      
+      {/* ─── BALANCED TOP BAR ─── */}
+      <div className="bg-primary text-primary-foreground text-[11px] md:text-xs border-b border-white/10">
+        <div className="container-wide flex items-center justify-between px-4 py-2 md:px-8">
+          
+          <div className="flex-1 flex items-center justify-start hidden sm:flex">
+            <div className="flex items-center gap-2">
+              <GraduationCap className="w-4 h-4 text-sky-300" />
+              <span className="font-medium tracking-wide uppercase opacity-90">FCPS Trained Surgeon</span>
             </div>
-            <button onClick={() => setShowModal(true)} className="flex items-center gap-2 hover:opacity-80 transition-opacity group">
+          </div>
+
+          <div className="flex-1 flex items-center justify-center">
+            <button onClick={() => setShowModal(true)} className="flex items-center gap-2 hover:opacity-80 transition-opacity">
               <span className="w-2 h-2 rounded-full bg-sky-400 animate-pulse" />
               <Globe className="w-3.5 h-3.5 opacity-80" />
-              <span className="font-semibold underline underline-offset-4 tracking-wide uppercase">Online and In-clinic Consultation</span>
+              <span className="font-semibold underline underline-offset-4 tracking-wide uppercase">Online & In-clinic Visit</span>
             </button>
           </div>
-          <a href={`https://wa.me/${PHONE}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:opacity-90 transition-opacity py-0.5 px-3 rounded" style={{ backgroundColor: "#25D366" }}>
-            <WhatsAppIcon className="w-3 h-3" /> <span className="font-bold">WHATSAPP</span>
-          </a>
+
+          <div className="flex-1 flex items-center justify-end">
+            <a href={`https://wa.me/${PHONE}`} target="_blank" rel="noopener noreferrer" 
+               className="flex items-center gap-3 hover:scale-105 transition-transform py-1.5 px-4 rounded-full" 
+               style={{ backgroundColor: "#25D366" }}>
+              <WhatsAppIcon className="w-6 h-6" /> 
+              <span className="font-bold tracking-tight">WHATSAPP</span>
+            </a>
+          </div>
+
         </div>
       </div>
 
       <nav className="sticky top-0 z-50 bg-card/95 backdrop-blur-md border-b border-border">
         <div className={`container-wide flex items-center justify-between px-4 md:px-8 transition-all duration-300 ${scrolled ? "py-2" : "py-3"}`}>
           <Link to="/" className="flex flex-col">
-            <span className="font-heading text-xl font-bold text-primary">SK - ORTHOPAEDICS</span>
-            <span className="text-[10px] text-muted-foreground font-semibold uppercase tracking-widest">Sports Medicine and Joint Replacement</span>
+            <span className="font-heading text-xl font-bold text-primary leading-tight">SK - ORTHOPAEDICS</span>
+            <span className="text-[10px] text-muted-foreground font-semibold uppercase tracking-widest">Sports Medicine & Joint Replacement</span>
           </Link>
 
           <div className="hidden lg:flex items-center gap-6">
             {navLinks.map((link) => (
-              <Link key={link.path} to={link.path} className={`text-sm font-medium transition-colors hover:text-primary ${location.pathname === link.path ? "text-primary" : "text-foreground"}`}>
-                {link.label}
-              </Link>
+              <Link key={link.path} to={link.path} className={`text-sm font-medium hover:text-primary ${location.pathname === link.path ? "text-primary" : "text-foreground"}`}>{link.label}</Link>
             ))}
           </div>
 
           <div className="hidden lg:flex items-center gap-3">
-            {scrolled && (
-              <button onClick={() => setShowModal(true)} className="flex items-center gap-2 bg-[#25D366] text-white px-4 py-2 rounded-lg text-sm font-bold hover:opacity-90 transition-all">
-                <WhatsAppIcon className="w-4 h-4" /> Consult Now
-              </button>
-            )}
             <a href={`tel:+${PHONE}`} className="flex items-center gap-2 bg-primary text-primary-foreground px-4 py-2 rounded-lg text-sm font-bold hover:shadow-lg transition-all">
               <Phone className="w-4 h-4" /> +92 300 2278196
             </a>
@@ -319,13 +293,11 @@ const Navbar = () => {
         </div>
 
         {isOpen && (
-          <div className="lg:hidden bg-card border-t border-border p-6 space-y-4 shadow-xl">
+          <div className="lg:hidden bg-card border-t border-border p-6 space-y-4 shadow-xl animate-in slide-in-from-top-2">
             {navLinks.map((link) => (
-              <Link key={link.path} to={link.path} onClick={() => setIsOpen(false)} className="block text-sm font-bold uppercase tracking-wide">{link.label}</Link>
+              <Link key={link.path} to={link.path} onClick={() => setIsOpen(false)} className="block text-sm font-bold uppercase">{link.label}</Link>
             ))}
-            <button onClick={() => { setIsOpen(false); setShowModal(true); }} className="w-full text-left text-primary font-bold text-sm uppercase flex items-center gap-2">
-              <Globe className="w-4 h-4" /> Book Online Consultation
-            </button>
+            <button onClick={() => { setIsOpen(false); setShowModal(true); }} className="w-full text-left text-primary font-bold text-sm uppercase flex items-center gap-2"><Globe className="w-4 h-4" /> Online Consultation</button>
           </div>
         )}
       </nav>
