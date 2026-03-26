@@ -54,16 +54,23 @@ const HeroSection = () => {
         </motion.h1>
 
         {/* Doctor name */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="text-white/50 text-sm font-light tracking-[0.2em] uppercase mb-9"
-        >
-          Dr. Shoaib Aslam Kurerr <br />
-          Knee and Shoulder Specialist <br />
-          Consultant Orthopaedic and Sports Surgeon
-        </motion.p>
+<motion.p
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ duration: 0.8, delay: 0.3 }}
+  className="text-white text-sm tracking-wide mb-9 leading-relaxed"
+>
+  {/* Bold Name */}
+  <span className="font-extrabold text-base uppercase tracking-[0.1em]">
+    Dr. Shoaib Aslam Kurer
+  </span> 
+  <br />
+  {/* Light Specifications */}
+  <span className="text-white/60 font-light text-xs uppercase tracking-[0.15em]">
+    Knee and Shoulder Specialist <br />
+    Consultant Orthopaedic and Sports Surgeon
+  </span>
+</motion.p>
 
         {/* CTA */}
         <motion.div
