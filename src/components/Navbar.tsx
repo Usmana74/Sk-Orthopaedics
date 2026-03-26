@@ -27,9 +27,9 @@ const STEPS = [
     hint: "Select your visit status.",
     type: "options",
     options: [
-      { label: "New Visit", emoji: "👋" },
-      { label: "Follow up", emoji: "🔄" },
-      { label: "X-Ray / MRI Evaluation", emoji: "🦴" },
+      { label: "New Visit", },
+      { label: "Follow up",  },
+      { label: "X-Ray / MRI Evaluation",  },
     ],
   },
   {
@@ -48,12 +48,12 @@ const STEPS = [
     hint: "Select the option that best describes your condition.",
     type: "options",
     options: [
-      { label: "Knee Pain / Knee Injury", emoji: "🦵" },
-      { label: "Shoulder Pain / Shoulder Injury", emoji: "💪" },
-      { label: "Sports Injury", emoji: "⚽" },
-      { label: "Joint Replacement Evaluation", emoji: "🔩" },
-      { label: "General Orthopaedic Consultation", emoji: "🩺" },
-      { label: "Lower back pain evaluation", emoji: "🧍‍♂️" },
+      { label: "Knee Pain / Knee Injury", },
+      { label: "Shoulder Pain / Shoulder Injury", },
+      { label: "Sports Injury",  },
+      { label: "Joint Replacement Evaluation",  },
+      { label: "General Orthopaedic Consultation",  },
+      { label: "Lower back pain evaluation",  },
     ],
   },
   {
@@ -62,10 +62,10 @@ const STEPS = [
     hint: "This helps Dr. Shoaib understand the severity.",
     type: "options",
     options: [
-      { label: "Less than 1 month", emoji: "📅" },
-      { label: "1 – 6 months", emoji: "🗓️" },
-      { label: "6 months – 1 year", emoji: "📆" },
-      { label: "More than 1 year", emoji: "⏳" },
+      { label: "Less than 1 month",  },
+      { label: "1 – 6 months", },
+      { label: "6 months – 1 year",  },
+      { label: "More than 1 year", },
     ],
   },
   {
@@ -74,8 +74,8 @@ const STEPS = [
     hint: "Both options are available across Pakistan.",
     type: "options",
     options: [
-      { label: "Online / Video Consultation", emoji: "💻" },
-      { label: "In-Clinic Visit", emoji: "🏥" },
+      { label: "Online / Video Consultation", },
+      { label: "In-Clinic Visit",  },
     ],
   },
   {
