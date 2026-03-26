@@ -60,8 +60,8 @@ const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="text-white/50 text-sm font-light tracking-[0.2em] uppercase mb-9"
         >
-          Dr. Shoaib Aslam Kurerr
-          Knee and Shoulder Specialist
+          Dr. Shoaib Aslam Kurerr <br />
+          Knee and Shoulder Specialist <br />
           Consultant Orthopaedic and Sports Surgeon
         </motion.p>
 
