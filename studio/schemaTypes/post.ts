@@ -49,6 +49,36 @@ export default defineType({
       title: 'Body',
       type: 'blockContent',
     }),
+
+    // ── SEO ──────────────────────────────────────────────────────────────────
+    defineField({
+      name: 'seoTitle',
+      title: 'SEO Title Tag',
+      type: 'string',
+      description: 'Appears in the browser tab and Google search results. Keep under 60 characters.',
+      validation: (Rule) => Rule.max(60).warning('Over 60 characters may be truncated by Google'),
+    }),
+    defineField({
+      name: 'seoDescription',
+      title: 'Meta Description',
+      type: 'text',
+      rows: 3,
+      description: 'Appears under your link in Google search results. Keep between 140–160 characters.',
+      validation: (Rule) => Rule.max(160).warning('Over 160 characters will be cut off by Google'),
+    }),
+    defineField({
+      name: 'seoKeywords',
+      title: 'Focus Keywords',
+      type: 'string',
+      description: 'Comma-separated primary keywords. e.g. ACL injury Pakistan, knee surgeon Bahawalpur',
+    }),
+    defineField({
+      name: 'ogImage',
+      title: 'Social Share Image',
+      type: 'image',
+      description: 'Image shown when this post is shared on WhatsApp, Facebook or LinkedIn. Recommended size: 1200×630px.',
+      options: {hotspot: true},
+    }),
   ],
 
   preview: {
