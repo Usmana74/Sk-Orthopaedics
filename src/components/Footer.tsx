@@ -58,7 +58,7 @@ const socialLinks = [
   { label: "Facebook",  href: "https://www.facebook.com/saorthopaedics",                 icon: <FacebookIcon className="w-4 h-4" />,  bg: undefined },
   { label: "Instagram", href: "https://www.instagram.com/drshoaibaslamkurrer/",          icon: <InstagramIcon className="w-4 h-4" />, bg: undefined },
   { label: "YouTube",   href: "https://www.youtube.com/@dr.shoaibaslamorthopaedics6367", icon: <YouTubeIcon className="w-4 h-4" />,   bg: undefined },
-  { label: "WhatsApp",  href: WHATSAPP_FLOATING_URL, icon: <WhatsAppIcon className="w-6 h-6 text-[#25D366]" />, bg: undefined },
+  { label: "WhatsApp",  href: WHATSAPP_FLOATING_URL, icon: <WhatsAppIcon className="w-8 h-8 text-[#25D366]" />, bg: undefined },
 ];
 
 const navLinks = [
