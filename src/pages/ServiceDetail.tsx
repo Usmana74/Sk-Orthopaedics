@@ -357,7 +357,7 @@ const ServiceDetail = () => {
     );
   }
 
-  const whatsappUrl = `https://wa.me/923002278796?text=Hello%20Dr.%20Shoaib%2C%20I%20am%20interested%20in%20the%20${encodeURIComponent(procedure.title)}%20and%20would%20like%20to%20discuss%20my%20case.`;
+  const whatsappUrl = `https://wa.me/923002278196?text=Hello%20Dr.%20Shoaib%2C%20I%20am%20interested%20in%20the%20${encodeURIComponent(procedure.title)}%20and%20would%20like%20to%20discuss%20my%20case.`;
 
   return (
     <main>
@@ -474,7 +474,7 @@ const ServiceDetail = () => {
                     Consult with Dr Shoaib Aslam Kurerr
                   </h3>
                   <p className="text-primary-foreground/65 text-sm max-w-md">
-                    Midwest Hospital, Bahawalpur · Monday – Saturday · 9 AM – 11 PM
+                    Contact us for online or in-clinic consultation to discuss your case and determine the best treatment plan for you.
                   </p>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-3 shrink-0">
