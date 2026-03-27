@@ -60,7 +60,7 @@ const socialLinks = [
   { label: "Facebook",  href: "https://www.facebook.com/saorthopaedics",                 icon: <FacebookIcon className="w-4 h-4" />,  bg: undefined },
   { label: "Instagram", href: "https://www.instagram.com/drshoaibaslamkurrer/",          icon: <InstagramIcon className="w-4 h-4" />, bg: undefined },
   { label: "YouTube",   href: "https://www.youtube.com/@dr.shoaibaslamorthopaedics6367", icon: <YouTubeIcon className="w-4 h-4" />,   bg: undefined },
-  { label: "WhatsApp",  href: WHATSAPP_FLOATING_URL, icon: <WhatsAppIcon className="w-4 h-4" />, bg: "undefined" },
+  { label: "WhatsApp",  href: WHATSAPP_FLOATING_URL, icon: <WhatsAppIcon className="w-4 h-4" />, bg: "#25D366" },
 ];
 
 const navLinks = [
