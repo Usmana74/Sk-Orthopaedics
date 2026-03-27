@@ -196,7 +196,7 @@ const Footer = () => {
             </div>
 
             <a
-              href="tel:+923002278796"
+              href="tel:+923002278196"
               className="flex items-center justify-center gap-2 w-full text-sm font-semibold py-2.5 rounded-xl transition-all text-white/60 hover:text-white"
               style={{ border: "1px solid rgba(255,255,255,0.1)" }}
             >

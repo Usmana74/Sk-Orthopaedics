@@ -33,7 +33,7 @@ const CTASection = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="tel:+923002278796"
+                href="tel:+923002278196"
                 className="inline-flex items-center justify-center gap-2 bg-primary-foreground text-primary px-8 py-4 rounded-lg font-semibold hover:opacity-90 transition-all hover:scale-[1.02]"
               >
                 <Phone className="w-5 h-5" /> Call Now
