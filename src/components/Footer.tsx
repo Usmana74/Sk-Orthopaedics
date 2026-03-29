@@ -206,8 +206,8 @@ const Footer = () => {
   className="fixed bottom-6 right-6 z-50 p-2 rounded-full shadow-xl hover:scale-110 transition-transform flex items-center justify-center"
   style={{ 
     backgroundColor: "#25D366",
-    width: "40px",  /* Fixed container size */
-    height: "40px" 
+    width: "60px",  /* Fixed container size */
+    height: "60px" 
   }}
   aria-label="Chat on WhatsApp"
 >
