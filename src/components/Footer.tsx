@@ -207,7 +207,7 @@ const Footer = () => {
         style={{ backgroundColor: "#25D366" }}
         aria-label="Chat on WhatsApp"
       >
-        <WhatsAppIcon className="w-6 h-6 text-white" />
+        <WhatsAppIcon className="w-8 h-8 text-white" />
       </a>
     </footer>
   );
