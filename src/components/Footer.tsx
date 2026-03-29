@@ -203,7 +203,7 @@ const Footer = () => {
   href={WHATSAPP_FLOATING_URL}
   target="_blank"
   rel="noopener noreferrer"
-  className="fixed bottom-6 right-6 z-50 p-2 rounded-full shadow-xl hover:scale-110 transition-transform flex items-center justify-center"
+  className="fixed bottom-6 right-6 z-50 p-1 rounded-full shadow-xl hover:scale-110 transition-transform flex items-center justify-center"
   style={{ 
     backgroundColor: "#25D366",
     width: "64px",  /* Fixed container size */
@@ -211,7 +211,8 @@ const Footer = () => {
   }}
   aria-label="Chat on WhatsApp"
 >
-  <WhatsAppIcon className="w-10 h-10 text-white" />
+  <WhatsAppIcon className="w-8 h-8 text-white" />
+
 </a>
     </footer>
   );
