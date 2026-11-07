@@ -3,7 +3,7 @@ import ScrollReveal from "./ScrollReveal";
 
 const stats = [
   { value: 5000, suffix: "+", label: "Patients Treated" },
-  { value: 8,    suffix: "+", label: "Years Experience" },
+  { value: 12,    suffix: "+", label: "Years Experience" },
   { value: 400,  suffix: "+", label: "Successful Surgeries" },
 
 ];
